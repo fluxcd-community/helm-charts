@@ -1,0 +1,35 @@
+helmcontroller:
+  create: true
+  image: fluxcd/helm-controller
+  tag: v0.12.1
+
+imageautomationcontroller:
+  create: true
+  image: fluxcd/image-automation-controller
+  tag: v0.16.0
+
+imagereflectorcontroller:
+  create: true
+  image: fluxcd/image-reflector-controller
+  tag: v0.13.0
+
+kustomizecontroller:
+  create: true
+  image: fluxcd/kustomize-controller
+  tag: v0.16.0
+
+notificationcontroller:
+  create: true
+  image: fluxcd/notification-controller
+  tag: v0.18.1
+
+sourcecontroller:
+  create: true
+  image: fluxcd/source-controller
+  tag: v0.17.1
+
+policies:
+  create: true
+
+rbac:
+  create: true
