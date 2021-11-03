@@ -3,6 +3,9 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: kustomize-controller
+  {{- with .Values.kustomizecontroller.serviceaccount.annotations }}
+  annotations: {{ toYaml . | nindent 4 }}
+  {{- end }}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -17,11 +20,12 @@ spec:
       app: kustomize-controller
   template:
     metadata:
-      annotations:
-        prometheus.io/port: "8080"
-        prometheus.io/scrape: "true"
+      {{- with .Values.kustomizecontroller.annotations }}
+      annotations: {{ toYaml . | nindent 8 }}
+      {{- end }}
       labels:
         app: kustomize-controller
+{{- with .Values.kustomizecontroller.labels }}{{ toYaml . | indent 8 }}{{ end }}
     spec:
       containers:
       - args:
@@ -52,19 +56,21 @@ spec:
           httpGet:
             path: /readyz
             port: healthz
-        resources:
-          limits:
-            cpu: 1000m
-            memory: 1Gi
-          requests:
-            cpu: 100m
-            memory: 64Mi
+        {{- with .Values.kustomizecontroller.resources }}
+        resources: {{ toYaml . | nindent 10 }}
+        {{- end }}
         securityContext:
           allowPrivilegeEscalation: false
           readOnlyRootFilesystem: true
         volumeMounts:
         - mountPath: /tmp
           name: temp
+      {{- range .Values.kustomizecontroller.extraSecretMounts }}
+        - name: {{ .name }}
+          mountPath: {{ .mountPath }}
+          subPath: {{ .subPath }}
+          readOnly: {{ .readOnly }}
+      {{- end }}
       securityContext:
         fsGroup: 1337
       serviceAccountName: kustomize-controller
@@ -72,4 +78,9 @@ spec:
       volumes:
       - emptyDir: {}
         name: temp
+    {{- range .Values.kustomizecontroller.extraSecretMounts }}
+      - name: {{ .name }}
+        secret:
+          secretName: {{ .secretName }}
+    {{- end }}
 {{- end }}
