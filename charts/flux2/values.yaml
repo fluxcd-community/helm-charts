@@ -2,31 +2,116 @@ helmcontroller:
   create: true
   image: fluxcd/helm-controller
   tag: v0.12.1
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+    requests:
+      cpu: 100m
+      memory: 64Mi
+  annotations:
+    prometheus.io/port: "8080"
+    prometheus.io/scrape: "true"
+  labels: {}
+  serviceaccount:
+    annotations: {}
 
 imageautomationcontroller:
   create: true
   image: fluxcd/image-automation-controller
   tag: v0.16.0
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+    requests:
+      cpu: 100m
+      memory: 64Mi
+  annotations:
+    prometheus.io/port: "8080"
+    prometheus.io/scrape: "true"
+  labels: {}
+  serviceaccount:
+    annotations: {}
 
 imagereflectorcontroller:
   create: true
   image: fluxcd/image-reflector-controller
   tag: v0.13.0
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+    requests:
+      cpu: 100m
+      memory: 64Mi
+  annotations:
+    prometheus.io/port: "8080"
+    prometheus.io/scrape: "true"
+  labels: {}
+  serviceaccount:
+    annotations: {}
 
 kustomizecontroller:
   create: true
   image: fluxcd/kustomize-controller
   tag: v0.16.0
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+    requests:
+      cpu: 100m
+      memory: 64Mi
+  annotations:
+    prometheus.io/port: "8080"
+    prometheus.io/scrape: "true"
+  labels: {}
+  serviceaccount:
+    annotations: {}
+  # Defines additional mounts with secrets. Secrets must be manually created in the namespace.
+  extraSecretMounts: []
+    # - name: secret-files
+    #   mountPath: /etc/secrets
+    #   subPath: ""
+    #   secretName: secret-files
+    #   readOnly: true
 
 notificationcontroller:
   create: true
   image: fluxcd/notification-controller
   tag: v0.18.1
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+    requests:
+      cpu: 100m
+      memory: 64Mi
+  annotations:
+    prometheus.io/port: "8080"
+    prometheus.io/scrape: "true"
+  labels: {}
+  serviceaccount:
+    annotations: {}
 
 sourcecontroller:
   create: true
   image: fluxcd/source-controller
   tag: v0.17.1
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+    requests:
+      cpu: 100m
+      memory: 64Mi
+  annotations:
+    prometheus.io/port: "8080"
+    prometheus.io/scrape: "true"
+  labels: {}
+  serviceaccount:
+    annotations: {}
 
 policies:
   create: true
