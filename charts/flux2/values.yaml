@@ -1,6 +1,6 @@
 helmcontroller:
   create: true
-  image: fluxcd/helm-controller
+  image: ghcr.io/fluxcd/helm-controller
   tag: v0.12.1
   resources:
     limits:
@@ -18,7 +18,7 @@ helmcontroller:
 
 imageautomationcontroller:
   create: true
-  image: fluxcd/image-automation-controller
+  image: ghcr.io/fluxcd/image-automation-controller
   tag: v0.16.0
   resources:
     limits:
@@ -36,7 +36,7 @@ imageautomationcontroller:
 
 imagereflectorcontroller:
   create: true
-  image: fluxcd/image-reflector-controller
+  image: ghcr.io/fluxcd/image-reflector-controller
   tag: v0.13.0
   resources:
     limits:
@@ -54,7 +54,7 @@ imagereflectorcontroller:
 
 kustomizecontroller:
   create: true
-  image: fluxcd/kustomize-controller
+  image: ghcr.io/fluxcd/kustomize-controller
   tag: v0.16.0
   resources:
     limits:
@@ -79,7 +79,7 @@ kustomizecontroller:
 
 notificationcontroller:
   create: true
-  image: fluxcd/notification-controller
+  image: ghcr.io/fluxcd/notification-controller
   tag: v0.18.1
   resources:
     limits:
@@ -97,7 +97,7 @@ notificationcontroller:
 
 sourcecontroller:
   create: true
-  image: fluxcd/source-controller
+  image: ghcr.io/fluxcd/source-controller
   tag: v0.17.1
   resources:
     limits:
