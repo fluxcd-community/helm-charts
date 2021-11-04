@@ -76,4 +76,13 @@ spec:
         name: temp
       - emptyDir: {}
         name: data
+      {{- with .Values.imagereflectorcontroller.nodeSelector }}
+      nodeSelector: {{ toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.imagereflectorcontroller.affinity }}
+      affinity: {{ toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.imagereflectorcontroller.tolerations }}
+      tolerations: {{ toYaml . | nindent 8 }}
+      {{- end }}
 {{- end }}

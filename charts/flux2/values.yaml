@@ -15,6 +15,27 @@ helmcontroller:
   labels: {}
   serviceaccount:
     annotations: {}
+  nodeSelector: {}
+  # expects input structure as per specification https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.11/#affinity-v1-core
+  # for example:
+  #   affinity:
+  #     nodeAffinity:
+  #      requiredDuringSchedulingIgnoredDuringExecution:
+  #        nodeSelectorTerms:
+  #        - matchExpressions:
+  #          - key: foo.bar.com/role
+  #            operator: In
+  #            values:
+  #            - master
+  affinity: {}
+  # expects input structure as per specification https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.11/#toleration-v1-core
+  # for example:
+  #   tolerations:
+  #   - key: foo.bar.com/role
+  #     operator: Equal
+  #     value: master
+  #     effect: NoSchedule
+  tolerations: []
 
 imageautomationcontroller:
   create: true
@@ -33,6 +54,9 @@ imageautomationcontroller:
   labels: {}
   serviceaccount:
     annotations: {}
+  nodeSelector: {}
+  affinity: {}
+  tolerations: []
 
 imagereflectorcontroller:
   create: true
@@ -51,6 +75,9 @@ imagereflectorcontroller:
   labels: {}
   serviceaccount:
     annotations: {}
+  nodeSelector: {}
+  affinity: {}
+  tolerations: []
 
 kustomizecontroller:
   create: true
@@ -76,6 +103,9 @@ kustomizecontroller:
     #   subPath: ""
     #   secretName: secret-files
     #   readOnly: true
+  nodeSelector: {}
+  affinity: {}
+  tolerations: []
 
 notificationcontroller:
   create: true
@@ -94,6 +124,9 @@ notificationcontroller:
   labels: {}
   serviceaccount:
     annotations: {}
+  nodeSelector: {}
+  affinity: {}
+  tolerations: []
 
 sourcecontroller:
   create: true
@@ -112,6 +145,9 @@ sourcecontroller:
   labels: {}
   serviceaccount:
     annotations: {}
+  nodeSelector: {}
+  affinity: {}
+  tolerations: []
 
 policies:
   create: true

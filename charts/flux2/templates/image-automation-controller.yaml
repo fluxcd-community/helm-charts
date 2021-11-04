@@ -72,4 +72,13 @@ spec:
       volumes:
       - emptyDir: {}
         name: temp
+      {{- with .Values.imageautomationcontroller.nodeSelector }}
+      nodeSelector: {{ toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.imageautomationcontroller.affinity }}
+      affinity: {{ toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.imageautomationcontroller.tolerations }}
+      tolerations: {{ toYaml . | nindent 8 }}
+      {{- end }}
 {{- end }}
