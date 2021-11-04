@@ -1,0 +1,17 @@
+{{- if and .Values.notificationcontroller.create }}
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    control-plane: controller
+  name: webhook-receiver
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: http-webhook
+  selector:
+    app: notification-controller
+  type: ClusterIP
+{{- end }}

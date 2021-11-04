@@ -1,12 +1,4 @@
 {{- if and .Values.imageautomationcontroller.create}}
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: image-automation-controller
-  {{- with .Values.imageautomationcontroller.serviceaccount.annotations }}
-  annotations: {{ toYaml . | nindent 4 }}
-  {{- end }}
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:

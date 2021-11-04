@@ -1,0 +1,11 @@
+{{- if and .Values.notificationcontroller.create -}}
+{{- if .Values.notificationcontroller.serviceaccount.create -}}
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: notification-controller
+  {{- with .Values.notificationcontroller.serviceaccount.annotations }}
+  annotations: {{ toYaml . | nindent 4 }}
+  {{- end }}
+{{- end -}}
+{{- end -}}

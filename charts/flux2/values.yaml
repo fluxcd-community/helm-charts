@@ -1,3 +1,5 @@
+installCRDs: true
+
 helmcontroller:
   create: true
   image: ghcr.io/fluxcd/helm-controller
@@ -14,6 +16,7 @@ helmcontroller:
     prometheus.io/scrape: "true"
   labels: {}
   serviceaccount:
+    create: true
     annotations: {}
   nodeSelector: {}
   # expects input structure as per specification https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.11/#affinity-v1-core
@@ -53,6 +56,7 @@ imageautomationcontroller:
     prometheus.io/scrape: "true"
   labels: {}
   serviceaccount:
+    create: true
     annotations: {}
   nodeSelector: {}
   affinity: {}
@@ -74,6 +78,7 @@ imagereflectorcontroller:
     prometheus.io/scrape: "true"
   labels: {}
   serviceaccount:
+    create: true
     annotations: {}
   nodeSelector: {}
   affinity: {}
@@ -95,6 +100,7 @@ kustomizecontroller:
     prometheus.io/scrape: "true"
   labels: {}
   serviceaccount:
+    create: true
     annotations: {}
   # Defines additional mounts with secrets. Secrets must be manually created in the namespace.
   extraSecretMounts: []
@@ -123,6 +129,7 @@ notificationcontroller:
     prometheus.io/scrape: "true"
   labels: {}
   serviceaccount:
+    create: true
     annotations: {}
   nodeSelector: {}
   affinity: {}
@@ -144,6 +151,7 @@ sourcecontroller:
     prometheus.io/scrape: "true"
   labels: {}
   serviceaccount:
+    create: true
     annotations: {}
   nodeSelector: {}
   affinity: {}
