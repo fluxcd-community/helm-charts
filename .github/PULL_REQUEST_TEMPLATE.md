@@ -22,4 +22,5 @@ We would like these checks to pass before we even continue reviewing your change
 <!-- [Place an '[x]' (no spaces) in all applicable fields. Please remove unrelated fields.] -->
 - [ ] [DCO](https://github.com/fluxcd-community/helm-charts/blob/main/CONTRIBUTING.md#sign-off-your-work) signed
 - [ ] Chart Version bumped
+- [ ] helm-docs are updated
 - [ ] Helm chart is tested
