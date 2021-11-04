@@ -84,12 +84,12 @@ spec:
           secretName: {{ .secretName }}
       {{- end }}
       {{- with .Values.kustomizecontroller.nodeSelector }}
-      nodeSelector: {{ toYaml . | indent 8 }}
+      nodeSelector: {{ toYaml . | nindent 8 }}
       {{- end }}
       {{- with .Values.kustomizecontroller.affinity }}
-      affinity: {{ toYaml . | indent 8 }}
+      affinity: {{ toYaml . | nindent 8 }}
       {{- end }}
       {{- with .Values.kustomizecontroller.tolerations }}
-      tolerations: {{ toYaml . | indent 8 }}
+      tolerations: {{ toYaml . | nindent 8 }}
       {{- end }}
 {{- end }}
