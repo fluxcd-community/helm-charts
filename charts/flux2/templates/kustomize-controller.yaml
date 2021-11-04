@@ -78,9 +78,18 @@ spec:
       volumes:
       - emptyDir: {}
         name: temp
-    {{- range .Values.kustomizecontroller.extraSecretMounts }}
+      {{- range .Values.kustomizecontroller.extraSecretMounts }}
       - name: {{ .name }}
         secret:
           secretName: {{ .secretName }}
-    {{- end }}
+      {{- end }}
+      {{- with .Values.kustomizecontroller.nodeSelector }}
+      nodeSelector: {{ toYaml . | indent 8 }}
+      {{- end }}
+      {{- with .Values.kustomizecontroller.affinity }}
+      affinity: {{ toYaml . | indent 8 }}
+      {{- end }}
+      {{- with .Values.kustomizecontroller.tolerations }}
+      tolerations: {{ toYaml . | indent 8 }}
+      {{- end }}
 {{- end }}
