@@ -3,6 +3,16 @@ entries:
   flux2:
   - apiVersion: v2
     appVersion: 0.20.1
+    created: "2021-11-05T11:48:59.123272811Z"
+    description: A Helm chart for flux2
+    digest: bd84a7b4b3d38c53567f5c788dbd71294c1df228edc533334e33369b7ce8431f
+    name: flux2
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-0.2.2/flux2-0.2.2.tgz
+    version: 0.2.2
+  - apiVersion: v2
+    appVersion: 0.20.1
     created: "2021-11-04T14:28:26.10172434Z"
     description: A Helm chart for flux2
     digest: d454bc79e09ae4723914ee3358fdb32f61ec88e2072396cbd73a320d89de5a65
@@ -51,4 +61,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-0.0.1/flux2-0.0.1.tgz
     version: 0.0.1
-generated: "2021-11-04T14:28:26.101768642Z"
+generated: "2021-11-05T11:48:59.123294711Z"
