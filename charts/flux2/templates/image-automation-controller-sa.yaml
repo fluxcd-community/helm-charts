@@ -1,0 +1,11 @@
+{{- if and .Values.imageautomationcontroller.create }}
+{{- if .Values.imageautomationcontroller.serviceaccount.create -}}
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: image-automation-controller
+  {{- with .Values.imageautomationcontroller.serviceaccount.annotations }}
+  annotations: {{ toYaml . | nindent 4 }}
+  {{- end }}
+{{- end -}}
+{{- end -}}

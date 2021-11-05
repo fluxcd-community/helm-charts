@@ -1,0 +1,11 @@
+{{- if and .Values.helmcontroller.create}}
+{{- if .Values.helmcontroller.serviceaccount.create -}}
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: helm-controller
+  {{- with .Values.helmcontroller.serviceaccount.annotations }}
+  annotations: {{ toYaml . | nindent 4 }}
+  {{- end }}
+{{- end -}}
+{{- end -}}
