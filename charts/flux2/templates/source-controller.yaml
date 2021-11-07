@@ -3,6 +3,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
+    app.kubernetes.io/instance: {{ .Release.Namespace }}
+    app.kubernetes.io/part-of: flux
     control-plane: controller
   name: source-controller
 spec:
@@ -23,7 +25,7 @@ spec:
     spec:
       containers:
       - args:
-        - --events-addr=http://notification-controller/
+        - --events-addr={{ .Values.eventsaddr }}
         - --watch-all-namespaces
         - --log-level=info
         - --log-encoding=json

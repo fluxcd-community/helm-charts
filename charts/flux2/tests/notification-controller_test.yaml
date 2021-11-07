@@ -1,0 +1,24 @@
+suite: test notification-controller deployment
+templates:
+  - notification-controller.yaml
+tests:
+  - it: should be empty if source-controller is not enabled
+    asserts:
+      - hasDocuments:
+          count: 0
+    set:
+      notificationcontroller.create: false
+  - it: should have kind Deployment for k8s >= 1.19
+    capabilities:
+      majorVersion: 1
+      minorVersion: 19
+    asserts:
+      - hasDocuments:
+          count: 1
+      - isKind:
+          of: Deployment
+      - isAPIVersion:
+          of: apps/v1
+  - it: should match snapshot of default values
+    asserts:
+      - matchSnapshot: { }

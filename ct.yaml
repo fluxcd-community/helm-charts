@@ -4,3 +4,5 @@ target-branch: main
 chart-dirs:
   - charts
 validate-maintainers: false
+additional-commands:
+  - helm unittest --helm3 --strict --file tests/*.yaml --file 'tests/**/*.yaml' {{ .Path }}

@@ -3,6 +3,7 @@ Thank you for contributing to fluxcd-community/helm-charts.
 Before you submit this PR we'd like to make sure you are aware of our technical requirements and best practices:
 
 * https://github.com/fluxcd-community/helm-charts/blob/main/CONTRIBUTING.md#technical-requirements
+* https://helm.sh/docs/chart_best_practices/
 
 Please make sure you test your changes before you push them.
 Once pushed, GitHub Actions will run across your changes and do some initial checks and linting.
