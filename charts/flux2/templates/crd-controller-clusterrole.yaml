@@ -3,6 +3,9 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: crd-controller
+  labels:
+    app.kubernetes.io/instance: {{ .Release.Namespace }}
+    app.kubernetes.io/part-of: flux
 rules:
 - apiGroups:
   - source.toolkit.fluxcd.io

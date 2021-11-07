@@ -5,6 +5,9 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.5.0
   creationTimestamp: null
+  labels:
+    app.kubernetes.io/instance: {{ .Release.Namespace }}
+    app.kubernetes.io/part-of: flux
   name: imagepolicies.image.toolkit.fluxcd.io
 spec:
   group: image.toolkit.fluxcd.io

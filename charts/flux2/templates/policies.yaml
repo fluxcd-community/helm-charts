@@ -2,6 +2,9 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
+  labels:
+    app.kubernetes.io/instance: {{ .Release.Namespace }}
+    app.kubernetes.io/part-of: flux
   name: allow-egress
 spec:
   egress:
@@ -17,6 +20,9 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
+  labels:
+    app.kubernetes.io/instance: {{ .Release.Namespace }}
+    app.kubernetes.io/part-of: flux
   name: allow-scraping
 spec:
   ingress:
@@ -32,6 +38,9 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
+  labels:
+    app.kubernetes.io/instance: {{ .Release.Namespace }}
+    app.kubernetes.io/part-of: flux
   name: allow-webhooks
 spec:
   ingress:

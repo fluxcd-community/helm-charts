@@ -1,4 +1,20 @@
+# global
+
 installCRDs: true
+
+# -- Maybe you need to use full domain name here, if you deploy flux
+# in environments that use http proxy.
+#
+# In such environments they normally add `.cluster.local` and `.local`
+# suffixes to `no_proxy` variable in order to prevent cluster-local
+# traffic from going through http proxy. Without fully specified
+# domain they need to mention `notifications-controller` explicitly in
+# `no_proxy` variable after debugging http proxy logs
+# eg: http://notification-controller.[NAMESPACE].svc.[CLUSTERDOMAIN]
+eventsaddr: http://notification-controller/
+
+
+# controllers
 
 helmcontroller:
   create: true
@@ -43,7 +59,7 @@ helmcontroller:
 imageautomationcontroller:
   create: true
   image: ghcr.io/fluxcd/image-automation-controller
-  tag: v0.16.0
+  tag: v0.16.1
   resources:
     limits:
       cpu: 1000m
@@ -138,7 +154,7 @@ notificationcontroller:
 sourcecontroller:
   create: true
   image: ghcr.io/fluxcd/source-controller
-  tag: v0.17.1
+  tag: v0.17.2
   resources:
     limits:
       cpu: 1000m
