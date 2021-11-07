@@ -5,7 +5,7 @@ FLUX2_VERSION ?= v0.20.1
 
 all: fetch generate helm-docs
 
-fetch: 
+fetch:
 	@if [ ! -d ".work/flux2" ]; then \
 		cd .work && git clone "https://github.com/fluxcd/flux2.git"; \
 	fi
@@ -19,7 +19,7 @@ helm-docs:
 	helm-docs
 
 # manipulate:
-# ToDo: 
+# ToDo:
 # 	- split files in crds & deployments
 # 	- insert if/end to
 
