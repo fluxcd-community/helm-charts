@@ -1,6 +1,22 @@
 # Change Log
 
-## 0.3.0 
+## 0.3.1
+
+**Release date:** 2021-11-08
+
+![AppVersion: 0.21.1](https://img.shields.io/static/v1?label=AppVersion&message=0.21.1&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* update contributing docs and add chart changelog
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.3.0
 
 **Release date:** 2021-11-07
 
@@ -8,7 +24,7 @@
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* update to 0.21.1 and add unittests (#13) 
+* update to 0.21.1 and add unittests (#13)
 
 ### Default value changes
 
@@ -21,7 +37,7 @@ index adc43c6..4132d13 100644
 +# global
 +
  installCRDs: true
- 
+
 +# -- Maybe you need to use full domain name here, if you deploy flux
 +# in environments that use http proxy.
 +#
@@ -59,7 +75,7 @@ index adc43c6..4132d13 100644
        cpu: 1000m
 ```
 
-## 0.2.2 
+## 0.2.2
 
 **Release date:** 2021-11-05
 
@@ -67,7 +83,7 @@ index adc43c6..4132d13 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* seperate files & make condition for crds (#11) 
+* seperate files & make condition for crds (#11)
 
 ### Default value changes
 
@@ -132,7 +148,7 @@ index 0a23b87..adc43c6 100644
    affinity: {}
 ```
 
-## 0.2.1 
+## 0.2.1
 
 **Release date:** 2021-11-04
 
@@ -140,7 +156,7 @@ index 0a23b87..adc43c6 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Patch 1 (#10) 
+* Patch 1 (#10)
 
 ### Default value changes
 
@@ -148,7 +164,7 @@ index 0a23b87..adc43c6 100644
 # No changes in this release
 ```
 
-## 0.2.0 
+## 0.2.0
 
 **Release date:** 2021-11-04
 
@@ -156,7 +172,7 @@ index 0a23b87..adc43c6 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* extend values for nodeselctor, affinity and tolerations (#9) 
+* extend values for nodeselctor, affinity and tolerations (#9)
 
 ### Default value changes
 
@@ -190,7 +206,7 @@ index 710f4f8..0a23b87 100644
 +  #     value: master
 +  #     effect: NoSchedule
 +  tolerations: []
- 
+
  imageautomationcontroller:
    create: true
 @@ -33,6 +54,9 @@ imageautomationcontroller:
@@ -200,7 +216,7 @@ index 710f4f8..0a23b87 100644
 +  nodeSelector: {}
 +  affinity: {}
 +  tolerations: []
- 
+
  imagereflectorcontroller:
    create: true
 @@ -51,6 +75,9 @@ imagereflectorcontroller:
@@ -210,7 +226,7 @@ index 710f4f8..0a23b87 100644
 +  nodeSelector: {}
 +  affinity: {}
 +  tolerations: []
- 
+
  kustomizecontroller:
    create: true
 @@ -76,6 +103,9 @@ kustomizecontroller:
@@ -220,7 +236,7 @@ index 710f4f8..0a23b87 100644
 +  nodeSelector: {}
 +  affinity: {}
 +  tolerations: []
- 
+
  notificationcontroller:
    create: true
 @@ -94,6 +124,9 @@ notificationcontroller:
@@ -230,7 +246,7 @@ index 710f4f8..0a23b87 100644
 +  nodeSelector: {}
 +  affinity: {}
 +  tolerations: []
- 
+
  sourcecontroller:
    create: true
 @@ -112,6 +145,9 @@ sourcecontroller:
@@ -240,12 +256,12 @@ index 710f4f8..0a23b87 100644
 +  nodeSelector: {}
 +  affinity: {}
 +  tolerations: []
- 
+
  policies:
    create: true
 ```
 
-## 0.1.1 
+## 0.1.1
 
 **Release date:** 2021-11-04
 
@@ -253,7 +269,7 @@ index 710f4f8..0a23b87 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* update image download source to use ghcr.io (#8) 
+* update image download source to use ghcr.io (#8)
 
 ### Default value changes
 
@@ -271,7 +287,7 @@ index 29f3471..710f4f8 100644
    resources:
      limits:
 @@ -18,7 +18,7 @@ helmcontroller:
- 
+
  imageautomationcontroller:
    create: true
 -  image: fluxcd/image-automation-controller
@@ -280,7 +296,7 @@ index 29f3471..710f4f8 100644
    resources:
      limits:
 @@ -36,7 +36,7 @@ imageautomationcontroller:
- 
+
  imagereflectorcontroller:
    create: true
 -  image: fluxcd/image-reflector-controller
@@ -289,7 +305,7 @@ index 29f3471..710f4f8 100644
    resources:
      limits:
 @@ -54,7 +54,7 @@ imagereflectorcontroller:
- 
+
  kustomizecontroller:
    create: true
 -  image: fluxcd/kustomize-controller
@@ -298,7 +314,7 @@ index 29f3471..710f4f8 100644
    resources:
      limits:
 @@ -79,7 +79,7 @@ kustomizecontroller:
- 
+
  notificationcontroller:
    create: true
 -  image: fluxcd/notification-controller
@@ -307,7 +323,7 @@ index 29f3471..710f4f8 100644
    resources:
      limits:
 @@ -97,7 +97,7 @@ notificationcontroller:
- 
+
  sourcecontroller:
    create: true
 -  image: fluxcd/source-controller
@@ -317,7 +333,7 @@ index 29f3471..710f4f8 100644
      limits:
 ```
 
-## 0.1.0 
+## 0.1.0
 
 **Release date:** 2021-11-03
 
@@ -325,7 +341,7 @@ index 29f3471..710f4f8 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* extend configurable values for resources, annotations and mounts 
+* extend configurable values for resources, annotations and mounts
 
 ### Default value changes
 
@@ -351,7 +367,7 @@ index 0264666..29f3471 100644
 +  labels: {}
 +  serviceaccount:
 +    annotations: {}
- 
+
  imageautomationcontroller:
    create: true
    image: fluxcd/image-automation-controller
@@ -369,7 +385,7 @@ index 0264666..29f3471 100644
 +  labels: {}
 +  serviceaccount:
 +    annotations: {}
- 
+
  imagereflectorcontroller:
    create: true
    image: fluxcd/image-reflector-controller
@@ -387,7 +403,7 @@ index 0264666..29f3471 100644
 +  labels: {}
 +  serviceaccount:
 +    annotations: {}
- 
+
  kustomizecontroller:
    create: true
    image: fluxcd/kustomize-controller
@@ -412,7 +428,7 @@ index 0264666..29f3471 100644
 +    #   subPath: ""
 +    #   secretName: secret-files
 +    #   readOnly: true
- 
+
  notificationcontroller:
    create: true
    image: fluxcd/notification-controller
@@ -430,7 +446,7 @@ index 0264666..29f3471 100644
 +  labels: {}
 +  serviceaccount:
 +    annotations: {}
- 
+
  sourcecontroller:
    create: true
    image: fluxcd/source-controller
@@ -448,12 +464,12 @@ index 0264666..29f3471 100644
 +  labels: {}
 +  serviceaccount:
 +    annotations: {}
- 
+
  policies:
    create: true
 ```
 
-## 0.0.1 
+## 0.0.1
 
 **Release date:** 2021-11-02
 
@@ -461,7 +477,7 @@ index 0264666..29f3471 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* feat(initial): release initial helm-chart to start community work 
+* feat(initial): release initial helm-chart to start community work
 
 ### Default value changes
 
