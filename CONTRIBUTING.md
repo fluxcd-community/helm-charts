@@ -25,8 +25,8 @@ See `git help commit`:
 
 ## How to Contribute
 
-1. Fork this repository, develop, and test your changes
-1. Remember to run helm-doc (see the Makefile)
+1. Fork this repository, develop, and [test your changes](#tests-and-documentation-updates)
+1. Remember to run helm-doc (see the Makefile) and helm-changelog (as last command)
 1. Submit a pull request
 
 ### Technical Requirements
@@ -36,6 +36,25 @@ See `git help commit`:
 * Any change to a chart requires a version bump following [semver](https://semver.org/) principles. See [Immutability](#immutability) and [Versioning](#versioning) below
 
 Once changes have been merged, the release job will automatically run to package and release changed charts.
+
+### Tools
+
+* helm
+* k8s cluster for tests (eg Docker Desktop with k8s or Kind cluster)
+* helm-docs ( https://github.com/norwoodj/helm-docs/ )
+* helm unittests ( helm plugin install https://github.com/quintush/helm-unittest )
+* helm-changelog ( https://github.com/mogensen/helm-changelog/ )
+
+### Tests and documentation updates
+
+* Make your changes
+* run: ```helm install --dry-run charts/flux2/ --generate-name```
+* run: ```helm unittest --helm3 --file tests/*.yaml --file 'tests/**/*.yaml' charts/flux2/```
+    * add ```-u``` if you need to update the compare snapshot in \_\_snapshots\_\_
+* bump chart version if necessary
+* run: ```helm-docs```
+* squash all commits
+* run: ```helm-changelog```
 
 ### Immutability
 
