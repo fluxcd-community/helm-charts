@@ -44,5 +44,11 @@ jobs:
         uses: helm/kind-action@v1.2.0
         if: steps.list-changed.outputs.changed == 'true'
 
-      - name: Run chart-testing (install)
-        run: ct install --config ct.yaml
+      - name: Run chart-testing (install) for flux2
+        run: ct install --config ct.yaml --charts charts/flux2
+
+      - name: Run chart-testing (install) for flux2-sync
+        run: |
+          helm install flux2 charts/flux2 --namespace flux2-sync --create-namespace
+          ct install --config ct.yaml --charts charts/flux2-sync --namespace flux2-sync
+          helm uninstall flux2 --namespace flux2-sync

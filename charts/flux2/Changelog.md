@@ -1,5 +1,19 @@
 # Change Log
 
+## Next Release
+
+![AppVersion: 0.21.1](https://img.shields.io/static/v1?label=AppVersion&message=0.21.1&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* add chart for repo sync
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
 ## 0.3.1
 
 **Release date:** 2021-11-08
@@ -8,7 +22,7 @@
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* update contributing docs and add chart changelog
+* Changelog (#14)
 
 ### Default value changes
 
