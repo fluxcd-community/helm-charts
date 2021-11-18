@@ -19,7 +19,7 @@ spec:
       {{- end }}
       labels:
         app: kustomize-controller
-{{- with .Values.kustomizecontroller.labels }}{{ toYaml . | indent 8 }}{{ end }}
+{{ with .Values.kustomizecontroller.labels }}{{ toYaml . | indent 8 }}{{ end }}
     spec:
       containers:
       - args:
