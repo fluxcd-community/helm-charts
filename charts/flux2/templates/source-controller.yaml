@@ -21,7 +21,7 @@ spec:
       {{- end }}
       labels:
         app: source-controller
-{{- with .Values.sourcecontroller.labels }}{{ toYaml . | indent 8 }}{{ end }}
+{{ with .Values.sourcecontroller.labels }}{{ toYaml . | indent 8 }}{{ end }}
     spec:
       containers:
       - args:

@@ -20,7 +20,7 @@ spec:
       {{- end }}
       labels:
         app: notification-controller
-{{- with .Values.notificationcontroller.labels }}{{ toYaml . | indent 8 }}{{ end }}
+{{ with .Values.notificationcontroller.labels }}{{ toYaml . | indent 8 }}{{ end }}
     spec:
       containers:
       - args:
