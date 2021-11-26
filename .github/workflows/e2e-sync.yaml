@@ -1,0 +1,53 @@
+name: e2e-sync
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  kind:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Flux CLI
+        uses: fluxcd/flux2/action@main
+      - name: Setup Kubernetes
+        uses: engineerd/setup-kind@v0.5.0
+        with:
+          version: v0.11.1
+          image: kindest/node:v1.21.1@sha256:69860bda5563ac81e3c0057d654b5253219618a22ec3a346306239bba8cfa1a6
+      - name: Setup Helm
+        uses: fluxcd/pkg//actions/helm@main
+        with:
+          version: 3.7.1
+      - name: Install
+        run: |
+          helm upgrade --install --debug flux2 ./charts/flux2 \
+          --namespace=flux-system \
+          --create-namespace \
+          --wait \
+          --wait-for-jobs
+      - name: Check install
+        run: |
+          flux check --namespace flux-system
+      - name: Sync
+        run: |
+          helm upgrade --install --debug podinfo ./charts/flux2-sync \
+          --namespace=podinfo \
+          --create-namespace \
+          --set gitRepository.spec.url=https://github.com/stefanprodan/podinfo.git \
+          --set gitRepository.spec.ref.branch=master \
+          --set kustomization.spec.path=kustomize \
+          --set kustomization.spec.targetNamespace=podinfo \
+          --set kustomization.spec.wait=true \
+          --set kustomization.spec.timeout=2m
+      - name: Check sync
+        run: |
+          flux reconcile kustomization podinfo --with-source --namespace podinfo
+      - name: Debug failure
+        if: failure()
+        run: |
+          kubectl -n flux-system get all
