@@ -1,10 +1,7 @@
 gitRepository:
-  metadata:
-    labels: {}
-    name: "demo-gitrepository"
   spec:
-    # -- The repository URL, can be a HTTP/S or SSH address.
-    url: "https://github.com/fluxcd/flux2-kustomize-helm-example.git"
+    # -- The repository URL, can be an HTTP/S or SSH address.
+    url: ""
 
     # -- (Optional) The secret name containing the Git credentials. For HTTPS repositories the secret must contain username and password fields. For SSH repositories the secret must contain identity, identity.pub and known_hosts fields.
     secretRef: {}
@@ -16,7 +13,8 @@ gitRepository:
     timeout: ""
 
     # -- (Optional) The Git reference to checkout and monitor for changes, defaults to master branch.
-    ref: ""
+    ref:
+      branch: master
 
     # -- (Optional) Verify OpenPGP signature for the Git commit HEAD points to.
     verify: {}
@@ -31,7 +29,7 @@ gitRepository:
     gitImplementation: ""
 
     # -- (Optional) When enabled, after the clone is created, initializes all submodules within, using their default settings. This option is available only when using the ‘go-git’ GitImplementation.
-    recurseSubmodules: ""
+    recurseSubmodules: false
 
     # -- (Optional) Extra git repositories to map into the repository
     include: []
@@ -52,7 +50,7 @@ kustomization:
     retryInterval: ""
 
     # -- (Optional) The KubeConfig for reconciling the Kustomization on a remote cluster. When specified, KubeConfig takes precedence over ServiceAccountName.
-    kubeConfig: ""
+    kubeConfig: {}
 
     # -- (Optional) Path to the directory containing the kustomization.yaml
     # file, or the set of plain YAMLs a kustomization.yaml should
@@ -78,11 +76,6 @@ kustomization:
     # -- (Optional) The name of the Kubernetes service account to impersonate when reconciling this Kustomization.
     serviceAccountName: ""
 
-    # -- Reference of the source where the kustomization file is.
-    sourceRef:
-      kind: GitRepository
-      name: demo-gitrepository
-
     # -- (Optional) This flag tells the controller to suspend subsequent kustomize executions, it does not apply to already started executions. Defaults to false.
     suspend: ""
 
@@ -93,7 +86,7 @@ kustomization:
     timeout: ""
 
     # -- (Optional) Force instructs the controller to recreate resources when patching fails due to an immutable field change. Defaults to false.
-    force: ""
+    force: false
 
     # -- (Optional) Wait instructs the controller to check the health of all the reconciled resources. When enabled, the HealthChecks are ignored. Defaults to false.
-    wait: ""
+    wait: false

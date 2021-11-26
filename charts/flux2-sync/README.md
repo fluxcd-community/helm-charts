@@ -1,6 +1,6 @@
 # flux2-sync
 
-![Version: 0.1.1](https://img.shields.io/badge/Version-0.1.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 A Helm chart for flux2 GitRepository to sync with
 
@@ -12,8 +12,6 @@ A Helm chart for flux2 GitRepository to sync with
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| gitRepository.metadata.labels | object | `{}` |  |
-| gitRepository.metadata.name | string | `"demo-gitrepository"` |  |
 | gitRepository.spec.gitImplementation | string | `""` | (Optional) Determines which git client library to use. Defaults to go-git, valid values are (‘go-git’, ‘libgit2’). |
 | gitRepository.spec.ignore | string | `""` | (Optional) Ignore overrides the set of excluded patterns in the .sourceignore format (which is the same as .gitignore). If not provided, a default will be used, consult the documentation for your version to find out what those are. |
 | gitRepository.spec.include | list | `[]` | (Optional) Extra git repositories to map into the repository |
@@ -23,11 +21,11 @@ A Helm chart for flux2 GitRepository to sync with
 | gitRepository.spec.secretRef | object | `{}` | (Optional) The secret name containing the Git credentials. For HTTPS repositories the secret must contain username and password fields. For SSH repositories the secret must contain identity, identity.pub and known_hosts fields. |
 | gitRepository.spec.suspend | string | `""` | (Optional) This flag tells the controller to suspend the reconciliation of this source. |
 | gitRepository.spec.timeout | string | `""` | (Optional) The timeout for remote Git operations like cloning, defaults to 20s. |
-| gitRepository.spec.url | string | `"https://github.com/fluxcd/flux2-kustomize-helm-example.git"` | The repository URL, can be a HTTP/S or SSH address. |
+| gitRepository.spec.url | string | `""` | The repository URL, can be a HTTP/S or SSH address. |
 | gitRepository.spec.verify | object | `{}` | (Optional) Verify OpenPGP signature for the Git commit HEAD points to. |
 | kustomization.spec.decryption | object | `{}` | (Optional) Decrypt Kubernetes secrets before applying them on the cluster. |
 | kustomization.spec.dependsOn | list | `[]` | (Optional) DependsOn may contain a dependency.CrossNamespaceDependencyReference slice with references to Kustomization resources that must be ready before this Kustomization can be reconciled. |
-| kustomization.spec.force | string | `""` | (Optional) Force instructs the controller to recreate resources when patching fails due to an immutable field change. Defaults to false. |
+| kustomization.spec.force | bool | `false` | (Optional) Force instructs the controller to recreate resources when patching fails due to an immutable field change. Defaults to false. |
 | kustomization.spec.healthChecks | list | `[]` | (Optional) A list of resources to be included in the health assessment. |
 | kustomization.spec.images | list | `[]` | (Optional) Images is a list of (image name, new name, new tag or digest) for changing image names, tags or digests. This can also be achieved with a patch, but this operator is simpler to specify. |
 | kustomization.spec.interval | string | `"5m"` | The interval at which to reconcile the Kustomization. |
@@ -38,11 +36,10 @@ A Helm chart for flux2 GitRepository to sync with
 | kustomization.spec.prune | bool | `true` | Prune enables garbage collection. Defaults to true. |
 | kustomization.spec.retryInterval | string | `""` | (Optional) The interval at which to retry a previously failed reconciliation. When not specified, the controller uses the KustomizationSpec.Interval value to retry failures. |
 | kustomization.spec.serviceAccountName | string | `""` | (Optional) The name of the Kubernetes service account to impersonate when reconciling this Kustomization. |
-| kustomization.spec.sourceRef | object | `{"kind":"GitRepository","name":"demo-gitrepository"}` | Reference of the source where the kustomization file is. |
-| kustomization.spec.suspend | string | `""` | (Optional) This flag tells the controller to suspend subsequent kustomize executions, it does not apply to already started executions. Defaults to false. |
+| kustomization.spec.suspend | bool | `false` | (Optional) This flag tells the controller to suspend subsequent kustomize executions, it does not apply to already started executions. Defaults to false. |
 | kustomization.spec.targetNamespace | string | `""` | (Optional) TargetNamespace sets or overrides the namespace in the kustomization.yaml file. |
 | kustomization.spec.timeout | string | `""` | (Optional) Timeout for validation, apply and health checking operations. Defaults to ‘Interval’ duration |
-| kustomization.spec.wait | string | `""` | (Optional) Wait instructs the controller to check the health of all the reconciled resources. When enabled, the HealthChecks are ignored. Defaults to false. |
+| kustomization.spec.wait | bool | `false` | (Optional) Wait instructs the controller to check the health of all the reconciled resources. When enabled, the HealthChecks are ignored. Defaults to false. |
 
 ----------------------------------------------
 Autogenerated from chart metadata using [helm-docs v1.5.0](https://github.com/norwoodj/helm-docs/releases/v1.5.0)

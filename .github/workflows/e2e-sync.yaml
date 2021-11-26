@@ -1,7 +1,8 @@
-name: e2e
+name: e2e-sync
 
 on:
   push:
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -24,7 +25,7 @@ jobs:
           version: 3.7.1
       - name: Install
         run: |
-          helm upgrade --install flux2 ./charts/flux2 \
+          helm upgrade --install --debug flux2 ./charts/flux2 \
           --namespace=flux-system \
           --create-namespace \
           --wait \
@@ -34,18 +35,18 @@ jobs:
           flux check --namespace flux-system
       - name: Sync
         run: |
-          helm upgrade --install podinfo ./charts/flux2-sync \
+          helm upgrade --install --debug podinfo ./charts/flux2-sync \
           --namespace=podinfo \
           --create-namespace \
-          --set gitRepository.metadata.name=podinfo \
           --set gitRepository.spec.url=https://github.com/stefanprodan/podinfo.git \
+          --set gitRepository.spec.ref.branch=master \
           --set kustomization.spec.path=kustomize \
-          --set kustomization.spec.wait=true
+          --set kustomization.spec.targetNamespace=podinfo \
+          --set kustomization.spec.wait=true \
+          --set kustomization.spec.timeout=2m
       - name: Check sync
         run: |
-          flux reconcile source git podinfo --namespace podinfo
-          flux get source git podinfo --namespace podinfo
-          flux get kustomization podinfo --namespace podinfo
+          flux reconcile kustomization podinfo --with-source --namespace podinfo
       - name: Debug failure
         if: failure()
         run: |

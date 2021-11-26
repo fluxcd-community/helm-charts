@@ -2,10 +2,8 @@ apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
 metadata:
   labels:
-    app.kubernetes.io/instance: {{ .Release.Namespace }}
-    app.kubernetes.io/part-of: flux
-    {{- with .Values.gitRepository.metadata.labels }}{{ toYaml . | indent 4 }}{{ end }}
-  name: {{ .Values.gitRepository.metadata.name }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  name: {{ .Release.Name }}
   namespace: {{ .Release.Namespace }}
 spec:
   url: {{ .Values.gitRepository.spec.url }}
@@ -18,8 +16,8 @@ spec:
   {{- if .Values.gitRepository.spec.timeout }}
   timeout: {{ .Values.gitRepository.spec.timeout }}
   {{- end }}
-  {{- if .Values.gitRepository.spec.ref }}
-  ref: {{ .Values.gitRepository.spec.ref }}
+  {{- with .Values.gitRepository.spec.ref }}
+  ref: {{ toYaml . | nindent 4 }}
   {{- end }}
   {{- with .Values.gitRepository.spec.verify }}
   verify: {{ toYaml . | nindent 4 }}
@@ -36,6 +34,6 @@ spec:
   {{- if .Values.gitRepository.spec.recurseSubmodules }}
   recurseSubmodules: {{ .Values.gitRepository.spec.recurseSubmodules }}
   {{- end }}
-  {{- with .Values.gitRepository.spec.decryincludeption }}
+  {{- with .Values.gitRepository.spec.include }}
   include: {{ toYaml . | nindent 4 }}
   {{- end }}

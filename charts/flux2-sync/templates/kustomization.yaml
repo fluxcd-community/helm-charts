@@ -2,9 +2,8 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
   labels:
-    app.kubernetes.io/instance: {{ .Release.Namespace }}
-    app.kubernetes.io/part-of: flux
-  name:  kustomization-{{ .Values.gitRepository.metadata.name }}-{{ .Release.Namespace }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  name:  {{ .Release.Name }}
   namespace: {{ .Release.Namespace }}
 spec:
   {{- with .Values.kustomization.spec.dependsOn }}
@@ -18,13 +17,10 @@ spec:
   retryInterval: {{ .Values.kustomization.spec.retryInterval }}
   {{- end }}
   {{- if .Values.kustomization.spec.kubeConfig }}
-  kubeConfig: {{ .Values.kustomization.spec.kubeConfig }}
+  kubeConfig: {{ toYaml . | nindent 4 }}
   {{- end }}
   {{- if .Values.kustomization.spec.path }}
   path: {{ .Values.kustomization.spec.path }}
-  {{- end }}
-  {{- if .Values.kustomization.spec.wait }}
-  {{ toYaml .Values.kustomization.spec.wait | nindent 4 }}
   {{- end }}
   {{- with .Values.kustomization.spec.postBuild }}
   postBuild: {{ toYaml . | nindent 4 }}
@@ -44,7 +40,7 @@ spec:
   {{- end }}
   sourceRef:
     kind: GitRepository
-    name: {{ .Values.gitRepository.metadata.name }}
+    name: {{ .Release.Name }}
   {{- if .Values.kustomization.spec.suspend }}
   suspend: {{ .Values.kustomization.spec.suspend }}
   {{- end }}
