@@ -29,9 +29,23 @@ jobs:
           --create-namespace \
           --wait \
           --wait-for-jobs
-      - name: Check
+      - name: Check install
         run: |
           flux check --namespace flux-system
+      - name: Sync
+        run: |
+          helm upgrade --install podinfo ./charts/flux2-sync \
+          --namespace=podinfo \
+          --create-namespace \
+          --set gitRepository.metadata.name=podinfo \
+          --set gitRepository.spec.url=https://github.com/stefanprodan/podinfo.git \
+          --set kustomization.spec.path=kustomize \
+          --set kustomization.spec.wait=true
+      - name: Check sync
+        run: |
+          flux reconcile source git podinfo --namespace podinfo
+          flux get source git podinfo --namespace podinfo
+          flux get kustomization podinfo --namespace podinfo
       - name: Debug failure
         if: failure()
         run: |
