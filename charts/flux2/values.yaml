@@ -13,6 +13,9 @@ installCRDs: true
 # eg: http://notification-controller.[NAMESPACE].svc.[CLUSTERDOMAIN]
 eventsaddr: http://notification-controller/
 
+cli:
+  image: ghcr.io/fluxcd/flux-cli
+  tag: v0.24.0
 
 # controllers
 
