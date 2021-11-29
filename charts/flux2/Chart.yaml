@@ -3,6 +3,6 @@ name: flux2
 description: A Helm chart for flux2
 
 type: application
-version: "0.4.1"
+version: "0.5.0"
 
 appVersion: "0.23.0"

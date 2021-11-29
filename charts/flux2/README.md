@@ -9,6 +9,8 @@ A Helm chart for flux2
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | eventsaddr | string | `"http://notification-controller/"` | Maybe you need to use full domain name here, if you deploy flux in environments that use http proxy. In such environments they normally add `.cluster.local` and `.local` suffixes to `no_proxy` variable in order to prevent cluster-local traffic from going through http proxy. Without fully specified domain they need to mention `notifications-controller` explicitly in `no_proxy` variable after debugging http proxy logs eg: http://notification-controller.[NAMESPACE].svc.[CLUSTERDOMAIN] |
+| cli.image | string | `"ghcr.io/fluxcd/flux-cli"` |  |
+| cli.tag | string | `"v0.24.0"` |  |
 | helmcontroller.affinity | object | `{}` |  |
 | helmcontroller.annotations."prometheus.io/port" | string | `"8080"` |  |
 | helmcontroller.annotations."prometheus.io/scrape" | string | `"true"` |  |
