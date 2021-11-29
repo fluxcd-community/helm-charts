@@ -47,6 +47,14 @@ jobs:
       - name: Check sync
         run: |
           flux reconcile kustomization podinfo --with-source --namespace podinfo
+      - name: Delete Sync
+        run: |
+          helm delete --debug podinfo \
+          --namespace=podinfo
+      - name: Uninstall
+        run: |
+          helm uninstall --debug flux2 \
+          --namespace=flux-system
       - name: Debug failure
         if: failure()
         run: |
