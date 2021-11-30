@@ -1,7 +1,7 @@
 # ====================================================================================
 # Setup Project
 
-FLUX2_VERSION ?= v0.20.1
+FLUX2_VERSION ?= v0.24.0
 
 all: fetch generate helm-docs
 
