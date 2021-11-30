@@ -12,6 +12,10 @@ tests:
     capabilities:
       majorVersion: 1
       minorVersion: 19
+    set:
+      helmcontroller.labels:
+        labeltestkey: labeltestvalue
+        labeltestkey2: labeltestvalue2
     asserts:
       - hasDocuments:
           count: 1
@@ -22,3 +26,7 @@ tests:
   - it: should match snapshot of default values
     asserts:
       - matchSnapshot: { }
+    set:
+      helmcontroller.labels:
+        labeltestkey: labeltestvalue
+        labeltestkey2: labeltestvalue2

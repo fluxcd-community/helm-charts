@@ -1,6 +1,6 @@
 # flux2
 
-![Version: 0.4.1](https://img.shields.io/badge/Version-0.4.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.23.0](https://img.shields.io/badge/AppVersion-0.23.0-informational?style=flat-square)
+![Version: 0.6.0](https://img.shields.io/badge/Version-0.6.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.24.0](https://img.shields.io/badge/AppVersion-0.24.0-informational?style=flat-square)
 
 A Helm chart for flux2
 
@@ -8,9 +8,9 @@ A Helm chart for flux2
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| eventsaddr | string | `"http://notification-controller/"` | Maybe you need to use full domain name here, if you deploy flux in environments that use http proxy. In such environments they normally add `.cluster.local` and `.local` suffixes to `no_proxy` variable in order to prevent cluster-local traffic from going through http proxy. Without fully specified domain they need to mention `notifications-controller` explicitly in `no_proxy` variable after debugging http proxy logs eg: http://notification-controller.[NAMESPACE].svc.[CLUSTERDOMAIN] |
 | cli.image | string | `"ghcr.io/fluxcd/flux-cli"` |  |
 | cli.tag | string | `"v0.24.0"` |  |
+| eventsaddr | string | `"http://notification-controller/"` | Maybe you need to use full domain name here, if you deploy flux in environments that use http proxy. In such environments they normally add `.cluster.local` and `.local` suffixes to `no_proxy` variable in order to prevent cluster-local traffic from going through http proxy. Without fully specified domain they need to mention `notifications-controller` explicitly in `no_proxy` variable after debugging http proxy logs eg: http://notification-controller.[NAMESPACE].svc.[CLUSTERDOMAIN] |
 | helmcontroller.affinity | object | `{}` |  |
 | helmcontroller.annotations."prometheus.io/port" | string | `"8080"` |  |
 | helmcontroller.annotations."prometheus.io/scrape" | string | `"true"` |  |
@@ -24,7 +24,7 @@ A Helm chart for flux2
 | helmcontroller.resources.requests.memory | string | `"64Mi"` |  |
 | helmcontroller.serviceaccount.annotations | object | `{}` |  |
 | helmcontroller.serviceaccount.create | bool | `true` |  |
-| helmcontroller.tag | string | `"v0.13.0"` |  |
+| helmcontroller.tag | string | `"v0.14.0"` |  |
 | helmcontroller.tolerations | list | `[]` |  |
 | imageautomationcontroller.affinity | object | `{}` |  |
 | imageautomationcontroller.annotations."prometheus.io/port" | string | `"8080"` |  |
@@ -39,7 +39,7 @@ A Helm chart for flux2
 | imageautomationcontroller.resources.requests.memory | string | `"64Mi"` |  |
 | imageautomationcontroller.serviceaccount.annotations | object | `{}` |  |
 | imageautomationcontroller.serviceaccount.create | bool | `true` |  |
-| imageautomationcontroller.tag | string | `"v0.17.1"` |  |
+| imageautomationcontroller.tag | string | `"v0.18.0"` |  |
 | imageautomationcontroller.tolerations | list | `[]` |  |
 | imagereflectorcontroller.affinity | object | `{}` |  |
 | imagereflectorcontroller.annotations."prometheus.io/port" | string | `"8080"` |  |
@@ -54,7 +54,7 @@ A Helm chart for flux2
 | imagereflectorcontroller.resources.requests.memory | string | `"64Mi"` |  |
 | imagereflectorcontroller.serviceaccount.annotations | object | `{}` |  |
 | imagereflectorcontroller.serviceaccount.create | bool | `true` |  |
-| imagereflectorcontroller.tag | string | `"v0.13.2"` |  |
+| imagereflectorcontroller.tag | string | `"v0.14.0"` |  |
 | imagereflectorcontroller.tolerations | list | `[]` |  |
 | installCRDs | bool | `true` |  |
 | kustomizecontroller.affinity | object | `{}` |  |
@@ -71,7 +71,7 @@ A Helm chart for flux2
 | kustomizecontroller.resources.requests.memory | string | `"64Mi"` |  |
 | kustomizecontroller.serviceaccount.annotations | object | `{}` |  |
 | kustomizecontroller.serviceaccount.create | bool | `true` |  |
-| kustomizecontroller.tag | string | `"v0.18.0"` |  |
+| kustomizecontroller.tag | string | `"v0.18.1"` |  |
 | kustomizecontroller.tolerations | list | `[]` |  |
 | notificationcontroller.affinity | object | `{}` |  |
 | notificationcontroller.annotations."prometheus.io/port" | string | `"8080"` |  |
@@ -86,7 +86,7 @@ A Helm chart for flux2
 | notificationcontroller.resources.requests.memory | string | `"64Mi"` |  |
 | notificationcontroller.serviceaccount.annotations | object | `{}` |  |
 | notificationcontroller.serviceaccount.create | bool | `true` |  |
-| notificationcontroller.tag | string | `"v0.18.1"` |  |
+| notificationcontroller.tag | string | `"v0.19.0"` |  |
 | notificationcontroller.tolerations | list | `[]` |  |
 | policies.create | bool | `true` |  |
 | rbac.create | bool | `true` |  |
@@ -103,7 +103,7 @@ A Helm chart for flux2
 | sourcecontroller.resources.requests.memory | string | `"64Mi"` |  |
 | sourcecontroller.serviceaccount.annotations | object | `{}` |  |
 | sourcecontroller.serviceaccount.create | bool | `true` |  |
-| sourcecontroller.tag | string | `"v0.18.0"` |  |
+| sourcecontroller.tag | string | `"v0.19.0"` |  |
 | sourcecontroller.tolerations | list | `[]` |  |
 
 ----------------------------------------------
