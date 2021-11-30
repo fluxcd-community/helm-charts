@@ -119,6 +119,8 @@ spec:
             - policy
             type: object
           status:
+            default:
+              observedGeneration: -1
             description: ImagePolicyStatus defines the observed state of ImagePolicy
             properties:
               conditions:
@@ -196,6 +198,7 @@ spec:
                   the policy.
                 type: string
               observedGeneration:
+                description: ObservedGeneration is the last reconciled generation.
                 format: int64
                 type: integer
             type: object
@@ -674,6 +677,8 @@ spec:
                 type: string
             type: object
           status:
+            default:
+              observedGeneration: -1
             description: ImageRepositoryStatus defines the observed state of ImageRepository
             properties:
               canonicalImageName:

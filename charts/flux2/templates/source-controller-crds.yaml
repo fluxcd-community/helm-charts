@@ -52,6 +52,33 @@ spec:
             description: BucketSpec defines the desired state of an S3 compatible
               bucket
             properties:
+              accessFrom:
+                description: AccessFrom defines an Access Control List for allowing
+                  cross-namespace references to this object.
+                properties:
+                  namespaceSelectors:
+                    description: NamespaceSelectors is the list of namespace selectors
+                      to which this ACL applies. Items in this list are evaluated
+                      using a logical OR operation.
+                    items:
+                      description: NamespaceSelector selects the namespaces to which
+                        this ACL applies. An empty map of MatchLabels matches all
+                        namespaces in a cluster.
+                      properties:
+                        matchLabels:
+                          additionalProperties:
+                            type: string
+                          description: MatchLabels is a map of {key,value} pairs.
+                            A single {key,value} in the matchLabels map is equivalent
+                            to an element of matchExpressions, whose key field is
+                            "key", the operator is "In", and the values array contains
+                            only "value". The requirements are ANDed.
+                          type: object
+                      type: object
+                    type: array
+                required:
+                - namespaceSelectors
+                type: object
               bucketName:
                 description: The bucket name.
                 type: string
@@ -112,7 +139,7 @@ spec:
                   Bucket sync.
                 properties:
                   checksum:
-                    description: Checksum is the SHA1 checksum of the artifact.
+                    description: Checksum is the SHA256 checksum of the artifact.
                     type: string
                   lastUpdateTime:
                     description: LastUpdateTime is the timestamp corresponding to
@@ -283,6 +310,33 @@ spec:
           spec:
             description: GitRepositorySpec defines the desired state of a Git repository.
             properties:
+              accessFrom:
+                description: AccessFrom defines an Access Control List for allowing
+                  cross-namespace references to this object.
+                properties:
+                  namespaceSelectors:
+                    description: NamespaceSelectors is the list of namespace selectors
+                      to which this ACL applies. Items in this list are evaluated
+                      using a logical OR operation.
+                    items:
+                      description: NamespaceSelector selects the namespaces to which
+                        this ACL applies. An empty map of MatchLabels matches all
+                        namespaces in a cluster.
+                      properties:
+                        matchLabels:
+                          additionalProperties:
+                            type: string
+                          description: MatchLabels is a map of {key,value} pairs.
+                            A single {key,value} in the matchLabels map is equivalent
+                            to an element of matchExpressions, whose key field is
+                            "key", the operator is "In", and the values array contains
+                            only "value". The requirements are ANDed.
+                          type: object
+                      type: object
+                    type: array
+                required:
+                - namespaceSelectors
+                type: object
               gitImplementation:
                 default: go-git
                 description: Determines which git client library to use. Defaults
@@ -411,7 +465,7 @@ spec:
                   repository sync.
                 properties:
                   checksum:
-                    description: Checksum is the SHA1 checksum of the artifact.
+                    description: Checksum is the SHA256 checksum of the artifact.
                     type: string
                   lastUpdateTime:
                     description: LastUpdateTime is the timestamp corresponding to
@@ -510,7 +564,7 @@ spec:
                   description: Artifact represents the output of a source synchronisation.
                   properties:
                     checksum:
-                      description: Checksum is the SHA1 checksum of the artifact.
+                      description: Checksum is the SHA256 checksum of the artifact.
                       type: string
                     lastUpdateTime:
                       description: LastUpdateTime is the timestamp corresponding to
@@ -621,6 +675,33 @@ spec:
           spec:
             description: HelmChartSpec defines the desired state of a Helm chart.
             properties:
+              accessFrom:
+                description: AccessFrom defines an Access Control List for allowing
+                  cross-namespace references to this object.
+                properties:
+                  namespaceSelectors:
+                    description: NamespaceSelectors is the list of namespace selectors
+                      to which this ACL applies. Items in this list are evaluated
+                      using a logical OR operation.
+                    items:
+                      description: NamespaceSelector selects the namespaces to which
+                        this ACL applies. An empty map of MatchLabels matches all
+                        namespaces in a cluster.
+                      properties:
+                        matchLabels:
+                          additionalProperties:
+                            type: string
+                          description: MatchLabels is a map of {key,value} pairs.
+                            A single {key,value} in the matchLabels map is equivalent
+                            to an element of matchExpressions, whose key field is
+                            "key", the operator is "In", and the values array contains
+                            only "value". The requirements are ANDed.
+                          type: object
+                      type: object
+                    type: array
+                required:
+                - namespaceSelectors
+                type: object
               chart:
                 description: The name or path the Helm chart is available at in the
                   SourceRef.
@@ -696,7 +777,7 @@ spec:
                   chart sync.
                 properties:
                   checksum:
-                    description: Checksum is the SHA1 checksum of the artifact.
+                    description: Checksum is the SHA256 checksum of the artifact.
                     type: string
                   lastUpdateTime:
                     description: LastUpdateTime is the timestamp corresponding to
@@ -866,6 +947,33 @@ spec:
           spec:
             description: HelmRepositorySpec defines the reference to a Helm repository.
             properties:
+              accessFrom:
+                description: AccessFrom defines an Access Control List for allowing
+                  cross-namespace references to this object.
+                properties:
+                  namespaceSelectors:
+                    description: NamespaceSelectors is the list of namespace selectors
+                      to which this ACL applies. Items in this list are evaluated
+                      using a logical OR operation.
+                    items:
+                      description: NamespaceSelector selects the namespaces to which
+                        this ACL applies. An empty map of MatchLabels matches all
+                        namespaces in a cluster.
+                      properties:
+                        matchLabels:
+                          additionalProperties:
+                            type: string
+                          description: MatchLabels is a map of {key,value} pairs.
+                            A single {key,value} in the matchLabels map is equivalent
+                            to an element of matchExpressions, whose key field is
+                            "key", the operator is "In", and the values array contains
+                            only "value". The requirements are ANDed.
+                          type: object
+                      type: object
+                    type: array
+                required:
+                - namespaceSelectors
+                type: object
               interval:
                 description: The interval at which to check the upstream for updates.
                 type: string
@@ -913,7 +1021,7 @@ spec:
                   repository sync.
                 properties:
                   checksum:
-                    description: Checksum is the SHA1 checksum of the artifact.
+                    description: Checksum is the SHA256 checksum of the artifact.
                     type: string
                   lastUpdateTime:
                     description: LastUpdateTime is the timestamp corresponding to
