@@ -14,7 +14,6 @@ spec:
       app: notification-controller
   template:
     metadata:
-    metadata:
       {{- with .Values.notificationcontroller.annotations }}
       annotations: {{ toYaml . | nindent 8 }}
       {{- end }}
