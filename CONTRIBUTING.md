@@ -43,7 +43,6 @@ Once changes have been merged, the release job will automatically run to package
 * k8s cluster for tests (eg Docker Desktop with k8s or Kind cluster)
 * helm-docs ( https://github.com/norwoodj/helm-docs/ )
 * helm unittests ( helm plugin install https://github.com/quintush/helm-unittest )
-* helm-changelog ( https://github.com/mogensen/helm-changelog/ )
 
 ### Tests and documentation updates
 
@@ -54,7 +53,6 @@ Once changes have been merged, the release job will automatically run to package
 * bump chart version if necessary
 * run: ```helm-docs```
 * squash all commits
-* run: ```helm-changelog```
 
 ### Immutability
 
