@@ -3,6 +3,16 @@ entries:
   flux2:
   - apiVersion: v2
     appVersion: 0.24.0
+    created: "2021-12-07T21:19:52.144719044Z"
+    description: A Helm chart for flux2
+    digest: 2e3c23a6311b9bd24fb34d96e62ebdac0d389e3f2e1a6cbd090971a5e6cfaeda
+    name: flux2
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-0.6.4/flux2-0.6.4.tgz
+    version: 0.6.4
+  - apiVersion: v2
+    appVersion: 0.24.0
     created: "2021-12-07T15:03:35.631177732Z"
     description: A Helm chart for flux2
     digest: 775f2222635324b3c17a91bd7ca8458704a6732b8b23a244c3ae71746f45a130
@@ -163,6 +173,17 @@ entries:
     version: 0.0.1
   flux2-sync:
   - apiVersion: v2
+    created: "2021-12-07T21:19:52.297528108Z"
+    description: A Helm chart for flux2 GitRepository to sync with
+    digest: 1192616cd171fa94cf395f295d33ad7d1abd4d4e6c2e3b55303c6c2fea31d537
+    name: flux2-sync
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.2.2/flux2-sync-0.2.2.tgz
+    version: 0.2.2
+  - apiVersion: v2
     created: "2021-11-30T09:35:50.921188636Z"
     description: A Helm chart for flux2 GitRepository to sync with
     digest: 5324670b479646be8de0408ce5779e65f5a3ca706095b8a7b5915c0dd9cf6978
@@ -206,4 +227,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2021-12-07T15:03:35.631785074Z"
+generated: "2021-12-07T21:19:52.297706216Z"
