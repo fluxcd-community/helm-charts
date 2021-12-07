@@ -131,6 +131,12 @@ kustomizecontroller:
   nodeSelector: {}
   affinity: {}
   tolerations: []
+  # Allows you to load environment variables from kubernetes secret or config map
+  envFrom: []
+  # - secretRef:
+  #     name: env-secret
+  # - configMapRef:
+  #     name: config-map
 
 notificationcontroller:
   create: true
