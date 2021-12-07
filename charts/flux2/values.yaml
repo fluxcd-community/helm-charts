@@ -16,6 +16,9 @@ eventsaddr: http://notification-controller/
 cli:
   image: ghcr.io/fluxcd/flux-cli
   tag: v0.24.0
+  nodeSelector: {}
+  affinity: {}
+  tolerations: []
 
 # controllers
 
