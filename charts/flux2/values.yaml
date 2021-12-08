@@ -124,7 +124,13 @@ kustomizecontroller:
   serviceaccount:
     create: true
     annotations: {}
-  # Defines additional mounts with secrets. Secrets must be manually created in the namespace.
+  secret:
+    # -- Create a secret to use it with extraSecretMounts. Defaults to false.
+    create: false
+    name: ""
+    data: {}
+  # -- Defines additional mounts with secrets.
+  # Secrets must be manually created in the namespace or with kustomizecontroller.secret
   extraSecretMounts: []
     # - name: secret-files
     #   mountPath: /etc/secrets
