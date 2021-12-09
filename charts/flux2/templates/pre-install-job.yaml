@@ -11,15 +11,16 @@ metadata:
   annotations:
     "helm.sh/hook": pre-install
     "helm.sh/hook-weight": "-5"
-    "helm.sh/hook-delete-policy": never
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
 spec:
   backoffLimit: 1
   template:
     metadata:
       name: "{{ .Release.Name }}"
       labels:
+        app.kubernetes.io/instance: {{ .Release.Namespace | quote }}
         app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
-        app.kubernetes.io/instance: {{ .Release.Name | quote  }}
+        app.kubernetes.io/version: {{ .Chart.AppVersion | quote  }}
         app.kubernetes.io/part-of: flux
         helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
     spec:
