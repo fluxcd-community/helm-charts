@@ -12,7 +12,7 @@ spec:
   url: {{ .Values.gitRepository.spec.url }}
   {{- if .Values.secret.create }}
   secretRef:
-    name: {{ .Release.Namespace }}
+    name: {{ .Release.Name }}
   {{- else if .Values.gitRepository.spec.secretRef }}
   secretRef: {{ toYaml .Values.gitRepository.spec.secretRef | nindent 4 }}
   {{- end }}
