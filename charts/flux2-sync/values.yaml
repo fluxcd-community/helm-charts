@@ -1,9 +1,22 @@
+secret:
+  # -- Create a secret for the git repository. Defaults to false.
+  create: false
+
+  # -- Data of the secret.
+  # For HTTPS repositories the secret must contain username and password fields.
+  # For SSH repositories the secret must contain identity, identity.pub and known_hosts fields.
+  # Values will be encoded to base64 by the helm chart.
+  data: {}
+
 gitRepository:
   spec:
     # -- The repository URL, can be an HTTP/S or SSH address.
     url: ""
 
-    # -- (Optional) The secret name containing the Git credentials. For HTTPS repositories the secret must contain username and password fields. For SSH repositories the secret must contain identity, identity.pub and known_hosts fields.
+    # -- (Optional) The secret name containing the Git credentials.
+    # For HTTPS repositories the secret must contain username and password fields.
+    # For SSH repositories the secret must contain identity, identity.pub and known_hosts fields.
+    # If a secret.create is set, it will point to that one.
     secretRef: {}
 
     # -- The interval at which to check for repository updates.

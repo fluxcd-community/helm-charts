@@ -4,14 +4,16 @@ metadata:
   labels:
     app.kubernetes.io/instance: {{ .Release.Namespace | quote }}
     app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
-    app.kubernetes.io/version: {{ .Chart.AppVersion | quote  }}
     app.kubernetes.io/part-of: flux
     helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
   name: {{ .Release.Name }}
   namespace: {{ .Release.Namespace }}
 spec:
   url: {{ .Values.gitRepository.spec.url }}
-  {{- with .Values.gitRepository.spec.secretRef }}
+  {{- if .Values.secret.create }}
+  secretRef:
+    name: {{ .Release.Namespace }}
+  {{- else if .Values.gitRepository.spec.secretRef }}
   secretRef: {{ toYaml . | nindent 4 }}
   {{- end }}
   {{- if .Values.gitRepository.spec.interval }}
