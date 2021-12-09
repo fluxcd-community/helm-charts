@@ -16,6 +16,9 @@ eventsaddr: http://notification-controller/
 cli:
   image: ghcr.io/fluxcd/flux-cli
   tag: v0.24.0
+  nodeSelector: {}
+  affinity: {}
+  tolerations: []
 
 # controllers
 
@@ -131,6 +134,15 @@ kustomizecontroller:
   nodeSelector: {}
   affinity: {}
   tolerations: []
+  # Allows you to load environment variables from kubernetes secret or config map
+  envFrom:
+    enbled: false
+    map:
+      enabled: false
+      name: ""
+    secret:
+      enabled: false
+      name: ""
 
 notificationcontroller:
   create: true

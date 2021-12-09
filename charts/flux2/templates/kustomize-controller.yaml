@@ -3,8 +3,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app.kubernetes.io/instance: {{ .Release.Namespace }}
+    app.kubernetes.io/instance: {{ .Release.Namespace | quote }}
+    app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion | quote  }}
     app.kubernetes.io/part-of: flux
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
     control-plane: controller
   name: kustomize-controller
 spec:
@@ -33,6 +36,17 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
+        {{- if .Values.kustomizecontroller.envFrom.enabled }}
+        envFrom:
+          {{- if .Values.kustomizecontroller.envFrom.map.enabled }}
+          - configMapRef:
+              name: {{ .Values.kustomizecontroller.envFrom.map.name }}
+          {{- end }}
+          {{- if .Values.kustomizecontroller.envFrom.secret.enabled }}
+          - secretRef:
+              name: {{ .Values.kustomizecontroller.envFrom.secret.name }}
+          {{- end }}
+        {{- end }}
         image: {{ .Values.kustomizecontroller.image }}:{{ .Values.kustomizecontroller.tag }}
         imagePullPolicy: IfNotPresent
         livenessProbe:

@@ -3,8 +3,11 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   labels:
-    app.kubernetes.io/instance: {{ .Release.Namespace }}
+    app.kubernetes.io/instance: {{ .Release.Namespace | quote }}
+    app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion | quote  }}
     app.kubernetes.io/part-of: flux
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
   annotations:
     controller-gen.kubebuilder.io/version: v0.5.0
   creationTimestamp: null
@@ -260,8 +263,11 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   labels:
-    app.kubernetes.io/instance: {{ .Release.Namespace }}
+    app.kubernetes.io/instance: {{ .Release.Namespace | quote }}
+    app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion | quote  }}
     app.kubernetes.io/part-of: flux
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
   annotations:
     controller-gen.kubebuilder.io/version: v0.5.0
   creationTimestamp: null
@@ -616,8 +622,11 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   labels:
-    app.kubernetes.io/instance: {{ .Release.Namespace }}
+    app.kubernetes.io/instance: {{ .Release.Namespace | quote }}
+    app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion | quote  }}
     app.kubernetes.io/part-of: flux
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
   annotations:
     controller-gen.kubebuilder.io/version: v0.5.0
   creationTimestamp: null
@@ -897,8 +906,11 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   labels:
-    app.kubernetes.io/instance: {{ .Release.Namespace }}
+    app.kubernetes.io/instance: {{ .Release.Namespace | quote }}
+    app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion | quote  }}
     app.kubernetes.io/part-of: flux
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
   annotations:
     controller-gen.kubebuilder.io/version: v0.5.0
   creationTimestamp: null

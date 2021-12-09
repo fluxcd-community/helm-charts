@@ -5,8 +5,11 @@ should match snapshot of default values:
     metadata:
       labels:
         app.kubernetes.io/instance: NAMESPACE
+        app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/part-of: flux
+        app.kubernetes.io/version: 0.24.0
         control-plane: controller
+        helm.sh/chart: flux2-0.6.5
       name: source-controller
     spec:
       replicas: 1
