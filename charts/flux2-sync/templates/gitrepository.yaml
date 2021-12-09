@@ -14,7 +14,7 @@ spec:
   secretRef:
     name: {{ .Release.Namespace }}
   {{- else if .Values.gitRepository.spec.secretRef }}
-  secretRef: {{ toYaml . | nindent 4 }}
+  secretRef: {{ toYaml .Values.gitRepository.spec.secretRef | nindent 4 }}
   {{- end }}
   {{- if .Values.gitRepository.spec.interval }}
   interval: {{ .Values.gitRepository.spec.interval }}
