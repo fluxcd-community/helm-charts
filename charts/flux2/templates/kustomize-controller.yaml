@@ -36,6 +36,17 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
+        {{- if or (.Values.kustomizecontroller.envFrom.map.name) (.Values.kustomizecontroller.envFrom.secret.name) }}
+        envFrom:
+          {{- if .Values.kustomizecontroller.envFrom.map.name }}
+          - configMapRef:
+              name: {{ .Values.kustomizecontroller.envFrom.map.name }}
+          {{- end }}
+          {{- if .Values.kustomizecontroller.envFrom.secret.name }}
+          - secretRef:
+              name: {{ .Values.kustomizecontroller.envFrom.secret.name }}
+          {{- end }}
+        {{- end }}
         image: {{ .Values.kustomizecontroller.image }}:{{ .Values.kustomizecontroller.tag }}
         imagePullPolicy: IfNotPresent
         livenessProbe:
