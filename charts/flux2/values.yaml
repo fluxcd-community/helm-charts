@@ -125,10 +125,16 @@ kustomizecontroller:
     create: true
     annotations: {}
   secret:
-    # -- Create a secret to use it with extraSecretMounts. Defaults to false.
+    # -- Create a secret to use it with extraSecretMounts or envForm. Defaults to false.
     create: false
     name: ""
     data: {}
+  # -- Defines envFrom using a configmap and/or secret.
+  envFrom:
+    map:
+      name: ""
+    secret:
+      name: ""
   # -- Defines additional mounts with secrets.
   # Secrets must be manually created in the namespace or with kustomizecontroller.secret
   extraSecretMounts: []

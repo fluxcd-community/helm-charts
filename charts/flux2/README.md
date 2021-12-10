@@ -1,6 +1,6 @@
 # flux2
 
-![Version: 0.7.1](https://img.shields.io/badge/Version-0.7.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.24.0](https://img.shields.io/badge/AppVersion-0.24.0-informational?style=flat-square)
+![Version: 0.7.2](https://img.shields.io/badge/Version-0.7.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.24.0](https://img.shields.io/badge/AppVersion-0.24.0-informational?style=flat-square)
 
 A Helm chart for flux2
 
@@ -64,6 +64,7 @@ A Helm chart for flux2
 | kustomizecontroller.annotations."prometheus.io/port" | string | `"8080"` |  |
 | kustomizecontroller.annotations."prometheus.io/scrape" | string | `"true"` |  |
 | kustomizecontroller.create | bool | `true` |  |
+| kustomizecontroller.envFrom | object | `{"map":{"name":""},"secret":{"name":""}}` | Defines envFrom using a configmap and/or secret. |
 | kustomizecontroller.extraSecretMounts | list | `[]` | Defines additional mounts with secrets. Secrets must be manually created in the namespace or with kustomizecontroller.secret |
 | kustomizecontroller.image | string | `"ghcr.io/fluxcd/kustomize-controller"` |  |
 | kustomizecontroller.labels | object | `{}` |  |
@@ -72,7 +73,7 @@ A Helm chart for flux2
 | kustomizecontroller.resources.limits.memory | string | `"1Gi"` |  |
 | kustomizecontroller.resources.requests.cpu | string | `"100m"` |  |
 | kustomizecontroller.resources.requests.memory | string | `"64Mi"` |  |
-| kustomizecontroller.secret.create | bool | `false` | Create a secret to use it with extraSecretMounts. Defaults to false. |
+| kustomizecontroller.secret.create | bool | `false` | Create a secret to use it with extraSecretMounts or envForm. Defaults to false. |
 | kustomizecontroller.secret.data | object | `{}` |  |
 | kustomizecontroller.secret.name | string | `""` |  |
 | kustomizecontroller.serviceaccount.annotations | object | `{}` |  |

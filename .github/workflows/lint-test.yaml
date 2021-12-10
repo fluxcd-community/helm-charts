@@ -48,3 +48,7 @@ jobs:
       - name: Run chart-testing (install) for flux2
         run: ct install --config ct.yaml --charts charts/flux2
         if: steps.list-changed.outputs.changed == 'true'
+
+      - name: Run chart-testing (install) for flux2-sync
+        run: ct install --config ct.yaml --charts charts/flux2-sync
+        if: steps.list-changed.outputs.changed == 'true'
