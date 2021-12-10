@@ -129,6 +129,12 @@ kustomizecontroller:
     create: false
     name: ""
     data: {}
+  # -- Defines envFrom using a configmap and/or secret.
+  envFrom:
+    map:
+      name: ""
+    secret:
+      name: ""
   # -- Defines additional mounts with secrets.
   # Secrets must be manually created in the namespace or with kustomizecontroller.secret
   extraSecretMounts: []
