@@ -190,3 +190,5 @@ policies:
 
 rbac:
   create: true
+
+watchallnamespaces: true
