@@ -27,7 +27,7 @@ spec:
       containers:
       - args:
         - --events-addr={{ .Values.eventsaddr }}
-        - --watch-all-namespaces
+        - --watch-all-namespaces={{ .Values.watchallnamespaces }}
         - --log-level=info
         - --log-encoding=json
         - --enable-leader-election
