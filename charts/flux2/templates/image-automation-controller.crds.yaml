@@ -6,11 +6,11 @@ metadata:
     controller-gen.kubebuilder.io/version: v0.5.0
   creationTimestamp: null
   labels:
-    app.kubernetes.io/instance: {{ .Release.Namespace | quote }}
-    app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
-    app.kubernetes.io/version: {{ .Chart.AppVersion | quote  }}
+    app.kubernetes.io/instance: '{{ .Release.Namespace }}'
+    app.kubernetes.io/managed-by: '{{ .Release.Service }}'
     app.kubernetes.io/part-of: flux
-    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
+    helm.sh/chart: '{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}'
   name: imageupdateautomations.image.toolkit.fluxcd.io
 spec:
   group: image.toolkit.fluxcd.io
@@ -167,7 +167,8 @@ spec:
                     \    // +patchStrategy=merge     // +listType=map     // +listMapKey=type
                     \    Conditions []metav1.Condition `json:\"conditions,omitempty\"
                     patchStrategy:\"merge\" patchMergeKey:\"type\" protobuf:\"bytes,1,rep,name=conditions\"`
-                    \n     // other fields }"
+                    
+     // other fields }"
                   properties:
                     lastTransitionTime:
                       description: lastTransitionTime is the last time the condition
@@ -438,7 +439,8 @@ spec:
                     \    // +patchStrategy=merge     // +listType=map     // +listMapKey=type
                     \    Conditions []metav1.Condition `json:\"conditions,omitempty\"
                     patchStrategy:\"merge\" patchMergeKey:\"type\" protobuf:\"bytes,1,rep,name=conditions\"`
-                    \n     // other fields }"
+                    
+     // other fields }"
                   properties:
                     lastTransitionTime:
                       description: lastTransitionTime is the last time the condition
@@ -709,7 +711,8 @@ spec:
                     \    // +patchStrategy=merge     // +listType=map     // +listMapKey=type
                     \    Conditions []metav1.Condition `json:\"conditions,omitempty\"
                     patchStrategy:\"merge\" patchMergeKey:\"type\" protobuf:\"bytes,1,rep,name=conditions\"`
-                    \n     // other fields }"
+                    
+     // other fields }"
                   properties:
                     lastTransitionTime:
                       description: lastTransitionTime is the last time the condition
