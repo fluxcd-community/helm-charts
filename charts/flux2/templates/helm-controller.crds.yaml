@@ -5,13 +5,13 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.5.0
   creationTimestamp: null
-  name: helmreleases.helm.toolkit.fluxcd.io
   labels:
-    app.kubernetes.io/instance: {{ .Release.Namespace | quote }}
-    app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
-    app.kubernetes.io/version: {{ .Chart.AppVersion | quote  }}
+    app.kubernetes.io/instance: '{{ .Release.Namespace }}'
+    app.kubernetes.io/managed-by: '{{ .Release.Service }}'
     app.kubernetes.io/part-of: flux
-    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
+    helm.sh/chart: '{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}'
+  name: helmreleases.helm.toolkit.fluxcd.io
 spec:
   group: helm.toolkit.fluxcd.io
   names:
@@ -161,11 +161,15 @@ spec:
                     description: "CRDs upgrade CRDs from the Helm Chart's crds directory
                       according to the CRD upgrade policy provided here. Valid values
                       are `Skip`, `Create` or `CreateReplace`. Default is `Create`
-                      and if omitted CRDs are installed but not updated. \n Skip:
-                      do neither install nor replace (update) any CRDs. \n Create:
+                      and if omitted CRDs are installed but not updated. 
+ Skip:
+                      do neither install nor replace (update) any CRDs. 
+ Create:
                       new CRDs are created, existing CRDs are neither updated nor
-                      deleted. \n CreateReplace: new CRDs are created, existing CRDs
-                      are updated (replaced) but not deleted. \n By default, CRDs
+                      deleted. 
+ CreateReplace: new CRDs are created, existing CRDs
+                      are updated (replaced) but not deleted. 
+ By default, CRDs
                       are applied (installed) during Helm install action. With this
                       option users can opt-in to CRD replace existing CRDs on Helm
                       install actions, which is not (yet) natively supported by Helm.
@@ -227,7 +231,8 @@ spec:
                   skipCRDs:
                     description: "SkipCRDs tells the Helm install action to not install
                       any CRDs. By default, CRDs are installed if not already present.
-                      \n Deprecated use CRD policy (`crds`) attribute with value `Skip`
+                      
+ Deprecated use CRD policy (`crds`) attribute with value `Skip`
                       instead."
                     type: boolean
                   timeout:
@@ -315,11 +320,20 @@ spec:
                                   with an array of operation objects.
                                 items:
                                   description: JSON6902 is a JSON6902 operation object.
-                                    https://tools.ietf.org/html/rfc6902#section-4
+                                    https://datatracker.ietf.org/doc/html/rfc6902#section-4
                                   properties:
                                     from:
+                                      description: From contains a JSON-pointer value
+                                        that references a location within the target
+                                        document where the operation is performed.
+                                        The meaning of the value depends on the value
+                                        of Op, and is NOT taken into account by all
+                                        operations.
                                       type: string
                                     op:
+                                      description: Op indicates the operation to perform.
+                                        Its value MUST be one of "add", "remove",
+                                        "replace", "move", "copy", or "test". https://datatracker.ietf.org/doc/html/rfc6902#section-4
                                       enum:
                                       - test
                                       - remove
@@ -329,8 +343,17 @@ spec:
                                       - copy
                                       type: string
                                     path:
+                                      description: Path contains the JSON-pointer
+                                        value that references a location within the
+                                        target document where the operation is performed.
+                                        The meaning of the value depends on the value
+                                        of Op.
                                       type: string
                                     value:
+                                      description: Value contains a valid JSON structure.
+                                        The meaning of the value depends on the value
+                                        of Op, and is NOT taken into account by all
+                                        operations.
                                       x-kubernetes-preserve-unknown-fields: true
                                   required:
                                   - op
@@ -506,11 +529,15 @@ spec:
                     description: "CRDs upgrade CRDs from the Helm Chart's crds directory
                       according to the CRD upgrade policy provided here. Valid values
                       are `Skip`, `Create` or `CreateReplace`. Default is `Skip` and
-                      if omitted CRDs are neither installed nor upgraded. \n Skip:
-                      do neither install nor replace (update) any CRDs. \n Create:
+                      if omitted CRDs are neither installed nor upgraded. 
+ Skip:
+                      do neither install nor replace (update) any CRDs. 
+ Create:
                       new CRDs are created, existing CRDs are neither updated nor
-                      deleted. \n CreateReplace: new CRDs are created, existing CRDs
-                      are updated (replaced) but not deleted. \n By default, CRDs
+                      deleted. 
+ CreateReplace: new CRDs are created, existing CRDs
+                      are updated (replaced) but not deleted. 
+ By default, CRDs
                       are not applied during Helm upgrade action. With this option
                       users can opt-in to CRD upgrade, which is not (yet) natively
                       supported by Helm. https://helm.sh/docs/chart_best_practices/custom_resource_definitions."
@@ -647,7 +674,8 @@ spec:
                     \    // +patchStrategy=merge     // +listType=map     // +listMapKey=type
                     \    Conditions []metav1.Condition `json:\"conditions,omitempty\"
                     patchStrategy:\"merge\" patchMergeKey:\"type\" protobuf:\"bytes,1,rep,name=conditions\"`
-                    \n     // other fields }"
+                    
+     // other fields }"
                   properties:
                     lastTransitionTime:
                       description: lastTransitionTime is the last time the condition
