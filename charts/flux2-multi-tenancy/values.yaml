@@ -1,0 +1,21 @@
+policy:
+  validationFailureAction: enforce
+  rules:
+    serviceAccountName:
+      exclude:
+        namespaces:
+          - flux-system
+      match:
+        kinds:
+          - Kustomization
+          - HelmRelease
+    kustomizationSourceRefNamespace:
+      exclude:
+        namespaces:
+          - flux-system
+    helmReleaseSourceRefNamespace:
+      exclude:
+        namespaces:
+          - flux-system
+kyverno:
+  enabled: false

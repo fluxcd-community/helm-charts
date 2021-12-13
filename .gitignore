@@ -27,6 +27,5 @@
 .work
 
 # helm chart dependencies
-flux2/charts/
-flux2-sync/charts/
-
+charts/*/charts/
+charts/*/Chart.lock
