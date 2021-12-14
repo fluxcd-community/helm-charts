@@ -1,0 +1,12 @@
+apiVersion: v2
+name: flux2-multi-tenancy
+version: 0.0.1
+description: A Helm chart for flux2-multi-tenancy
+sources:
+  - https://github.com/fluxcd/flux2-multi-tenancy
+type: application
+dependencies:
+  - name: kyverno
+    version: 2.1.4
+    repository: https://kyverno.github.io/kyverno
+    condition: kyverno.enabled
