@@ -1,21 +1,27 @@
 policy:
+  # -- Tells Kyverno if the resource being validated should be allowed but reported (`audit`) or blocked (`enforce`).
   validationFailureAction: enforce
   rules:
     serviceAccountName:
       exclude:
+        # -- List of namestace to ignore.
         namespaces:
           - flux-system
       match:
+        # -- The `Kinds` we want to check that a serviceAccountName is set
         kinds:
           - Kustomization
           - HelmRelease
     kustomizationSourceRefNamespace:
       exclude:
+        # -- List of namestace to ignore.
         namespaces:
           - flux-system
     helmReleaseSourceRefNamespace:
       exclude:
+        # -- List of namestace to ignore.
         namespaces:
           - flux-system
 kyverno:
+  # -- Enable kyverno to be installed as dependencies.
   enabled: false
