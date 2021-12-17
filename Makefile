@@ -53,14 +53,15 @@ FAIL	= (echo ${TIME} ${RED}[FAIL]${CNone} && false)
 # ====================================================================================
 # Commands 
 
-all: fetch generate helm-docs check-diff
+all: fetch generate helmdocs check-diff
 
 fetch:
 	@$(INFO) Fetch Flux2 GitRepo
-	@if [ ! -d ".work/flux2" ]; then \
+	@mkdir -p ${WORK_DIR}
+	@if [ ! -d "${WORK_DIR}/flux2" ]; then \
 		cd ${WORK_DIR} && git clone "https://github.com/fluxcd/flux2.git"; \
 	fi
-	@cd .work/flux2 && git fetch origin && git checkout $(FLUX2_VERSION)
+	@cd ${WORK_DIR}/flux2 && git fetch origin && git checkout $(FLUX2_VERSION)
 	@$(OK) Fetch Flux2 GitRepo
 
 generate: fetch
