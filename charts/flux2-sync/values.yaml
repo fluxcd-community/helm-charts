@@ -103,3 +103,18 @@ kustomization:
 
     # -- (Optional) Wait instructs the controller to check the health of all the reconciled resources. When enabled, the HealthChecks are ignored. Defaults to false.
     wait: false
+
+# -- (Optional) If you want multiple subdirectories which depend on each other in the same repo. Their name is derived from their path.
+kustomizationlist: {}
+# - spec:
+#     interval: 5m
+#     path: ./base
+#     prune: true
+#     timeout: 5m
+# - spec:
+#     dependsOn:
+#     - path: ./base
+#     interval: 5m
+#     path: ./test
+#     prune: true
+#     timeout: 5m

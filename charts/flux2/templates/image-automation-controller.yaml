@@ -24,6 +24,10 @@ spec:
         app: image-automation-controller
 {{ with .Values.imageautomationcontroller.labels }}{{ toYaml . | indent 8 }}{{ end }}
     spec:
+      {{- if .Values.imageautomationcontroller.initContainers}}
+      initContainers:
+        {{- toYaml .Values.imageautomationcontroller.initContainers | nindent 8}}
+      {{- end}}
       containers:
       - args:
         - --events-addr={{ .Values.eventsaddr }}
@@ -56,12 +60,19 @@ spec:
         {{- with .Values.imageautomationcontroller.resources }}
         resources: {{ toYaml . | nindent 10 }}
         {{- end }}
+        {{- if .Values.imageautomationcontroller.securityContext }}
+        securityContext: {{ toYaml .Values.imageautomationcontroller.securityContext | nindent 10 }}
+        {{- else }}
         securityContext:
           allowPrivilegeEscalation: false
           readOnlyRootFilesystem: true
+        {{- end}}
         volumeMounts:
         - mountPath: /tmp
           name: temp
+        {{- if .Values.imageautomationcontroller.volumeMounts }}
+        {{- toYaml .Values.imageautomationcontroller.volumeMounts | nindent 8 }}
+        {{- end}}
       securityContext:
         fsGroup: 1337
       serviceAccountName: image-automation-controller
@@ -69,6 +80,9 @@ spec:
       volumes:
       - emptyDir: {}
         name: temp
+      {{- if .Values.imageautomationcontroller.volumes }}
+      {{- toYaml .Values.imageautomationcontroller.volumes | nindent 6 }}
+      {{- end}}
       {{- with .Values.imageautomationcontroller.nodeSelector }}
       nodeSelector: {{ toYaml . | nindent 8 }}
       {{- end }}

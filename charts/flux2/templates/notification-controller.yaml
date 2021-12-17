@@ -24,6 +24,10 @@ spec:
         app: notification-controller
 {{ with .Values.notificationcontroller.labels }}{{ toYaml . | indent 8 }}{{ end }}
     spec:
+      {{- if .Values.notificationcontroller.initContainers}}
+      initContainers:
+        {{- toYaml .Values.notificationcontroller.initContainers | nindent 8}}
+      {{- end}}
       containers:
       - args:
         - --watch-all-namespaces={{ .Values.watchallnamespaces }}
@@ -59,17 +63,27 @@ spec:
         {{- with .Values.notificationcontroller.resources }}
         resources: {{ toYaml . | nindent 10 }}
         {{- end }}
+        {{- if .Values.helmcontroller.securityContext }}
+        securityContext: {{ toYaml .Values.helmcontroller.securityContext | nindent 10 }}
+        {{- else }}
         securityContext:
           allowPrivilegeEscalation: false
           readOnlyRootFilesystem: true
+        {{- end}}
         volumeMounts:
         - mountPath: /tmp
           name: temp
+        {{- if .Values.notificationcontroller.volumeMounts }}
+        {{- toYaml .Values.notificationcontroller.volumeMounts | nindent 8 }}
+        {{- end}}
       serviceAccountName: notification-controller
       terminationGracePeriodSeconds: 10
       volumes:
       - emptyDir: {}
         name: temp
+      {{- if .Values.notificationcontroller.volumes }}
+      {{- toYaml .Values.notificationcontroller.volumes | nindent 6 }}
+      {{- end}}
       {{- with .Values.notificationcontroller.nodeSelector }}
       nodeSelector: {{ toYaml . | nindent 8 }}
       {{- end }}

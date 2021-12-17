@@ -24,6 +24,10 @@ spec:
         app: kustomize-controller
 {{ with .Values.kustomizecontroller.labels }}{{ toYaml . | indent 8 }}{{ end }}
     spec:
+      {{- if .Values.kustomizecontroller.initContainers}}
+      initContainers:
+        {{- toYaml .Values.kustomizecontroller.initContainers | nindent 8}}
+      {{- end}}
       containers:
       - args:
         - --events-addr={{ .Values.eventsaddr }}
@@ -67,12 +71,19 @@ spec:
         {{- with .Values.kustomizecontroller.resources }}
         resources: {{ toYaml . | nindent 10 }}
         {{- end }}
+        {{- if .Values.kustomizecontroller.securityContext }}
+        securityContext: {{ toYaml .Values.kustomizecontroller.securityContext | nindent 10 }}
+        {{- else }}
         securityContext:
           allowPrivilegeEscalation: false
           readOnlyRootFilesystem: true
+        {{- end}}
         volumeMounts:
         - mountPath: /tmp
           name: temp
+        {{- if .Values.kustomizecontroller.volumeMounts }}
+        {{- toYaml .Values.kustomizecontroller.volumeMounts | nindent 8 }}
+        {{- end}}
       {{- range .Values.kustomizecontroller.extraSecretMounts }}
         - name: {{ .name }}
           mountPath: {{ .mountPath }}
@@ -86,6 +97,9 @@ spec:
       volumes:
       - emptyDir: {}
         name: temp
+      {{- if .Values.kustomizecontroller.volumes }}
+      {{- toYaml .Values.kustomizecontroller.volumes | nindent 6 }}
+      {{- end}}
       {{- range .Values.kustomizecontroller.extraSecretMounts }}
       - name: {{ .name }}
         secret:
