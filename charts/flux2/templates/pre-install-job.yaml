@@ -27,7 +27,7 @@ spec:
       restartPolicy: Never
       containers:
       - name: flux-cli
-        image: {{ .Values.cli.image }}:{{ .Values.cli.tag }}
+        image: {{ template "template.image" .Values.cli }}
         command: ["/usr/local/bin/flux", "check",  "--pre", "--namespace", {{ .Release.Namespace }}]
       {{- with .Values.cli.nodeSelector }}
       nodeSelector: {{ toYaml . | nindent 8 }}

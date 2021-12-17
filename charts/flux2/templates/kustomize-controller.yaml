@@ -47,7 +47,7 @@ spec:
               name: {{ .Values.kustomizecontroller.envFrom.secret.name }}
           {{- end }}
         {{- end }}
-        image: {{ .Values.kustomizecontroller.image }}:{{ .Values.kustomizecontroller.tag }}
+        image: {{ template "template.image" .Values.kustomizecontroller }}
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
