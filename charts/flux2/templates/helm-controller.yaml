@@ -24,6 +24,10 @@ spec:
         app: helm-controller
 {{ with .Values.helmcontroller.labels }}{{ toYaml . | indent 8 }}{{ end }}
     spec:
+    {{- if .Values.helmcontroller.initContainers}}
+      initContainers:
+        {{- toYaml .Values.helmcontroller.initContainers | nindent 8}}
+    {{- end}}
       containers:
       - args:
         - --events-addr={{ .Values.eventsaddr }}
@@ -56,17 +60,27 @@ spec:
         {{- with .Values.helmcontroller.resources }}
         resources: {{ toYaml . | nindent 10 }}
         {{- end }}
+        {{- if .Values.helmcontroller.securityContext }}
+        securityContext: {{ toYaml .Values.helmcontroller.securityContext | nindent 10 }}
+        {{- else }}
         securityContext:
           allowPrivilegeEscalation: false
           readOnlyRootFilesystem: true
+        {{- end}}
         volumeMounts:
         - mountPath: /tmp
           name: temp
+        {{- if .Values.helmcontroller.volumeMounts }}
+        {{- toYaml .Values.helmcontroller.volumeMounts | nindent 8 }}
+        {{- end}}
       serviceAccountName: helm-controller
       terminationGracePeriodSeconds: 600
       volumes:
       - emptyDir: {}
         name: temp
+      {{- if .Values.helmcontroller.volumes }}
+      {{- toYaml .Values.helmcontroller.volumes | nindent 6 }}
+      {{- end}}
       {{- with .Values.helmcontroller.nodeSelector }}
       nodeSelector: {{ toYaml . | nindent 8 }}
       {{- end }}

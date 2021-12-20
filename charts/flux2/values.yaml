@@ -52,6 +52,7 @@ helmcontroller:
   #            operator: In
   #            values:
   #            - master
+
   affinity: {}
   # expects input structure as per specification https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.11/#toleration-v1-core
   # for example:
@@ -60,6 +61,7 @@ helmcontroller:
   #     operator: Equal
   #     value: master
   #     effect: NoSchedule
+
   tolerations: []
 
 imageautomationcontroller:
@@ -143,6 +145,7 @@ kustomizecontroller:
     #   subPath: ""
     #   secretName: secret-files
     #   readOnly: true
+
   nodeSelector: {}
   affinity: {}
   tolerations: []
@@ -165,6 +168,8 @@ notificationcontroller:
   serviceaccount:
     create: true
     annotations: {}
+  service:
+    labels: {}
   nodeSelector: {}
   affinity: {}
   tolerations: []
@@ -187,6 +192,8 @@ sourcecontroller:
   serviceaccount:
     create: true
     annotations: {}
+  service:
+    labels: {}
   nodeSelector: {}
   affinity: {}
   tolerations: []

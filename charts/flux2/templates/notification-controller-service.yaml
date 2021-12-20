@@ -9,6 +9,7 @@ metadata:
     app.kubernetes.io/part-of: flux
     helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
     control-plane: controller
+    {{- with .Values.notificationcontroller.service.labels }}{{ toYaml . | nindent 4 }}{{ end }}
   name: notification-controller
 spec:
   ports:
@@ -16,6 +17,9 @@ spec:
     port: 80
     protocol: TCP
     targetPort: http
+  {{- if .Values.notificationcontroller.service.ports }}
+  {{- toYaml .Values.notificationcontroller.service.ports | nindent 2 }}
+  {{- end}}
   selector:
     app: notification-controller
   type: ClusterIP

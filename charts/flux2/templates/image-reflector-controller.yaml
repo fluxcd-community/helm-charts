@@ -24,6 +24,10 @@ spec:
         app: image-reflector-controller
 {{ with .Values.imagereflectorcontroller.labels }}{{ toYaml . | indent 8 }}{{ end }}
     spec:
+      {{- if .Values.imagereflectorcontroller.initContainers}}
+      initContainers:
+        {{- toYaml .Values.imagereflectorcontroller.initContainers | nindent 8}}
+      {{- end}}
       containers:
       - args:
         - --events-addr={{ .Values.eventsaddr }}
@@ -56,14 +60,21 @@ spec:
         {{- with .Values.imagereflectorcontroller.resources }}
         resources: {{ toYaml . | nindent 10 }}
         {{- end }}
+        {{- if .Values.imagereflectorcontroller.securityContext }}
+        securityContext: {{ toYaml .Values.imagereflectorcontroller.securityContext | nindent 10 }}
+        {{- else }}
         securityContext:
           allowPrivilegeEscalation: false
           readOnlyRootFilesystem: true
+        {{- end}}
         volumeMounts:
         - mountPath: /tmp
           name: temp
         - mountPath: /data
           name: data
+        {{- if .Values.imagereflectorcontroller.volumeMounts }}
+        {{- toYaml .Values.imagereflectorcontroller.volumeMounts | nindent 8 }}
+        {{- end}}
       securityContext:
         fsGroup: 1337
       serviceAccountName: image-reflector-controller
@@ -73,6 +84,9 @@ spec:
         name: temp
       - emptyDir: {}
         name: data
+      {{- if .Values.imagereflectorcontroller.volumes }}
+      {{- toYaml .Values.imagereflectorcontroller.volumes | nindent 6 }}
+      {{- end}}
       {{- with .Values.imagereflectorcontroller.nodeSelector }}
       nodeSelector: {{ toYaml . | nindent 8 }}
       {{- end }}
