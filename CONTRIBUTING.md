@@ -51,8 +51,9 @@ Once changes have been merged, the release job will automatically run to package
 * run: ```helm unittest --helm3 --file tests/*.yaml --file 'tests/**/*.yaml' charts/flux2/```
     * add ```-u``` if you need to update the compare snapshot in \_\_snapshots\_\_
 * bump chart version if necessary
-* run: ```helm-docs```
+* run: ```make helmdocs```
 * squash all commits
+* run: `make reviewable`
 
 ### Immutability
 
