@@ -2,6 +2,8 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) ![Release Charts](https://github.com/fluxcd-community/helm-charts/workflows/Release%20Charts/badge.svg?branch=main)
 
+These helm charts are maintained and released by the fluxcd-community on a best effort basis.
+
 ## Usage
 
 [Helm](https://helm.sh) must be installed to use the charts.

@@ -1,6 +1,7 @@
 #!/bin/bash -
 
 TEMPDIR=$(mktemp -d tmp.generate.XXXXX)
+
 delete_temp_dir() {
     if [ -d "${TEMPDIR}" ]; then
         rm -r "${TEMPDIR}"
@@ -8,8 +9,8 @@ delete_temp_dir() {
 }
 trap delete_temp_dir EXIT
 
-for FILE in `cat .work/flux2/manifests/crds/kustomization.yaml | grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*"` 
-do 
+for FILE in `cat .work/flux2/manifests/crds/kustomization.yaml | grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*"`
+do
 
 cat <<EOF > "${TEMPDIR}/global-labels.yaml"
 apiVersion: builtin
@@ -36,11 +37,9 @@ transformers:
    - global-labels.yaml
 EOF
 
-kustomize build "${TEMPDIR}" > ./charts/flux2/templates/${FILE##*/}
+kubectl kustomize "${TEMPDIR}" > ./charts/flux2/templates/${FILE##*/}
 echo -e "{{- if .Values.installCRDs }}\n$(cat ./charts/flux2/templates/${FILE##*/})" > ./charts/flux2/templates/${FILE##*/}
 echo -e "$(cat ./charts/flux2/templates/${FILE##*/})\n{{- end }}" > ./charts/flux2/templates/${FILE##*/}
 
 
 done
-
-app_version=$(cat Makefile | grep "FLUX2_VERSION ?= " | cut -c19-) yq e -i '.appVersion = env(app_version)' ./charts/flux2/Chart.yaml

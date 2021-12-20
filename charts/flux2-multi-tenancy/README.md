@@ -1,8 +1,10 @@
 # flux2-multi-tenancy
 
-![Version: 0.0.2](https://img.shields.io/badge/Version-0.0.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 0.0.3](https://img.shields.io/badge/Version-0.0.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 A Helm chart for flux2-multi-tenancy
+
+This helm chart is maintain and released by the fluxcd-community on a best effort basis.
 
 ## Source Code
 
@@ -24,4 +26,3 @@ A Helm chart for flux2-multi-tenancy
 | policy.rules.serviceAccountName.exclude.namespaces | list | `["flux-system"]` | List of namestace to ignore. |
 | policy.rules.serviceAccountName.match.kinds | list | `["Kustomization","HelmRelease"]` | The `Kinds` we want to check that a serviceAccountName is set |
 | policy.validationFailureAction | string | `"enforce"` | Tells Kyverno if the resource being validated should be allowed but reported (`audit`) or blocked (`enforce`). |
-

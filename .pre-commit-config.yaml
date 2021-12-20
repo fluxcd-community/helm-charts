@@ -9,3 +9,7 @@ repos:
       name: helmdocs
       entry: make helmdocs
       language: system
+    - id: reviewable
+      name: reviewable
+      entry: make reviewable
+      language: system

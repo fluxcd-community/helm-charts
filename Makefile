@@ -51,9 +51,9 @@ OK		= echo ${TIME} ${GREEN}[ OK ]${CNone}
 FAIL	= (echo ${TIME} ${RED}[FAIL]${CNone} && false)
 
 # ====================================================================================
-# Commands 
+# Commands
 
-all: fetch generate helmdocs check-diff
+all: fetch generate updateversions helmdocs unittests check-diff
 
 fetch:
 	@$(INFO) Fetch Flux2 GitRepo
@@ -64,14 +64,35 @@ fetch:
 	@cd ${WORK_DIR}/flux2 && git fetch origin && git checkout $(FLUX2_VERSION)
 	@$(OK) Fetch Flux2 GitRepo
 
+helmdocs:
+	helm-docs --chart-search-root=charts --template-files=../_readme_templates.gotmpl
+
+updateversions:
+	@for file in $$(ls -1 ./charts/ | tr '\n' ' '); do \
+		chartversion=$$(cat ./charts/$${file}/Chart.yaml | grep -E '^version: ' | cut -c10-) ; \
+		chartname=$$(cat ./charts/$${file}/Chart.yaml | grep -E '^name: ' | cut -c7-) ; \
+		$(INFO) Update chartname and chartversion string in test snapshots for $${file}.; \
+		sed -s -i "s/^\([[:space:]]\+helm\.sh\/chart:\).*/\1 $${chartname}-$${chartversion}/" ./charts/$${file}/tests/__snapshot__/*.yaml.snap ; \
+        sed -s -i "s/^\([[:space:]]\+app\.kubernetes\.io\/version:\).*/\1 $(subst v,,${FLUX2_VERSION})/" ./charts/$${file}/tests/__snapshot__/*.yaml.snap ; \
+		$(INFO) Update appVersion in ./charts/$${file}/Chart.yaml ;\
+        sed -s -i "s/^\(appVersion:\).*/\1 $(subst v,,${FLUX2_VERSION})/" ./charts/$${file}/Chart.yaml ; \
+	done
+
 generate: fetch
 	@$(INFO) Generating CRDs
 	@./hack/generate.sh
 	@$(OK) Generating CRDs
 
-helmdocs:
-	helm-docs
+unittests:
+	@helm unittest --helm3 --file tests/*.yaml --file 'tests/**/*.yaml' charts/flux2-multi-tenancy/
+	@helm unittest --helm3 --file tests/*.yaml --file 'tests/**/*.yaml' charts/flux2/
+	@helm unittest --helm3 --file tests/*.yaml --file 'tests/**/*.yaml' charts/flux2-sync/
 
-check-diff: 
+check-diff:
 	@$(INFO) checking that branch is clean
-	@if git status --porcelain | grep . ; then $(FAIL); else $(OK) branch is clean; fi
+	@if git status --porcelain | grep . ; \
+	then $(FAIL); \
+	else $(OK) branch is clean; \
+	fi
+
+reviewable: updateversions helmdocs unittests check-diff

@@ -1,8 +1,10 @@
 # flux2-sync
 
-![Version: 0.3.5](https://img.shields.io/badge/Version-0.3.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 0.3.6](https://img.shields.io/badge/Version-0.3.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 A Helm chart for flux2 GitRepository to sync with
+
+This helm chart is maintain and released by the fluxcd-community on a best effort basis.
 
 ## Source Code
 
@@ -43,4 +45,3 @@ A Helm chart for flux2 GitRepository to sync with
 | kustomizationlist | object | `{}` | (Optional) If you want multiple subdirectories which depend on each other in the same repo. Their name is derived from their path. |
 | secret.create | bool | `false` | Create a secret for the git repository. Defaults to false. |
 | secret.data | object | `{}` | Data of the secret. For HTTPS repositories the secret must contain username and password fields. For SSH repositories the secret must contain identity, identity.pub and known_hosts fields. Values will be encoded to base64 by the helm chart. |
-
