@@ -3,6 +3,16 @@ entries:
   flux2:
   - apiVersion: v2
     appVersion: 0.24.1
+    created: "2021-12-20T11:46:36.194949282Z"
+    description: A Helm chart for flux2
+    digest: 26b162cbd29f0fd27e357224bad3d4bb70b61ed96ea1c7501c229653b4210c51
+    name: flux2
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-0.8.2/flux2-0.8.2.tgz
+    version: 0.8.2
+  - apiVersion: v2
+    appVersion: 0.24.1
     created: "2021-12-18T08:04:03.386371978Z"
     description: A Helm chart for flux2
     digest: 90692c68a8837e067828376a8b3c9729707274916461316095154ddfe75b20b4
@@ -223,6 +233,22 @@ entries:
     version: 0.0.1
   flux2-multi-tenancy:
   - apiVersion: v2
+    created: "2021-12-20T11:46:36.323413861Z"
+    dependencies:
+    - condition: kyverno.enabled
+      name: kyverno
+      repository: https://kyverno.github.io/kyverno
+      version: 2.1.4
+    description: A Helm chart for flux2-multi-tenancy
+    digest: 32a5248052312c6cd764381a2b6e2254743110a25dfeef047397b8a40ebedda2
+    name: flux2-multi-tenancy
+    sources:
+    - https://github.com/fluxcd/flux2-multi-tenancy
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-multi-tenancy-0.0.2/flux2-multi-tenancy-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
     created: "2021-12-14T16:06:28.058873659Z"
     dependencies:
     - condition: kyverno.enabled
@@ -239,6 +265,17 @@ entries:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-multi-tenancy-0.0.1/flux2-multi-tenancy-0.0.1.tgz
     version: 0.0.1
   flux2-sync:
+  - apiVersion: v2
+    created: "2021-12-20T11:46:36.448763021Z"
+    description: A Helm chart for flux2 GitRepository to sync with
+    digest: c8ca0986268970da698e812a56b0e27c0a2c13620987112a9b2d840bb869e68e
+    name: flux2-sync
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.3.5/flux2-sync-0.3.5.tgz
+    version: 0.3.5
   - apiVersion: v2
     created: "2021-12-12T09:38:56.985503902Z"
     description: A Helm chart for flux2 GitRepository to sync with
@@ -338,4 +375,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2021-12-18T08:04:03.386565579Z"
+generated: "2021-12-20T11:46:36.449227224Z"
