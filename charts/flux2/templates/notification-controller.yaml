@@ -77,6 +77,9 @@ spec:
         {{- toYaml .Values.notificationcontroller.volumeMounts | nindent 8 }}
         {{- end}}
       serviceAccountName: notification-controller
+      {{- if .Values.imagePullSecrets }}
+      imagePullSecrets: {{ toYaml .Values.imagePullSecrets | nindent 6 }}
+      {{- end }}
       terminationGracePeriodSeconds: 10
       volumes:
       - emptyDir: {}
