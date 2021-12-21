@@ -93,6 +93,9 @@ spec:
       securityContext:
         fsGroup: 1337
       serviceAccountName: kustomize-controller
+      {{- if .Values.imagePullSecrets }}
+      imagePullSecrets: {{ toYaml .Values.imagePullSecrets | nindent 6 }}
+      {{- end }}
       terminationGracePeriodSeconds: 60
       volumes:
       - emptyDir: {}

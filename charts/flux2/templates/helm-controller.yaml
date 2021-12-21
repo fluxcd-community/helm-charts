@@ -74,6 +74,9 @@ spec:
         {{- toYaml .Values.helmcontroller.volumeMounts | nindent 8 }}
         {{- end}}
       serviceAccountName: helm-controller
+      {{- if .Values.imagePullSecrets }}
+      imagePullSecrets: {{ toYaml .Values.imagePullSecrets | nindent 6 }}
+      {{- end }}
       terminationGracePeriodSeconds: 600
       volumes:
       - emptyDir: {}

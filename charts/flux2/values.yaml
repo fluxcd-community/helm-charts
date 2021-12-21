@@ -205,3 +205,6 @@ rbac:
   create: true
 
 watchallnamespaces: true
+
+# -- contents of pod imagePullSecret in form 'name=[secretName]'; applied to all controllers
+imagePullSecrets: []
