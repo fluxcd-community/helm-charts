@@ -1,6 +1,6 @@
 # flux2
 
-![Version: 0.8.4](https://img.shields.io/badge/Version-0.8.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.24.1](https://img.shields.io/badge/AppVersion-0.24.1-informational?style=flat-square)
+![Version: 0.8.5](https://img.shields.io/badge/Version-0.8.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.24.1](https://img.shields.io/badge/AppVersion-0.24.1-informational?style=flat-square)
 
 A Helm chart for flux2
 
@@ -87,6 +87,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | kustomizecontroller.serviceaccount.create | bool | `true` |  |
 | kustomizecontroller.tag | string | `"v0.18.2"` |  |
 | kustomizecontroller.tolerations | list | `[]` |  |
+| loglevel | string | `"info"` |  |
 | notificationcontroller.affinity | object | `{}` |  |
 | notificationcontroller.annotations."prometheus.io/port" | string | `"8080"` |  |
 | notificationcontroller.annotations."prometheus.io/scrape" | string | `"true"` |  |

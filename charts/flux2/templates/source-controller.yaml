@@ -11,7 +11,11 @@ metadata:
     control-plane: controller
   name: source-controller
 spec:
+  {{- if kindIs "invalid" .Values.sourcecontroller.replicas }}
   replicas: 1
+  {{- else }}
+  replicas: {{ .Values.sourcecontroller.replicas  }}
+  {{- end}}
   selector:
     matchLabels:
       app: source-controller
@@ -34,7 +38,7 @@ spec:
       - args:
         - --events-addr={{ .Values.eventsaddr }}
         - --watch-all-namespaces={{ .Values.watchallnamespaces }}
-        - --log-level=info
+        - --log-level={{ .Values.loglevel | default "info" }}
         - --log-encoding=json
         - --enable-leader-election
         - --storage-path=/data

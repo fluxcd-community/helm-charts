@@ -204,6 +204,7 @@ policies:
 rbac:
   create: true
 
+loglevel: info
 watchallnamespaces: true
 
 # -- contents of pod imagePullSecret in form 'name=[secretName]'; applied to all controllers

@@ -11,7 +11,11 @@ metadata:
     control-plane: controller
   name: notification-controller
 spec:
+  {{- if kindIs "invalid" .Values.notificationcontroller.replicas }}
   replicas: 1
+  {{- else }}
+  replicas: {{ .Values.notificationcontroller.replicas  }}
+  {{- end}}
   selector:
     matchLabels:
       app: notification-controller
@@ -31,7 +35,7 @@ spec:
       containers:
       - args:
         - --watch-all-namespaces={{ .Values.watchallnamespaces }}
-        - --log-level=info
+        - --log-level={{ .Values.loglevel | default "info" }}
         - --log-encoding=json
         - --enable-leader-election
         env:
