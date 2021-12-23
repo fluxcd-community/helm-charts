@@ -53,7 +53,7 @@ FAIL	= (echo ${TIME} ${RED}[FAIL]${CNone} && false)
 # ====================================================================================
 # Commands
 
-all: fetch generate updateversions helmdocs unittests check-diff
+all: fetch generate update.appversion helmdocs unittests check-diff
 
 fetch:
 	@$(INFO) Fetch Flux2 GitRepo
@@ -67,7 +67,39 @@ fetch:
 helmdocs:
 	helm-docs --chart-search-root=charts --template-files=../_readme_templates.gotmpl
 
-updateversions:
+update.chartversion:
+	@if [ "$(chartyamlpath)" = "" ]; then \
+		echo "Error: Please specify the path to the Chart.ymal: eg. chartyamlpath=./charts/flux2/Chart.yaml"; \
+		$(FAIL) \
+	fi
+	@RE='[^0-9]*\([0-9]*\)[.]\([0-9]*\)[.]\([0-9]*\)\([0-9A-Za-z-]*\)' ; \
+	base=$$(git show main:$(chartyamlpath) | grep "version:" | cut -c10-) ; \
+	MAJOR=`echo $${base} | sed -e "s#$${RE}#\1#"` ; \
+	MINOR=`echo $${base} | sed -e "s#$${RE}#\2#"` ; \
+	PATCH=`echo $${base} | sed -e "s#$${RE}#\3#"` ; \
+	$(INFO) "Old Chart version: $${MAJOR}.$${MINOR}.$${PATCH} in $(chartyamlpath)" ; \
+	case '$(semvertype)' in \
+		major) \
+			let MAJOR+=1 \
+			let MINOR=0 \
+			let PATCH=0 \
+			;; \
+		minor) \
+			let MINOR+=1 \
+			let PATCH=0 \
+			;; \
+		patch) \
+			let PATCH+=1 \
+			;; \
+		*) \
+			echo "Error: Please specify one of the following bump types: semvertype=(major|minor|patch)"; \
+			$(FAIL) ; exit 1 ;\
+	esac; \
+	sed -s -i "s/^\(version:\).*/\1 $${MAJOR}.$${MINOR}.$${PATCH}/" $(chartyamlpath) || $(FAIL); \
+	$(OK) New Chart version: $${MAJOR}.$${MINOR}.$${PATCH};
+	@make update.appversion
+
+update.appversion:
 	@for file in $$(ls -1 ./charts/ | tr '\n' ' '); do \
 		chartversion=$$(cat ./charts/$${file}/Chart.yaml | grep -E '^version: ' | cut -c10-) ; \
 		chartname=$$(cat ./charts/$${file}/Chart.yaml | grep -E '^name: ' | cut -c7-) ; \
@@ -76,6 +108,7 @@ updateversions:
         sed -s -i "s/^\([[:space:]]\+app\.kubernetes\.io\/version:\).*/\1 $(subst v,,${FLUX2_VERSION})/" ./charts/$${file}/tests/__snapshot__/*.yaml.snap ; \
 		$(INFO) Update appVersion in ./charts/$${file}/Chart.yaml ;\
         sed -s -i "s/^\(appVersion:\).*/\1 $(subst v,,${FLUX2_VERSION})/" ./charts/$${file}/Chart.yaml ; \
+		$(OK) "Version strings updated" ; \
 	done
 
 generate: fetch
@@ -95,4 +128,23 @@ check-diff:
 	else $(OK) branch is clean; \
 	fi
 
-reviewable: updateversions helmdocs unittests check-diff
+reviewable: update.appversion helmdocs unittests check-diff
+
+.PHONY: all fetch helmdocs update.chartversion update.appversion generate unittests check-diff reviewable
+
+
+define FLUXCHART_MAKE_HELP
+Targets:
+    generate              Generate a new chart files from flux version specified at start of Makefile.
+    helmdocs              Update README.md files in chart directories.
+    unittests             Run helm unittest against the charts.
+    update.appversion     Update version strings in testfiles and Chart.yaml.
+	update.chartversion   Bump Semver chart version.
+    reviewable            Run to see if everything fits.
+
+endef
+export FLUXCHART_MAKE_HELP
+
+.PHONY: help
+help:
+	@echo "$$FLUXCHART_MAKE_HELP"
