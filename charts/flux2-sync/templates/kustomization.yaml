@@ -1,68 +1,4 @@
-{{- if .Values.kustomization }}
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-kind: Kustomization
-metadata:
-  labels:
-    app.kubernetes.io/instance: {{ .Release.Namespace | quote }}
-    app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
-    app.kubernetes.io/part-of: flux
-    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
-  name:  {{ .Release.Name }}
-  namespace: {{ .Release.Namespace }}
-spec:
-  {{- with .Values.kustomization.spec.dependsOn }}
-  dependsOn: {{ toYaml . | nindent 4 }}
-  {{- end }}
-  {{- with .Values.kustomization.spec.decryption }}
-  decryption: {{ toYaml . | nindent 4 }}
-  {{- end }}
-  interval: {{ .Values.kustomization.spec.interval }}
-  {{- if .Values.kustomization.spec.retryInterval }}
-  retryInterval: {{ .Values.kustomization.spec.retryInterval }}
-  {{- end }}
-  {{- if .Values.kustomization.spec.kubeConfig }}
-  kubeConfig: {{ toYaml . | nindent 4 }}
-  {{- end }}
-  {{- if .Values.kustomization.spec.path }}
-  path: {{ .Values.kustomization.spec.path }}
-  {{- end }}
-  {{- with .Values.kustomization.spec.postBuild }}
-  postBuild: {{ toYaml . | nindent 4 }}
-  {{- end }}
-  prune: {{ .Values.kustomization.spec.prune }}
-  {{- with .Values.kustomization.spec.healthChecks }}
-  healthChecks: {{ toYaml . | nindent 4 }}
-  {{- end }}
-  {{- with .Values.kustomization.spec.patches }}
-  patches: {{ toYaml . | nindent 4 }}
-  {{- end }}
-  {{- with .Values.kustomization.spec.images }}
-  images: {{ toYaml . | nindent 4 }}
-  {{- end }}
-  {{- if .Values.kustomization.spec.serviceAccountName }}
-  serviceAccountName: {{ .Values.kustomization.spec.serviceAccountName }}
-  {{- end }}
-  sourceRef:
-    kind: GitRepository
-    name: {{ .Release.Name }}
-  {{- if .Values.kustomization.spec.suspend }}
-  suspend: {{ .Values.kustomization.spec.suspend }}
-  {{- end }}
-  {{- if .Values.kustomization.spec.targetNamespace }}
-  targetNamespace: {{ .Values.kustomization.spec.targetNamespace }}
-  {{- end }}
-  {{- if .Values.kustomization.spec.timeout }}
-  timeout: {{ .Values.kustomization.spec.timeout }}
-  {{- end }}
-  {{- if .Values.kustomization.spec.force }}
-  force: {{ .Values.kustomization.spec.force }}
-  {{- end }}
-  {{- if .Values.kustomization.spec.wait }}
-  wait: {{ .Values.kustomization.spec.wait }}
-  {{- end }}
-{{- end }}
-{{- if .Values.kustomizationlist}}
-{{- range $key, $kust := .Values.kustomizationlist }}
+{{- range $key, $kust := .Values.kustomizations }}
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
@@ -128,5 +64,4 @@ spec:
   {{- if $kust.spec.wait }}
   wait: {{ $kust.spec.wait }}
   {{- end }}
-{{- end }}
 {{- end }}

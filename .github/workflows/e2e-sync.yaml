@@ -40,13 +40,16 @@ jobs:
           --create-namespace \
           --set gitRepository.spec.url=https://github.com/stefanprodan/podinfo.git \
           --set gitRepository.spec.ref.branch=master \
-          --set kustomization.spec.path=kustomize \
-          --set kustomization.spec.targetNamespace=podinfo \
-          --set kustomization.spec.wait=true \
-          --set kustomization.spec.timeout=2m
+          --set "kustomizations[0].spec.path=kustomize" \
+          --set "kustomizations[0].spec.targetNamespace=podinfo" \
+          --set "kustomizations[0].spec.wait=true" \
+          --set "kustomizations[0].spec.timeout=2m" \
+          --set "kustomizations[0].spec.prune=true" \
+          --set "kustomizations[0].spec.interval=5m"
+
       - name: Check sync
         run: |
-          flux reconcile kustomization podinfo --with-source --namespace podinfo
+          flux reconcile kustomization flux-kustomization-a93758687d --with-source --namespace podinfo
       - name: Delete Sync
         run: |
           helm delete --debug podinfo \
