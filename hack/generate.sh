@@ -41,5 +41,9 @@ kubectl kustomize "${TEMPDIR}" > ./charts/flux2/templates/${FILE##*/}
 echo -e "{{- if .Values.installCRDs }}\n$(cat ./charts/flux2/templates/${FILE##*/})" > ./charts/flux2/templates/${FILE##*/}
 echo -e "$(cat ./charts/flux2/templates/${FILE##*/})\n{{- end }}" > ./charts/flux2/templates/${FILE##*/}
 
+# git diff --quiet will exit 1 when there are changes.
+if ! git diff --quiet HEAD main -- ./charts/flux2/templates/ ; then
+  make update.chartversion chartyamlpath=./charts/flux2/Chart.yaml semvertype=minor
+fi
 
 done
