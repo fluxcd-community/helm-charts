@@ -122,4 +122,5 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | sourcecontroller.serviceaccount.create | bool | `true` |  |
 | sourcecontroller.tag | string | `"v0.19.2"` |  |
 | sourcecontroller.tolerations | list | `[]` |  |
+| sourcecontroller.extraEnv | list | `[]` |  |
 | watchallnamespaces | bool | `true` |  |

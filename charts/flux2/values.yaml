@@ -197,6 +197,7 @@ sourcecontroller:
   nodeSelector: {}
   affinity: {}
   tolerations: []
+  extraEnv: []
 
 policies:
   create: true
