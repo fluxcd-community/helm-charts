@@ -25,6 +25,7 @@ spec:
         helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
     spec:
       restartPolicy: Never
+      serviceAccountName: "{{ .Release.Name }}-flux-check"
       containers:
       - name: flux-cli
         image: {{ template "template.image" .Values.cli }}
