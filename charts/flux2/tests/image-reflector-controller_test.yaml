@@ -19,6 +19,16 @@ tests:
           of: Deployment
       - isAPIVersion:
           of: apps/v1
+
+  - it: should set additional container args
+    set:
+      imagereflectorcontroller.container.additionalargs:
+        - --testlabel1=testvalue1
+    asserts:
+      - contains:
+          path: spec.template.spec.containers[0].args
+          content:
+            --testlabel1=testvalue1
   - it: should match snapshot of default values
     asserts:
       - matchSnapshot: { }
