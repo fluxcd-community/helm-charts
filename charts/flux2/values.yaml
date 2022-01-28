@@ -37,6 +37,8 @@ helmcontroller:
     prometheus.io/port: "8080"
     prometheus.io/scrape: "true"
   labels: {}
+  container:
+    additionalargs: []
   serviceaccount:
     create: true
     annotations: {}
@@ -79,6 +81,8 @@ imageautomationcontroller:
     prometheus.io/port: "8080"
     prometheus.io/scrape: "true"
   labels: {}
+  container:
+    additionalargs: []
   serviceaccount:
     create: true
     annotations: {}
@@ -101,6 +105,8 @@ imagereflectorcontroller:
     prometheus.io/port: "8080"
     prometheus.io/scrape: "true"
   labels: {}
+  container:
+    additionalargs: []
   serviceaccount:
     create: true
     annotations: {}
@@ -123,6 +129,8 @@ kustomizecontroller:
     prometheus.io/port: "8080"
     prometheus.io/scrape: "true"
   labels: {}
+  container:
+    additionalargs: []
   serviceaccount:
     create: true
     annotations: {}
@@ -165,6 +173,8 @@ notificationcontroller:
     prometheus.io/port: "8080"
     prometheus.io/scrape: "true"
   labels: {}
+  container:
+    additionalargs: []
   serviceaccount:
     create: true
     annotations: {}
@@ -189,6 +199,8 @@ sourcecontroller:
     prometheus.io/port: "8080"
     prometheus.io/scrape: "true"
   labels: {}
+  container:
+    additionalargs: []
   serviceaccount:
     create: true
     annotations: {}

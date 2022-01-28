@@ -1,6 +1,6 @@
 # flux2
 
-![Version: 0.9.1](https://img.shields.io/badge/Version-0.9.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.25.3](https://img.shields.io/badge/AppVersion-0.25.3-informational?style=flat-square)
+![Version: 0.9.2](https://img.shields.io/badge/Version-0.9.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.25.3](https://img.shields.io/badge/AppVersion-0.25.3-informational?style=flat-square)
 
 A Helm chart for flux2
 
@@ -23,6 +23,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | helmcontroller.affinity | object | `{}` |  |
 | helmcontroller.annotations."prometheus.io/port" | string | `"8080"` |  |
 | helmcontroller.annotations."prometheus.io/scrape" | string | `"true"` |  |
+| helmcontroller.container.additionalargs | list | `[]` |  |
 | helmcontroller.create | bool | `true` |  |
 | helmcontroller.image | string | `"ghcr.io/fluxcd/helm-controller"` |  |
 | helmcontroller.labels | object | `{}` |  |
@@ -39,6 +40,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imageautomationcontroller.affinity | object | `{}` |  |
 | imageautomationcontroller.annotations."prometheus.io/port" | string | `"8080"` |  |
 | imageautomationcontroller.annotations."prometheus.io/scrape" | string | `"true"` |  |
+| imageautomationcontroller.container.additionalargs | list | `[]` |  |
 | imageautomationcontroller.create | bool | `true` |  |
 | imageautomationcontroller.image | string | `"ghcr.io/fluxcd/image-automation-controller"` |  |
 | imageautomationcontroller.labels | object | `{}` |  |
@@ -54,6 +56,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imagereflectorcontroller.affinity | object | `{}` |  |
 | imagereflectorcontroller.annotations."prometheus.io/port" | string | `"8080"` |  |
 | imagereflectorcontroller.annotations."prometheus.io/scrape" | string | `"true"` |  |
+| imagereflectorcontroller.container.additionalargs | list | `[]` |  |
 | imagereflectorcontroller.create | bool | `true` |  |
 | imagereflectorcontroller.image | string | `"ghcr.io/fluxcd/image-reflector-controller"` |  |
 | imagereflectorcontroller.labels | object | `{}` |  |
@@ -70,6 +73,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | kustomizecontroller.affinity | object | `{}` |  |
 | kustomizecontroller.annotations."prometheus.io/port" | string | `"8080"` |  |
 | kustomizecontroller.annotations."prometheus.io/scrape" | string | `"true"` |  |
+| kustomizecontroller.container.additionalargs | list | `[]` |  |
 | kustomizecontroller.create | bool | `true` |  |
 | kustomizecontroller.envFrom | object | `{"map":{"name":""},"secret":{"name":""}}` | Defines envFrom using a configmap and/or secret. |
 | kustomizecontroller.extraSecretMounts | list | `[]` | Defines additional mounts with secrets. Secrets must be manually created in the namespace or with kustomizecontroller.secret |
@@ -91,6 +95,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | notificationcontroller.affinity | object | `{}` |  |
 | notificationcontroller.annotations."prometheus.io/port" | string | `"8080"` |  |
 | notificationcontroller.annotations."prometheus.io/scrape" | string | `"true"` |  |
+| notificationcontroller.container.additionalargs | list | `[]` |  |
 | notificationcontroller.create | bool | `true` |  |
 | notificationcontroller.image | string | `"ghcr.io/fluxcd/notification-controller"` |  |
 | notificationcontroller.labels | object | `{}` |  |
@@ -109,6 +114,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | sourcecontroller.affinity | object | `{}` |  |
 | sourcecontroller.annotations."prometheus.io/port" | string | `"8080"` |  |
 | sourcecontroller.annotations."prometheus.io/scrape" | string | `"true"` |  |
+| sourcecontroller.container.additionalargs | list | `[]` |  |
 | sourcecontroller.create | bool | `true` |  |
 | sourcecontroller.extraEnv | list | `[]` |  |
 | sourcecontroller.image | string | `"ghcr.io/fluxcd/source-controller"` |  |
