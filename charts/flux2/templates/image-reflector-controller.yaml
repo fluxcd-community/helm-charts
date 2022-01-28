@@ -39,6 +39,9 @@ spec:
         - --log-level={{ .Values.loglevel | default "info" }}
         - --log-encoding=json
         - --enable-leader-election
+        {{- range .Values.imagereflectorcontroller.container.additionalargs }}
+        - {{ . }}
+        {{- end}}
         env:
         - name: RUNTIME_NAMESPACE
           valueFrom:
