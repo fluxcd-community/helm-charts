@@ -105,9 +105,9 @@ update.appversion:
 		chartname=$$(cat ./charts/$${file}/Chart.yaml | grep -E '^name: ' | cut -c7-) ; \
 		$(INFO) Update chartname and chartversion string in test snapshots for $${file}.; \
 		sed -s -i "s/^\([[:space:]]\+helm\.sh\/chart:\).*/\1 $${chartname}-$${chartversion}/" ./charts/$${file}/tests/__snapshot__/*.yaml.snap ; \
-        sed -s -i "s/^\([[:space:]]\+app\.kubernetes\.io\/version:\).*/\1 $(subst v,,${FLUX2_VERSION})/" ./charts/$${file}/tests/__snapshot__/*.yaml.snap ; \
+		sed -s -i "s/^\([[:space:]]\+app\.kubernetes\.io\/version:\).*/\1 $(subst v,,${FLUX2_VERSION})/" ./charts/$${file}/tests/__snapshot__/*.yaml.snap ; \
 		$(INFO) Update appVersion in ./charts/$${file}/Chart.yaml ;\
-        sed -s -i "s/^\(appVersion:\).*/\1 $(subst v,,${FLUX2_VERSION})/" ./charts/$${file}/Chart.yaml ; \
+		sed -s -i "s/^\(appVersion:\).*/\1 $(subst v,,${FLUX2_VERSION})/" ./charts/$${file}/Chart.yaml ; \
 		$(OK) "Version strings updated" ; \
 	done
 
@@ -139,7 +139,7 @@ Targets:
     helmdocs              Update README.md files in chart directories.
     unittests             Run helm unittest against the charts.
     update.appversion     Update version strings in testfiles and Chart.yaml.
-	update.chartversion   Bump Semver chart version.
+    update.chartversion   Bump Semver chart version.
     reviewable            Run to see if everything fits.
 
 endef

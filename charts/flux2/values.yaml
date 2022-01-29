@@ -222,3 +222,29 @@ watchallnamespaces: true
 
 # -- contents of pod imagePullSecret in form 'name=[secretName]'; applied to all controllers
 imagePullSecrets: []
+
+# -- Array of extra K8s manifests to deploy
+extraObjects: []
+# Example usage from https://fluxcd.io/docs/components/source/buckets/#static-authentication
+  # - apiVersion: source.toolkit.fluxcd.io/v1beta1
+  #   kind: Bucket
+  #   metadata:
+  #     name: podinfo
+  #     namespace: default
+  #   spec:
+  #     interval: 1m
+  #     provider: generic
+  #     bucketName: podinfo
+  #     endpoint: minio.minio.svc.cluster.local:9000
+  #     insecure: true
+  #     secretRef:
+  #       name: minio-credentials
+  # - apiVersion: v1
+  #   kind: Secret
+  #   metadata:
+  #     name: minio-credentials
+  #     namespace: default
+  #   type: Opaque
+  #   data:
+  #     accesskey: <BASE64>
+  #     secretkey: <BASE64>
