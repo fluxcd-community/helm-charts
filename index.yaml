@@ -1,6 +1,21 @@
 apiVersion: v1
 entries:
   flux2:
+  - annotations:
+      artifacthub.io/changes: |
+        - "[Added]: Add support for extra K8s manifests"
+    apiVersion: v2
+    appVersion: 0.25.3
+    created: "2022-01-31T09:33:44.715755579Z"
+    description: A Helm chart for flux2
+    digest: 120bf5bce35506ec38c60a45bd479be0f037bebd6eed86e542761c9174daa514
+    name: flux2
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-0.10.0/flux2-0.10.0.tgz
+    version: 0.10.0
   - apiVersion: v2
     appVersion: 0.25.3
     created: "2022-01-28T11:42:01.98744528Z"
@@ -486,4 +501,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2022-01-28T11:42:01.987852084Z"
+generated: "2022-01-31T09:33:44.716113361Z"
