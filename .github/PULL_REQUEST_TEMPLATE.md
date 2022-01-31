@@ -25,4 +25,5 @@ We would like these checks to pass before we even continue reviewing your change
 - [ ] Chart Version bumped
 - [ ] helm-docs are updated
 - [ ] Helm chart is tested
+- [ ] Update artifacthub.io/changes in Chart.yaml
 - [ ] Run `make reviewable`
