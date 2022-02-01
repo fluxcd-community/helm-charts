@@ -1,6 +1,6 @@
 # flux2
 
-![Version: 0.10.0](https://img.shields.io/badge/Version-0.10.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.25.3](https://img.shields.io/badge/AppVersion-0.25.3-informational?style=flat-square)
+![Version: 0.10.0](https://img.shields.io/badge/Version-0.10.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.25.4](https://img.shields.io/badge/AppVersion-0.25.4-informational?style=flat-square)
 
 A Helm chart for flux2
 
@@ -17,7 +17,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | cli.affinity | object | `{}` |  |
 | cli.image | string | `"ghcr.io/fluxcd/flux-cli"` |  |
 | cli.nodeSelector | object | `{}` |  |
-| cli.tag | string | `"v0.25.3"` |  |
+| cli.tag | string | `"v0.25.4"` |  |
 | cli.tolerations | list | `[]` |  |
 | eventsaddr | string | `"http://notification-controller/"` | Maybe you need to use full domain name here, if you deploy flux in environments that use http proxy. In such environments they normally add `.cluster.local` and `.local` suffixes to `no_proxy` variable in order to prevent cluster-local traffic from going through http proxy. Without fully specified domain they need to mention `notifications-controller` explicitly in `no_proxy` variable after debugging http proxy logs eg: http://notification-controller.[NAMESPACE].svc.[CLUSTERDOMAIN] |
 | extraObjects | list | `[]` | Array of extra K8s manifests to deploy |
@@ -131,3 +131,4 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | sourcecontroller.tag | string | `"v0.20.1"` |  |
 | sourcecontroller.tolerations | list | `[]` |  |
 | watchallnamespaces | bool | `true` |  |
+

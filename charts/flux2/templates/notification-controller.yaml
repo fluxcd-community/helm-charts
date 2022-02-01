@@ -38,6 +38,7 @@ spec:
         - --log-level={{ .Values.loglevel | default "info" }}
         - --log-encoding=json
         - --enable-leader-election
+        - --rate-limit-interval={{ .Values.ratelimitinterval | default "5m"}}
         {{- range .Values.notificationcontroller.container.additionalargs }}
         - {{ . }}
         {{- end}}
