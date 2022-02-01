@@ -1,0 +1,40 @@
+{{- if .Values.providerlist}}
+{{- range $key, $provider := .Values.providerlist }}
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta1
+kind: Provider
+metadata:
+  labels:
+    app.kubernetes.io/instance: {{ $.Release.Namespace | quote }}
+    app.kubernetes.io/managed-by: {{ $.Release.Service | quote }}
+    app.kubernetes.io/part-of: flux
+    helm.sh/chart: {{ $.Chart.Name }}-{{ $.Chart.Version | replace "+" "_" }}
+  name:  {{ $provider.name }}
+  namespace: {{ $.Release.Namespace }}
+spec:
+  type: "{{ $provider.spec.type }}"
+  {{- if $provider.spec.channel }}
+  channel: "{{ $provider.spec.channel }}"
+  {{- end }}
+  {{- if $provider.spec.username }}
+  username: "{{ $provider.spec.username }}"
+  {{- end }}
+  {{- if $provider.spec.address }}
+  address: "{{ $provider.spec.address }}"
+  {{- end }}
+  {{- if $provider.spec.proxy }}
+  proxy: "{{ $provider.spec.proxy }}"
+  {{- end }}
+  {{- if $provider.spec.secretRef.name }}
+  secretRef:
+    name: {{ $provider.spec.secretRef.name }}
+  {{- end }}
+  {{- if $provider.spec.certSecretRef.name }}
+  certSecretRef:
+    name: {{ $provider.spec.certSecretRef.name }}
+  {{- end }}
+  {{- if $provider.spec.suspend }}
+  suspend: "{{ $provider.spec.suspend }}"
+  {{- end }}
+{{- end }}
+{{- end }}
