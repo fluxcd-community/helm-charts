@@ -379,6 +379,22 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-multi-tenancy-0.0.1/flux2-multi-tenancy-0.0.1.tgz
     version: 0.0.1
+  flux2-notification:
+  - annotations:
+      artifacthub.io/changes: |
+        - "initial release"
+    apiVersion: v2
+    appVersion: 0.25.3
+    created: "2022-02-02T11:17:11.639059929Z"
+    description: A Helm chart for flux2 alerts and the needed providers and secrets
+    digest: 1605fb2a124826c971224fb0a357d2bc2fb7b068f336a44a0e52511feb81d125
+    name: flux2-notification
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-notification-0.1.0/flux2-notification-0.1.0.tgz
+    version: 0.1.0
   flux2-sync:
   - apiVersion: v2
     created: "2021-12-20T19:22:50.529802224Z"
@@ -501,4 +517,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2022-01-31T09:33:44.716113361Z"
+generated: "2022-02-02T11:17:11.639268039Z"
