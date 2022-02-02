@@ -1,0 +1,24 @@
+suite: test provider deployment
+templates:
+  - provider.yaml
+tests:
+  - it: should be empty by default
+    asserts:
+      - hasDocuments:
+          count: 0
+  - it: should match snapshot
+    asserts:
+      - matchSnapshot: {}
+    set:
+      providerlist:
+      - name: on-call-slack
+        spec:
+          type: slack
+          channel: general
+          username: user1
+          address: https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK
+          proxy: https://proxy.corp:8080
+          secretRef:
+            name: webhook-url
+          certSecretRef:
+            name: certref

@@ -1,0 +1,23 @@
+suite: test alert deployment
+templates:
+  - alert.yaml
+tests:
+  - it: should be empty by default
+    asserts:
+      - hasDocuments:
+          count: 0
+  - it: should match snapshot
+    asserts:
+      - matchSnapshot: {}
+    set:
+      alertlist:
+      - name: all-kustomizations
+        spec:
+          providerRef:
+            name: dev-msteams
+          eventSeverity: error
+          eventSources:
+            - kind: Kustomization
+              namespace: default
+              name: '*'
+          suspend: true

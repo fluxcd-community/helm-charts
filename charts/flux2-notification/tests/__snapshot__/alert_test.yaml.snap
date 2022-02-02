@@ -1,0 +1,21 @@
+should match snapshot:
+  1: |
+    apiVersion: notification.toolkit.fluxcd.io/v1beta1
+    kind: Alert
+    metadata:
+      labels:
+        app.kubernetes.io/instance: NAMESPACE
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/part-of: flux
+        helm.sh/chart: flux2-notification-0.1.0
+      name: all-kustomizations
+      namespace: NAMESPACE
+    spec:
+      eventSeverity: error
+      eventSources:
+      - kind: Kustomization
+        name: '*'
+        namespace: default
+      providerRef:
+        name: dev-msteams
+      suspend: true
