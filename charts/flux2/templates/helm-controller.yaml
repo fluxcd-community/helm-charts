@@ -34,6 +34,10 @@ spec:
     {{- end}}
       containers:
       - args:
+        {{- if .Values.multitenancy.enabled }}
+        - --no-cross-namespace-refs=true
+        - --default-service-account={{ .Values.multitenancy.defaultServiceAccount | default "default"  }}
+        {{- end}}
         - --events-addr={{ .Values.eventsaddr }}
         - --watch-all-namespaces={{ .Values.watchallnamespaces }}
         - --log-level={{ .Values.loglevel | default "info" }}
@@ -72,7 +76,13 @@ spec:
         {{- else }}
         securityContext:
           allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
           readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          seccompProfile:
+            type: RuntimeDefault
         {{- end}}
         volumeMounts:
         - mountPath: /tmp

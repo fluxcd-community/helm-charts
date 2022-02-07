@@ -31,3 +31,21 @@ tests:
   - it: should match snapshot of default values
     asserts:
       - matchSnapshot: { }
+  - it: should have args for Multi-tenancy lockdown
+    capabilities:
+      majorVersion: 1
+      minorVersion: 21
+    set:
+      multitenancy:
+        enabled: true
+    asserts:
+      - hasDocuments:
+          count: 1
+      - isKind:
+          of: Deployment
+      - isAPIVersion:
+          of: apps/v1
+      - contains:
+          path: spec.template.spec.containers[0].args
+          content:
+            --no-cross-namespace-refs=true
