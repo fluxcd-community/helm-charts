@@ -652,16 +652,20 @@ spec:
                   to a git repository.
                 properties:
                   apiVersion:
-                    description: API version of the referent
+                    description: API version of the referent.
                     type: string
                   kind:
                     default: GitRepository
-                    description: Kind of the referent
+                    description: Kind of the referent.
                     enum:
                     - GitRepository
                     type: string
                   name:
-                    description: Name of the referent
+                    description: Name of the referent.
+                    type: string
+                  namespace:
+                    description: Namespace of the referent, defaults to the namespace
+                      of the Kubernetes resource object that contains the reference.
                     type: string
                 required:
                 - kind
@@ -697,6 +701,8 @@ spec:
             - sourceRef
             type: object
           status:
+            default:
+              observedGeneration: -1
             description: ImageUpdateAutomationStatus defines the observed state of
               ImageUpdateAutomation
             properties:

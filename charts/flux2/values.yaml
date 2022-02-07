@@ -2,6 +2,16 @@
 
 installCRDs: true
 
+multitenancy:
+  # -- Implement the patches for Multi-tenancy lockdown.
+  # See https://fluxcd.io/docs/installation/#multi-tenancy-lockdown
+  enabled: false
+  # -- All Kustomizations and HelmReleases which don’t have spec.serviceAccountName
+  # specified, will use the default account from the tenant’s namespace.
+  # Tenants have to specify a service account in their Flux resources to be able
+  # to deploy workloads in their namespaces as the default account has no permissions.
+  defaultServiceAccount: "default"
+
 # -- Maybe you need to use full domain name here, if you deploy flux
 # in environments that use http proxy.
 #
@@ -15,7 +25,7 @@ eventsaddr: http://notification-controller/
 
 cli:
   image: ghcr.io/fluxcd/flux-cli
-  tag: v0.25.3
+  tag: v0.26.1
   nodeSelector: {}
   affinity: {}
   tolerations: []
@@ -25,7 +35,7 @@ cli:
 helmcontroller:
   create: true
   image: ghcr.io/fluxcd/helm-controller
-  tag: v0.15.0
+  tag: v0.16.0
   resources:
     limits:
       cpu: 1000m
@@ -69,7 +79,7 @@ helmcontroller:
 imageautomationcontroller:
   create: true
   image: ghcr.io/fluxcd/image-automation-controller
-  tag: v0.19.0
+  tag: v0.20.0
   resources:
     limits:
       cpu: 1000m
@@ -93,7 +103,7 @@ imageautomationcontroller:
 imagereflectorcontroller:
   create: true
   image: ghcr.io/fluxcd/image-reflector-controller
-  tag: v0.15.0
+  tag: v0.16.0
   resources:
     limits:
       cpu: 1000m
@@ -117,7 +127,7 @@ imagereflectorcontroller:
 kustomizecontroller:
   create: true
   image: ghcr.io/fluxcd/kustomize-controller
-  tag: v0.19.1
+  tag: v0.20.0
   resources:
     limits:
       cpu: 1000m
@@ -161,7 +171,7 @@ kustomizecontroller:
 notificationcontroller:
   create: true
   image: ghcr.io/fluxcd/notification-controller
-  tag: v0.20.1
+  tag: v0.21.0
   resources:
     limits:
       cpu: 1000m
@@ -187,7 +197,7 @@ notificationcontroller:
 sourcecontroller:
   create: true
   image: ghcr.io/fluxcd/source-controller
-  tag: v0.20.1
+  tag: v0.21.1
   resources:
     limits:
       cpu: 1000m

@@ -7,9 +7,9 @@ should match snapshot of default values:
         app.kubernetes.io/instance: NAMESPACE
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/part-of: flux
-        app.kubernetes.io/version: 0.25.3
+        app.kubernetes.io/version: 0.26.1
         control-plane: controller
-        helm.sh/chart: flux2-0.10.0
+        helm.sh/chart: flux2-0.11.0
       name: image-reflector-controller
     spec:
       replicas: 1
@@ -36,7 +36,7 @@ should match snapshot of default values:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
-            image: ghcr.io/fluxcd/image-reflector-controller:v0.15.0
+            image: ghcr.io/fluxcd/image-reflector-controller:v0.16.0
             imagePullPolicy: IfNotPresent
             livenessProbe:
               httpGet:
@@ -62,7 +62,13 @@ should match snapshot of default values:
                 memory: 64Mi
             securityContext:
               allowPrivilegeEscalation: false
+              capabilities:
+                drop:
+                - ALL
               readOnlyRootFilesystem: true
+              runAsNonRoot: true
+              seccompProfile:
+                type: RuntimeDefault
             volumeMounts:
             - mountPath: /tmp
               name: temp

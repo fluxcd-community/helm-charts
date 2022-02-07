@@ -64,10 +64,13 @@ spec:
         ports:
         - containerPort: 9090
           name: http
+          protocol: TCP
         - containerPort: 8080
           name: http-prom
+          protocol: TCP
         - containerPort: 9440
           name: healthz
+          protocol: TCP
         readinessProbe:
           httpGet:
             path: /
@@ -80,7 +83,13 @@ spec:
         {{- else }}
         securityContext:
           allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
           readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          seccompProfile:
+            type: RuntimeDefault
         {{- end}}
         volumeMounts:
         - mountPath: /data

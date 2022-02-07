@@ -34,6 +34,9 @@ spec:
       {{- end}}
       containers:
       - args:
+        {{- if .Values.multitenancy.enabled }}
+        - --no-cross-namespace-refs=true
+        {{- end}}
         - --watch-all-namespaces={{ .Values.watchallnamespaces }}
         - --log-level={{ .Values.loglevel | default "info" }}
         - --log-encoding=json
@@ -56,10 +59,13 @@ spec:
         ports:
         - containerPort: 9090
           name: http
+          protocol: TCP
         - containerPort: 9292
           name: http-webhook
+          protocol: TCP
         - containerPort: 8080
           name: http-prom
+          protocol: TCP
         - containerPort: 9440
           name: healthz
           protocol: TCP
@@ -75,7 +81,13 @@ spec:
         {{- else }}
         securityContext:
           allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
           readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          seccompProfile:
+            type: RuntimeDefault
         {{- end}}
         volumeMounts:
         - mountPath: /tmp

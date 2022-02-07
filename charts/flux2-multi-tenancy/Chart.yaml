@@ -1,6 +1,7 @@
 apiVersion: v2
 name: flux2-multi-tenancy
-version: 0.0.3
+version: 0.0.4
+deprecated: true
 description: A Helm chart for flux2-multi-tenancy
 sources:
   - https://github.com/fluxcd/flux2-multi-tenancy
@@ -10,3 +11,6 @@ dependencies:
     version: 2.1.4
     repository: https://kyverno.github.io/kyverno
     condition: kyverno.enabled
+annotations:
+  artifacthub.io/changes: |
+    - "Mark this chart as DEPRECATED. Since upstream appversion 0.26.0 this can be done wilth Multi-Tenancy Lockdown Use `multitenancy.enabled` in flux2 chart >=0.11.0"

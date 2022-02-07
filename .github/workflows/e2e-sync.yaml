@@ -55,6 +55,18 @@ jobs:
         run: |
           helm uninstall --debug flux2 \
           --namespace=flux-system
+      - name: Install with Multi-tenancy
+        run: |
+          helm upgrade --install --debug flux2 ./charts/flux2 \
+          --namespace=flux-system \
+          --create-namespace \
+          --wait \
+          --wait-for-jobs \
+          --set multitenancy.enabled=true
+      - name: Uninstall the Multi-Tenancy setup
+        run: |
+          helm uninstall --debug flux2 \
+          --namespace=flux-system
       - name: Debug failure
         if: failure()
         run: |

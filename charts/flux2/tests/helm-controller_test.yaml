@@ -39,3 +39,26 @@ tests:
       helmcontroller.labels:
         labeltestkey: labeltestvalue
         labeltestkey2: labeltestvalue2
+  - it: should have args for Multi-tenancy lockdown
+    capabilities:
+      majorVersion: 1
+      minorVersion: 21
+    set:
+      multitenancy:
+        enabled: true
+        defaultServiceAccount: test1
+    asserts:
+      - hasDocuments:
+          count: 1
+      - isKind:
+          of: Deployment
+      - isAPIVersion:
+          of: apps/v1
+      - contains:
+          path: spec.template.spec.containers[0].args
+          content:
+            --no-cross-namespace-refs=true
+      - contains:
+          path: spec.template.spec.containers[0].args
+          content:
+            --default-service-account=test1
