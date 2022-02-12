@@ -127,7 +127,7 @@ imagereflectorcontroller:
 kustomizecontroller:
   create: true
   image: ghcr.io/fluxcd/kustomize-controller
-  tag: v0.20.1
+  tag: v0.20.2
   resources:
     limits:
       cpu: 1000m
