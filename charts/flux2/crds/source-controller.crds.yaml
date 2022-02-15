@@ -1,16 +1,9 @@
-{{- if .Values.installCRDs }}
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.7.0
   creationTimestamp: null
-  labels:
-    app.kubernetes.io/instance: '{{ .Release.Namespace }}'
-    app.kubernetes.io/managed-by: '{{ .Release.Service }}'
-    app.kubernetes.io/part-of: flux
-    app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
-    helm.sh/chart: '{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}'
   name: buckets.source.toolkit.fluxcd.io
 spec:
   group: source.toolkit.fluxcd.io
@@ -178,8 +171,7 @@ spec:
                     \    // +patchStrategy=merge     // +listType=map     // +listMapKey=type
                     \    Conditions []metav1.Condition `json:\"conditions,omitempty\"
                     patchStrategy:\"merge\" patchMergeKey:\"type\" protobuf:\"bytes,1,rep,name=conditions\"`
-                    
-     // other fields }"
+                    // other fields }"
                   properties:
                     lastTransitionTime:
                       description: lastTransitionTime is the last time the condition
@@ -268,12 +260,6 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.7.0
   creationTimestamp: null
-  labels:
-    app.kubernetes.io/instance: '{{ .Release.Namespace }}'
-    app.kubernetes.io/managed-by: '{{ .Release.Service }}'
-    app.kubernetes.io/part-of: flux
-    app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
-    helm.sh/chart: '{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}'
   name: gitrepositories.source.toolkit.fluxcd.io
 spec:
   group: source.toolkit.fluxcd.io
@@ -510,8 +496,7 @@ spec:
                     \    // +patchStrategy=merge     // +listType=map     // +listMapKey=type
                     \    Conditions []metav1.Condition `json:\"conditions,omitempty\"
                     patchStrategy:\"merge\" patchMergeKey:\"type\" protobuf:\"bytes,1,rep,name=conditions\"`
-                    
-     // other fields }"
+                    // other fields }"
                   properties:
                     lastTransitionTime:
                       description: lastTransitionTime is the last time the condition
@@ -630,12 +615,6 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.7.0
   creationTimestamp: null
-  labels:
-    app.kubernetes.io/instance: '{{ .Release.Namespace }}'
-    app.kubernetes.io/managed-by: '{{ .Release.Service }}'
-    app.kubernetes.io/part-of: flux
-    app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
-    helm.sh/chart: '{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}'
   name: helmcharts.source.toolkit.fluxcd.io
 spec:
   group: source.toolkit.fluxcd.io
@@ -828,8 +807,7 @@ spec:
                     \    // +patchStrategy=merge     // +listType=map     // +listMapKey=type
                     \    Conditions []metav1.Condition `json:\"conditions,omitempty\"
                     patchStrategy:\"merge\" patchMergeKey:\"type\" protobuf:\"bytes,1,rep,name=conditions\"`
-                    
-     // other fields }"
+                    // other fields }"
                   properties:
                     lastTransitionTime:
                       description: lastTransitionTime is the last time the condition
@@ -917,12 +895,6 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.7.0
   creationTimestamp: null
-  labels:
-    app.kubernetes.io/instance: '{{ .Release.Namespace }}'
-    app.kubernetes.io/managed-by: '{{ .Release.Service }}'
-    app.kubernetes.io/part-of: flux
-    app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
-    helm.sh/chart: '{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}'
   name: helmrepositories.source.toolkit.fluxcd.io
 spec:
   group: source.toolkit.fluxcd.io
@@ -1078,8 +1050,7 @@ spec:
                     \    // +patchStrategy=merge     // +listType=map     // +listMapKey=type
                     \    Conditions []metav1.Condition `json:\"conditions,omitempty\"
                     patchStrategy:\"merge\" patchMergeKey:\"type\" protobuf:\"bytes,1,rep,name=conditions\"`
-                    
-     // other fields }"
+                    // other fields }"
                   properties:
                     lastTransitionTime:
                       description: lastTransitionTime is the last time the condition
@@ -1160,4 +1131,3 @@ status:
     plural: ""
   conditions: []
   storedVersions: []
-{{- end }}

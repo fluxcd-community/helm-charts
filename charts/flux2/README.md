@@ -1,6 +1,6 @@
 # flux2
 
-![Version: 0.12.1](https://img.shields.io/badge/Version-0.12.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.26.3](https://img.shields.io/badge/AppVersion-0.26.3-informational?style=flat-square)
+![Version: 0.13.0](https://img.shields.io/badge/Version-0.13.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.26.3](https://img.shields.io/badge/AppVersion-0.26.3-informational?style=flat-square)
 
 A Helm chart for flux2
 
@@ -70,7 +70,6 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imagereflectorcontroller.serviceaccount.create | bool | `true` |  |
 | imagereflectorcontroller.tag | string | `"v0.16.0"` |  |
 | imagereflectorcontroller.tolerations | list | `[]` |  |
-| installCRDs | bool | `true` |  |
 | kustomizecontroller.affinity | object | `{}` |  |
 | kustomizecontroller.annotations."prometheus.io/port" | string | `"8080"` |  |
 | kustomizecontroller.annotations."prometheus.io/scrape" | string | `"true"` |  |

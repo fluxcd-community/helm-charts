@@ -1,7 +1,5 @@
 # global
 
-installCRDs: true
-
 multitenancy:
   # -- Implement the patches for Multi-tenancy lockdown.
   # See https://fluxcd.io/docs/installation/#multi-tenancy-lockdown
