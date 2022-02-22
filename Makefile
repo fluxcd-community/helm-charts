@@ -1,7 +1,7 @@
 # ====================================================================================
 # Setup Project
 
-FLUX2_VERSION ?= v0.26.3
+FLUX2_VERSION ?= v0.27.0
 
 # set the shell to bash always
 SHELL := /bin/bash
@@ -40,15 +40,15 @@ CNone        := $(shell printf "\033[0m")
 # ====================================================================================
 # Logger
 
-TIME_LONG	= `date +%Y-%m-%d' '%H:%M:%S`
-TIME_SHORT	= `date +%H:%M:%S`
-TIME		= $(TIME_SHORT)
+TIME_LONG  = `date +%Y-%m-%d' '%H:%M:%S`
+TIME_SHORT = `date +%H:%M:%S`
+TIME       = $(TIME_SHORT)
 
-INFO	= echo ${TIME} ${BLUE}[ .. ]${CNone}
-WARN	= echo ${TIME} ${YELLOW}[WARN]${CNone}
-ERR		= echo ${TIME} ${RED}[FAIL]${CNone}
-OK		= echo ${TIME} ${GREEN}[ OK ]${CNone}
-FAIL	= (echo ${TIME} ${RED}[FAIL]${CNone} && false)
+INFO = echo ${TIME} ${BLUE}[ .. ]${CNone}
+WARN = echo ${TIME} ${YELLOW}[WARN]${CNone}
+ERR  = echo ${TIME} ${RED}[FAIL]${CNone}
+OK   = echo ${TIME} ${GREEN}[ OK ]${CNone}
+FAIL = (echo ${TIME} ${RED}[FAIL]${CNone} && false)
 
 # ====================================================================================
 # Commands
