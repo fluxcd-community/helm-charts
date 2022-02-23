@@ -8,4 +8,4 @@ sources:
   - https://github.com/fluxcd-community/helm-charts
 annotations:
   artifacthub.io/changes: |
-    - "[Update]: Update App Version to upstream 0.27.0"
+    - "[Update]: Remove default resource.limits from flux components"
