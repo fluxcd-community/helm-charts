@@ -37,9 +37,9 @@ helmcontroller:
   image: ghcr.io/fluxcd/helm-controller
   tag: v0.17.0
   resources:
-    limits:
-      cpu: 1000m
-      memory: 1Gi
+    limits: {}
+      # cpu: 1000m
+      # memory: 1Gi
     requests:
       cpu: 100m
       memory: 64Mi
@@ -81,9 +81,9 @@ imageautomationcontroller:
   image: ghcr.io/fluxcd/image-automation-controller
   tag: v0.20.0
   resources:
-    limits:
-      cpu: 1000m
-      memory: 1Gi
+    limits: {}
+      # cpu: 1000m
+      # memory: 1Gi
     requests:
       cpu: 100m
       memory: 64Mi
@@ -105,9 +105,9 @@ imagereflectorcontroller:
   image: ghcr.io/fluxcd/image-reflector-controller
   tag: v0.16.0
   resources:
-    limits:
-      cpu: 1000m
-      memory: 1Gi
+    limits: {}
+      # cpu: 1000m
+      # memory: 1Gi
     requests:
       cpu: 100m
       memory: 64Mi
@@ -129,9 +129,9 @@ kustomizecontroller:
   image: ghcr.io/fluxcd/kustomize-controller
   tag: v0.21.0
   resources:
-    limits:
-      cpu: 1000m
-      memory: 1Gi
+    limits: {}
+      # cpu: 1000m
+      # memory: 1Gi
     requests:
       cpu: 100m
       memory: 64Mi
@@ -173,9 +173,9 @@ notificationcontroller:
   image: ghcr.io/fluxcd/notification-controller
   tag: v0.22.0
   resources:
-    limits:
-      cpu: 1000m
-      memory: 1Gi
+    limits: {}
+      # cpu: 1000m
+      # memory: 1Gi
     requests:
       cpu: 100m
       memory: 64Mi
@@ -199,9 +199,9 @@ sourcecontroller:
   image: ghcr.io/fluxcd/source-controller
   tag: v0.21.2
   resources:
-    limits:
-      cpu: 1000m
-      memory: 1Gi
+    limits: {}
+      # cpu: 1000m
+      # memory: 1Gi
     requests:
       cpu: 100m
       memory: 64Mi

@@ -29,8 +29,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | helmcontroller.image | string | `"ghcr.io/fluxcd/helm-controller"` |  |
 | helmcontroller.labels | object | `{}` |  |
 | helmcontroller.nodeSelector | object | `{}` |  |
-| helmcontroller.resources.limits.cpu | string | `"1000m"` |  |
-| helmcontroller.resources.limits.memory | string | `"1Gi"` |  |
+| helmcontroller.resources.limits | object | `{}` |  |
 | helmcontroller.resources.requests.cpu | string | `"100m"` |  |
 | helmcontroller.resources.requests.memory | string | `"64Mi"` |  |
 | helmcontroller.serviceaccount.annotations | object | `{}` |  |
@@ -46,8 +45,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imageautomationcontroller.image | string | `"ghcr.io/fluxcd/image-automation-controller"` |  |
 | imageautomationcontroller.labels | object | `{}` |  |
 | imageautomationcontroller.nodeSelector | object | `{}` |  |
-| imageautomationcontroller.resources.limits.cpu | string | `"1000m"` |  |
-| imageautomationcontroller.resources.limits.memory | string | `"1Gi"` |  |
+| imageautomationcontroller.resources.limits | object | `{}` |  |
 | imageautomationcontroller.resources.requests.cpu | string | `"100m"` |  |
 | imageautomationcontroller.resources.requests.memory | string | `"64Mi"` |  |
 | imageautomationcontroller.serviceaccount.annotations | object | `{}` |  |
@@ -62,8 +60,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imagereflectorcontroller.image | string | `"ghcr.io/fluxcd/image-reflector-controller"` |  |
 | imagereflectorcontroller.labels | object | `{}` |  |
 | imagereflectorcontroller.nodeSelector | object | `{}` |  |
-| imagereflectorcontroller.resources.limits.cpu | string | `"1000m"` |  |
-| imagereflectorcontroller.resources.limits.memory | string | `"1Gi"` |  |
+| imagereflectorcontroller.resources.limits | object | `{}` |  |
 | imagereflectorcontroller.resources.requests.cpu | string | `"100m"` |  |
 | imagereflectorcontroller.resources.requests.memory | string | `"64Mi"` |  |
 | imagereflectorcontroller.serviceaccount.annotations | object | `{}` |  |
@@ -81,8 +78,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | kustomizecontroller.image | string | `"ghcr.io/fluxcd/kustomize-controller"` |  |
 | kustomizecontroller.labels | object | `{}` |  |
 | kustomizecontroller.nodeSelector | object | `{}` |  |
-| kustomizecontroller.resources.limits.cpu | string | `"1000m"` |  |
-| kustomizecontroller.resources.limits.memory | string | `"1Gi"` |  |
+| kustomizecontroller.resources.limits | object | `{}` |  |
 | kustomizecontroller.resources.requests.cpu | string | `"100m"` |  |
 | kustomizecontroller.resources.requests.memory | string | `"64Mi"` |  |
 | kustomizecontroller.secret.create | bool | `false` | Create a secret to use it with extraSecretMounts. Defaults to false. |
@@ -103,8 +99,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | notificationcontroller.image | string | `"ghcr.io/fluxcd/notification-controller"` |  |
 | notificationcontroller.labels | object | `{}` |  |
 | notificationcontroller.nodeSelector | object | `{}` |  |
-| notificationcontroller.resources.limits.cpu | string | `"1000m"` |  |
-| notificationcontroller.resources.limits.memory | string | `"1Gi"` |  |
+| notificationcontroller.resources.limits | object | `{}` |  |
 | notificationcontroller.resources.requests.cpu | string | `"100m"` |  |
 | notificationcontroller.resources.requests.memory | string | `"64Mi"` |  |
 | notificationcontroller.service.labels | object | `{}` |  |
@@ -123,8 +118,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | sourcecontroller.image | string | `"ghcr.io/fluxcd/source-controller"` |  |
 | sourcecontroller.labels | object | `{}` |  |
 | sourcecontroller.nodeSelector | object | `{}` |  |
-| sourcecontroller.resources.limits.cpu | string | `"1000m"` |  |
-| sourcecontroller.resources.limits.memory | string | `"1Gi"` |  |
+| sourcecontroller.resources.limits | object | `{}` |  |
 | sourcecontroller.resources.requests.cpu | string | `"100m"` |  |
 | sourcecontroller.resources.requests.memory | string | `"64Mi"` |  |
 | sourcecontroller.service.labels | object | `{}` |  |
