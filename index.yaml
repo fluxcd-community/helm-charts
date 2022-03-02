@@ -3,6 +3,21 @@ entries:
   flux2:
   - annotations:
       artifacthub.io/changes: |
+        - "[Update]: Remove default resource.limits from flux components"
+    apiVersion: v2
+    appVersion: 0.27.0
+    created: "2022-03-02T16:19:33.954499226Z"
+    description: A Helm chart for flux2
+    digest: fcd1f6e230db98cdf5e3f67b6132ba1c7da0c79e6e8a69f580205f544e5d6bdd
+    name: flux2
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-0.14.0/flux2-0.14.0.tgz
+    version: 0.14.0
+  - annotations:
+      artifacthub.io/changes: |
         - "[Update]: Update App Version to upstream 0.27.0"
     apiVersion: v2
     appVersion: 0.27.0
@@ -657,4 +672,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2022-02-22T15:45:55.452058484Z"
+generated: "2022-03-02T16:19:33.95484292Z"
