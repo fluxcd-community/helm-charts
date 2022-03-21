@@ -76,8 +76,8 @@ spec:
         {{- with .Values.notificationcontroller.resources }}
         resources: {{ toYaml . | nindent 10 }}
         {{- end }}
-        {{- if .Values.helmcontroller.securityContext }}
-        securityContext: {{ toYaml .Values.helmcontroller.securityContext | nindent 10 }}
+        {{- if .Values.notificationcontroller.securityContext }}
+        securityContext: {{ toYaml .Values.notificationcontroller.securityContext | nindent 10 }}
         {{- else }}
         securityContext:
           allowPrivilegeEscalation: false
