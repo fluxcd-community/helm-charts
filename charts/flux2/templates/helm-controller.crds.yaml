@@ -24,15 +24,15 @@ spec:
   scope: Namespaced
   versions:
   - additionalPrinterColumns:
+    - jsonPath: .metadata.creationTimestamp
+      name: Age
+      type: date
     - jsonPath: .status.conditions[?(@.type=="Ready")].status
       name: Ready
       type: string
     - jsonPath: .status.conditions[?(@.type=="Ready")].message
       name: Status
       type: string
-    - jsonPath: .metadata.creationTimestamp
-      name: Age
-      type: date
     name: v2beta1
     schema:
       openAPIV3Schema:
@@ -54,11 +54,11 @@ spec:
             description: HelmReleaseSpec defines the desired state of a Helm release.
             properties:
               chart:
-                description: Chart defines the template of the v1beta1.HelmChart that
+                description: Chart defines the template of the v1beta2.HelmChart that
                   should be created for this HelmRelease.
                 properties:
                   spec:
-                    description: Spec holds the template for the v1beta1.HelmChartSpec
+                    description: Spec holds the template for the v1beta2.HelmChartSpec
                       for this HelmRelease.
                     properties:
                       chart:
@@ -66,7 +66,7 @@ spec:
                           at in the SourceRef.
                         type: string
                       interval:
-                        description: Interval at which to check the v1beta1.Source
+                        description: Interval at which to check the v1beta2.Source
                           for updates. Defaults to 'HelmReleaseSpec.Interval'.
                         type: string
                       reconcileStrategy:
@@ -80,7 +80,7 @@ spec:
                         - Revision
                         type: string
                       sourceRef:
-                        description: The name and namespace of the v1beta1.Source
+                        description: The name and namespace of the v1beta2.Source
                           the chart is available at.
                         properties:
                           apiVersion:
@@ -125,7 +125,7 @@ spec:
                       version:
                         default: '*'
                         description: Version semver expression, ignored for charts
-                          from v1beta1.GitRepository and v1beta1.Bucket sources. Defaults
+                          from v1beta2.GitRepository and v1beta2.Bucket sources. Defaults
                           to latest when omitted.
                         type: string
                     required:
@@ -136,18 +136,19 @@ spec:
                 - spec
                 type: object
               dependsOn:
-                description: DependsOn may contain a dependency.CrossNamespaceDependencyReference
+                description: DependsOn may contain a meta.NamespacedObjectReference
                   slice with references to HelmRelease resources that must be ready
                   before this HelmRelease can be reconciled.
                 items:
-                  description: CrossNamespaceDependencyReference holds the reference
-                    to a dependency.
+                  description: NamespacedObjectReference contains enough information
+                    to locate the referenced Kubernetes resource object in any namespace.
                   properties:
                     name:
-                      description: Name holds the name reference of a dependency.
+                      description: Name of the referent.
                       type: string
                     namespace:
-                      description: Namespace holds the namespace reference of a dependency.
+                      description: Namespace of the referent, when not specified it
+                        acts as LocalObjectReference.
                       type: string
                   required:
                   - name
@@ -259,7 +260,7 @@ spec:
                       for reconciling the HelmRelease.
                     properties:
                       name:
-                        description: Name of the referent
+                        description: Name of the referent.
                         type: string
                     required:
                     - name
@@ -307,6 +308,61 @@ spec:
                                 type: string
                             required:
                             - name
+                            type: object
+                          type: array
+                        patches:
+                          description: Strategic merge and JSON patches, defined as
+                            inline YAML objects, capable of targeting objects based
+                            on kind, label and annotation selectors.
+                          items:
+                            description: Patch contains an inline StrategicMerge or
+                              JSON6902 patch, and the target the patch should be applied
+                              to.
+                            properties:
+                              patch:
+                                description: Patch contains an inline StrategicMerge
+                                  patch or an inline JSON6902 patch with an array
+                                  of operation objects.
+                                type: string
+                              target:
+                                description: Target points to the resources that the
+                                  patch document should be applied to.
+                                properties:
+                                  annotationSelector:
+                                    description: AnnotationSelector is a string that
+                                      follows the label selection expression https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#api
+                                      It matches with the resource annotations.
+                                    type: string
+                                  group:
+                                    description: Group is the API group to select
+                                      resources from. Together with Version and Kind
+                                      it is capable of unambiguously identifying and/or
+                                      selecting resources. https://github.com/kubernetes/community/blob/master/contributors/design-proposals/api-machinery/api-group.md
+                                    type: string
+                                  kind:
+                                    description: Kind of the API Group to select resources
+                                      from. Together with Group and Version it is
+                                      capable of unambiguously identifying and/or
+                                      selecting resources. https://github.com/kubernetes/community/blob/master/contributors/design-proposals/api-machinery/api-group.md
+                                    type: string
+                                  labelSelector:
+                                    description: LabelSelector is a string that follows
+                                      the label selection expression https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#api
+                                      It matches with the resource labels.
+                                    type: string
+                                  name:
+                                    description: Name to match resources with.
+                                    type: string
+                                  namespace:
+                                    description: Namespace to select resources from.
+                                    type: string
+                                  version:
+                                    description: Version of the API Group to select
+                                      resources from. Together with Group and Kind
+                                      it is capable of unambiguously identifying and/or
+                                      selecting resources. https://github.com/kubernetes/community/blob/master/contributors/design-proposals/api-machinery/api-group.md
+                                    type: string
+                                type: object
                             type: object
                           type: array
                         patchesJson6902:
@@ -765,7 +821,8 @@ spec:
                 type: string
               lastHandledReconcileAt:
                 description: LastHandledReconcileAt holds the value of the most recent
-                  reconcile request value, so a change can be detected.
+                  reconcile request value, so a change of the annotation value can
+                  be detected.
                 type: string
               lastReleaseRevision:
                 description: LastReleaseRevision is the revision of the last successful

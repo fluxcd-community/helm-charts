@@ -2,10 +2,10 @@ apiVersion: v2
 name: flux2
 description: A Helm chart for flux2
 type: application
-version: 0.14.1
-appVersion: 0.27.0
+version: 0.15.0
+appVersion: 0.28.3
 sources:
   - https://github.com/fluxcd-community/helm-charts
 annotations:
   artifacthub.io/changes: |
-    - "[Update]: Fixed SecurityContext Template for notificationController"
+    - "[Update]: Update App Version to upstream 0.28.3"
