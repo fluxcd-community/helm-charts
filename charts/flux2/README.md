@@ -1,6 +1,6 @@
 # flux2
 
-![Version: 0.14.1](https://img.shields.io/badge/Version-0.14.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.27.0](https://img.shields.io/badge/AppVersion-0.27.0-informational?style=flat-square)
+![Version: 0.15.0](https://img.shields.io/badge/Version-0.15.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.28.3](https://img.shields.io/badge/AppVersion-0.28.3-informational?style=flat-square)
 
 A Helm chart for flux2
 
@@ -17,7 +17,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | cli.affinity | object | `{}` |  |
 | cli.image | string | `"ghcr.io/fluxcd/flux-cli"` |  |
 | cli.nodeSelector | object | `{}` |  |
-| cli.tag | string | `"v0.27.0"` |  |
+| cli.tag | string | `"v0.28.3"` |  |
 | cli.tolerations | list | `[]` |  |
 | eventsaddr | string | `"http://notification-controller/"` | Maybe you need to use full domain name here, if you deploy flux in environments that use http proxy. In such environments they normally add `.cluster.local` and `.local` suffixes to `no_proxy` variable in order to prevent cluster-local traffic from going through http proxy. Without fully specified domain they need to mention `notifications-controller` explicitly in `no_proxy` variable after debugging http proxy logs eg: http://notification-controller.[NAMESPACE].svc.[CLUSTERDOMAIN] |
 | extraObjects | list | `[]` | Array of extra K8s manifests to deploy |
@@ -34,7 +34,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | helmcontroller.resources.requests.memory | string | `"64Mi"` |  |
 | helmcontroller.serviceaccount.annotations | object | `{}` |  |
 | helmcontroller.serviceaccount.create | bool | `true` |  |
-| helmcontroller.tag | string | `"v0.17.0"` |  |
+| helmcontroller.tag | string | `"v0.18.2"` |  |
 | helmcontroller.tolerations | list | `[]` |  |
 | imagePullSecrets | list | `[]` | contents of pod imagePullSecret in form 'name=[secretName]'; applied to all controllers |
 | imageautomationcontroller.affinity | object | `{}` |  |
@@ -50,7 +50,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imageautomationcontroller.resources.requests.memory | string | `"64Mi"` |  |
 | imageautomationcontroller.serviceaccount.annotations | object | `{}` |  |
 | imageautomationcontroller.serviceaccount.create | bool | `true` |  |
-| imageautomationcontroller.tag | string | `"v0.20.0"` |  |
+| imageautomationcontroller.tag | string | `"v0.21.1"` |  |
 | imageautomationcontroller.tolerations | list | `[]` |  |
 | imagereflectorcontroller.affinity | object | `{}` |  |
 | imagereflectorcontroller.annotations."prometheus.io/port" | string | `"8080"` |  |
@@ -65,7 +65,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imagereflectorcontroller.resources.requests.memory | string | `"64Mi"` |  |
 | imagereflectorcontroller.serviceaccount.annotations | object | `{}` |  |
 | imagereflectorcontroller.serviceaccount.create | bool | `true` |  |
-| imagereflectorcontroller.tag | string | `"v0.16.0"` |  |
+| imagereflectorcontroller.tag | string | `"v0.17.1"` |  |
 | imagereflectorcontroller.tolerations | list | `[]` |  |
 | installCRDs | bool | `true` |  |
 | kustomizecontroller.affinity | object | `{}` |  |
@@ -86,7 +86,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | kustomizecontroller.secret.name | string | `""` |  |
 | kustomizecontroller.serviceaccount.annotations | object | `{}` |  |
 | kustomizecontroller.serviceaccount.create | bool | `true` |  |
-| kustomizecontroller.tag | string | `"v0.21.0"` |  |
+| kustomizecontroller.tag | string | `"v0.22.2"` |  |
 | kustomizecontroller.tolerations | list | `[]` |  |
 | loglevel | string | `"info"` |  |
 | multitenancy.defaultServiceAccount | string | `"default"` | All Kustomizations and HelmReleases which don’t have spec.serviceAccountName specified, will use the default account from the tenant’s namespace. Tenants have to specify a service account in their Flux resources to be able to deploy workloads in their namespaces as the default account has no permissions. |
@@ -105,7 +105,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | notificationcontroller.service.labels | object | `{}` |  |
 | notificationcontroller.serviceaccount.annotations | object | `{}` |  |
 | notificationcontroller.serviceaccount.create | bool | `true` |  |
-| notificationcontroller.tag | string | `"v0.22.0"` |  |
+| notificationcontroller.tag | string | `"v0.23.1"` |  |
 | notificationcontroller.tolerations | list | `[]` |  |
 | policies.create | bool | `true` |  |
 | rbac.create | bool | `true` |  |
@@ -124,6 +124,6 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | sourcecontroller.service.labels | object | `{}` |  |
 | sourcecontroller.serviceaccount.annotations | object | `{}` |  |
 | sourcecontroller.serviceaccount.create | bool | `true` |  |
-| sourcecontroller.tag | string | `"v0.21.2"` |  |
+| sourcecontroller.tag | string | `"v0.22.3"` |  |
 | sourcecontroller.tolerations | list | `[]` |  |
 | watchallnamespaces | bool | `true` |  |

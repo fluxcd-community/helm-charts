@@ -66,7 +66,7 @@ spec:
                   image being scanned
                 properties:
                   name:
-                    description: Name of the referent
+                    description: Name of the referent.
                     type: string
                 required:
                 - name
@@ -253,7 +253,7 @@ spec:
                   image being scanned
                 properties:
                   name:
-                    description: Name of the referent
+                    description: Name of the referent.
                     type: string
                 required:
                 - name
@@ -440,11 +440,11 @@ spec:
                   image being scanned
                 properties:
                   name:
-                    description: Name of the referent
+                    description: Name of the referent.
                     type: string
                   namespace:
                     description: Namespace of the referent, when not specified it
-                      acts as LocalObjectReference
+                      acts as LocalObjectReference.
                     type: string
                 required:
                 - name
@@ -657,7 +657,7 @@ spec:
                   server certificate."
                 properties:
                   name:
-                    description: Name of the referent
+                    description: Name of the referent.
                     type: string
                 required:
                 - name
@@ -675,7 +675,7 @@ spec:
                   created with `kubectl create secret docker-registry`, or the equivalent.
                 properties:
                   name:
-                    description: Name of the referent
+                    description: Name of the referent.
                     type: string
                 required:
                 - name
@@ -769,7 +769,8 @@ spec:
                 type: array
               lastHandledReconcileAt:
                 description: LastHandledReconcileAt holds the value of the most recent
-                  reconcile request value, so a change can be detected.
+                  reconcile request value, so a change of the annotation value can
+                  be detected.
                 type: string
               lastScanResult:
                 description: LastScanResult contains the number of fetched tags.
@@ -832,7 +833,7 @@ spec:
                   server certificate."
                 properties:
                   name:
-                    description: Name of the referent
+                    description: Name of the referent.
                     type: string
                 required:
                 - name
@@ -850,7 +851,7 @@ spec:
                   created with `kubectl create secret docker-registry`, or the equivalent.
                 properties:
                   name:
-                    description: Name of the referent
+                    description: Name of the referent.
                     type: string
                 required:
                 - name
@@ -944,7 +945,8 @@ spec:
                 type: array
               lastHandledReconcileAt:
                 description: LastHandledReconcileAt holds the value of the most recent
-                  reconcile request value, so a change can be detected.
+                  reconcile request value, so a change of the annotation value can
+                  be detected.
                 type: string
               lastScanResult:
                 description: LastScanResult contains the number of fetched tags.
@@ -1035,7 +1037,7 @@ spec:
                   server certificate."
                 properties:
                   name:
-                    description: Name of the referent
+                    description: Name of the referent.
                     type: string
                 required:
                 - name
@@ -1053,7 +1055,7 @@ spec:
                   created with `kubectl create secret docker-registry`, or the equivalent.
                 properties:
                   name:
-                    description: Name of the referent
+                    description: Name of the referent.
                     type: string
                 required:
                 - name
@@ -1149,7 +1151,8 @@ spec:
                 type: array
               lastHandledReconcileAt:
                 description: LastHandledReconcileAt holds the value of the most recent
-                  reconcile request value, so a change can be detected.
+                  reconcile request value, so a change of the annotation value can
+                  be detected.
                 type: string
               lastScanResult:
                 description: LastScanResult contains the number of fetched tags.

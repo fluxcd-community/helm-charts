@@ -22,15 +22,15 @@ spec:
   scope: Namespaced
   versions:
   - additionalPrinterColumns:
+    - jsonPath: .metadata.creationTimestamp
+      name: Age
+      type: date
     - jsonPath: .status.conditions[?(@.type=="Ready")].status
       name: Ready
       type: string
     - jsonPath: .status.conditions[?(@.type=="Ready")].message
       name: Status
       type: string
-    - jsonPath: .metadata.creationTimestamp
-      name: Age
-      type: date
     name: v1beta1
     schema:
       openAPIV3Schema:
@@ -115,7 +115,7 @@ spec:
                 description: Send events using this provider.
                 properties:
                   name:
-                    description: Name of the referent
+                    description: Name of the referent.
                     type: string
                 required:
                 - name
@@ -246,15 +246,15 @@ spec:
   scope: Namespaced
   versions:
   - additionalPrinterColumns:
+    - jsonPath: .metadata.creationTimestamp
+      name: Age
+      type: date
     - jsonPath: .status.conditions[?(@.type=="Ready")].status
       name: Ready
       type: string
     - jsonPath: .status.conditions[?(@.type=="Ready")].message
       name: Status
       type: string
-    - jsonPath: .metadata.creationTimestamp
-      name: Age
-      type: date
     name: v1beta1
     schema:
       openAPIV3Schema:
@@ -284,7 +284,7 @@ spec:
                   a PEM-encoded CA certificate (`caFile`)
                 properties:
                   name:
-                    description: Name of the referent
+                    description: Name of the referent.
                     type: string
                 required:
                 - name
@@ -301,7 +301,7 @@ spec:
                   using "address" as data key
                 properties:
                   name:
-                    description: Name of the referent
+                    description: Name of the referent.
                     type: string
                 required:
                 - name
@@ -454,15 +454,15 @@ spec:
   scope: Namespaced
   versions:
   - additionalPrinterColumns:
+    - jsonPath: .metadata.creationTimestamp
+      name: Age
+      type: date
     - jsonPath: .status.conditions[?(@.type=="Ready")].status
       name: Ready
       type: string
     - jsonPath: .status.conditions[?(@.type=="Ready")].message
       name: Status
       type: string
-    - jsonPath: .metadata.creationTimestamp
-      name: Age
-      type: date
     name: v1beta1
     schema:
       openAPIV3Schema:
@@ -539,7 +539,7 @@ spec:
                   the payload authenticity
                 properties:
                   name:
-                    description: Name of the referent
+                    description: Name of the referent.
                     type: string
                 required:
                 - name
