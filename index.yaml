@@ -3,6 +3,21 @@ entries:
   flux2:
   - annotations:
       artifacthub.io/changes: |
+        - "[Update]: Add podMonitor creation for the Prometheus Operator"
+    apiVersion: v2
+    appVersion: 0.28.3
+    created: "2022-04-14T06:52:08.321376165Z"
+    description: A Helm chart for flux2
+    digest: 3eed1a0a219b9771df1c4422f616938eab4e0336440869ea2e2d559888f15a39
+    name: flux2
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-0.16.0/flux2-0.16.0.tgz
+    version: 0.16.0
+  - annotations:
+      artifacthub.io/changes: |
         - "[Update]: Update App Version to upstream 0.28.3"
     apiVersion: v2
     appVersion: 0.28.3
@@ -717,4 +732,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2022-03-28T12:45:23.927186022Z"
+generated: "2022-04-14T06:52:08.321821262Z"
