@@ -258,3 +258,8 @@ extraObjects: []
   #   data:
   #     accesskey: <BASE64>
   #     secretkey: <BASE64>
+
+# Enables podMonitor creation for the Prometheus Operator
+prometheus:
+  podMonitor:
+    create: false
