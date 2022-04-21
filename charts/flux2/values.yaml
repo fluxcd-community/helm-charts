@@ -127,7 +127,7 @@ imagereflectorcontroller:
 kustomizecontroller:
   create: true
   image: ghcr.io/fluxcd/kustomize-controller
-  tag: v0.24.0
+  tag: v0.24.2
   resources:
     limits: {}
       # cpu: 1000m
@@ -171,7 +171,7 @@ kustomizecontroller:
 notificationcontroller:
   create: true
   image: ghcr.io/fluxcd/notification-controller
-  tag: v0.23.3
+  tag: v0.23.4
   resources:
     limits: {}
       # cpu: 1000m
