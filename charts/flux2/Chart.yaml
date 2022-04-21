@@ -2,10 +2,10 @@ apiVersion: v2
 name: flux2
 description: A Helm chart for flux2
 type: application
-version: 0.16.0
-appVersion: 0.28.3
+version: 0.17.0
+appVersion: 0.29.1
 sources:
   - https://github.com/fluxcd-community/helm-charts
 annotations:
   artifacthub.io/changes: |
-    - "[Update]: Add podMonitor creation for the Prometheus Operator"
+    - "[Update]: Update App Version to upstream 0.29.1"
