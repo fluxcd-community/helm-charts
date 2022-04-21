@@ -3,6 +3,21 @@ entries:
   flux2:
   - annotations:
       artifacthub.io/changes: |
+        - "[Update]: Update App Version to upstream 0.29.2"
+    apiVersion: v2
+    appVersion: 0.29.2
+    created: "2022-04-21T11:54:20.125782023Z"
+    description: A Helm chart for flux2
+    digest: c9588eb29cb7534a4d3892e831658799bd426ae4bd00c6561551f967f3625fe0
+    name: flux2
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-0.17.1/flux2-0.17.1.tgz
+    version: 0.17.1
+  - annotations:
+      artifacthub.io/changes: |
         - "[Update]: Update App Version to upstream 0.29.1"
     apiVersion: v2
     appVersion: 0.29.1
@@ -537,6 +552,21 @@ entries:
   flux2-notification:
   - annotations:
       artifacthub.io/changes: |
+        - "[Update]: Update App Version to upstream 0.29.2"
+    apiVersion: v2
+    appVersion: 0.29.2
+    created: "2022-04-21T11:54:20.251598628Z"
+    description: A Helm chart for flux2 alerts and the needed providers and secrets
+    digest: fe71335c8729ae3915b3afed1d3d0b8372a0c1593483318b8f6a6f745e878659
+    name: flux2-notification
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-notification-0.5.1/flux2-notification-0.5.1.tgz
+    version: 0.5.1
+  - annotations:
+      artifacthub.io/changes: |
         - "[Update]: Update App Version to upstream 0.29.1"
     apiVersion: v2
     appVersion: 0.29.1
@@ -762,4 +792,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2022-04-21T08:15:18.198884478Z"
+generated: "2022-04-21T11:54:20.25216936Z"
