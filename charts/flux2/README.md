@@ -86,7 +86,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | kustomizecontroller.secret.name | string | `""` |  |
 | kustomizecontroller.serviceaccount.annotations | object | `{}` |  |
 | kustomizecontroller.serviceaccount.create | bool | `true` |  |
-| kustomizecontroller.tag | string | `"v0.24.2"` |  |
+| kustomizecontroller.tag | string | `"v0.24.3"` |  |
 | kustomizecontroller.tolerations | list | `[]` |  |
 | loglevel | string | `"info"` |  |
 | multitenancy.defaultServiceAccount | string | `"default"` | All Kustomizations and HelmReleases which don’t have spec.serviceAccountName specified, will use the default account from the tenant’s namespace. Tenants have to specify a service account in their Flux resources to be able to deploy workloads in their namespaces as the default account has no permissions. |
@@ -129,6 +129,6 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | sourcecontroller.service.labels | object | `{}` |  |
 | sourcecontroller.serviceaccount.annotations | object | `{}` |  |
 | sourcecontroller.serviceaccount.create | bool | `true` |  |
-| sourcecontroller.tag | string | `"v0.24.0"` |  |
+| sourcecontroller.tag | string | `"v0.24.1"` |  |
 | sourcecontroller.tolerations | list | `[]` |  |
 | watchallnamespaces | bool | `true` |  |
