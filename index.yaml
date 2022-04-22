@@ -3,6 +3,21 @@ entries:
   flux2:
   - annotations:
       artifacthub.io/changes: |
+        - "[Added]: Allow custom labels and annotations for all services"
+    apiVersion: v2
+    appVersion: 0.29.3
+    created: "2022-04-22T12:03:31.791338478Z"
+    description: A Helm chart for flux2
+    digest: 79d96032a4a92766373712bc082ef49cfcc9c914cc98ee1ffdf102eaf6da49aa
+    name: flux2
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-0.18.0/flux2-0.18.0.tgz
+    version: 0.18.0
+  - annotations:
+      artifacthub.io/changes: |
         - "[Update]: Update App Version to upstream 0.29.3"
     apiVersion: v2
     appVersion: 0.29.3
@@ -822,4 +837,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2022-04-22T11:43:01.571519506Z"
+generated: "2022-04-22T12:03:31.791694879Z"
