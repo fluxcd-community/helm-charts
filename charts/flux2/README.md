@@ -1,6 +1,6 @@
 # flux2
 
-![Version: 0.17.1](https://img.shields.io/badge/Version-0.17.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.29.2](https://img.shields.io/badge/AppVersion-0.29.2-informational?style=flat-square)
+![Version: 0.17.2](https://img.shields.io/badge/Version-0.17.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.29.3](https://img.shields.io/badge/AppVersion-0.29.3-informational?style=flat-square)
 
 A Helm chart for flux2
 
@@ -86,7 +86,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | kustomizecontroller.secret.name | string | `""` |  |
 | kustomizecontroller.serviceaccount.annotations | object | `{}` |  |
 | kustomizecontroller.serviceaccount.create | bool | `true` |  |
-| kustomizecontroller.tag | string | `"v0.24.2"` |  |
+| kustomizecontroller.tag | string | `"v0.24.3"` |  |
 | kustomizecontroller.tolerations | list | `[]` |  |
 | loglevel | string | `"info"` |  |
 | multitenancy.defaultServiceAccount | string | `"default"` | All Kustomizations and HelmReleases which don’t have spec.serviceAccountName specified, will use the default account from the tenant’s namespace. Tenants have to specify a service account in their Flux resources to be able to deploy workloads in their namespaces as the default account has no permissions. |
@@ -125,6 +125,6 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | sourcecontroller.service.labels | object | `{}` |  |
 | sourcecontroller.serviceaccount.annotations | object | `{}` |  |
 | sourcecontroller.serviceaccount.create | bool | `true` |  |
-| sourcecontroller.tag | string | `"v0.24.0"` |  |
+| sourcecontroller.tag | string | `"v0.24.1"` |  |
 | sourcecontroller.tolerations | list | `[]` |  |
 | watchallnamespaces | bool | `true` |  |
