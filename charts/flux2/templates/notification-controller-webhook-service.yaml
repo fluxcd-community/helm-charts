@@ -9,7 +9,11 @@ metadata:
     app.kubernetes.io/part-of: flux
     helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
     control-plane: controller
+    {{- with .Values.notificationcontroller.webhookReceiver.service.labels }}{{ toYaml . | nindent 4 }}{{ end }}
   name: webhook-receiver
+  {{- with .Values.notificationcontroller.webhookReceiver.service.annotations }}
+  annotations: {{ toYaml . | nindent 4 }}
+  {{- end }}
 spec:
   ports:
   - name: http

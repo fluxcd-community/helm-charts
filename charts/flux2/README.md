@@ -1,6 +1,6 @@
 # flux2
 
-![Version: 0.17.2](https://img.shields.io/badge/Version-0.17.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.29.3](https://img.shields.io/badge/AppVersion-0.29.3-informational?style=flat-square)
+![Version: 0.18.0](https://img.shields.io/badge/Version-0.18.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.29.2](https://img.shields.io/badge/AppVersion-0.29.2-informational?style=flat-square)
 
 A Helm chart for flux2
 
@@ -102,11 +102,14 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | notificationcontroller.resources.limits | object | `{}` |  |
 | notificationcontroller.resources.requests.cpu | string | `"100m"` |  |
 | notificationcontroller.resources.requests.memory | string | `"64Mi"` |  |
+| notificationcontroller.service.annotation | object | `{}` |  |
 | notificationcontroller.service.labels | object | `{}` |  |
 | notificationcontroller.serviceaccount.annotations | object | `{}` |  |
 | notificationcontroller.serviceaccount.create | bool | `true` |  |
 | notificationcontroller.tag | string | `"v0.23.4"` |  |
 | notificationcontroller.tolerations | list | `[]` |  |
+| notificationcontroller.webhookReceiver.service.annotation | object | `{}` |  |
+| notificationcontroller.webhookReceiver.service.labels | object | `{}` |  |
 | policies.create | bool | `true` |  |
 | prometheus.podMonitor.create | bool | `false` |  |
 | rbac.create | bool | `true` |  |
@@ -122,6 +125,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | sourcecontroller.resources.limits | object | `{}` |  |
 | sourcecontroller.resources.requests.cpu | string | `"100m"` |  |
 | sourcecontroller.resources.requests.memory | string | `"64Mi"` |  |
+| sourcecontroller.service.annotations | object | `{}` |  |
 | sourcecontroller.service.labels | object | `{}` |  |
 | sourcecontroller.serviceaccount.annotations | object | `{}` |  |
 | sourcecontroller.serviceaccount.create | bool | `true` |  |

@@ -11,6 +11,9 @@ metadata:
     control-plane: controller
     {{- with .Values.sourcecontroller.service.labels }}{{ toYaml . | nindent 4 }}{{ end }}
   name: source-controller
+  {{- with .Values.sourcecontroller.service.annotations }}
+  annotations: {{ toYaml . | nindent 4 }}
+  {{- end }}
 spec:
   ports:
   - name: http
