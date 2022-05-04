@@ -1,9 +1,18 @@
 apiVersion: v2
 name: flux2-sync
-version: 0.3.6
+version: 0.3.7
 
 description: A Helm chart for flux2 GitRepository to sync with
 sources:
   - https://github.com/fluxcd-community/helm-charts
 
 type: application
+annotations:
+  artifacthub.io/changes: |
+    - kind: changed
+      description: update apiVersion of GitRepository resource to v1beta2
+      links:
+        - name: GitHub Issue
+          url: https://github.com/fluxcd-community/helm-charts/issues/89
+        - name: GitHub PR
+          url: https://github.com/fluxcd-community/helm-charts/pull/90
