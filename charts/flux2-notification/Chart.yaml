@@ -1,7 +1,7 @@
 apiVersion: v2
 name: flux2-notification
 type: application
-version: 0.5.3
+version: 0.5.4
 appVersion: 0.30.2
 description: A Helm chart for flux2 alerts and the needed providers and secrets
 sources:
