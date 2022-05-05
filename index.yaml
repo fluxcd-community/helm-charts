@@ -6,6 +6,21 @@ entries:
         - "[Added]: Allow custom labels and annotations for all services"
     apiVersion: v2
     appVersion: 0.29.3
+    created: "2022-05-05T09:25:29.891366551Z"
+    description: A Helm chart for flux2
+    digest: 3ebc6ad918df459572da01a8edb0c9a9a4626532a9634781baf74c0dc7bc5b19
+    name: flux2
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-0.18.1/flux2-0.18.1.tgz
+    version: 0.18.1
+  - annotations:
+      artifacthub.io/changes: |
+        - "[Added]: Allow custom labels and annotations for all services"
+    apiVersion: v2
+    appVersion: 0.29.3
     created: "2022-04-22T12:03:31.791338478Z"
     description: A Helm chart for flux2
     digest: 79d96032a4a92766373712bc082ef49cfcc9c914cc98ee1ffdf102eaf6da49aa
@@ -716,6 +731,26 @@ entries:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-notification-0.1.0/flux2-notification-0.1.0.tgz
     version: 0.1.0
   flux2-sync:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: update apiVersion of GitRepository resource to v1beta2
+          links:
+            - name: GitHub Issue
+              url: https://github.com/fluxcd-community/helm-charts/issues/89
+            - name: GitHub PR
+              url: https://github.com/fluxcd-community/helm-charts/pull/90
+    apiVersion: v2
+    created: "2022-05-05T09:25:30.087036899Z"
+    description: A Helm chart for flux2 GitRepository to sync with
+    digest: abd87a65a3d8d50ab2b1ef5e628688d67a2747e5ec53b2a02a790af0315ff34b
+    name: flux2-sync
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.3.7/flux2-sync-0.3.7.tgz
+    version: 0.3.7
   - apiVersion: v2
     created: "2021-12-20T19:22:50.529802224Z"
     description: A Helm chart for flux2 GitRepository to sync with
@@ -837,4 +872,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2022-04-22T12:03:31.791694879Z"
+generated: "2022-05-05T09:25:30.087554716Z"
