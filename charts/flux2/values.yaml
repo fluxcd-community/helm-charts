@@ -190,11 +190,11 @@ notificationcontroller:
     annotations: {}
   service:
     labels: {}
-    annotation: {}
+    annotations: {}
   webhookReceiver:
     service:
       labels: {}
-      annotation: {}
+      annotations: {}
   nodeSelector: {}
   affinity: {}
   tolerations: []
