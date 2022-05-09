@@ -3,6 +3,21 @@ entries:
   flux2:
   - annotations:
       artifacthub.io/changes: |
+        - "[Changed]: Use number port instead of named port in webhook service"
+    apiVersion: v2
+    appVersion: 0.29.3
+    created: "2022-05-09T18:33:29.704260904Z"
+    description: A Helm chart for flux2
+    digest: ff56fc66e3a1ba694dd510a3acf563631cfde585eb787de3714e7b6e1f47a403
+    name: flux2
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-0.18.3/flux2-0.18.3.tgz
+    version: 0.18.3
+  - annotations:
+      artifacthub.io/changes: |
         - "[Fixed]: Typo in notificationcontroller services annotations"
     apiVersion: v2
     appVersion: 0.29.3
@@ -887,4 +902,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2022-05-09T06:14:14.748360847Z"
+generated: "2022-05-09T18:33:29.704673909Z"
