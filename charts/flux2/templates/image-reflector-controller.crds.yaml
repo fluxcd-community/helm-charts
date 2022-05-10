@@ -1060,6 +1060,11 @@ spec:
                 required:
                 - name
                 type: object
+              serviceAccountName:
+                description: ServiceAccountName is the name of the Kubernetes ServiceAccount
+                  used to authenticate the image pull if the service account has attached
+                  pull secrets.
+                type: string
               suspend:
                 description: This flag tells the controller to suspend subsequent
                   image scans. It does not apply to already started scans. Defaults

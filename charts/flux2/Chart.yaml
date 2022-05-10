@@ -2,10 +2,10 @@ apiVersion: v2
 name: flux2
 description: A Helm chart for flux2
 type: application
-version: 0.18.3
-appVersion: 0.29.3
+version: 0.19.0
+appVersion: 0.30.2
 sources:
   - https://github.com/fluxcd-community/helm-charts
 annotations:
   artifacthub.io/changes: |
-    - "[Changed]: Use number port instead of named port in webhook service"
+    - "[Update]: Update App Version to upstream 0.30.2"

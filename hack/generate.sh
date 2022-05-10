@@ -58,7 +58,7 @@ diff -B ./charts/flux2/values.yaml <(controllerName=`echo $FILE | cut -d '/' -f5
 controllerName=`echo $FILE | cut -d '/' -f5`
 controllerVersion=`echo $FILE | cut -d '/' -f8`
 
-sed -s -i "s/^\([[:space:]]\+image: ghcr\.io\/fluxcd\/${controllerName}:\).*/\1 ${controllerVersion}/" ./charts/flux2/tests/__snapshot__/*.yaml.snap
+sed -s -i "s/^\([[:space:]]\+image: ghcr\.io\/fluxcd\/${controllerName}:\).*/\1${controllerVersion}/" ./charts/flux2/tests/__snapshot__/*.yaml.snap
 done
 
 # Set cli image tag

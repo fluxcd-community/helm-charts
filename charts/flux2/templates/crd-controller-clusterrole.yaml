@@ -10,41 +10,28 @@ metadata:
     app.kubernetes.io/part-of: flux
     helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
 rules:
-- apiGroups:
-  - source.toolkit.fluxcd.io
-  resources:
-  - '*'
-  verbs:
-  - '*'
-- apiGroups:
-  - kustomize.toolkit.fluxcd.io
-  resources:
-  - '*'
-  verbs:
-  - '*'
-- apiGroups:
-  - helm.toolkit.fluxcd.io
-  resources:
-  - '*'
-  verbs:
-  - '*'
-- apiGroups:
-  - notification.toolkit.fluxcd.io
-  resources:
-  - '*'
-  verbs:
-  - '*'
-- apiGroups:
-  - image.toolkit.fluxcd.io
-  resources:
-  - '*'
-  verbs:
-  - '*'
+- apiGroups: ['source.toolkit.fluxcd.io']
+  resources: ['*']
+  verbs: ['*']
+- apiGroups: ['kustomize.toolkit.fluxcd.io']
+  resources: ['*']
+  verbs: ['*']
+- apiGroups: ['helm.toolkit.fluxcd.io']
+  resources: ['*']
+  verbs: ['*']
+- apiGroups: ['notification.toolkit.fluxcd.io']
+  resources: ['*']
+  verbs: ['*']
+- apiGroups: ['image.toolkit.fluxcd.io']
+  resources: ['*']
+  verbs: ['*']
 - apiGroups:
   - ""
   resources:
   - namespaces
   - secrets
+  - configmaps
+  - serviceaccounts
   verbs:
   - get
   - list
@@ -56,21 +43,29 @@ rules:
   verbs:
   - create
   - patch
+# required by leader election
 - apiGroups:
-  - ""
+    - ""
   resources:
-  - configmaps
-  - configmaps/status
+    - configmaps
   verbs:
-  - get
-  - list
-  - watch
-  - create
-  - update
-  - patch
-  - delete
+    - get
+    - list
+    - watch
+    - create
+    - update
+    - patch
+    - delete
 - apiGroups:
-  - coordination.k8s.io
+    - ""
+  resources:
+    - configmaps/status
+  verbs:
+    - get
+    - update
+    - patch
+- apiGroups:
+  - "coordination.k8s.io"
   resources:
   - leases
   verbs:

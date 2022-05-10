@@ -25,7 +25,7 @@ eventsaddr: http://notification-controller/
 
 cli:
   image: ghcr.io/fluxcd/flux-cli
-  tag: v0.29.1
+  tag: v0.30.2
   nodeSelector: {}
   affinity: {}
   tolerations: []
@@ -35,11 +35,11 @@ cli:
 helmcontroller:
   create: true
   image: ghcr.io/fluxcd/helm-controller
-  tag: v0.20.1
+  tag: v0.21.0
   resources:
     limits: {}
-      # cpu: 1000m
-      # memory: 1Gi
+    # cpu: 1000m
+    # memory: 1Gi
     requests:
       cpu: 100m
       memory: 64Mi
@@ -79,11 +79,11 @@ helmcontroller:
 imageautomationcontroller:
   create: true
   image: ghcr.io/fluxcd/image-automation-controller
-  tag: v0.22.0
+  tag: v0.22.1
   resources:
     limits: {}
-      # cpu: 1000m
-      # memory: 1Gi
+    # cpu: 1000m
+    # memory: 1Gi
     requests:
       cpu: 100m
       memory: 64Mi
@@ -103,11 +103,11 @@ imageautomationcontroller:
 imagereflectorcontroller:
   create: true
   image: ghcr.io/fluxcd/image-reflector-controller
-  tag: v0.17.2
+  tag: v0.18.0
   resources:
     limits: {}
-      # cpu: 1000m
-      # memory: 1Gi
+    # cpu: 1000m
+    # memory: 1Gi
     requests:
       cpu: 100m
       memory: 64Mi
@@ -127,11 +127,11 @@ imagereflectorcontroller:
 kustomizecontroller:
   create: true
   image: ghcr.io/fluxcd/kustomize-controller
-  tag: v0.24.3
+  tag: v0.25.0
   resources:
     limits: {}
-      # cpu: 1000m
-      # memory: 1Gi
+    # cpu: 1000m
+    # memory: 1Gi
     requests:
       cpu: 100m
       memory: 64Mi
@@ -158,11 +158,11 @@ kustomizecontroller:
   # -- Defines additional mounts with secrets.
   # Secrets must be manually created in the namespace or with kustomizecontroller.secret
   extraSecretMounts: []
-    # - name: secret-files
-    #   mountPath: /etc/secrets
-    #   subPath: ""
-    #   secretName: secret-files
-    #   readOnly: true
+  # - name: secret-files
+  #   mountPath: /etc/secrets
+  #   subPath: ""
+  #   secretName: secret-files
+  #   readOnly: true
 
   nodeSelector: {}
   affinity: {}
@@ -171,11 +171,11 @@ kustomizecontroller:
 notificationcontroller:
   create: true
   image: ghcr.io/fluxcd/notification-controller
-  tag: v0.23.4
+  tag: v0.23.5
   resources:
     limits: {}
-      # cpu: 1000m
-      # memory: 1Gi
+    # cpu: 1000m
+    # memory: 1Gi
     requests:
       cpu: 100m
       memory: 64Mi
@@ -202,11 +202,11 @@ notificationcontroller:
 sourcecontroller:
   create: true
   image: ghcr.io/fluxcd/source-controller
-  tag: v0.24.1
+  tag: v0.24.4
   resources:
     limits: {}
-      # cpu: 1000m
-      # memory: 1Gi
+    # cpu: 1000m
+    # memory: 1Gi
     requests:
       cpu: 100m
       memory: 64Mi
@@ -242,28 +242,28 @@ imagePullSecrets: []
 # -- Array of extra K8s manifests to deploy
 extraObjects: []
 # Example usage from https://fluxcd.io/docs/components/source/buckets/#static-authentication
-  # - apiVersion: source.toolkit.fluxcd.io/v1beta1
-  #   kind: Bucket
-  #   metadata:
-  #     name: podinfo
-  #     namespace: default
-  #   spec:
-  #     interval: 1m
-  #     provider: generic
-  #     bucketName: podinfo
-  #     endpoint: minio.minio.svc.cluster.local:9000
-  #     insecure: true
-  #     secretRef:
-  #       name: minio-credentials
-  # - apiVersion: v1
-  #   kind: Secret
-  #   metadata:
-  #     name: minio-credentials
-  #     namespace: default
-  #   type: Opaque
-  #   data:
-  #     accesskey: <BASE64>
-  #     secretkey: <BASE64>
+# - apiVersion: source.toolkit.fluxcd.io/v1beta1
+#   kind: Bucket
+#   metadata:
+#     name: podinfo
+#     namespace: default
+#   spec:
+#     interval: 1m
+#     provider: generic
+#     bucketName: podinfo
+#     endpoint: minio.minio.svc.cluster.local:9000
+#     insecure: true
+#     secretRef:
+#       name: minio-credentials
+# - apiVersion: v1
+#   kind: Secret
+#   metadata:
+#     name: minio-credentials
+#     namespace: default
+#   type: Opaque
+#   data:
+#     accesskey: <BASE64>
+#     secretkey: <BASE64>
 
 # Enables podMonitor creation for the Prometheus Operator
 prometheus:
