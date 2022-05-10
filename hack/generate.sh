@@ -47,3 +47,19 @@ if ! git diff --quiet HEAD main -- ./charts/flux2/templates/ ; then
 fi
 
 done
+
+#update values.yaml and snapshots
+for FILE in `cat .work/flux2/manifests/crds/kustomization.yaml | grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*"`
+do
+
+diff -B ./charts/flux2/values.yaml <(controllerName=`echo $FILE | cut -d '/' -f5 | tr -d '-'`  controllerVersion=`echo $FILE | cut -d '/' -f8`  yq eval '.[env(controllerName)].tag = env(controllerVersion)' ./charts/flux2/values.yaml) | patch ./charts/flux2/values.yaml
+
+# update unittest snapshots
+controllerName=`echo $FILE | cut -d '/' -f5`
+controllerVersion=`echo $FILE | cut -d '/' -f8`
+
+sed -s -i "s/^\([[:space:]]\+image: ghcr\.io\/fluxcd\/${controllerName}:\).*/\1 ${controllerVersion}/" ./charts/flux2/tests/__snapshot__/*.yaml.snap
+done
+
+# Set cli image tag
+diff -B ./charts/flux2/values.yaml <(fluxVersion=`grep 'FLUX2_VERSION ?= ' Makefile | cut -d ' ' -f3`  yq eval '.cli.tag = env(fluxVersion)' ./charts/flux2/values.yaml) | patch ./charts/flux2/values.yaml
