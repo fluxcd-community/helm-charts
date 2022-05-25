@@ -40,6 +40,8 @@ jobs:
           --create-namespace \
           --set gitRepository.spec.url=https://github.com/stefanprodan/podinfo.git \
           --set gitRepository.spec.ref.branch=master \
+          --set helmRepository.spec.url=https://helm.github.io/examples
+          --set helmRepository.spec.secretRef.name=helmSecret
           --set kustomization.spec.path=kustomize \
           --set kustomization.spec.targetNamespace=podinfo \
           --set kustomization.spec.wait=true \

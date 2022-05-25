@@ -10,7 +10,7 @@ secret:
 
 gitRepository:
   spec:
-    # -- The repository URL, can be an HTTP/S or SSH address.
+    # -- The Git repository URL, can be an HTTP/S or SSH address.
     url: ""
 
     # -- (Optional) The secret name containing the Git credentials.
@@ -47,6 +47,28 @@ gitRepository:
     # -- (Optional) Extra git repositories to map into the repository
     include: []
 
+helmRepository:
+  spec:
+    # -- The HTTP/S address of the Helm repository.
+    url: ""
+
+    # -- The secret name containing the Helm credentials.
+    # For basic access authentication the secret must contain username and password fields.
+    # For TLS authentication the secret must contain certFile, keyFile and/or caFile fields.
+    secretRef: {}
+
+    # -- The interval at which the Helm repository index is consulted at.
+    interval: 5m
+
+    # -- (Optional) Whether credentials from the Secret reference is allowed to be passed on to a host that does not match the host as defined in URL.
+    # Enable this with caution, as credentials can get stolen in a man-in-the-middle attack.
+    passCredentials: false
+
+    # -- (Optional) The timeout for fetch operations, defaults to 60s.
+    timeout: ""
+
+    # -- (Optional) This flag tells the controller to suspend the reconciliation of this source.
+    suspend: ""
 
 kustomization:
   spec:

@@ -1,0 +1,25 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  labels:
+    app.kubernetes.io/instance: {{ .Release.Namespace | quote }}
+    app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
+    app.kubernetes.io/part-of: flux
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  url: {{ .Values.helmRepository.spec.url }}
+  secretRef: {{ toYaml .Values.helmRepository.spec.secretRef | nindent 4 }}
+  {{- if .Values.helmRepository.spec.interval }}
+  interval: {{ .Values.helmRepository.spec.interval }}
+  {{- end }}
+  {{- if .Values.helmRepository.spec.timeout }}
+  timeout: {{ .Values.helmRepository.spec.timeout }}
+  {{- end }}
+  {{- if .Values.helmRepository.spec.passCredentials }}
+  passCredentials: {{ .Values.helmRepository.spec.passCredentials }}
+  {{- end }}
+  {{- if .Values.helmRepository.spec.suspend }}
+  suspend: {{ .Values.helmRepository.spec.suspend }}
+  {{- end }}
