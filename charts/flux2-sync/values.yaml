@@ -8,6 +8,20 @@ secret:
   # Values will be encoded to base64 by the helm chart.
   data: {}
 
+  # -- Algorithm of keys to generate.
+  # If `data` object above is empty, and `create` is set to true. The Chart will generate the
+  # Git SSH key secret automatically based on the key algorithms that are set below.
+  generate:
+    sshKeyAlgorithm: ecdsa
+    sshEcdsaCurve: p521
+
+cli:
+  image: ghcr.io/fluxcd/flux-cli
+  tag: v0.30.2
+  nodeSelector: {}
+  affinity: {}
+  tolerations: []
+
 gitRepository:
   spec:
     # -- The repository URL, can be an HTTP/S or SSH address.
