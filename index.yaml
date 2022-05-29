@@ -830,6 +830,33 @@ entries:
               url: https://github.com/fluxcd-community/helm-charts/issues/89
             - name: GitHub PR
               url: https://github.com/fluxcd-community/helm-charts/pull/90
+        - kind: added
+          description: adds Git SSH Key generation
+          links:
+            - name: GitHub Issue
+              url: https://github.com/fluxcd-community/helm-charts/issues/101
+            - name: GitHub PR
+              url: https://github.com/fluxcd-community/helm-charts/pull/102
+    apiVersion: v2
+    created: "2022-05-29T08:44:10.46258202Z"
+    description: A Helm chart for flux2 GitRepository to sync with
+    digest: 70099c4ec6b41396293604d12347ab8f5d9ec32c38b4b90797721d97079b09ad
+    name: flux2-sync
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.4.0/flux2-sync-0.4.0.tgz
+    version: 0.4.0
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: update apiVersion of GitRepository resource to v1beta2
+          links:
+            - name: GitHub Issue
+              url: https://github.com/fluxcd-community/helm-charts/issues/89
+            - name: GitHub PR
+              url: https://github.com/fluxcd-community/helm-charts/pull/90
     apiVersion: v2
     created: "2022-05-12T09:47:19.292070277Z"
     description: A Helm chart for flux2 GitRepository to sync with
@@ -982,4 +1009,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2022-05-12T09:47:19.292640981Z"
+generated: "2022-05-29T08:44:10.463048716Z"
