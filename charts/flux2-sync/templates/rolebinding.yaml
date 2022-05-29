@@ -1,0 +1,25 @@
+{{- if and (.Values.secret.create) (not .Values.secret.data) }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: write-secrets
+  namespace: {{ .Release.Namespace | quote }}
+  labels:
+      app.kubernetes.io/instance: {{ .Release.Namespace | quote }}
+      app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
+      app.kubernetes.io/version: {{ .Chart.AppVersion | quote  }}
+      app.kubernetes.io/part-of: flux
+      helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+  annotations:
+    "helm.sh/hook": pre-install
+    "helm.sh/hook-weight": "-6"
+subjects:
+- kind: ServiceAccount
+  name: "{{ .Release.Name }}-generate-git-secret"
+  namespace: {{ .Release.Namespace | quote }}
+  apiGroup: ""
+roleRef:
+  kind: Role
+  name: secret-generator
+  apiGroup: ""
+{{- end }}

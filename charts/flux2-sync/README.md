@@ -1,6 +1,6 @@
 # flux2-sync
 
-![Version: 0.3.8](https://img.shields.io/badge/Version-0.3.8-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 0.4.0](https://img.shields.io/badge/Version-0.4.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 A Helm chart for flux2 GitRepository to sync with
 
@@ -45,3 +45,5 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | kustomizationlist | object | `{}` | (Optional) If you want multiple subdirectories which depend on each other in the same repo. Their name is derived from their path. |
 | secret.create | bool | `false` | Create a secret for the git repository. Defaults to false. |
 | secret.data | object | `{}` | Data of the secret. For HTTPS repositories the secret must contain username and password fields. For SSH repositories the secret must contain identity, identity.pub and known_hosts fields. Values will be encoded to base64 by the helm chart. |
+| secret.generate.sshKeyAlgorithm | string | `ecdsa` | If `secret.create` is set to `true` and `secret.data` is empty, the chart will generate Git SSH keys using the `sshKeyAlgorithm` specified. |
+| secret.generate.sshEcdsaCurve | string | `p521` | If `secret.create` is set to `true` and `secret.data` is empty, the chart will generate Git SSH keys using the `sshEcdsaCurve` specified. |

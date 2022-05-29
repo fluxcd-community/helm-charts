@@ -1,6 +1,6 @@
 apiVersion: v2
 name: flux2-sync
-version: 0.3.8
+version: 0.4.0
 
 description: A Helm chart for flux2 GitRepository to sync with
 sources:
@@ -16,3 +16,10 @@ annotations:
           url: https://github.com/fluxcd-community/helm-charts/issues/89
         - name: GitHub PR
           url: https://github.com/fluxcd-community/helm-charts/pull/90
+    - kind: added
+      description: adds Git SSH Key generation
+      links:
+        - name: GitHub Issue
+          url: https://github.com/fluxcd-community/helm-charts/issues/101
+        - name: GitHub PR
+          url: https://github.com/fluxcd-community/helm-charts/pull/102
