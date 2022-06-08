@@ -9,4 +9,4 @@ sources:
 type: application
 annotations:
   artifacthub.io/changes: |
-    - "[Update]: Update chart README related to underlying App Version update to upstream 0.31.0"
+    - "[Update]: Update chart README related to underlying App Version update to upstream 0.31.1"
