@@ -1042,6 +1042,12 @@ spec:
                 required:
                 - name
                 type: object
+              exclusionList:
+                description: ExclusionList is a list of regex strings used to exclude
+                  certain tags from being stored in the database.
+                items:
+                  type: string
+                type: array
               image:
                 description: Image is the name of the image repository
                 type: string
