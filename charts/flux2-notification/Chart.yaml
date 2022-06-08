@@ -2,7 +2,7 @@ apiVersion: v2
 name: flux2-notification
 type: application
 version: 0.5.5
-appVersion: 0.31.0
+appVersion: 0.31.1
 description: A Helm chart for flux2 alerts and the needed providers and secrets
 sources:
   - https://github.com/fluxcd-community/helm-charts
