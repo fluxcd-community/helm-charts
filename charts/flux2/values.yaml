@@ -25,7 +25,7 @@ eventsaddr: http://notification-controller/
 
 cli:
   image: ghcr.io/fluxcd/flux-cli
-  tag: v0.31.1
+  tag: v0.31.3
   nodeSelector: {}
   affinity: {}
   tolerations: []
@@ -79,7 +79,7 @@ helmcontroller:
 imageautomationcontroller:
   create: true
   image: ghcr.io/fluxcd/image-automation-controller
-  tag: v0.23.2
+  tag: v0.23.4
   resources:
     limits: {}
     # cpu: 1000m
@@ -103,7 +103,7 @@ imageautomationcontroller:
 imagereflectorcontroller:
   create: true
   image: ghcr.io/fluxcd/image-reflector-controller
-  tag: v0.19.1
+  tag: v0.19.2
   resources:
     limits: {}
     # cpu: 1000m
@@ -127,7 +127,7 @@ imagereflectorcontroller:
 kustomizecontroller:
   create: true
   image: ghcr.io/fluxcd/kustomize-controller
-  tag: v0.26.1
+  tag: v0.26.2
   resources:
     limits: {}
     # cpu: 1000m
@@ -202,7 +202,7 @@ notificationcontroller:
 sourcecontroller:
   create: true
   image: ghcr.io/fluxcd/source-controller
-  tag: v0.25.5
+  tag: v0.25.9
   resources:
     limits: {}
     # cpu: 1000m

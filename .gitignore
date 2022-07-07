@@ -26,6 +26,9 @@
 
 .work
 
+### Visual Studio Code
+.vscode
+
 # helm chart dependencies
 charts/*/charts/
 charts/*/Chart.lock
