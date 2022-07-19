@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/version: {{ .Chart.AppVersion | quote  }}
     app.kubernetes.io/part-of: flux
     helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
-  name: cluster-reconciler
+  name: "{{ .Release.Name }}-cluster-reconciler"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole

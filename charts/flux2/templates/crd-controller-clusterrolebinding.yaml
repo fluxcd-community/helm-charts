@@ -2,7 +2,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: crd-controller
+  name: "{{ .Release.Name }}-crd-controller"
   labels:
     app.kubernetes.io/instance: {{ .Release.Namespace | quote }}
     app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
