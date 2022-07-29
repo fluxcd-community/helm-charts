@@ -2,10 +2,10 @@ apiVersion: v2
 name: flux2
 description: A Helm chart for flux2
 type: application
-version: 1.3.0
+version: 1.4.0
 appVersion: 0.33.0
 sources:
   - https://github.com/fluxcd-community/helm-charts
 annotations:
   artifacthub.io/changes: |
-    - "[Update]: Filter out non-running pods in Prometheus"
+    - "[Feature]: Add support for running flux service accounts without cluster-admin privileges"
