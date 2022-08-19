@@ -2,7 +2,7 @@ apiVersion: v2
 name: flux2
 description: A Helm chart for flux2
 type: application
-version: 1.0.0
+version: 1.1.0
 appVersion: 0.31.3
 sources:
   - https://github.com/fluxcd-community/helm-charts
