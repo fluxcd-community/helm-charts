@@ -2,10 +2,10 @@ apiVersion: v2
 name: flux2
 description: A Helm chart for flux2
 type: application
-version: 1.0.0
-appVersion: 0.31.3
+version: 1.1.0
+appVersion: 0.32.0
 sources:
   - https://github.com/fluxcd-community/helm-charts
 annotations:
   artifacthub.io/changes: |
-    - "[Update]: Update App Version to upstream 0.31.3"
+    - "[Update]: Update App Version to upstream 0.32.0"
