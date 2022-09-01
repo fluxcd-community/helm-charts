@@ -7,8 +7,8 @@ should match snapshot:
         app.kubernetes.io/instance: NAMESPACE
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/part-of: flux
-        app.kubernetes.io/version: 0.32.0
-        helm.sh/chart: flux2-notification-1.1.0
+        app.kubernetes.io/version: 0.33.0
+        helm.sh/chart: flux2-notification-1.2.0
       name: all-kustomizations
       namespace: NAMESPACE
     spec:
