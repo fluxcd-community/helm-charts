@@ -43,6 +43,7 @@ helmcontroller:
     requests:
       cpu: 100m
       memory: 64Mi
+  priorityClassName: ""
   annotations:
     prometheus.io/port: "8080"
     prometheus.io/scrape: "true"
@@ -87,6 +88,7 @@ imageautomationcontroller:
     requests:
       cpu: 100m
       memory: 64Mi
+  priorityClassName: ""
   annotations:
     prometheus.io/port: "8080"
     prometheus.io/scrape: "true"
@@ -111,6 +113,7 @@ imagereflectorcontroller:
     requests:
       cpu: 100m
       memory: 64Mi
+  priorityClassName: ""
   annotations:
     prometheus.io/port: "8080"
     prometheus.io/scrape: "true"
@@ -135,6 +138,7 @@ kustomizecontroller:
     requests:
       cpu: 100m
       memory: 64Mi
+  priorityClassName: ""
   annotations:
     prometheus.io/port: "8080"
     prometheus.io/scrape: "true"
@@ -179,6 +183,7 @@ notificationcontroller:
     requests:
       cpu: 100m
       memory: 64Mi
+  priorityClassName: ""
   annotations:
     prometheus.io/port: "8080"
     prometheus.io/scrape: "true"
@@ -210,6 +215,7 @@ sourcecontroller:
     requests:
       cpu: 100m
       memory: 64Mi
+  priorityClassName: ""
   annotations:
     prometheus.io/port: "8080"
     prometheus.io/scrape: "true"

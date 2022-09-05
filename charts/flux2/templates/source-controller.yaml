@@ -99,6 +99,9 @@ spec:
         {{- if .Values.sourcecontroller.volumeMounts }}
         {{- toYaml .Values.sourcecontroller.volumeMounts | nindent 8 }}
         {{- end}}
+      {{- if .Values.sourcecontroller.priorityClassName }}
+      priorityClassName: {{ .Values.sourcecontroller.priorityClassName | quote }}
+      {{- end }}
       securityContext:
         fsGroup: 1337
       serviceAccountName: source-controller

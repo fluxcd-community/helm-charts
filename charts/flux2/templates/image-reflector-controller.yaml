@@ -91,6 +91,9 @@ spec:
         {{- if .Values.imagereflectorcontroller.volumeMounts }}
         {{- toYaml .Values.imagereflectorcontroller.volumeMounts | nindent 8 }}
         {{- end}}
+      {{- if .Values.imagereflectorcontroller.priorityClassName }}
+      priorityClassName: {{ .Values.imagereflectorcontroller.priorityClassName | quote }}
+      {{- end }}
       securityContext:
         fsGroup: 1337
       serviceAccountName: image-reflector-controller

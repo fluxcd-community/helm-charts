@@ -1,6 +1,6 @@
 # flux2
 
-![Version: 1.2.0](https://img.shields.io/badge/Version-1.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.33.0](https://img.shields.io/badge/AppVersion-0.33.0-informational?style=flat-square)
+![Version: 1.2.1](https://img.shields.io/badge/Version-1.2.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.33.0](https://img.shields.io/badge/AppVersion-0.33.0-informational?style=flat-square)
 
 A Helm chart for flux2
 
@@ -19,7 +19,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | cli.nodeSelector | object | `{}` |  |
 | cli.tag | string | `"v0.33.0"` |  |
 | cli.tolerations | list | `[]` |  |
-| eventsaddr | string | `"http://notification-controller/"` | Maybe you need to use full domain name here, if you deploy flux in environments that use http proxy.  In such environments they normally add `.cluster.local` and `.local` suffixes to `no_proxy` variable in order to prevent cluster-local traffic from going through http proxy. Without fully specified domain they need to mention `notifications-controller` explicitly in `no_proxy` variable after debugging http proxy logs eg: http://notification-controller.[NAMESPACE].svc.[CLUSTERDOMAIN] |
+| eventsaddr | string | `"http://notification-controller/"` | Maybe you need to use full domain name here, if you deploy flux in environments that use http proxy. In such environments they normally add `.cluster.local` and `.local` suffixes to `no_proxy` variable in order to prevent cluster-local traffic from going through http proxy. Without fully specified domain they need to mention `notifications-controller` explicitly in `no_proxy` variable after debugging http proxy logs eg: http://notification-controller.[NAMESPACE].svc.[CLUSTERDOMAIN] |
 | extraObjects | list | `[]` | Array of extra K8s manifests to deploy |
 | helmcontroller.affinity | object | `{}` |  |
 | helmcontroller.annotations."prometheus.io/port" | string | `"8080"` |  |
@@ -29,6 +29,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | helmcontroller.image | string | `"ghcr.io/fluxcd/helm-controller"` |  |
 | helmcontroller.labels | object | `{}` |  |
 | helmcontroller.nodeSelector | object | `{}` |  |
+| helmcontroller.priorityClassName | string | `""` |  |
 | helmcontroller.resources.limits | object | `{}` |  |
 | helmcontroller.resources.requests.cpu | string | `"100m"` |  |
 | helmcontroller.resources.requests.memory | string | `"64Mi"` |  |
@@ -45,6 +46,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imageautomationcontroller.image | string | `"ghcr.io/fluxcd/image-automation-controller"` |  |
 | imageautomationcontroller.labels | object | `{}` |  |
 | imageautomationcontroller.nodeSelector | object | `{}` |  |
+| imageautomationcontroller.priorityClassName | string | `""` |  |
 | imageautomationcontroller.resources.limits | object | `{}` |  |
 | imageautomationcontroller.resources.requests.cpu | string | `"100m"` |  |
 | imageautomationcontroller.resources.requests.memory | string | `"64Mi"` |  |
@@ -60,6 +62,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imagereflectorcontroller.image | string | `"ghcr.io/fluxcd/image-reflector-controller"` |  |
 | imagereflectorcontroller.labels | object | `{}` |  |
 | imagereflectorcontroller.nodeSelector | object | `{}` |  |
+| imagereflectorcontroller.priorityClassName | string | `""` |  |
 | imagereflectorcontroller.resources.limits | object | `{}` |  |
 | imagereflectorcontroller.resources.requests.cpu | string | `"100m"` |  |
 | imagereflectorcontroller.resources.requests.memory | string | `"64Mi"` |  |
@@ -78,6 +81,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | kustomizecontroller.image | string | `"ghcr.io/fluxcd/kustomize-controller"` |  |
 | kustomizecontroller.labels | object | `{}` |  |
 | kustomizecontroller.nodeSelector | object | `{}` |  |
+| kustomizecontroller.priorityClassName | string | `""` |  |
 | kustomizecontroller.resources.limits | object | `{}` |  |
 | kustomizecontroller.resources.requests.cpu | string | `"100m"` |  |
 | kustomizecontroller.resources.requests.memory | string | `"64Mi"` |  |
@@ -99,6 +103,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | notificationcontroller.image | string | `"ghcr.io/fluxcd/notification-controller"` |  |
 | notificationcontroller.labels | object | `{}` |  |
 | notificationcontroller.nodeSelector | object | `{}` |  |
+| notificationcontroller.priorityClassName | string | `""` |  |
 | notificationcontroller.resources.limits | object | `{}` |  |
 | notificationcontroller.resources.requests.cpu | string | `"100m"` |  |
 | notificationcontroller.resources.requests.memory | string | `"64Mi"` |  |
@@ -122,6 +127,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | sourcecontroller.image | string | `"ghcr.io/fluxcd/source-controller"` |  |
 | sourcecontroller.labels | object | `{}` |  |
 | sourcecontroller.nodeSelector | object | `{}` |  |
+| sourcecontroller.priorityClassName | string | `""` |  |
 | sourcecontroller.resources.limits | object | `{}` |  |
 | sourcecontroller.resources.requests.cpu | string | `"100m"` |  |
 | sourcecontroller.resources.requests.memory | string | `"64Mi"` |  |
