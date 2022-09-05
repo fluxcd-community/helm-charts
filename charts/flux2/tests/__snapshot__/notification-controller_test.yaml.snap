@@ -9,7 +9,7 @@ should match snapshot of default values:
         app.kubernetes.io/part-of: flux
         app.kubernetes.io/version: 0.33.0
         control-plane: controller
-        helm.sh/chart: flux2-1.2.1
+        helm.sh/chart: flux2-1.2.2
       name: notification-controller
     spec:
       replicas: 1
