@@ -62,3 +62,15 @@ tests:
           path: spec.template.spec.containers[0].args
           content:
             --default-service-account=test1
+  - it: should set imagePullPolicy to Always
+    set:
+      helmcontroller.imagePullPolicy: Always
+    asserts:
+      - equal:
+          path: spec.template.spec.containers[0].imagePullPolicy
+          value: Always
+  - it: should imagePullPolicy to be default value IfNotPresent
+    asserts:
+      - equal:
+          path: spec.template.spec.containers[0].imagePullPolicy
+          value: IfNotPresent
