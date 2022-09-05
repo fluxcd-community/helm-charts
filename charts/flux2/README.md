@@ -1,6 +1,6 @@
 # flux2
 
-![Version: 1.2.2](https://img.shields.io/badge/Version-1.2.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.33.0](https://img.shields.io/badge/AppVersion-0.33.0-informational?style=flat-square)
+![Version: 1.3.0](https://img.shields.io/badge/Version-1.3.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.33.0](https://img.shields.io/badge/AppVersion-0.33.0-informational?style=flat-square)
 
 A Helm chart for flux2
 
@@ -19,7 +19,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | cli.nodeSelector | object | `{}` |  |
 | cli.tag | string | `"v0.33.0"` |  |
 | cli.tolerations | list | `[]` |  |
-| eventsaddr | string | `"http://notification-controller/"` | Maybe you need to use full domain name here, if you deploy flux in environments that use http proxy. In such environments they normally add `.cluster.local` and `.local` suffixes to `no_proxy` variable in order to prevent cluster-local traffic from going through http proxy. Without fully specified domain they need to mention `notifications-controller` explicitly in `no_proxy` variable after debugging http proxy logs eg: http://notification-controller.[NAMESPACE].svc.[CLUSTERDOMAIN] |
+| eventsaddr | string | `"http://notification-controller/"` | Maybe you need to use full domain name here, if you deploy flux in environments that use http proxy.  In such environments they normally add `.cluster.local` and `.local` suffixes to `no_proxy` variable in order to prevent cluster-local traffic from going through http proxy. Without fully specified domain they need to mention `notifications-controller` explicitly in `no_proxy` variable after debugging http proxy logs eg: http://notification-controller.[NAMESPACE].svc.[CLUSTERDOMAIN] |
 | extraObjects | list | `[]` | Array of extra K8s manifests to deploy |
 | helmcontroller.affinity | object | `{}` |  |
 | helmcontroller.annotations."prometheus.io/port" | string | `"8080"` |  |
@@ -27,6 +27,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | helmcontroller.container.additionalargs | list | `[]` |  |
 | helmcontroller.create | bool | `true` |  |
 | helmcontroller.image | string | `"ghcr.io/fluxcd/helm-controller"` |  |
+| helmcontroller.imagePullPolicy | object | `{}` |  |
 | helmcontroller.labels | object | `{}` |  |
 | helmcontroller.nodeSelector | object | `{}` |  |
 | helmcontroller.priorityClassName | string | `""` |  |
@@ -44,6 +45,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imageautomationcontroller.container.additionalargs | list | `[]` |  |
 | imageautomationcontroller.create | bool | `true` |  |
 | imageautomationcontroller.image | string | `"ghcr.io/fluxcd/image-automation-controller"` |  |
+| imageautomationcontroller.imagePullPolicy | object | `{}` |  |
 | imageautomationcontroller.labels | object | `{}` |  |
 | imageautomationcontroller.nodeSelector | object | `{}` |  |
 | imageautomationcontroller.priorityClassName | string | `""` |  |
@@ -60,6 +62,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imagereflectorcontroller.container.additionalargs | list | `[]` |  |
 | imagereflectorcontroller.create | bool | `true` |  |
 | imagereflectorcontroller.image | string | `"ghcr.io/fluxcd/image-reflector-controller"` |  |
+| imagereflectorcontroller.imagePullPolicy | object | `{}` |  |
 | imagereflectorcontroller.labels | object | `{}` |  |
 | imagereflectorcontroller.nodeSelector | object | `{}` |  |
 | imagereflectorcontroller.priorityClassName | string | `""` |  |
@@ -79,6 +82,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | kustomizecontroller.envFrom | object | `{"map":{"name":""},"secret":{"name":""}}` | Defines envFrom using a configmap and/or secret. |
 | kustomizecontroller.extraSecretMounts | list | `[]` | Defines additional mounts with secrets. Secrets must be manually created in the namespace or with kustomizecontroller.secret |
 | kustomizecontroller.image | string | `"ghcr.io/fluxcd/kustomize-controller"` |  |
+| kustomizecontroller.imagePullPolicy | object | `{}` |  |
 | kustomizecontroller.labels | object | `{}` |  |
 | kustomizecontroller.nodeSelector | object | `{}` |  |
 | kustomizecontroller.priorityClassName | string | `""` |  |
@@ -101,6 +105,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | notificationcontroller.container.additionalargs | list | `[]` |  |
 | notificationcontroller.create | bool | `true` |  |
 | notificationcontroller.image | string | `"ghcr.io/fluxcd/notification-controller"` |  |
+| notificationcontroller.imagePullPolicy | object | `{}` |  |
 | notificationcontroller.labels | object | `{}` |  |
 | notificationcontroller.nodeSelector | object | `{}` |  |
 | notificationcontroller.priorityClassName | string | `""` |  |
@@ -129,6 +134,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | sourcecontroller.create | bool | `true` |  |
 | sourcecontroller.extraEnv | list | `[]` |  |
 | sourcecontroller.image | string | `"ghcr.io/fluxcd/source-controller"` |  |
+| sourcecontroller.imagePullPolicy | object | `{}` |  |
 | sourcecontroller.labels | object | `{}` |  |
 | sourcecontroller.nodeSelector | object | `{}` |  |
 | sourcecontroller.priorityClassName | string | `""` |  |
