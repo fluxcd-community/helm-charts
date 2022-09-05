@@ -105,6 +105,9 @@ spec:
         {{- if .Values.kustomizecontroller.volumeMounts }}
         {{- toYaml .Values.kustomizecontroller.volumeMounts | nindent 8 }}
         {{- end}}
+      {{- if .Values.kustomizecontroller.priorityClassName }}
+      priorityClassName: {{ .Values.kustomizecontroller.priorityClassName | quote }}
+      {{- end }}
       {{- range .Values.kustomizecontroller.extraSecretMounts }}
         - name: {{ .name }}
           mountPath: {{ .mountPath }}
