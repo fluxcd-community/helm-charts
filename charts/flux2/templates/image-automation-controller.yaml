@@ -51,7 +51,11 @@ spec:
             fieldRef:
               fieldPath: metadata.namespace
         image: {{ template "template.image" .Values.imageautomationcontroller }}
+        {{- if .Values.imageautomationcontroller.imagePullPolicy }}
+        imagePullPolicy: {{ .Values.imageautomationcontroller.imagePullPolicy }}
+        {{- else }}
         imagePullPolicy: IfNotPresent
+        {{- end }}
         livenessProbe:
           httpGet:
             path: /healthz

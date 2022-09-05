@@ -50,3 +50,15 @@ tests:
           path: spec.template.spec.containers[0].args
           content:
             --no-cross-namespace-refs=true
+  - it: should set imagePullPolicy to Always
+    set:
+      imagereflectorcontroller.imagePullPolicy: Always
+    asserts:
+      - equal:
+          path: spec.template.spec.containers[0].imagePullPolicy
+          value: Always
+  - it: should imagePullPolicy to be default value IfNotPresent
+    asserts:
+      - equal:
+          path: spec.template.spec.containers[0].imagePullPolicy
+          value: IfNotPresent

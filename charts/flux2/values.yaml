@@ -53,6 +53,7 @@ helmcontroller:
   serviceaccount:
     create: true
     annotations: {}
+  imagePullPolicy: {}
   nodeSelector: {}
   # expects input structure as per specification https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.11/#affinity-v1-core
   # for example:
@@ -98,6 +99,7 @@ imageautomationcontroller:
   serviceaccount:
     create: true
     annotations: {}
+  imagePullPolicy: {}
   nodeSelector: {}
   affinity: {}
   tolerations: []
@@ -123,6 +125,7 @@ imagereflectorcontroller:
   serviceaccount:
     create: true
     annotations: {}
+  imagePullPolicy: {}
   nodeSelector: {}
   affinity: {}
   tolerations: []
@@ -148,6 +151,7 @@ kustomizecontroller:
   serviceaccount:
     create: true
     annotations: {}
+  imagePullPolicy: {}
   secret:
     # -- Create a secret to use it with extraSecretMounts. Defaults to false.
     create: false
@@ -193,6 +197,7 @@ notificationcontroller:
   serviceaccount:
     create: true
     annotations: {}
+  imagePullPolicy: {}
   service:
     labels: {}
     annotations: {}
@@ -225,6 +230,7 @@ sourcecontroller:
   serviceaccount:
     create: true
     annotations: {}
+  imagePullPolicy: {}
   service:
     labels: {}
     annotations: {}

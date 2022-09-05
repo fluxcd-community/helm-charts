@@ -31,3 +31,15 @@ tests:
   - it: should match snapshot of default values
     asserts:
       - matchSnapshot: { }
+  - it: should set imagePullPolicy to Always
+    set:
+      sourcecontroller.imagePullPolicy: Always
+    asserts:
+      - equal:
+          path: spec.template.spec.containers[0].imagePullPolicy
+          value: Always
+  - it: should imagePullPolicy to be default value IfNotPresent
+    asserts:
+      - equal:
+          path: spec.template.spec.containers[0].imagePullPolicy
+          value: IfNotPresent

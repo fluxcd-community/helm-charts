@@ -63,7 +63,11 @@ spec:
           {{- end }}
         {{- end }}
         image: {{ template "template.image" .Values.kustomizecontroller }}
+        {{- if .Values.kustomizecontroller.imagePullPolicy }}
+        imagePullPolicy: {{ .Values.kustomizecontroller.imagePullPolicy }}
+        {{- else }}
         imagePullPolicy: IfNotPresent
+        {{- end }}
         livenessProbe:
           httpGet:
             path: /healthz
