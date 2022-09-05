@@ -95,6 +95,9 @@ spec:
         {{- if .Values.notificationcontroller.volumeMounts }}
         {{- toYaml .Values.notificationcontroller.volumeMounts | nindent 8 }}
         {{- end}}
+      {{- if .Values.notificationcontroller.priorityClassName }}
+      priorityClassName: {{ .Values.notificationcontroller.priorityClassName | quote }}
+      {{- end }}
       serviceAccountName: notification-controller
       {{- if .Values.imagePullSecrets }}
       imagePullSecrets: {{ toYaml .Values.imagePullSecrets | nindent 6 }}

@@ -90,6 +90,9 @@ spec:
         {{- if .Values.helmcontroller.volumeMounts }}
         {{- toYaml .Values.helmcontroller.volumeMounts | nindent 8 }}
         {{- end}}
+      {{- if .Values.helmcontroller.priorityClassName }}
+      priorityClassName: {{ .Values.helmcontroller.priorityClassName | quote }}
+      {{- end }}
       serviceAccountName: helm-controller
       {{- if .Values.imagePullSecrets }}
       imagePullSecrets: {{ toYaml .Values.imagePullSecrets | nindent 6 }}
