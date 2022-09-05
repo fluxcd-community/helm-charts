@@ -117,6 +117,10 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | notificationcontroller.webhookReceiver.service.labels | object | `{}` |  |
 | policies.create | bool | `true` |  |
 | prometheus.podMonitor.create | bool | `false` |  |
+| prometheus.podMonitor.podMetricsEndpoints[0].port | string | `"http-prom"` |  |
+| prometheus.podMonitor.podMetricsEndpoints[0].relabelings[0].action | string | `"keep"` |  |
+| prometheus.podMonitor.podMetricsEndpoints[0].relabelings[0].regex | string | `"Running"` |  |
+| prometheus.podMonitor.podMetricsEndpoints[0].relabelings[0].sourceLabels[0] | string | `"__meta_kubernetes_pod_phase"` |  |
 | rbac.create | bool | `true` |  |
 | sourcecontroller.affinity | object | `{}` |  |
 | sourcecontroller.annotations."prometheus.io/port" | string | `"8080"` |  |
