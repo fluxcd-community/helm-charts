@@ -28,5 +28,5 @@ spec:
           - image-automation-controller
           - image-reflector-controller
   podMetricsEndpoints:
-    - port: http-prom
+{{ toYaml .Values.prometheus.podMonitor.podMetricsEndpoints | indent 4 }}
 {{- end }}
