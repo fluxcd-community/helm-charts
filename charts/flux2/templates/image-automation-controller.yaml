@@ -91,6 +91,9 @@ spec:
         {{- if .Values.imageautomationcontroller.volumeMounts }}
         {{- toYaml .Values.imageautomationcontroller.volumeMounts | nindent 8 }}
         {{- end}}
+      {{- if .Values.imageautomationcontroller.priorityClassName }}
+      priorityClassName: {{ .Values.imageautomationcontroller.priorityClassName | quote }}
+      {{- end }}
       securityContext:
         fsGroup: 1337
       serviceAccountName: image-automation-controller
