@@ -3,6 +3,21 @@ entries:
   flux2:
   - annotations:
       artifacthub.io/changes: |
+        - "[Update]: Add ability to specify priorityclass"
+    apiVersion: v2
+    appVersion: 0.33.0
+    created: "2022-09-05T06:45:47.128783728Z"
+    description: A Helm chart for flux2
+    digest: 4fa5d2ac2dcea84530ab711af49ea5c70f5b92d9fcc56a360e7fb807add67799
+    name: flux2
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-1.2.1/flux2-1.2.1.tgz
+    version: 1.2.1
+  - annotations:
+      artifacthub.io/changes: |
         - "[Update]: Update App Version to upstream 0.33.0"
     apiVersion: v2
     appVersion: 0.33.0
@@ -1171,4 +1186,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2022-09-02T12:00:20.947621976Z"
+generated: "2022-09-05T06:45:47.129283261Z"
