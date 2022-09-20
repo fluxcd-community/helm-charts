@@ -3,6 +3,21 @@ entries:
   flux2:
   - annotations:
       artifacthub.io/changes: |
+        - "[Feature]: Add support for running flux service accounts without cluster-admin privileges"
+    apiVersion: v2
+    appVersion: 0.33.0
+    created: "2022-09-20T16:41:36.036586298Z"
+    description: A Helm chart for flux2
+    digest: aed76abd6b1c41c90abf591b5233bb760ca26a8eaf6544e4cd82057b18be04b3
+    name: flux2
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-1.4.0/flux2-1.4.0.tgz
+    version: 1.4.0
+  - annotations:
+      artifacthub.io/changes: |
         - "[Update]: Filter out non-running pods in Prometheus"
     apiVersion: v2
     appVersion: 0.33.0
@@ -1216,4 +1231,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2022-09-05T11:00:28.349503497Z"
+generated: "2022-09-20T16:41:36.037476171Z"
