@@ -11,6 +11,10 @@ multitenancy:
   # Tenants have to specify a service account in their Flux resources to be able
   # to deploy workloads in their namespaces as the default account has no permissions.
   defaultServiceAccount: "default"
+  # -- Both kustomize-controller and helm-controller service accounts run privileged
+  # with cluster-admin ClusterRoleBinding. Disable if you want to run them with a
+  # minimum set of permissions.
+  privileged: true
 
 # -- Maybe you need to use full domain name here, if you deploy flux
 # in environments that use http proxy.

@@ -1,6 +1,6 @@
 # flux2
 
-![Version: 1.3.0](https://img.shields.io/badge/Version-1.3.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.33.0](https://img.shields.io/badge/AppVersion-0.33.0-informational?style=flat-square)
+![Version: 1.4.0](https://img.shields.io/badge/Version-1.4.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.33.0](https://img.shields.io/badge/AppVersion-0.33.0-informational?style=flat-square)
 
 A Helm chart for flux2
 
@@ -99,6 +99,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | loglevel | string | `"info"` |  |
 | multitenancy.defaultServiceAccount | string | `"default"` | All Kustomizations and HelmReleases which don’t have spec.serviceAccountName specified, will use the default account from the tenant’s namespace. Tenants have to specify a service account in their Flux resources to be able to deploy workloads in their namespaces as the default account has no permissions. |
 | multitenancy.enabled | bool | `false` | Implement the patches for Multi-tenancy lockdown. See https://fluxcd.io/docs/installation/#multi-tenancy-lockdown |
+| multitenancy.privileged | bool | `true` | Both kustomize-controller and helm-controller service accounts run privileged  with cluster-admin ClusterRoleBinding. Disable if you want to run them with a  minimum set of permissions. |
 | notificationcontroller.affinity | object | `{}` |  |
 | notificationcontroller.annotations."prometheus.io/port" | string | `"8080"` |  |
 | notificationcontroller.annotations."prometheus.io/scrape" | string | `"true"` |  |
