@@ -1,6 +1,6 @@
 # flux2
 
-![Version: 1.4.0](https://img.shields.io/badge/Version-1.4.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.33.0](https://img.shields.io/badge/AppVersion-0.33.0-informational?style=flat-square)
+![Version: 1.5.0](https://img.shields.io/badge/Version-1.5.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.34.0](https://img.shields.io/badge/AppVersion-0.34.0-informational?style=flat-square)
 
 A Helm chart for flux2
 
@@ -17,9 +17,9 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | cli.affinity | object | `{}` |  |
 | cli.image | string | `"ghcr.io/fluxcd/flux-cli"` |  |
 | cli.nodeSelector | object | `{}` |  |
-| cli.tag | string | `"v0.33.0"` |  |
+| cli.tag | string | `"v0.34.0"` |  |
 | cli.tolerations | list | `[]` |  |
-| eventsaddr | string | `"http://notification-controller/"` | Maybe you need to use full domain name here, if you deploy flux in environments that use http proxy.  In such environments they normally add `.cluster.local` and `.local` suffixes to `no_proxy` variable in order to prevent cluster-local traffic from going through http proxy. Without fully specified domain they need to mention `notifications-controller` explicitly in `no_proxy` variable after debugging http proxy logs eg: http://notification-controller.[NAMESPACE].svc.[CLUSTERDOMAIN] |
+| eventsaddr | string | `"http://notification-controller/"` | Maybe you need to use full domain name here, if you deploy flux in environments that use http proxy. In such environments they normally add `.cluster.local` and `.local` suffixes to `no_proxy` variable in order to prevent cluster-local traffic from going through http proxy. Without fully specified domain they need to mention `notifications-controller` explicitly in `no_proxy` variable after debugging http proxy logs eg: http://notification-controller.[NAMESPACE].svc.[CLUSTERDOMAIN] |
 | extraObjects | list | `[]` | Array of extra K8s manifests to deploy |
 | helmcontroller.affinity | object | `{}` |  |
 | helmcontroller.annotations."prometheus.io/port" | string | `"8080"` |  |
@@ -36,7 +36,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | helmcontroller.resources.requests.memory | string | `"64Mi"` |  |
 | helmcontroller.serviceaccount.annotations | object | `{}` |  |
 | helmcontroller.serviceaccount.create | bool | `true` |  |
-| helmcontroller.tag | string | `"v0.23.1"` |  |
+| helmcontroller.tag | string | `"v0.24.0"` |  |
 | helmcontroller.tolerations | list | `[]` |  |
 | imagePullSecrets | list | `[]` | contents of pod imagePullSecret in form 'name=[secretName]'; applied to all controllers |
 | imageautomationcontroller.affinity | object | `{}` |  |
@@ -54,7 +54,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imageautomationcontroller.resources.requests.memory | string | `"64Mi"` |  |
 | imageautomationcontroller.serviceaccount.annotations | object | `{}` |  |
 | imageautomationcontroller.serviceaccount.create | bool | `true` |  |
-| imageautomationcontroller.tag | string | `"v0.24.2"` |  |
+| imageautomationcontroller.tag | string | `"v0.25.0"` |  |
 | imageautomationcontroller.tolerations | list | `[]` |  |
 | imagereflectorcontroller.affinity | object | `{}` |  |
 | imagereflectorcontroller.annotations."prometheus.io/port" | string | `"8080"` |  |
@@ -71,7 +71,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imagereflectorcontroller.resources.requests.memory | string | `"64Mi"` |  |
 | imagereflectorcontroller.serviceaccount.annotations | object | `{}` |  |
 | imagereflectorcontroller.serviceaccount.create | bool | `true` |  |
-| imagereflectorcontroller.tag | string | `"v0.20.1"` |  |
+| imagereflectorcontroller.tag | string | `"v0.21.0"` |  |
 | imagereflectorcontroller.tolerations | list | `[]` |  |
 | installCRDs | bool | `true` |  |
 | kustomizecontroller.affinity | object | `{}` |  |
@@ -94,12 +94,12 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | kustomizecontroller.secret.name | string | `""` |  |
 | kustomizecontroller.serviceaccount.annotations | object | `{}` |  |
 | kustomizecontroller.serviceaccount.create | bool | `true` |  |
-| kustomizecontroller.tag | string | `"v0.27.1"` |  |
+| kustomizecontroller.tag | string | `"v0.28.0"` |  |
 | kustomizecontroller.tolerations | list | `[]` |  |
 | loglevel | string | `"info"` |  |
 | multitenancy.defaultServiceAccount | string | `"default"` | All Kustomizations and HelmReleases which don’t have spec.serviceAccountName specified, will use the default account from the tenant’s namespace. Tenants have to specify a service account in their Flux resources to be able to deploy workloads in their namespaces as the default account has no permissions. |
 | multitenancy.enabled | bool | `false` | Implement the patches for Multi-tenancy lockdown. See https://fluxcd.io/docs/installation/#multi-tenancy-lockdown |
-| multitenancy.privileged | bool | `true` | Both kustomize-controller and helm-controller service accounts run privileged  with cluster-admin ClusterRoleBinding. Disable if you want to run them with a  minimum set of permissions. |
+| multitenancy.privileged | bool | `true` | Both kustomize-controller and helm-controller service accounts run privileged with cluster-admin ClusterRoleBinding. Disable if you want to run them with a minimum set of permissions. |
 | notificationcontroller.affinity | object | `{}` |  |
 | notificationcontroller.annotations."prometheus.io/port" | string | `"8080"` |  |
 | notificationcontroller.annotations."prometheus.io/scrape" | string | `"true"` |  |
@@ -117,12 +117,12 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | notificationcontroller.service.labels | object | `{}` |  |
 | notificationcontroller.serviceaccount.annotations | object | `{}` |  |
 | notificationcontroller.serviceaccount.create | bool | `true` |  |
-| notificationcontroller.tag | string | `"v0.25.2"` |  |
+| notificationcontroller.tag | string | `"v0.26.0"` |  |
 | notificationcontroller.tolerations | list | `[]` |  |
 | notificationcontroller.webhookReceiver.service.annotations | object | `{}` |  |
 | notificationcontroller.webhookReceiver.service.labels | object | `{}` |  |
 | policies.create | bool | `true` |  |
-| prometheus.podMonitor.create | bool | `false` |  |
+| prometheus.podMonitor.create | bool | `false` | Enables podMonitor endpoint |
 | prometheus.podMonitor.podMetricsEndpoints[0].port | string | `"http-prom"` |  |
 | prometheus.podMonitor.podMetricsEndpoints[0].relabelings[0].action | string | `"keep"` |  |
 | prometheus.podMonitor.podMetricsEndpoints[0].relabelings[0].regex | string | `"Running"` |  |
@@ -146,6 +146,6 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | sourcecontroller.service.labels | object | `{}` |  |
 | sourcecontroller.serviceaccount.annotations | object | `{}` |  |
 | sourcecontroller.serviceaccount.create | bool | `true` |  |
-| sourcecontroller.tag | string | `"v0.28.0"` |  |
+| sourcecontroller.tag | string | `"v0.29.0"` |  |
 | sourcecontroller.tolerations | list | `[]` |  |
 | watchallnamespaces | bool | `true` |  |
