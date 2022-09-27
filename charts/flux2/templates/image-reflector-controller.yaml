@@ -37,7 +37,9 @@ spec:
         {{- if .Values.multitenancy.enabled }}
         - --no-cross-namespace-refs=true
         {{- end}}
+        {{- if .Values.notificationcontroller.create }}
         - --events-addr={{ .Values.eventsaddr }}
+        {{- end}}
         - --watch-all-namespaces={{ .Values.watchallnamespaces }}
         - --log-level={{ .Values.loglevel | default "info" }}
         - --log-encoding=json

@@ -36,7 +36,9 @@ spec:
       {{- end}}
       containers:
       - args:
+        {{- if .Values.notificationcontroller.create }}
         - --events-addr={{ .Values.eventsaddr }}
+        {{- end}}
         - --watch-all-namespaces={{ .Values.watchallnamespaces }}
         - --log-level={{ .Values.loglevel | default "info" }}
         - --log-encoding=json
