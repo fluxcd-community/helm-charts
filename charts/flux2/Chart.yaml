@@ -2,10 +2,10 @@ apiVersion: v2
 name: flux2
 description: A Helm chart for flux2
 type: application
-version: 1.5.0
+version: 1.5.1
 appVersion: 0.34.0
 sources:
   - https://github.com/fluxcd-community/helm-charts
 annotations:
   artifacthub.io/changes: |
-    - "[Chore]: update AppVersion to 0.34.0 (https://github.com/fluxcd/flux2/releases/tag/v0.34.0)"
+    - "[Fix]: Do not set events-addr when  notification controller is not set to create"
