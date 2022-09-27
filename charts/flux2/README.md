@@ -2,6 +2,7 @@
 
 ![Version: 1.5.1](https://img.shields.io/badge/Version-1.5.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.34.0](https://img.shields.io/badge/AppVersion-0.34.0-informational?style=flat-square)
 
+
 A Helm chart for flux2
 
 This helm chart is maintain and released by the fluxcd-community on a best effort basis.
