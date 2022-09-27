@@ -2,10 +2,10 @@ apiVersion: v2
 name: flux2
 description: A Helm chart for flux2
 type: application
-version: 1.4.0
-appVersion: 0.33.0
+version: 1.5.0
+appVersion: 0.34.0
 sources:
   - https://github.com/fluxcd-community/helm-charts
 annotations:
   artifacthub.io/changes: |
-    - "[Feature]: Add support for running flux service accounts without cluster-admin privileges"
+    - "[Chore]: update AppVersion to 0.34.0 (https://github.com/fluxcd/flux2/releases/tag/v0.34.0)"
