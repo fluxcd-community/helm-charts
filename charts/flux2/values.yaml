@@ -29,7 +29,7 @@ eventsaddr: http://notification-controller/
 
 cli:
   image: ghcr.io/fluxcd/flux-cli
-  tag: v0.33.0
+  tag: v0.34.0
   nodeSelector: {}
   affinity: {}
   tolerations: []
@@ -39,7 +39,7 @@ cli:
 helmcontroller:
   create: true
   image: ghcr.io/fluxcd/helm-controller
-  tag: v0.23.1
+  tag: v0.24.0
   resources:
     limits: {}
     # cpu: 1000m
@@ -85,7 +85,7 @@ helmcontroller:
 imageautomationcontroller:
   create: true
   image: ghcr.io/fluxcd/image-automation-controller
-  tag: v0.24.2
+  tag: v0.25.0
   resources:
     limits: {}
     # cpu: 1000m
@@ -111,7 +111,7 @@ imageautomationcontroller:
 imagereflectorcontroller:
   create: true
   image: ghcr.io/fluxcd/image-reflector-controller
-  tag: v0.20.1
+  tag: v0.21.0
   resources:
     limits: {}
     # cpu: 1000m
@@ -137,7 +137,7 @@ imagereflectorcontroller:
 kustomizecontroller:
   create: true
   image: ghcr.io/fluxcd/kustomize-controller
-  tag: v0.27.1
+  tag: v0.28.0
   resources:
     limits: {}
     # cpu: 1000m
@@ -183,7 +183,7 @@ kustomizecontroller:
 notificationcontroller:
   create: true
   image: ghcr.io/fluxcd/notification-controller
-  tag: v0.25.2
+  tag: v0.26.0
   resources:
     limits: {}
     # cpu: 1000m
@@ -216,7 +216,7 @@ notificationcontroller:
 sourcecontroller:
   create: true
   image: ghcr.io/fluxcd/source-controller
-  tag: v0.28.0
+  tag: v0.29.0
   resources:
     limits: {}
     # cpu: 1000m
@@ -284,6 +284,7 @@ extraObjects: []
 # Enables podMonitor creation for the Prometheus Operator
 prometheus:
   podMonitor:
+    # -- Enables podMonitor endpoint
     create: false
     podMetricsEndpoints:
       - port: http-prom

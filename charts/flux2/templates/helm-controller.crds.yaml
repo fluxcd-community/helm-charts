@@ -162,14 +162,14 @@ spec:
                     description: "CRDs upgrade CRDs from the Helm Chart's crds directory
                       according to the CRD upgrade policy provided here. Valid values
                       are `Skip`, `Create` or `CreateReplace`. Default is `Create`
-                      and if omitted CRDs are installed but not updated.
+                      and if omitted CRDs are installed but not updated. 
  Skip:
-                      do neither install nor replace (update) any CRDs.
+                      do neither install nor replace (update) any CRDs. 
  Create:
                       new CRDs are created, existing CRDs are neither updated nor
-                      deleted.
+                      deleted. 
  CreateReplace: new CRDs are created, existing CRDs
-                      are updated (replaced) but not deleted.
+                      are updated (replaced) but not deleted. 
  By default, CRDs
                       are applied (installed) during Helm install action. With this
                       option users can opt-in to CRD replace existing CRDs on Helm
@@ -232,7 +232,7 @@ spec:
                   skipCRDs:
                     description: "SkipCRDs tells the Helm install action to not install
                       any CRDs. By default, CRDs are installed if not already present.
-
+                      
  Deprecated use CRD policy (`crds`) attribute with value `Skip`
                       instead."
                     type: boolean
@@ -597,14 +597,14 @@ spec:
                     description: "CRDs upgrade CRDs from the Helm Chart's crds directory
                       according to the CRD upgrade policy provided here. Valid values
                       are `Skip`, `Create` or `CreateReplace`. Default is `Skip` and
-                      if omitted CRDs are neither installed nor upgraded.
+                      if omitted CRDs are neither installed nor upgraded. 
  Skip:
-                      do neither install nor replace (update) any CRDs.
+                      do neither install nor replace (update) any CRDs. 
  Create:
                       new CRDs are created, existing CRDs are neither updated nor
-                      deleted.
+                      deleted. 
  CreateReplace: new CRDs are created, existing CRDs
-                      are updated (replaced) but not deleted.
+                      are updated (replaced) but not deleted. 
  By default, CRDs
                       are not applied during Helm upgrade action. With this option
                       users can opt-in to CRD upgrade, which is not (yet) natively
@@ -712,7 +712,7 @@ spec:
                         be a single flat value. Defaults to 'None', which results
                         in the values getting merged at the root.
                       maxLength: 250
-                      pattern: ^([a-zA-Z0-9_\-.\\\/]|\[[0-9]{1,5}\])+$
+                      pattern: ^([a-zA-Z0-9_\-.\/]|\[[0-9]{1,5}\])+$
                       type: string
                     valuesKey:
                       description: ValuesKey is the data key where the values.yaml
@@ -742,14 +742,16 @@ spec:
                   description: "Condition contains details for one aspect of the current
                     state of this API Resource. --- This struct is intended for direct
                     use as an array at the field path .status.conditions.  For example,
-                    \n \ttype FooStatus struct{ \t    // Represents the observations
-                    of a foo's current state. \t    // Known .status.conditions.type
-                    are: \"Available\", \"Progressing\", and \"Degraded\" \t    //
-                    +patchMergeKey=type \t    // +patchStrategy=merge \t    // +listType=map
-                    \t    // +listMapKey=type \t    Conditions []metav1.Condition
+                    
+ 	type FooStatus struct{ 	    // Represents the observations
+                    of a foo's current state. 	    // Known .status.conditions.type
+                    are: \"Available\", \"Progressing\", and \"Degraded\" 	    //
+                    +patchMergeKey=type 	    // +patchStrategy=merge 	    // +listType=map
+                    	    // +listMapKey=type 	    Conditions []metav1.Condition
                     `json:\"conditions,omitempty\" patchStrategy:\"merge\" patchMergeKey:\"type\"
-                    protobuf:\"bytes,1,rep,name=conditions\"` \n \t    // other fields
-                    \t}"
+                    protobuf:\"bytes,1,rep,name=conditions\"` 
+ 	    // other fields
+                    	}"
                   properties:
                     lastTransitionTime:
                       description: lastTransitionTime is the last time the condition
