@@ -3,6 +3,21 @@ entries:
   flux2:
   - annotations:
       artifacthub.io/changes: |
+        - "[Fix]: Do not set events-addr when  notification controller is not set to create"
+    apiVersion: v2
+    appVersion: 0.34.0
+    created: "2022-09-27T14:47:05.992258301Z"
+    description: A Helm chart for flux2
+    digest: 2572722498d2da8006edc206419f813e8149a94858149f75c198c86116f155ca
+    name: flux2
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-1.5.1/flux2-1.5.1.tgz
+    version: 1.5.1
+  - annotations:
+      artifacthub.io/changes: |
         - "[Chore]: update AppVersion to 0.34.0 (https://github.com/fluxcd/flux2/releases/tag/v0.34.0)"
     apiVersion: v2
     appVersion: 0.34.0
@@ -1261,4 +1276,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2022-09-27T13:32:51.341039414Z"
+generated: "2022-09-27T14:47:05.993029431Z"
