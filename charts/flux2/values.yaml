@@ -21,6 +21,7 @@ multitenancy:
 # domain they need to mention `notifications-controller` explicitly in
 # `no_proxy` variable after debugging http proxy logs
 # eg: http://notification-controller.[NAMESPACE].svc.[CLUSTERDOMAIN]
+# if notification controller is disabled this is defaulted to empty string
 eventsaddr: http://notification-controller/
 
 cli:

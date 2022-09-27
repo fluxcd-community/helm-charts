@@ -38,7 +38,9 @@ spec:
         - --no-cross-namespace-refs=true
         - --default-service-account={{ .Values.multitenancy.defaultServiceAccount | default "default"  }}
         {{- end}}
+        {{- if .Values.notificationcontroller.create }}
         - --events-addr={{ .Values.eventsaddr }}
+        {{- end}}
         - --watch-all-namespaces={{ .Values.watchallnamespaces }}
         - --log-level={{ .Values.loglevel | default "info" }}
         - --log-encoding=json
