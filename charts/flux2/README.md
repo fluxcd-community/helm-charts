@@ -39,6 +39,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | helmcontroller.serviceaccount.create | bool | `true` |  |
 | helmcontroller.tag | string | `"v0.24.0"` |  |
 | helmcontroller.tolerations | list | `[]` |  |
+| helmcontroller.extraEnv | list | `[]` |  |
 | imagePullSecrets | list | `[]` | contents of pod imagePullSecret in form 'name=[secretName]'; applied to all controllers |
 | imageautomationcontroller.affinity | object | `{}` |  |
 | imageautomationcontroller.annotations."prometheus.io/port" | string | `"8080"` |  |

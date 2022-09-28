@@ -82,6 +82,7 @@ helmcontroller:
   #     effect: NoSchedule
 
   tolerations: []
+  extraEnv: []
 
 imageautomationcontroller:
   create: true
