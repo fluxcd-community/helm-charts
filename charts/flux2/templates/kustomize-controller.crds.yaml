@@ -3,7 +3,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.7.0
+    controller-gen.kubebuilder.io/version: v0.8.0
   creationTimestamp: null
   labels:
     app.kubernetes.io/instance: '{{ .Release.Namespace }}'
@@ -447,15 +447,13 @@ spec:
                     state of this API Resource. --- This struct is intended for direct
                     use as an array at the field path .status.conditions.  For example,
                     
- 	type FooStatus struct{ 	    // Represents the observations
-                    of a foo's current state. 	    // Known .status.conditions.type
-                    are: \"Available\", \"Progressing\", and \"Degraded\" 	    //
-                    +patchMergeKey=type 	    // +patchStrategy=merge 	    // +listType=map
-                    	    // +listMapKey=type 	    Conditions []metav1.Condition
+ type FooStatus struct{ // Represents the observations of a
+                    foo's current state. // Known .status.conditions.type are: \"Available\",
+                    \"Progressing\", and \"Degraded\" // +patchMergeKey=type // +patchStrategy=merge
+                    // +listType=map // +listMapKey=type Conditions []metav1.Condition
                     `json:\"conditions,omitempty\" patchStrategy:\"merge\" patchMergeKey:\"type\"
                     protobuf:\"bytes,1,rep,name=conditions\"` 
- 	    // other fields
-                    	}"
+ // other fields }"
                   properties:
                     lastTransitionTime:
                       description: lastTransitionTime is the last time the condition
@@ -696,6 +694,7 @@ spec:
                 type: array
               interval:
                 description: The interval at which to reconcile the Kustomization.
+                pattern: ^([0-9]+(\.[0-9]+)?(ms|s|m|h))+$
                 type: string
               kubeConfig:
                 description: The KubeConfig for reconciling the Kustomization on a
@@ -935,6 +934,7 @@ spec:
                 description: The interval at which to retry a previously failed reconciliation.
                   When not specified, the controller uses the KustomizationSpec.Interval
                   value to retry failures.
+                pattern: ^([0-9]+(\.[0-9]+)?(ms|s|m|h))+$
                 type: string
               serviceAccountName:
                 description: The name of the Kubernetes service account to impersonate
@@ -979,6 +979,7 @@ spec:
               timeout:
                 description: Timeout for validation, apply and health checking operations.
                   Defaults to 'Interval' duration.
+                pattern: ^([0-9]+(\.[0-9]+)?(ms|s|m))+$
                 type: string
               validation:
                 description: 'Deprecated: Not used in v1beta2.'
@@ -1008,15 +1009,13 @@ spec:
                     state of this API Resource. --- This struct is intended for direct
                     use as an array at the field path .status.conditions.  For example,
                     
- 	type FooStatus struct{ 	    // Represents the observations
-                    of a foo's current state. 	    // Known .status.conditions.type
-                    are: \"Available\", \"Progressing\", and \"Degraded\" 	    //
-                    +patchMergeKey=type 	    // +patchStrategy=merge 	    // +listType=map
-                    	    // +listMapKey=type 	    Conditions []metav1.Condition
+ type FooStatus struct{ // Represents the observations of a
+                    foo's current state. // Known .status.conditions.type are: \"Available\",
+                    \"Progressing\", and \"Degraded\" // +patchMergeKey=type // +patchStrategy=merge
+                    // +listType=map // +listMapKey=type Conditions []metav1.Condition
                     `json:\"conditions,omitempty\" patchStrategy:\"merge\" patchMergeKey:\"type\"
                     protobuf:\"bytes,1,rep,name=conditions\"` 
- 	    // other fields
-                    	}"
+ // other fields }"
                   properties:
                     lastTransitionTime:
                       description: lastTransitionTime is the last time the condition
