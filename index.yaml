@@ -3,6 +3,21 @@ entries:
   flux2:
   - annotations:
       artifacthub.io/changes: |
+        - "[Chore]: Update App Version to upstream 0.35.0"
+    apiVersion: v2
+    appVersion: 0.35.0
+    created: "2022-10-06T10:06:50.710593535Z"
+    description: A Helm chart for flux2
+    digest: ca9ee401a8dfd9023ac5c02c56afe2837c75c05223de26f1fd1f9624160eed99
+    name: flux2
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-1.6.0/flux2-1.6.0.tgz
+    version: 1.6.0
+  - annotations:
+      artifacthub.io/changes: |
         - "[Fix]: Do not set events-addr when  notification controller is not set to create"
     apiVersion: v2
     appVersion: 0.34.0
@@ -807,6 +822,21 @@ entries:
   flux2-notification:
   - annotations:
       artifacthub.io/changes: |
+        - "[Chore]: Update App Version to upstream 0.35.0"
+    apiVersion: v2
+    appVersion: 0.35.0
+    created: "2022-10-06T10:06:50.853105411Z"
+    description: A Helm chart for flux2 alerts and the needed providers and secrets
+    digest: 1b744f6d2c39baa618db559e6c842a41e05294738445dd026c38d3feb91d8a12
+    name: flux2-notification
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-notification-1.4.0/flux2-notification-1.4.0.tgz
+    version: 1.4.0
+  - annotations:
+      artifacthub.io/changes: |
         - "[Chore]: Update App Version to upstream 0.34.0"
     apiVersion: v2
     appVersion: 0.34.0
@@ -1276,4 +1306,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2022-09-27T14:47:05.993029431Z"
+generated: "2022-10-06T10:06:50.854206946Z"
