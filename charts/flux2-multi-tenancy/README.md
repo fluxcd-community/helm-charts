@@ -6,7 +6,7 @@
 
 A Helm chart for flux2-multi-tenancy
 
-This helm chart is maintain and released by the fluxcd-community on a best effort basis.
+This helm chart is maintained and released by the fluxcd-community on a best effort basis.
 
 ## Source Code
 

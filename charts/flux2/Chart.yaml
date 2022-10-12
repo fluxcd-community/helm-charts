@@ -2,10 +2,10 @@ apiVersion: v2
 name: flux2
 description: A Helm chart for flux2
 type: application
-version: 1.6.0
+version: 1.7.0
 appVersion: 0.35.0
 sources:
   - https://github.com/fluxcd-community/helm-charts
 annotations:
   artifacthub.io/changes: |
-    - "[Chore]: Update App Version to upstream 0.35.0"
+    - "[Update]: Add support for arbitrary environment variable injection into any controller deployment."

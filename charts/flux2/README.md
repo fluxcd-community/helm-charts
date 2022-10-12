@@ -1,10 +1,10 @@
 # flux2
 
-![Version: 1.6.0](https://img.shields.io/badge/Version-1.6.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.35.0](https://img.shields.io/badge/AppVersion-0.35.0-informational?style=flat-square)
+![Version: 1.7.0](https://img.shields.io/badge/Version-1.7.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.35.0](https://img.shields.io/badge/AppVersion-0.35.0-informational?style=flat-square)
 
 A Helm chart for flux2
 
-This helm chart is maintain and released by the fluxcd-community on a best effort basis.
+This helm chart is maintained and released by the fluxcd-community on a best effort basis.
 
 ## Source Code
 
@@ -15,6 +15,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | cli.affinity | object | `{}` |  |
+| cli.extraEnv | list | `[]` |  |
 | cli.image | string | `"ghcr.io/fluxcd/flux-cli"` |  |
 | cli.nodeSelector | object | `{}` |  |
 | cli.tag | string | `"v0.35.0"` |  |
@@ -26,6 +27,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | helmcontroller.annotations."prometheus.io/scrape" | string | `"true"` |  |
 | helmcontroller.container.additionalargs | list | `[]` |  |
 | helmcontroller.create | bool | `true` |  |
+| helmcontroller.extraEnv | list | `[]` |  |
 | helmcontroller.image | string | `"ghcr.io/fluxcd/helm-controller"` |  |
 | helmcontroller.imagePullPolicy | object | `{}` |  |
 | helmcontroller.labels | object | `{}` |  |
@@ -44,6 +46,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imageautomationcontroller.annotations."prometheus.io/scrape" | string | `"true"` |  |
 | imageautomationcontroller.container.additionalargs | list | `[]` |  |
 | imageautomationcontroller.create | bool | `true` |  |
+| imageautomationcontroller.extraEnv | list | `[]` |  |
 | imageautomationcontroller.image | string | `"ghcr.io/fluxcd/image-automation-controller"` |  |
 | imageautomationcontroller.imagePullPolicy | object | `{}` |  |
 | imageautomationcontroller.labels | object | `{}` |  |
@@ -61,6 +64,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imagereflectorcontroller.annotations."prometheus.io/scrape" | string | `"true"` |  |
 | imagereflectorcontroller.container.additionalargs | list | `[]` |  |
 | imagereflectorcontroller.create | bool | `true` |  |
+| imagereflectorcontroller.extraEnv | list | `[]` |  |
 | imagereflectorcontroller.image | string | `"ghcr.io/fluxcd/image-reflector-controller"` |  |
 | imagereflectorcontroller.imagePullPolicy | object | `{}` |  |
 | imagereflectorcontroller.labels | object | `{}` |  |
@@ -80,6 +84,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | kustomizecontroller.container.additionalargs | list | `[]` |  |
 | kustomizecontroller.create | bool | `true` |  |
 | kustomizecontroller.envFrom | object | `{"map":{"name":""},"secret":{"name":""}}` | Defines envFrom using a configmap and/or secret. |
+| kustomizecontroller.extraEnv | list | `[]` |  |
 | kustomizecontroller.extraSecretMounts | list | `[]` | Defines additional mounts with secrets. Secrets must be manually created in the namespace or with kustomizecontroller.secret |
 | kustomizecontroller.image | string | `"ghcr.io/fluxcd/kustomize-controller"` |  |
 | kustomizecontroller.imagePullPolicy | object | `{}` |  |
@@ -105,6 +110,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | notificationcontroller.annotations."prometheus.io/scrape" | string | `"true"` |  |
 | notificationcontroller.container.additionalargs | list | `[]` |  |
 | notificationcontroller.create | bool | `true` |  |
+| notificationcontroller.extraEnv | list | `[]` |  |
 | notificationcontroller.image | string | `"ghcr.io/fluxcd/notification-controller"` |  |
 | notificationcontroller.imagePullPolicy | object | `{}` |  |
 | notificationcontroller.labels | object | `{}` |  |
