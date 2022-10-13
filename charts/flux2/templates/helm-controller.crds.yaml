@@ -720,7 +720,7 @@ spec:
                         be a single flat value. Defaults to 'None', which results
                         in the values getting merged at the root.
                       maxLength: 250
-                      pattern: ^([a-zA-Z0-9_\-.\/]|\[[0-9]{1,5}\])+$
+                      pattern: ^([a-zA-Z0-9_\-.\\\/]|\[[0-9]{1,5}\])+$
                       type: string
                     valuesKey:
                       description: ValuesKey is the data key where the values.yaml
