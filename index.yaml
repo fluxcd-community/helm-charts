@@ -3,6 +3,21 @@ entries:
   flux2:
   - annotations:
       artifacthub.io/changes: |
+        - "[FIX]: fixed generation for crds - stops variable evaluation"
+    apiVersion: v2
+    appVersion: 0.35.0
+    created: "2022-10-13T13:54:28.703658481Z"
+    description: A Helm chart for flux2
+    digest: 459860666f9a908778efb5479133937806e8436f0f3320420cf0658410bf1cb9
+    name: flux2
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-1.6.1/flux2-1.6.1.tgz
+    version: 1.6.1
+  - annotations:
+      artifacthub.io/changes: |
         - "[Chore]: Update App Version to upstream 0.35.0"
     apiVersion: v2
     appVersion: 0.35.0
@@ -1306,4 +1321,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2022-10-06T10:06:50.854206946Z"
+generated: "2022-10-13T13:54:28.704258492Z"
