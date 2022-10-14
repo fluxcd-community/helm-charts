@@ -1,6 +1,7 @@
 #!/bin/bash -
 
 TEMPDIR=$(mktemp -d tmp.generate.XXXXX)
+SED=$(which gsed || which sed)
 
 delete_temp_dir() {
     if [ -d "${TEMPDIR}" ]; then
@@ -37,9 +38,9 @@ transformers:
    - global-labels.yaml
 EOF
 
-kubectl kustomize "${TEMPDIR}" > ./charts/flux2/templates/${FILE##*/}
-echo -e "{{- if .Values.installCRDs }}\n$(cat ./charts/flux2/templates/${FILE##*/})" > ./charts/flux2/templates/${FILE##*/}
-echo -e "$(cat ./charts/flux2/templates/${FILE##*/})\n{{- end }}" > ./charts/flux2/templates/${FILE##*/}
+echo "{{- if .Values.installCRDs }}" > ./charts/flux2/templates/${FILE##*/}
+kubectl kustomize "${TEMPDIR}" >> ./charts/flux2/templates/${FILE##*/}
+echo "{{- end }}">> ./charts/flux2/templates/${FILE##*/}
 
 # git diff --quiet will exit 1 when there are changes.
 if ! git diff --quiet HEAD main -- ./charts/flux2/templates/ ; then
@@ -58,7 +59,9 @@ diff -B ./charts/flux2/values.yaml <(controllerName=`echo $FILE | cut -d '/' -f5
 controllerName=`echo $FILE | cut -d '/' -f5`
 controllerVersion=`echo $FILE | cut -d '/' -f8`
 
-sed -s -i "s/^\([[:space:]]\+image: ghcr\.io\/fluxcd\/${controllerName}:\).*/\1${controllerVersion}/" ./charts/flux2/tests/__snapshot__/*.yaml.snap
+$SED \
+  -s -i "s/^\([[:space:]]\+image: ghcr\.io\/fluxcd\/${controllerName}:\).*/\1${controllerVersion}/" ./charts/flux2/tests/__snapshot__/*.yaml.snap
+
 done
 
 # Set cli image tag

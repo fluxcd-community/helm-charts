@@ -2,6 +2,7 @@
 
 ![Version: 1.7.0](https://img.shields.io/badge/Version-1.7.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.35.0](https://img.shields.io/badge/AppVersion-0.35.0-informational?style=flat-square)
 
+
 A Helm chart for flux2
 
 This helm chart is maintained and released by the fluxcd-community on a best effort basis.
@@ -20,7 +21,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | cli.nodeSelector | object | `{}` |  |
 | cli.tag | string | `"v0.35.0"` |  |
 | cli.tolerations | list | `[]` |  |
-| eventsaddr | string | `"http://notification-controller/"` | Maybe you need to use full domain name here, if you deploy flux in environments that use http proxy.  In such environments they normally add `.cluster.local` and `.local` suffixes to `no_proxy` variable in order to prevent cluster-local traffic from going through http proxy. Without fully specified domain they need to mention `notifications-controller` explicitly in `no_proxy` variable after debugging http proxy logs eg: http://notification-controller.[NAMESPACE].svc.[CLUSTERDOMAIN] if notification controller is disabled this is not set |
+| eventsaddr | string | `"http://notification-controller/"` | Maybe you need to use full domain name here, if you deploy flux in environments that use http proxy. In such environments they normally add `.cluster.local` and `.local` suffixes to `no_proxy` variable in order to prevent cluster-local traffic from going through http proxy. Without fully specified domain they need to mention `notifications-controller` explicitly in `no_proxy` variable after debugging http proxy logs eg: http://notification-controller.[NAMESPACE].svc.[CLUSTERDOMAIN] if notification controller is disabled this is not set |
 | extraObjects | list | `[]` | Array of extra K8s manifests to deploy |
 | helmcontroller.affinity | object | `{}` |  |
 | helmcontroller.annotations."prometheus.io/port" | string | `"8080"` |  |
