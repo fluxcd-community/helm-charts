@@ -46,7 +46,7 @@ gitRepository:
     # -- _Optional_ Verify OpenPGP signature for the Git commit HEAD points to.
     verify: {}
 
-    # -- _Optional_ Ignore overrides the set of excluded patterns in the .sourceignore format (which is the same as .gitignore). If not provided, a default will be used, consult the documentation for your version to find out what those are.
+    # -- _Optional_ Ignore overrides the set of excluded patterns in the .sourceignore format (which is the same as .gitignore). If not provided, a default will be used, consult the documentation for your version to find out what those are. Make sure to set this as yaml multiline string.
     ignore: ""
 
     # -- _Optional_ This flag tells the controller to suspend the reconciliation of this source.

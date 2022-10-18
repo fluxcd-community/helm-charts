@@ -28,8 +28,8 @@ spec:
   {{- with .Values.gitRepository.spec.verify }}
   verify: {{ toYaml . | nindent 4 }}
   {{- end }}
-  {{- if .Values.gitRepository.spec.ignore }}
-  ignore: {{ .Values.gitRepository.spec.ignore }}
+  {{- with .Values.gitRepository.spec.ignore }}
+  ignore: {{- toYaml . | indent 2 }}
   {{- end }}
   {{- if .Values.gitRepository.spec.suspend }}
   suspend: {{ .Values.gitRepository.spec.suspend }}
