@@ -1,0 +1,30 @@
+suite: test flux-gitrepository
+templates:
+  - flux-gitrepository.yaml
+tests:
+  - it: should match snapshot of default values
+    capabilities:
+      majorVersion: 1
+      minorVersion: 19
+    set:
+      gitRepository:
+        spec:
+          url: repository_url
+    asserts:
+      - matchSnapshot: {}
+  - it: should match snapshot with special values
+    capabilities:
+      majorVersion: 1
+      minorVersion: 19
+    set:
+      gitRepository:
+        spec:
+          url: repository_url
+          ref: {"branch": "branch"}
+          ignore: |
+            # exclude all
+            /*
+            # include deploy dir
+            !/cluster-name/fluxcd-applications
+    asserts:
+      - matchSnapshot: {}

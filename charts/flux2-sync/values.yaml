@@ -17,7 +17,7 @@ secret:
 
 cli:
   image: ghcr.io/fluxcd/flux-cli
-  tag: v0.31.3
+  tag: v0.35.0
   nodeSelector: {}
   affinity: {}
   tolerations: []
