@@ -1093,6 +1093,21 @@ entries:
   flux2-sync:
   - annotations:
       artifacthub.io/changes: |
+        - "[Chore]: Add unittests"
+    apiVersion: v2
+    appVersion: 0.35.0
+    created: "2022-10-18T06:32:45.555140565Z"
+    description: A Helm chart for flux2 GitRepository to sync with
+    digest: 2787d08f48950881a94f186ee8c3b26be2f66e1e65a9418f12abc61cfe664a40
+    name: flux2-sync
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-1.0.2/flux2-sync-1.0.2.tgz
+    version: 1.0.2
+  - annotations:
+      artifacthub.io/changes: |
         - "[Update]: Update chart README related to underlying App Version update to upstream 0.31.1"
     apiVersion: v2
     created: "2022-10-18T05:51:15.324523843Z"
@@ -1335,4 +1350,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2022-10-18T05:51:15.325231189Z"
+generated: "2022-10-18T06:32:45.555961669Z"
