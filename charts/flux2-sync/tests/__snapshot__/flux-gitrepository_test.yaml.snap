@@ -1,0 +1,39 @@
+should match snapshot of default values:
+  1: |
+    apiVersion: source.toolkit.fluxcd.io/v1beta2
+    kind: GitRepository
+    metadata:
+      labels:
+        app.kubernetes.io/instance: NAMESPACE
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/part-of: flux
+        helm.sh/chart: flux2-sync-1.0.2
+      name: RELEASE-NAME
+      namespace: NAMESPACE
+    spec:
+      interval: 5m
+      ref:
+        branch: master
+      url: repository_url
+should match snapshot with special values:
+  1: |
+    apiVersion: source.toolkit.fluxcd.io/v1beta2
+    kind: GitRepository
+    metadata:
+      labels:
+        app.kubernetes.io/instance: NAMESPACE
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/part-of: flux
+        helm.sh/chart: flux2-sync-1.0.2
+      name: RELEASE-NAME
+      namespace: NAMESPACE
+    spec:
+      ignore: |
+        # exclude all
+        /*
+        # include deploy dir
+        !/cluster-name/fluxcd-applications
+      interval: 5m
+      ref:
+        branch: branch
+      url: repository_url
