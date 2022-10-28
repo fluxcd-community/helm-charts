@@ -22,7 +22,7 @@ jobs:
       - name: Setup Helm
         uses: fluxcd/pkg//actions/helm@main
         with:
-          version: 3.7.1
+          version: 3.10.1
       - name: Install
         run: |
           helm upgrade --install --debug flux2 ./charts/flux2 \
