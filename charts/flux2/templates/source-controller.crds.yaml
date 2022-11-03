@@ -498,6 +498,10 @@ spec:
                   the Bucket object.
                 format: int64
                 type: integer
+              observedIgnore:
+                description: ObservedIgnore is the observed exclusion patterns used
+                  for constructing the source artifact.
+                type: string
               url:
                 description: URL is the dynamic fetch link for the latest Artifact.
                   It is provided on a "best effort" basis, and using the precise BucketStatus.Artifact
@@ -1181,13 +1185,14 @@ spec:
                   type: object
                 type: array
               contentConfigChecksum:
-                description: 'ContentConfigChecksum is a checksum of all the configurations
+                description: "ContentConfigChecksum is a checksum of all the configurations
                   related to the content of the source artifact: - .spec.ignore -
                   .spec.recurseSubmodules - .spec.included and the checksum of the
                   included artifacts observed in .status.observedGeneration version
                   of the object. This can be used to determine if the content of the
                   included repository has changed. It has the format of `<algo>:<checksum>`,
-                  for example: `sha256:<checksum>`.'
+                  for example: `sha256:<checksum>`. \n Deprecated: Replaced with explicit
+                  fields for observed artifact content config in the status."
                 type: string
               includedArtifacts:
                 description: IncludedArtifacts contains a list of the last successfully
@@ -1246,6 +1251,44 @@ spec:
                   the GitRepository object.
                 format: int64
                 type: integer
+              observedIgnore:
+                description: ObservedIgnore is the observed exclusion patterns used
+                  for constructing the source artifact.
+                type: string
+              observedInclude:
+                description: ObservedInclude is the observed list of GitRepository
+                  resources used to to produce the current Artifact.
+                items:
+                  description: GitRepositoryInclude specifies a local reference to
+                    a GitRepository which Artifact (sub-)contents must be included,
+                    and where they should be placed.
+                  properties:
+                    fromPath:
+                      description: FromPath specifies the path to copy contents from,
+                        defaults to the root of the Artifact.
+                      type: string
+                    repository:
+                      description: GitRepositoryRef specifies the GitRepository which
+                        Artifact contents must be included.
+                      properties:
+                        name:
+                          description: Name of the referent.
+                          type: string
+                      required:
+                      - name
+                      type: object
+                    toPath:
+                      description: ToPath specifies the path to copy contents to,
+                        defaults to the name of the GitRepositoryRef.
+                      type: string
+                  required:
+                  - repository
+                  type: object
+                type: array
+              observedRecurseSubmodules:
+                description: ObservedRecurseSubmodules is the observed resource submodules
+                  configuration used to produce the current Artifact.
+                type: boolean
               url:
                 description: URL is the dynamic fetch link for the latest Artifact.
                   It is provided on a "best effort" basis, and using the precise GitRepositoryStatus.Artifact
@@ -1674,6 +1717,34 @@ spec:
                 items:
                   type: string
                 type: array
+              verify:
+                description: Verify contains the secret name containing the trusted
+                  public keys used to verify the signature and specifies which provider
+                  to use to check whether OCI image is authentic. This field is only
+                  supported when using HelmRepository source with spec.type 'oci'.
+                  Chart dependencies, which are not bundled in the umbrella chart
+                  artifact, are not verified.
+                properties:
+                  provider:
+                    default: cosign
+                    description: Provider specifies the technology used to sign the
+                      OCI Artifact.
+                    enum:
+                    - cosign
+                    type: string
+                  secretRef:
+                    description: SecretRef specifies the Kubernetes Secret containing
+                      the trusted public keys.
+                    properties:
+                      name:
+                        description: Name of the referent.
+                        type: string
+                    required:
+                    - name
+                    type: object
+                required:
+                - provider
+                type: object
               version:
                 default: '*'
                 description: Version is the chart version semver expression, ignored
@@ -2653,12 +2724,14 @@ spec:
                   type: object
                 type: array
               contentConfigChecksum:
-                description: 'ContentConfigChecksum is a checksum of all the configurations
+                description: "ContentConfigChecksum is a checksum of all the configurations
                   related to the content of the source artifact: - .spec.ignore -
                   .spec.layerSelector observed in .status.observedGeneration version
                   of the object. This can be used to determine if the content configuration
                   has changed and the artifact needs to be rebuilt. It has the format
-                  of `<algo>:<checksum>`, for example: `sha256:<checksum>`.'
+                  of `<algo>:<checksum>`, for example: `sha256:<checksum>`. \n Deprecated:
+                  Replaced with explicit fields for observed artifact content config
+                  in the status."
                 type: string
               lastHandledReconcileAt:
                 description: LastHandledReconcileAt holds the value of the most recent
@@ -2669,6 +2742,29 @@ spec:
                 description: ObservedGeneration is the last observed generation.
                 format: int64
                 type: integer
+              observedIgnore:
+                description: ObservedIgnore is the observed exclusion patterns used
+                  for constructing the source artifact.
+                type: string
+              observedLayerSelector:
+                description: ObservedLayerSelector is the observed layer selector
+                  used for constructing the source artifact.
+                properties:
+                  mediaType:
+                    description: MediaType specifies the OCI media type of the layer
+                      which should be extracted from the OCI Artifact. The first layer
+                      matching this type is selected.
+                    type: string
+                  operation:
+                    description: Operation specifies how the selected layer should
+                      be processed. By default, the layer compressed content is extracted
+                      to storage. When the operation is set to 'copy', the layer compressed
+                      content is persisted to storage as it is.
+                    enum:
+                    - extract
+                    - copy
+                    type: string
+                type: object
               url:
                 description: URL is the download link for the artifact output of the
                   last OCI Repository sync.
