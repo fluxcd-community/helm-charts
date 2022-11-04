@@ -26,11 +26,10 @@ tests:
     asserts:
       - contains:
           path: spec.template.spec.containers[0].args
-          content:
-            --testlabel1=testvalue1
+          content: --testlabel1=testvalue1
   - it: should match snapshot of default values
     asserts:
-      - matchSnapshot: { }
+      - matchSnapshot: {}
   - it: should have args for Multi-tenancy lockdown
     capabilities:
       majorVersion: 1
@@ -48,12 +47,10 @@ tests:
           of: apps/v1
       - contains:
           path: spec.template.spec.containers[0].args
-          content:
-            --no-cross-namespace-refs=true
+          content: --no-cross-namespace-refs=true
       - contains:
           path: spec.template.spec.containers[0].args
-          content:
-            --default-service-account=test1
+          content: --default-service-account=test1
   - it: should set imagePullPolicy to Always
     set:
       kustomizecontroller.imagePullPolicy: Always
@@ -66,3 +63,17 @@ tests:
       - equal:
           path: spec.template.spec.containers[0].imagePullPolicy
           value: IfNotPresent
+  - it: should use default cluster domain when null
+    set:
+      clusterDomain: null
+    asserts:
+      - contains:
+          path: spec.template.spec.containers[0].args
+          content: --events-addr=http://notification-controller.$(RUNTIME_NAMESPACE).svc.cluster.local.
+  - it: should use custom cluster domain
+    set:
+      clusterDomain: custom.domain
+    asserts:
+      - contains:
+          path: spec.template.spec.containers[0].args
+          content: --events-addr=http://notification-controller.$(RUNTIME_NAMESPACE).svc.custom.domain.

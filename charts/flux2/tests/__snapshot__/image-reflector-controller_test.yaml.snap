@@ -9,7 +9,7 @@ should match snapshot of default values:
         app.kubernetes.io/part-of: flux
         app.kubernetes.io/version: 0.36.0
         control-plane: controller
-        helm.sh/chart: flux2-1.7.0
+        helm.sh/chart: flux2-2.0.0
       name: image-reflector-controller
     spec:
       replicas: 1
@@ -26,7 +26,7 @@ should match snapshot of default values:
         spec:
           containers:
           - args:
-            - --events-addr=http://notification-controller/
+            - --events-addr=http://notification-controller.$(RUNTIME_NAMESPACE).svc.cluster.local.
             - --watch-all-namespaces=true
             - --log-level=info
             - --log-encoding=json
