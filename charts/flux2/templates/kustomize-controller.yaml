@@ -39,7 +39,7 @@ spec:
         - --default-service-account={{ .Values.multitenancy.defaultServiceAccount | default "default"  }}
         {{- end}}
         {{- if .Values.notificationcontroller.create }}
-        - --events-addr={{ .Values.eventsaddr }}
+        - --events-addr=http://notification-controller.$(RUNTIME_NAMESPACE).svc.{{ .Values.clusterDomain | default "cluster.local" }}.
         {{- end}}
         - --watch-all-namespaces={{ .Values.watchallnamespaces }}
         - --log-level={{ .Values.loglevel | default "info" }}
