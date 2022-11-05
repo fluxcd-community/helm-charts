@@ -100,27 +100,27 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | multitenancy.defaultServiceAccount | string | `"default"` | All Kustomizations and HelmReleases which don’t have spec.serviceAccountName specified, will use the default account from the tenant’s namespace. Tenants have to specify a service account in their Flux resources to be able to deploy workloads in their namespaces as the default account has no permissions. |
 | multitenancy.enabled | bool | `false` | Implement the patches for Multi-tenancy lockdown. See https://fluxcd.io/docs/installation/#multi-tenancy-lockdown |
 | multitenancy.privileged | bool | `true` | Both kustomize-controller and helm-controller service accounts run privileged with cluster-admin ClusterRoleBinding. Disable if you want to run them with a minimum set of permissions. |
-| notificationcontroller.affinity | object | `{}` |  |
-| notificationcontroller.annotations."prometheus.io/port" | string | `"8080"` |  |
-| notificationcontroller.annotations."prometheus.io/scrape" | string | `"true"` |  |
-| notificationcontroller.container.additionalargs | list | `[]` |  |
-| notificationcontroller.create | bool | `true` |  |
-| notificationcontroller.image | string | `"ghcr.io/fluxcd/notification-controller"` |  |
-| notificationcontroller.imagePullPolicy | object | `{}` |  |
-| notificationcontroller.labels | object | `{}` |  |
-| notificationcontroller.nodeSelector | object | `{}` |  |
-| notificationcontroller.priorityClassName | string | `""` |  |
-| notificationcontroller.resources.limits | object | `{}` |  |
-| notificationcontroller.resources.requests.cpu | string | `"100m"` |  |
-| notificationcontroller.resources.requests.memory | string | `"64Mi"` |  |
-| notificationcontroller.service.annotations | object | `{}` |  |
-| notificationcontroller.service.labels | object | `{}` |  |
-| notificationcontroller.serviceaccount.annotations | object | `{}` |  |
-| notificationcontroller.serviceaccount.create | bool | `true` |  |
-| notificationcontroller.tag | string | `"v0.28.0"` |  |
-| notificationcontroller.tolerations | list | `[]` |  |
-| notificationcontroller.webhookReceiver.service.annotations | object | `{}` |  |
-| notificationcontroller.webhookReceiver.service.labels | object | `{}` |  |
+| notificationController.affinity | object | `{}` |  |
+| notificationController.annotations."prometheus.io/port" | string | `"8080"` |  |
+| notificationController.annotations."prometheus.io/scrape" | string | `"true"` |  |
+| notificationController.container.additionalargs | list | `[]` |  |
+| notificationController.create | bool | `true` |  |
+| notificationController.image | string | `"ghcr.io/fluxcd/notification-controller"` |  |
+| notificationController.imagePullPolicy | object | `{}` |  |
+| notificationController.labels | object | `{}` |  |
+| notificationController.nodeSelector | object | `{}` |  |
+| notificationController.priorityClassName | string | `""` |  |
+| notificationController.resources.limits | object | `{}` |  |
+| notificationController.resources.requests.cpu | string | `"100m"` |  |
+| notificationController.resources.requests.memory | string | `"64Mi"` |  |
+| notificationController.service.annotations | object | `{}` |  |
+| notificationController.service.labels | object | `{}` |  |
+| notificationController.serviceaccount.annotations | object | `{}` |  |
+| notificationController.serviceaccount.create | bool | `true` |  |
+| notificationController.tag | string | `"v0.28.0"` |  |
+| notificationController.tolerations | list | `[]` |  |
+| notificationController.webhookReceiver.service.annotations | object | `{}` |  |
+| notificationController.webhookReceiver.service.labels | object | `{}` |  |
 | policies.create | bool | `true` |  |
 | prometheus.podMonitor.create | bool | `false` | Enables podMonitor endpoint |
 | prometheus.podMonitor.podMetricsEndpoints[0].port | string | `"http-prom"` |  |

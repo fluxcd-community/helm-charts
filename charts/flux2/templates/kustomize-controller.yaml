@@ -38,7 +38,7 @@ spec:
         - --no-cross-namespace-refs=true
         - --default-service-account={{ .Values.multitenancy.defaultServiceAccount | default "default"  }}
         {{- end}}
-        {{- if .Values.notificationcontroller.create }}
+        {{- if .Values.notificationController.create }}
         - --events-addr=http://notification-controller.$(RUNTIME_NAMESPACE).svc.{{ .Values.clusterDomain | default "cluster.local" }}.
         {{- end}}
         - --watch-all-namespaces={{ .Values.watchallnamespaces }}

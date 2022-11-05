@@ -15,3 +15,4 @@ annotations:
     - "[changed]: change case of `imageautomationcontroller` to `imageAutomationController`"
     - "[changed]: change case of `imagereflectioncontroller` to `imageReflectionController`"
     - "[changed]: change case of `kustomizecontroller` to `kustomizeController`"
+    - "[changed]: change case of `notificationcontroller` to `notificationController`"
