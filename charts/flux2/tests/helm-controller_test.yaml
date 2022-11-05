@@ -7,13 +7,13 @@ tests:
       - hasDocuments:
           count: 0
     set:
-      helmcontroller.create: false
+      helmController.create: false
   - it: should have kind Deployment for k8s >= 1.19
     capabilities:
       majorVersion: 1
       minorVersion: 19
     set:
-      helmcontroller.labels:
+      helmController.labels:
         labeltestkey: labeltestvalue
         labeltestkey2: labeltestvalue2
     asserts:
@@ -25,7 +25,7 @@ tests:
           of: apps/v1
   - it: should set additional container args
     set:
-      helmcontroller.container.additionalargs:
+      helmController.container.additionalargs:
         - --testlabel1=testvalue1
     asserts:
       - contains:
@@ -35,7 +35,7 @@ tests:
     asserts:
       - matchSnapshot: {}
     set:
-      helmcontroller.labels:
+      helmController.labels:
         labeltestkey: labeltestvalue
         labeltestkey2: labeltestvalue2
   - it: should have args for Multi-tenancy lockdown
@@ -61,7 +61,7 @@ tests:
           content: --default-service-account=test1
   - it: should set imagePullPolicy to Always
     set:
-      helmcontroller.imagePullPolicy: Always
+      helmController.imagePullPolicy: Always
     asserts:
       - equal:
           path: spec.template.spec.containers[0].imagePullPolicy

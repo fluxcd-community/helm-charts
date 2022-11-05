@@ -27,7 +27,7 @@ cli:
 
 # controllers
 
-helmcontroller:
+helmController:
   create: true
   image: ghcr.io/fluxcd/helm-controller
   tag: v0.26.0

@@ -11,3 +11,4 @@ annotations:
     - "[added]: `clusterDomain` to correctly apply fqdns for event and storage addresses"
     - "[removed]: `eventsaddr` has been removed in favour of `clusterDomain`"
     - "[fixed]: storage address in source controller assumed cluster domain was always `cluster.local`"
+    - "[changed]: change case of `helmcontroller` to `helmController`"
