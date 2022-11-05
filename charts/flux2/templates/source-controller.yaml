@@ -36,7 +36,7 @@ spec:
       {{- end}}
       containers:
       - args:
-        {{- if .Values.notificationcontroller.create }}
+        {{- if .Values.notificationController.create }}
         - --events-addr=http://notification-controller.$(RUNTIME_NAMESPACE).svc.{{ .Values.clusterDomain | default "cluster.local" }}.
         {{- end}}
         - --watch-all-namespaces={{ .Values.watchallnamespaces }}

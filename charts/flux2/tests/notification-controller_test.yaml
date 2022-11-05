@@ -7,7 +7,7 @@ tests:
       - hasDocuments:
           count: 0
     set:
-      notificationcontroller.create: false
+      notificationController.create: false
   - it: should have kind Deployment for k8s >= 1.19
     capabilities:
       majorVersion: 1
@@ -21,16 +21,15 @@ tests:
           of: apps/v1
   - it: should set additional container args
     set:
-      notificationcontroller.container.additionalargs:
+      notificationController.container.additionalargs:
         - --testlabel1=testvalue1
     asserts:
       - contains:
           path: spec.template.spec.containers[0].args
-          content:
-            --testlabel1=testvalue1
+          content: --testlabel1=testvalue1
   - it: should match snapshot of default values
     asserts:
-      - matchSnapshot: { }
+      - matchSnapshot: {}
   - it: should have args for Multi-tenancy lockdown
     capabilities:
       majorVersion: 1
@@ -47,11 +46,10 @@ tests:
           of: apps/v1
       - contains:
           path: spec.template.spec.containers[0].args
-          content:
-            --no-cross-namespace-refs=true
+          content: --no-cross-namespace-refs=true
   - it: should set imagePullPolicy to Always
     set:
-      notificationcontroller.imagePullPolicy: Always
+      notificationController.imagePullPolicy: Always
     asserts:
       - equal:
           path: spec.template.spec.containers[0].imagePullPolicy

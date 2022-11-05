@@ -1,5 +1,5 @@
-{{- if and .Values.notificationcontroller.create -}}
-{{- if .Values.notificationcontroller.serviceaccount.create -}}
+{{- if and .Values.notificationController.create -}}
+{{- if .Values.notificationController.serviceaccount.create -}}
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -10,7 +10,7 @@ metadata:
     app.kubernetes.io/part-of: flux
     helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
   name: notification-controller
-  {{- with .Values.notificationcontroller.serviceaccount.annotations }}
+  {{- with .Values.notificationController.serviceaccount.annotations }}
   annotations: {{ toYaml . | nindent 4 }}
   {{- end }}
 {{- end -}}
