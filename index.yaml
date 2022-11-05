@@ -3,6 +3,33 @@ entries:
   flux2:
   - annotations:
       artifacthub.io/changes: |
+        - "[added]: `clusterDomain` to correctly apply fqdns for event and storage addresses"
+        - "[removed]: `eventsaddr` has been removed in favour of `clusterDomain`"
+        - "[fixed]: storage address in source controller assumed cluster domain was always `cluster.local`"
+        - "[changed]: change case of `helmcontroller` to `helmController`"
+        - "[changed]: change case of `imageautomationcontroller` to `imageAutomationController`"
+        - "[changed]: change case of `imagereflectioncontroller` to `imageReflectionController`"
+        - "[changed]: change case of `kustomizecontroller` to `kustomizeController`"
+        - "[changed]: change case of `notificationcontroller` to `notificationController`"
+        - "[changed]: change case of `sourcecontroller` to `sourceController`"
+        - "[changed]: change case of `serviceaccount` to `serviceAccount`"
+        - "[changed]: change case of `additionalargs` to `additionalArgs`"
+        - "[changed]: change case of `loglevel` to `logLevel`"
+        - "[changed]: change case of `watchallnamespaces` to `watchAllNamespaces`"
+    apiVersion: v2
+    appVersion: 0.36.0
+    created: "2022-11-05T17:58:42.478557566Z"
+    description: A Helm chart for flux2
+    digest: 0ca9d8a7073d1e8b6be64d32d12c188543015d0a7bce8a9be8a5c119589b6a28
+    name: flux2
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-2.0.0/flux2-2.0.0.tgz
+    version: 2.0.0
+  - annotations:
+      artifacthub.io/changes: |
         - "[Chore]: Update App Version to upstream 0.36.0"
     apiVersion: v2
     appVersion: 0.36.0
@@ -1395,4 +1422,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2022-11-03T11:53:52.097561358Z"
+generated: "2022-11-05T17:58:42.479202399Z"
