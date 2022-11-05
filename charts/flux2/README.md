@@ -96,7 +96,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | kustomizeController.serviceAccount.create | bool | `true` |  |
 | kustomizeController.tag | string | `"v0.30.0"` |  |
 | kustomizeController.tolerations | list | `[]` |  |
-| loglevel | string | `"info"` |  |
+| logLevel | string | `"info"` |  |
 | multitenancy.defaultServiceAccount | string | `"default"` | All Kustomizations and HelmReleases which don’t have spec.serviceAccountName specified, will use the default account from the tenant’s namespace. Tenants have to specify a service account in their Flux resources to be able to deploy workloads in their namespaces as the default account has no permissions. |
 | multitenancy.enabled | bool | `false` | Implement the patches for Multi-tenancy lockdown. See https://fluxcd.io/docs/installation/#multi-tenancy-lockdown |
 | multitenancy.privileged | bool | `true` | Both kustomize-controller and helm-controller service accounts run privileged with cluster-admin ClusterRoleBinding. Disable if you want to run them with a minimum set of permissions. |
