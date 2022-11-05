@@ -1,5 +1,5 @@
-{{- if and .Values.imagereflectorcontroller.create }}
-{{- if .Values.imagereflectorcontroller.serviceaccount.create -}}
+{{- if and .Values.imageReflectionController.create }}
+{{- if .Values.imageReflectionController.serviceaccount.create -}}
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -10,7 +10,7 @@ metadata:
     app.kubernetes.io/part-of: flux
     helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
   name: image-reflector-controller
-  {{- with .Values.imagereflectorcontroller.serviceaccount.annotations }}
+  {{- with .Values.imageReflectionController.serviceaccount.annotations }}
   annotations: {{ toYaml . | nindent 4 }}
   {{- end }}
 {{- end -}}

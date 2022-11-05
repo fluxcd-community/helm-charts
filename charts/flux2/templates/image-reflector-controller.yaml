@@ -1,4 +1,4 @@
-{{- if and .Values.imagereflectorcontroller.create }}
+{{- if and .Values.imageReflectionController.create }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -11,26 +11,26 @@ metadata:
     control-plane: controller
   name: image-reflector-controller
 spec:
-  {{- if kindIs "invalid" .Values.imagereflectorcontroller.replicas }}
+  {{- if kindIs "invalid" .Values.imageReflectionController.replicas }}
   replicas: 1
   {{- else }}
-  replicas: {{ .Values.imagereflectorcontroller.replicas  }}
+  replicas: {{ .Values.imageReflectionController.replicas  }}
   {{- end}}
   selector:
     matchLabels:
       app: image-reflector-controller
   template:
     metadata:
-      {{- with .Values.imagereflectorcontroller.annotations }}
+      {{- with .Values.imageReflectionController.annotations }}
       annotations: {{ toYaml . | nindent 8 }}
       {{- end }}
       labels:
         app: image-reflector-controller
-{{ with .Values.imagereflectorcontroller.labels }}{{ toYaml . | indent 8 }}{{ end }}
+{{ with .Values.imageReflectionController.labels }}{{ toYaml . | indent 8 }}{{ end }}
     spec:
-      {{- if .Values.imagereflectorcontroller.initContainers}}
+      {{- if .Values.imageReflectionController.initContainers}}
       initContainers:
-        {{- toYaml .Values.imagereflectorcontroller.initContainers | nindent 8}}
+        {{- toYaml .Values.imageReflectionController.initContainers | nindent 8}}
       {{- end}}
       containers:
       - args:
@@ -44,7 +44,7 @@ spec:
         - --log-level={{ .Values.loglevel | default "info" }}
         - --log-encoding=json
         - --enable-leader-election
-        {{- range .Values.imagereflectorcontroller.container.additionalargs }}
+        {{- range .Values.imageReflectionController.container.additionalargs }}
         - {{ . }}
         {{- end}}
         env:
@@ -52,9 +52,9 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-        image: {{ template "template.image" .Values.imagereflectorcontroller }}
-        {{- if .Values.imagereflectorcontroller.imagePullPolicy }}
-        imagePullPolicy: {{ .Values.imagereflectorcontroller.imagePullPolicy }}
+        image: {{ template "template.image" .Values.imageReflectionController }}
+        {{- if .Values.imageReflectionController.imagePullPolicy }}
+        imagePullPolicy: {{ .Values.imageReflectionController.imagePullPolicy }}
         {{- else }}
         imagePullPolicy: IfNotPresent
         {{- end }}
@@ -73,11 +73,11 @@ spec:
           httpGet:
             path: /readyz
             port: healthz
-        {{- with .Values.imagereflectorcontroller.resources }}
+        {{- with .Values.imageReflectionController.resources }}
         resources: {{ toYaml . | nindent 10 }}
         {{- end }}
-        {{- if .Values.imagereflectorcontroller.securityContext }}
-        securityContext: {{ toYaml .Values.imagereflectorcontroller.securityContext | nindent 10 }}
+        {{- if .Values.imageReflectionController.securityContext }}
+        securityContext: {{ toYaml .Values.imageReflectionController.securityContext | nindent 10 }}
         {{- else }}
         securityContext:
           allowPrivilegeEscalation: false
@@ -94,11 +94,11 @@ spec:
           name: temp
         - mountPath: /data
           name: data
-        {{- if .Values.imagereflectorcontroller.volumeMounts }}
-        {{- toYaml .Values.imagereflectorcontroller.volumeMounts | nindent 8 }}
+        {{- if .Values.imageReflectionController.volumeMounts }}
+        {{- toYaml .Values.imageReflectionController.volumeMounts | nindent 8 }}
         {{- end}}
-      {{- if .Values.imagereflectorcontroller.priorityClassName }}
-      priorityClassName: {{ .Values.imagereflectorcontroller.priorityClassName | quote }}
+      {{- if .Values.imageReflectionController.priorityClassName }}
+      priorityClassName: {{ .Values.imageReflectionController.priorityClassName | quote }}
       {{- end }}
       securityContext:
         fsGroup: 1337
@@ -112,16 +112,16 @@ spec:
         name: temp
       - emptyDir: {}
         name: data
-      {{- if .Values.imagereflectorcontroller.volumes }}
-      {{- toYaml .Values.imagereflectorcontroller.volumes | nindent 6 }}
+      {{- if .Values.imageReflectionController.volumes }}
+      {{- toYaml .Values.imageReflectionController.volumes | nindent 6 }}
       {{- end}}
-      {{- with .Values.imagereflectorcontroller.nodeSelector }}
+      {{- with .Values.imageReflectionController.nodeSelector }}
       nodeSelector: {{ toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.imagereflectorcontroller.affinity }}
+      {{- with .Values.imageReflectionController.affinity }}
       affinity: {{ toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.imagereflectorcontroller.tolerations }}
+      {{- with .Values.imageReflectionController.tolerations }}
       tolerations: {{ toYaml . | nindent 8 }}
       {{- end }}
 {{- end }}
