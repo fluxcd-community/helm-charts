@@ -148,4 +148,4 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | sourceController.serviceAccount.create | bool | `true` |  |
 | sourceController.tag | string | `"v0.31.0"` |  |
 | sourceController.tolerations | list | `[]` |  |
-| watchallnamespaces | bool | `true` |  |
+| watchAllNamespaces | bool | `true` |  |
