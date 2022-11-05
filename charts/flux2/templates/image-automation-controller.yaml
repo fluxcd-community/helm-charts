@@ -44,7 +44,7 @@ spec:
         - --log-level={{ .Values.loglevel | default "info" }}
         - --log-encoding=json
         - --enable-leader-election
-        {{- range .Values.imageAutomationController.container.additionalargs }}
+        {{- range .Values.imageAutomationController.container.additionalArgs }}
         - {{ . }}
         {{- end}}
         env:

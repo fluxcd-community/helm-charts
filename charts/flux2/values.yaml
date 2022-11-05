@@ -44,7 +44,7 @@ helmController:
     prometheus.io/scrape: "true"
   labels: {}
   container:
-    additionalargs: []
+    additionalArgs: []
   serviceAccount:
     create: true
     annotations: {}
@@ -90,7 +90,7 @@ imageAutomationController:
     prometheus.io/scrape: "true"
   labels: {}
   container:
-    additionalargs: []
+    additionalArgs: []
   serviceAccount:
     create: true
     annotations: {}
@@ -116,7 +116,7 @@ imageReflectionController:
     prometheus.io/scrape: "true"
   labels: {}
   container:
-    additionalargs: []
+    additionalArgs: []
   serviceAccount:
     create: true
     annotations: {}
@@ -142,7 +142,7 @@ kustomizeController:
     prometheus.io/scrape: "true"
   labels: {}
   container:
-    additionalargs: []
+    additionalArgs: []
   serviceAccount:
     create: true
     annotations: {}
@@ -188,7 +188,7 @@ notificationController:
     prometheus.io/scrape: "true"
   labels: {}
   container:
-    additionalargs: []
+    additionalArgs: []
   serviceAccount:
     create: true
     annotations: {}
@@ -221,7 +221,7 @@ sourceController:
     prometheus.io/scrape: "true"
   labels: {}
   container:
-    additionalargs: []
+    additionalArgs: []
   serviceAccount:
     create: true
     annotations: {}

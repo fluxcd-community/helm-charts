@@ -45,7 +45,7 @@ spec:
         - --log-level={{ .Values.loglevel | default "info" }}
         - --log-encoding=json
         - --enable-leader-election
-        {{- range .Values.helmController.container.additionalargs }}
+        {{- range .Values.helmController.container.additionalArgs }}
         - {{ . }}
         {{- end}}
         env:

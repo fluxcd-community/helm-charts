@@ -21,7 +21,7 @@ tests:
           of: apps/v1
   - it: should set additional container args
     set:
-      imageAutomationController.container.additionalargs:
+      imageAutomationController.container.additionalArgs:
         - --testlabel1=testvalue1
     asserts:
       - contains:

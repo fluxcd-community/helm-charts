@@ -41,7 +41,7 @@ spec:
         - --log-level={{ .Values.loglevel | default "info" }}
         - --log-encoding=json
         - --enable-leader-election
-        {{- range .Values.notificationController.container.additionalargs }}
+        {{- range .Values.notificationController.container.additionalArgs }}
         - {{ . }}
         {{- end}}
         env:
