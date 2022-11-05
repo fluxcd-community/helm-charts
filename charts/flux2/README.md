@@ -34,8 +34,8 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | helmController.resources.limits | object | `{}` |  |
 | helmController.resources.requests.cpu | string | `"100m"` |  |
 | helmController.resources.requests.memory | string | `"64Mi"` |  |
-| helmController.serviceaccount.annotations | object | `{}` |  |
-| helmController.serviceaccount.create | bool | `true` |  |
+| helmController.serviceAccount.annotations | object | `{}` |  |
+| helmController.serviceAccount.create | bool | `true` |  |
 | helmController.tag | string | `"v0.26.0"` |  |
 | helmController.tolerations | list | `[]` |  |
 | imageAutomationController.affinity | object | `{}` |  |
@@ -51,8 +51,8 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imageAutomationController.resources.limits | object | `{}` |  |
 | imageAutomationController.resources.requests.cpu | string | `"100m"` |  |
 | imageAutomationController.resources.requests.memory | string | `"64Mi"` |  |
-| imageAutomationController.serviceaccount.annotations | object | `{}` |  |
-| imageAutomationController.serviceaccount.create | bool | `true` |  |
+| imageAutomationController.serviceAccount.annotations | object | `{}` |  |
+| imageAutomationController.serviceAccount.create | bool | `true` |  |
 | imageAutomationController.tag | string | `"v0.26.1"` |  |
 | imageAutomationController.tolerations | list | `[]` |  |
 | imagePullSecrets | list | `[]` | contents of pod imagePullSecret in form 'name=[secretName]'; applied to all controllers |
@@ -69,8 +69,8 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imageReflectionController.resources.limits | object | `{}` |  |
 | imageReflectionController.resources.requests.cpu | string | `"100m"` |  |
 | imageReflectionController.resources.requests.memory | string | `"64Mi"` |  |
-| imageReflectionController.serviceaccount.annotations | object | `{}` |  |
-| imageReflectionController.serviceaccount.create | bool | `true` |  |
+| imageReflectionController.serviceAccount.annotations | object | `{}` |  |
+| imageReflectionController.serviceAccount.create | bool | `true` |  |
 | imageReflectionController.tag | string | `"v0.22.1"` |  |
 | imageReflectionController.tolerations | list | `[]` |  |
 | installCRDs | bool | `true` |  |
@@ -92,8 +92,8 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | kustomizeController.secret.create | bool | `false` | Create a secret to use it with extraSecretMounts. Defaults to false. |
 | kustomizeController.secret.data | object | `{}` |  |
 | kustomizeController.secret.name | string | `""` |  |
-| kustomizeController.serviceaccount.annotations | object | `{}` |  |
-| kustomizeController.serviceaccount.create | bool | `true` |  |
+| kustomizeController.serviceAccount.annotations | object | `{}` |  |
+| kustomizeController.serviceAccount.create | bool | `true` |  |
 | kustomizeController.tag | string | `"v0.30.0"` |  |
 | kustomizeController.tolerations | list | `[]` |  |
 | loglevel | string | `"info"` |  |
@@ -115,8 +115,8 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | notificationController.resources.requests.memory | string | `"64Mi"` |  |
 | notificationController.service.annotations | object | `{}` |  |
 | notificationController.service.labels | object | `{}` |  |
-| notificationController.serviceaccount.annotations | object | `{}` |  |
-| notificationController.serviceaccount.create | bool | `true` |  |
+| notificationController.serviceAccount.annotations | object | `{}` |  |
+| notificationController.serviceAccount.create | bool | `true` |  |
 | notificationController.tag | string | `"v0.28.0"` |  |
 | notificationController.tolerations | list | `[]` |  |
 | notificationController.webhookReceiver.service.annotations | object | `{}` |  |
@@ -144,8 +144,8 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | sourceController.resources.requests.memory | string | `"64Mi"` |  |
 | sourceController.service.annotations | object | `{}` |  |
 | sourceController.service.labels | object | `{}` |  |
-| sourceController.serviceaccount.annotations | object | `{}` |  |
-| sourceController.serviceaccount.create | bool | `true` |  |
+| sourceController.serviceAccount.annotations | object | `{}` |  |
+| sourceController.serviceAccount.create | bool | `true` |  |
 | sourceController.tag | string | `"v0.31.0"` |  |
 | sourceController.tolerations | list | `[]` |  |
 | watchallnamespaces | bool | `true` |  |
