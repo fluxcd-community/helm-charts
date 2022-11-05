@@ -7,7 +7,7 @@ tests:
       - hasDocuments:
           count: 0
     set:
-      imageautomationcontroller.create: false
+      imageAutomationController.create: false
   - it: should have kind Deployment for k8s >= 1.19
     capabilities:
       majorVersion: 1
@@ -21,7 +21,7 @@ tests:
           of: apps/v1
   - it: should set additional container args
     set:
-      imageautomationcontroller.container.additionalargs:
+      imageAutomationController.container.additionalargs:
         - --testlabel1=testvalue1
     asserts:
       - contains:
@@ -49,7 +49,7 @@ tests:
           content: --no-cross-namespace-refs=true
   - it: should set imagePullPolicy to Always
     set:
-      imageautomationcontroller.imagePullPolicy: Always
+      imageAutomationController.imagePullPolicy: Always
     asserts:
       - equal:
           path: spec.template.spec.containers[0].imagePullPolicy

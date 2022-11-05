@@ -1,5 +1,5 @@
-{{- if and .Values.imageautomationcontroller.create }}
-{{- if .Values.imageautomationcontroller.serviceaccount.create -}}
+{{- if and .Values.imageAutomationController.create }}
+{{- if .Values.imageAutomationController.serviceaccount.create -}}
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -10,7 +10,7 @@ metadata:
     app.kubernetes.io/part-of: flux
     helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
   name: image-automation-controller
-  {{- with .Values.imageautomationcontroller.serviceaccount.annotations }}
+  {{- with .Values.imageAutomationController.serviceaccount.annotations }}
   annotations: {{ toYaml . | nindent 4 }}
   {{- end }}
 {{- end -}}
