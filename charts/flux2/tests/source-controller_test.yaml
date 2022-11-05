@@ -7,7 +7,7 @@ tests:
       - hasDocuments:
           count: 0
     set:
-      sourcecontroller.create: false
+      sourceController.create: false
   - it: should have kind Deployment for k8s >= 1.19
     capabilities:
       majorVersion: 1
@@ -21,7 +21,7 @@ tests:
           of: apps/v1
   - it: should set additional container args
     set:
-      sourcecontroller.container.additionalargs:
+      sourceController.container.additionalargs:
         - --testlabel1=testvalue1
     asserts:
       - contains:
@@ -32,7 +32,7 @@ tests:
       - matchSnapshot: {}
   - it: should set imagePullPolicy to Always
     set:
-      sourcecontroller.imagePullPolicy: Always
+      sourceController.imagePullPolicy: Always
     asserts:
       - equal:
           path: spec.template.spec.containers[0].imagePullPolicy

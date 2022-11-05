@@ -204,7 +204,7 @@ notificationController:
   affinity: {}
   tolerations: []
 
-sourcecontroller:
+sourceController:
   create: true
   image: ghcr.io/fluxcd/source-controller
   tag: v0.31.0
