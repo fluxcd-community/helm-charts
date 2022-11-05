@@ -19,3 +19,4 @@ annotations:
     - "[changed]: change case of `sourcecontroller` to `sourceController`"
     - "[changed]: change case of `serviceaccount` to `serviceAccount`"
     - "[changed]: change case of `additionalargs` to `additionalArgs`"
+    - "[changed]: change case of `loglevel` to `logLevel`"

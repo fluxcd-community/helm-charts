@@ -38,7 +38,7 @@ spec:
         - --no-cross-namespace-refs=true
         {{- end}}
         - --watch-all-namespaces={{ .Values.watchallnamespaces }}
-        - --log-level={{ .Values.loglevel | default "info" }}
+        - --log-level={{ .Values.logLevel | default "info" }}
         - --log-encoding=json
         - --enable-leader-election
         {{- range .Values.notificationController.container.additionalArgs }}
