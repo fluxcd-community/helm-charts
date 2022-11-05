@@ -1,4 +1,4 @@
-{{- if and .Values.kustomizecontroller.create }}
+{{- if and .Values.kustomizeController.create }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -11,26 +11,26 @@ metadata:
     control-plane: controller
   name: kustomize-controller
 spec:
-  {{- if kindIs "invalid" .Values.kustomizecontroller.replicas }}
+  {{- if kindIs "invalid" .Values.kustomizeController.replicas }}
   replicas: 1
   {{- else }}
-  replicas: {{ .Values.kustomizecontroller.replicas  }}
+  replicas: {{ .Values.kustomizeController.replicas  }}
   {{- end}}
   selector:
     matchLabels:
       app: kustomize-controller
   template:
     metadata:
-      {{- with .Values.kustomizecontroller.annotations }}
+      {{- with .Values.kustomizeController.annotations }}
       annotations: {{ toYaml . | nindent 8 }}
       {{- end }}
       labels:
         app: kustomize-controller
-{{ with .Values.kustomizecontroller.labels }}{{ toYaml . | indent 8 }}{{ end }}
+{{ with .Values.kustomizeController.labels }}{{ toYaml . | indent 8 }}{{ end }}
     spec:
-      {{- if .Values.kustomizecontroller.initContainers}}
+      {{- if .Values.kustomizeController.initContainers}}
       initContainers:
-        {{- toYaml .Values.kustomizecontroller.initContainers | nindent 8}}
+        {{- toYaml .Values.kustomizeController.initContainers | nindent 8}}
       {{- end}}
       containers:
       - args:
@@ -45,7 +45,7 @@ spec:
         - --log-level={{ .Values.loglevel | default "info" }}
         - --log-encoding=json
         - --enable-leader-election
-        {{- range .Values.kustomizecontroller.container.additionalargs }}
+        {{- range .Values.kustomizeController.container.additionalargs }}
         - {{ . }}
         {{- end}}
         env:
@@ -53,20 +53,20 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-        {{- if or (.Values.kustomizecontroller.envFrom.map.name) (.Values.kustomizecontroller.envFrom.secret.name) }}
+        {{- if or (.Values.kustomizeController.envFrom.map.name) (.Values.kustomizeController.envFrom.secret.name) }}
         envFrom:
-          {{- if .Values.kustomizecontroller.envFrom.map.name }}
+          {{- if .Values.kustomizeController.envFrom.map.name }}
           - configMapRef:
-              name: {{ .Values.kustomizecontroller.envFrom.map.name }}
+              name: {{ .Values.kustomizeController.envFrom.map.name }}
           {{- end }}
-          {{- if .Values.kustomizecontroller.envFrom.secret.name }}
+          {{- if .Values.kustomizeController.envFrom.secret.name }}
           - secretRef:
-              name: {{ .Values.kustomizecontroller.envFrom.secret.name }}
+              name: {{ .Values.kustomizeController.envFrom.secret.name }}
           {{- end }}
         {{- end }}
-        image: {{ template "template.image" .Values.kustomizecontroller }}
-        {{- if .Values.kustomizecontroller.imagePullPolicy }}
-        imagePullPolicy: {{ .Values.kustomizecontroller.imagePullPolicy }}
+        image: {{ template "template.image" .Values.kustomizeController }}
+        {{- if .Values.kustomizeController.imagePullPolicy }}
+        imagePullPolicy: {{ .Values.kustomizeController.imagePullPolicy }}
         {{- else }}
         imagePullPolicy: IfNotPresent
         {{- end }}
@@ -85,11 +85,11 @@ spec:
           httpGet:
             path: /readyz
             port: healthz
-        {{- with .Values.kustomizecontroller.resources }}
+        {{- with .Values.kustomizeController.resources }}
         resources: {{ toYaml . | nindent 10 }}
         {{- end }}
-        {{- if .Values.kustomizecontroller.securityContext }}
-        securityContext: {{ toYaml .Values.kustomizecontroller.securityContext | nindent 10 }}
+        {{- if .Values.kustomizeController.securityContext }}
+        securityContext: {{ toYaml .Values.kustomizeController.securityContext | nindent 10 }}
         {{- else }}
         securityContext:
           allowPrivilegeEscalation: false
@@ -104,13 +104,13 @@ spec:
         volumeMounts:
         - mountPath: /tmp
           name: temp
-        {{- if .Values.kustomizecontroller.volumeMounts }}
-        {{- toYaml .Values.kustomizecontroller.volumeMounts | nindent 8 }}
+        {{- if .Values.kustomizeController.volumeMounts }}
+        {{- toYaml .Values.kustomizeController.volumeMounts | nindent 8 }}
         {{- end}}
-      {{- if .Values.kustomizecontroller.priorityClassName }}
-      priorityClassName: {{ .Values.kustomizecontroller.priorityClassName | quote }}
+      {{- if .Values.kustomizeController.priorityClassName }}
+      priorityClassName: {{ .Values.kustomizeController.priorityClassName | quote }}
       {{- end }}
-      {{- range .Values.kustomizecontroller.extraSecretMounts }}
+      {{- range .Values.kustomizeController.extraSecretMounts }}
         - name: {{ .name }}
           mountPath: {{ .mountPath }}
           subPath: {{ .subPath }}
@@ -126,21 +126,21 @@ spec:
       volumes:
       - emptyDir: {}
         name: temp
-      {{- if .Values.kustomizecontroller.volumes }}
-      {{- toYaml .Values.kustomizecontroller.volumes | nindent 6 }}
+      {{- if .Values.kustomizeController.volumes }}
+      {{- toYaml .Values.kustomizeController.volumes | nindent 6 }}
       {{- end}}
-      {{- range .Values.kustomizecontroller.extraSecretMounts }}
+      {{- range .Values.kustomizeController.extraSecretMounts }}
       - name: {{ .name }}
         secret:
           secretName: {{ .secretName }}
       {{- end }}
-      {{- with .Values.kustomizecontroller.nodeSelector }}
+      {{- with .Values.kustomizeController.nodeSelector }}
       nodeSelector: {{ toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.kustomizecontroller.affinity }}
+      {{- with .Values.kustomizeController.affinity }}
       affinity: {{ toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.kustomizecontroller.tolerations }}
+      {{- with .Values.kustomizeController.tolerations }}
       tolerations: {{ toYaml . | nindent 8 }}
       {{- end }}
 {{- end }}

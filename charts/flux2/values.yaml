@@ -125,7 +125,7 @@ imageReflectionController:
   affinity: {}
   tolerations: []
 
-kustomizecontroller:
+kustomizeController:
   create: true
   image: ghcr.io/fluxcd/kustomize-controller
   tag: v0.30.0
@@ -159,7 +159,7 @@ kustomizecontroller:
     secret:
       name: ""
   # -- Defines additional mounts with secrets.
-  # Secrets must be manually created in the namespace or with kustomizecontroller.secret
+  # Secrets must be manually created in the namespace or with kustomizeController.secret
   extraSecretMounts: []
   # - name: secret-files
   #   mountPath: /etc/secrets
