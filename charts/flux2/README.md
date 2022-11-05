@@ -24,7 +24,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | helmController.affinity | object | `{}` |  |
 | helmController.annotations."prometheus.io/port" | string | `"8080"` |  |
 | helmController.annotations."prometheus.io/scrape" | string | `"true"` |  |
-| helmController.container.additionalargs | list | `[]` |  |
+| helmController.container.additionalArgs | list | `[]` |  |
 | helmController.create | bool | `true` |  |
 | helmController.image | string | `"ghcr.io/fluxcd/helm-controller"` |  |
 | helmController.imagePullPolicy | object | `{}` |  |
@@ -41,7 +41,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imageAutomationController.affinity | object | `{}` |  |
 | imageAutomationController.annotations."prometheus.io/port" | string | `"8080"` |  |
 | imageAutomationController.annotations."prometheus.io/scrape" | string | `"true"` |  |
-| imageAutomationController.container.additionalargs | list | `[]` |  |
+| imageAutomationController.container.additionalArgs | list | `[]` |  |
 | imageAutomationController.create | bool | `true` |  |
 | imageAutomationController.image | string | `"ghcr.io/fluxcd/image-automation-controller"` |  |
 | imageAutomationController.imagePullPolicy | object | `{}` |  |
@@ -59,7 +59,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imageReflectionController.affinity | object | `{}` |  |
 | imageReflectionController.annotations."prometheus.io/port" | string | `"8080"` |  |
 | imageReflectionController.annotations."prometheus.io/scrape" | string | `"true"` |  |
-| imageReflectionController.container.additionalargs | list | `[]` |  |
+| imageReflectionController.container.additionalArgs | list | `[]` |  |
 | imageReflectionController.create | bool | `true` |  |
 | imageReflectionController.image | string | `"ghcr.io/fluxcd/image-reflector-controller"` |  |
 | imageReflectionController.imagePullPolicy | object | `{}` |  |
@@ -77,7 +77,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | kustomizeController.affinity | object | `{}` |  |
 | kustomizeController.annotations."prometheus.io/port" | string | `"8080"` |  |
 | kustomizeController.annotations."prometheus.io/scrape" | string | `"true"` |  |
-| kustomizeController.container.additionalargs | list | `[]` |  |
+| kustomizeController.container.additionalArgs | list | `[]` |  |
 | kustomizeController.create | bool | `true` |  |
 | kustomizeController.envFrom | object | `{"map":{"name":""},"secret":{"name":""}}` | Defines envFrom using a configmap and/or secret. |
 | kustomizeController.extraSecretMounts | list | `[]` | Defines additional mounts with secrets. Secrets must be manually created in the namespace or with kustomizeController.secret |
@@ -103,7 +103,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | notificationController.affinity | object | `{}` |  |
 | notificationController.annotations."prometheus.io/port" | string | `"8080"` |  |
 | notificationController.annotations."prometheus.io/scrape" | string | `"true"` |  |
-| notificationController.container.additionalargs | list | `[]` |  |
+| notificationController.container.additionalArgs | list | `[]` |  |
 | notificationController.create | bool | `true` |  |
 | notificationController.image | string | `"ghcr.io/fluxcd/notification-controller"` |  |
 | notificationController.imagePullPolicy | object | `{}` |  |
@@ -131,7 +131,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | sourceController.affinity | object | `{}` |  |
 | sourceController.annotations."prometheus.io/port" | string | `"8080"` |  |
 | sourceController.annotations."prometheus.io/scrape" | string | `"true"` |  |
-| sourceController.container.additionalargs | list | `[]` |  |
+| sourceController.container.additionalArgs | list | `[]` |  |
 | sourceController.create | bool | `true` |  |
 | sourceController.extraEnv | list | `[]` |  |
 | sourceController.image | string | `"ghcr.io/fluxcd/source-controller"` |  |

@@ -22,7 +22,7 @@ tests:
 
   - it: should set additional container args
     set:
-      imageReflectionController.container.additionalargs:
+      imageReflectionController.container.additionalArgs:
         - --testlabel1=testvalue1
     asserts:
       - contains:
