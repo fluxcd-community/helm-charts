@@ -74,28 +74,28 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imageReflectionController.tag | string | `"v0.22.1"` |  |
 | imageReflectionController.tolerations | list | `[]` |  |
 | installCRDs | bool | `true` |  |
-| kustomizecontroller.affinity | object | `{}` |  |
-| kustomizecontroller.annotations."prometheus.io/port" | string | `"8080"` |  |
-| kustomizecontroller.annotations."prometheus.io/scrape" | string | `"true"` |  |
-| kustomizecontroller.container.additionalargs | list | `[]` |  |
-| kustomizecontroller.create | bool | `true` |  |
-| kustomizecontroller.envFrom | object | `{"map":{"name":""},"secret":{"name":""}}` | Defines envFrom using a configmap and/or secret. |
-| kustomizecontroller.extraSecretMounts | list | `[]` | Defines additional mounts with secrets. Secrets must be manually created in the namespace or with kustomizecontroller.secret |
-| kustomizecontroller.image | string | `"ghcr.io/fluxcd/kustomize-controller"` |  |
-| kustomizecontroller.imagePullPolicy | object | `{}` |  |
-| kustomizecontroller.labels | object | `{}` |  |
-| kustomizecontroller.nodeSelector | object | `{}` |  |
-| kustomizecontroller.priorityClassName | string | `""` |  |
-| kustomizecontroller.resources.limits | object | `{}` |  |
-| kustomizecontroller.resources.requests.cpu | string | `"100m"` |  |
-| kustomizecontroller.resources.requests.memory | string | `"64Mi"` |  |
-| kustomizecontroller.secret.create | bool | `false` | Create a secret to use it with extraSecretMounts. Defaults to false. |
-| kustomizecontroller.secret.data | object | `{}` |  |
-| kustomizecontroller.secret.name | string | `""` |  |
-| kustomizecontroller.serviceaccount.annotations | object | `{}` |  |
-| kustomizecontroller.serviceaccount.create | bool | `true` |  |
-| kustomizecontroller.tag | string | `"v0.30.0"` |  |
-| kustomizecontroller.tolerations | list | `[]` |  |
+| kustomizeController.affinity | object | `{}` |  |
+| kustomizeController.annotations."prometheus.io/port" | string | `"8080"` |  |
+| kustomizeController.annotations."prometheus.io/scrape" | string | `"true"` |  |
+| kustomizeController.container.additionalargs | list | `[]` |  |
+| kustomizeController.create | bool | `true` |  |
+| kustomizeController.envFrom | object | `{"map":{"name":""},"secret":{"name":""}}` | Defines envFrom using a configmap and/or secret. |
+| kustomizeController.extraSecretMounts | list | `[]` | Defines additional mounts with secrets. Secrets must be manually created in the namespace or with kustomizeController.secret |
+| kustomizeController.image | string | `"ghcr.io/fluxcd/kustomize-controller"` |  |
+| kustomizeController.imagePullPolicy | object | `{}` |  |
+| kustomizeController.labels | object | `{}` |  |
+| kustomizeController.nodeSelector | object | `{}` |  |
+| kustomizeController.priorityClassName | string | `""` |  |
+| kustomizeController.resources.limits | object | `{}` |  |
+| kustomizeController.resources.requests.cpu | string | `"100m"` |  |
+| kustomizeController.resources.requests.memory | string | `"64Mi"` |  |
+| kustomizeController.secret.create | bool | `false` | Create a secret to use it with extraSecretMounts. Defaults to false. |
+| kustomizeController.secret.data | object | `{}` |  |
+| kustomizeController.secret.name | string | `""` |  |
+| kustomizeController.serviceaccount.annotations | object | `{}` |  |
+| kustomizeController.serviceaccount.create | bool | `true` |  |
+| kustomizeController.tag | string | `"v0.30.0"` |  |
+| kustomizeController.tolerations | list | `[]` |  |
 | loglevel | string | `"info"` |  |
 | multitenancy.defaultServiceAccount | string | `"default"` | All Kustomizations and HelmReleases which don’t have spec.serviceAccountName specified, will use the default account from the tenant’s namespace. Tenants have to specify a service account in their Flux resources to be able to deploy workloads in their namespaces as the default account has no permissions. |
 | multitenancy.enabled | bool | `false` | Implement the patches for Multi-tenancy lockdown. See https://fluxcd.io/docs/installation/#multi-tenancy-lockdown |

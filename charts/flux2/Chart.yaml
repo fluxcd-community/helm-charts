@@ -14,3 +14,4 @@ annotations:
     - "[changed]: change case of `helmcontroller` to `helmController`"
     - "[changed]: change case of `imageautomationcontroller` to `imageAutomationController`"
     - "[changed]: change case of `imagereflectioncontroller` to `imageReflectionController`"
+    - "[changed]: change case of `kustomizecontroller` to `kustomizeController`"
