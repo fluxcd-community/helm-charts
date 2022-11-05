@@ -45,7 +45,7 @@ helmController:
   labels: {}
   container:
     additionalargs: []
-  serviceaccount:
+  serviceAccount:
     create: true
     annotations: {}
   imagePullPolicy: {}
@@ -91,7 +91,7 @@ imageAutomationController:
   labels: {}
   container:
     additionalargs: []
-  serviceaccount:
+  serviceAccount:
     create: true
     annotations: {}
   imagePullPolicy: {}
@@ -117,7 +117,7 @@ imageReflectionController:
   labels: {}
   container:
     additionalargs: []
-  serviceaccount:
+  serviceAccount:
     create: true
     annotations: {}
   imagePullPolicy: {}
@@ -143,7 +143,7 @@ kustomizeController:
   labels: {}
   container:
     additionalargs: []
-  serviceaccount:
+  serviceAccount:
     create: true
     annotations: {}
   imagePullPolicy: {}
@@ -189,7 +189,7 @@ notificationController:
   labels: {}
   container:
     additionalargs: []
-  serviceaccount:
+  serviceAccount:
     create: true
     annotations: {}
   imagePullPolicy: {}
@@ -222,7 +222,7 @@ sourceController:
   labels: {}
   container:
     additionalargs: []
-  serviceaccount:
+  serviceAccount:
     create: true
     annotations: {}
   imagePullPolicy: {}

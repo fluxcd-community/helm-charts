@@ -17,3 +17,4 @@ annotations:
     - "[changed]: change case of `kustomizecontroller` to `kustomizeController`"
     - "[changed]: change case of `notificationcontroller` to `notificationController`"
     - "[changed]: change case of `sourcecontroller` to `sourceController`"
+    - "[changed]: change case of `serviceaccount` to `serviceAccount`"

@@ -11,6 +11,6 @@ metadata:
     helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
 rules:
 - apiGroups: [""]
-  resources: ["serviceaccounts"]
+  resources: ["serviceAccounts"]
   verbs: ["impersonate"]
 {{- end }}
