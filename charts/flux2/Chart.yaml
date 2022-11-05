@@ -12,3 +12,4 @@ annotations:
     - "[removed]: `eventsaddr` has been removed in favour of `clusterDomain`"
     - "[fixed]: storage address in source controller assumed cluster domain was always `cluster.local`"
     - "[changed]: change case of `helmcontroller` to `helmController`"
+    - "[changed]: change case of `imageautomationcontroller` to `imageAutomationController`"

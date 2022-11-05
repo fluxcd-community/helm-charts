@@ -73,7 +73,7 @@ helmController:
 
   tolerations: []
 
-imageautomationcontroller:
+imageAutomationController:
   create: true
   image: ghcr.io/fluxcd/image-automation-controller
   tag: v0.26.1
