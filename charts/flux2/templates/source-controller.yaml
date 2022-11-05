@@ -1,4 +1,4 @@
-{{- if .Values.sourcecontroller.create }}
+{{- if .Values.sourceController.create }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -11,10 +11,10 @@ metadata:
     control-plane: controller
   name: source-controller
 spec:
-  {{- if kindIs "invalid" .Values.sourcecontroller.replicas }}
+  {{- if kindIs "invalid" .Values.sourceController.replicas }}
   replicas: 1
   {{- else }}
-  replicas: {{ .Values.sourcecontroller.replicas  }}
+  replicas: {{ .Values.sourceController.replicas  }}
   {{- end}}
   selector:
     matchLabels:
@@ -23,16 +23,16 @@ spec:
     type: Recreate
   template:
     metadata:
-      {{- with .Values.sourcecontroller.annotations }}
+      {{- with .Values.sourceController.annotations }}
       annotations: {{ toYaml . | nindent 8 }}
       {{- end }}
       labels:
         app: source-controller
-{{ with .Values.sourcecontroller.labels }}{{ toYaml . | indent 8 }}{{ end }}
+{{ with .Values.sourceController.labels }}{{ toYaml . | indent 8 }}{{ end }}
     spec:
-      {{- if .Values.sourcecontroller.initContainers}}
+      {{- if .Values.sourceController.initContainers}}
       initContainers:
-        {{- toYaml .Values.sourcecontroller.initContainers | nindent 8}}
+        {{- toYaml .Values.sourceController.initContainers | nindent 8}}
       {{- end}}
       containers:
       - args:
@@ -45,7 +45,7 @@ spec:
         - --enable-leader-election
         - --storage-path=/data
         - --storage-adv-addr=source-controller.$(RUNTIME_NAMESPACE).svc.{{ .Values.clusterDomain | default "cluster.local" }}.
-        {{- range .Values.sourcecontroller.container.additionalargs }}
+        {{- range .Values.sourceController.container.additionalargs }}
         - {{ . }}
         {{- end}}
         env:
@@ -53,12 +53,12 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-        {{- with .Values.sourcecontroller.extraEnv }}
+        {{- with .Values.sourceController.extraEnv }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
-        image: {{ template "template.image" .Values.sourcecontroller }}
-        {{- if .Values.sourcecontroller.imagePullPolicy }}
-        imagePullPolicy: {{ .Values.sourcecontroller.imagePullPolicy }}
+        image: {{ template "template.image" .Values.sourceController }}
+        {{- if .Values.sourceController.imagePullPolicy }}
+        imagePullPolicy: {{ .Values.sourceController.imagePullPolicy }}
         {{- else }}
         imagePullPolicy: IfNotPresent
         {{- end }}
@@ -81,11 +81,11 @@ spec:
           httpGet:
             path: /
             port: http
-        {{- with .Values.sourcecontroller.resources }}
+        {{- with .Values.sourceController.resources }}
         resources: {{ toYaml . | nindent 10 }}
         {{- end }}
-        {{- if .Values.sourcecontroller.securityContext }}
-        securityContext: {{ toYaml .Values.sourcecontroller.securityContext | nindent 10 }}
+        {{- if .Values.sourceController.securityContext }}
+        securityContext: {{ toYaml .Values.sourceController.securityContext | nindent 10 }}
         {{- else }}
         securityContext:
           allowPrivilegeEscalation: false
@@ -102,11 +102,11 @@ spec:
           name: data
         - mountPath: /tmp
           name: tmp
-        {{- if .Values.sourcecontroller.volumeMounts }}
-        {{- toYaml .Values.sourcecontroller.volumeMounts | nindent 8 }}
+        {{- if .Values.sourceController.volumeMounts }}
+        {{- toYaml .Values.sourceController.volumeMounts | nindent 8 }}
         {{- end}}
-      {{- if .Values.sourcecontroller.priorityClassName }}
-      priorityClassName: {{ .Values.sourcecontroller.priorityClassName | quote }}
+      {{- if .Values.sourceController.priorityClassName }}
+      priorityClassName: {{ .Values.sourceController.priorityClassName | quote }}
       {{- end }}
       securityContext:
         fsGroup: 1337
@@ -120,16 +120,16 @@ spec:
         name: data
       - emptyDir: {}
         name: tmp
-      {{- if .Values.sourcecontroller.volumes }}
-      {{- toYaml .Values.sourcecontroller.volumes | nindent 6 }}
+      {{- if .Values.sourceController.volumes }}
+      {{- toYaml .Values.sourceController.volumes | nindent 6 }}
       {{- end}}
-      {{- with .Values.sourcecontroller.nodeSelector }}
+      {{- with .Values.sourceController.nodeSelector }}
       nodeSelector: {{ toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.sourcecontroller.affinity }}
+      {{- with .Values.sourceController.affinity }}
       affinity: {{ toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.sourcecontroller.tolerations }}
+      {{- with .Values.sourceController.tolerations }}
       tolerations: {{ toYaml . | nindent 8 }}
       {{- end }}
 {{- end }}
