@@ -7,7 +7,7 @@ tests:
       - hasDocuments:
           count: 0
     set:
-      imagereflectorcontroller.create: false
+      imageReflectionController.create: false
   - it: should have kind Deployment for k8s >= 1.19
     capabilities:
       majorVersion: 1
@@ -22,7 +22,7 @@ tests:
 
   - it: should set additional container args
     set:
-      imagereflectorcontroller.container.additionalargs:
+      imageReflectionController.container.additionalargs:
         - --testlabel1=testvalue1
     asserts:
       - contains:
@@ -50,7 +50,7 @@ tests:
           content: --no-cross-namespace-refs=true
   - it: should set imagePullPolicy to Always
     set:
-      imagereflectorcontroller.imagePullPolicy: Always
+      imageReflectionController.imagePullPolicy: Always
     asserts:
       - equal:
           path: spec.template.spec.containers[0].imagePullPolicy

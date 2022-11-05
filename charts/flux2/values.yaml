@@ -99,7 +99,7 @@ imageAutomationController:
   affinity: {}
   tolerations: []
 
-imagereflectorcontroller:
+imageReflectionController:
   create: true
   image: ghcr.io/fluxcd/image-reflector-controller
   tag: v0.22.1

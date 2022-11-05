@@ -13,3 +13,4 @@ annotations:
     - "[fixed]: storage address in source controller assumed cluster domain was always `cluster.local`"
     - "[changed]: change case of `helmcontroller` to `helmController`"
     - "[changed]: change case of `imageautomationcontroller` to `imageAutomationController`"
+    - "[changed]: change case of `imagereflectioncontroller` to `imageReflectionController`"
