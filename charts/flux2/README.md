@@ -6,6 +6,10 @@ A Helm chart for flux2
 
 This helm chart is maintain and released by the fluxcd-community on a best effort basis.
 
+## Changelog
+
+View the [Changelog on artifacthub](https://artifacthub.io/packages/helm/fluxcd-community/flux2?modal=changelog).
+
 ## Source Code
 
 * <https://github.com/fluxcd-community/helm-charts>
