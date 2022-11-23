@@ -1,6 +1,6 @@
 # flux2
 
-![Version: 2.0.0](https://img.shields.io/badge/Version-2.0.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.36.0](https://img.shields.io/badge/AppVersion-0.36.0-informational?style=flat-square)
+![Version: 2.1.0](https://img.shields.io/badge/Version-2.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.37.0](https://img.shields.io/badge/AppVersion-0.37.0-informational?style=flat-square)
 
 A Helm chart for flux2
 
@@ -17,7 +17,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | cli.affinity | object | `{}` |  |
 | cli.image | string | `"ghcr.io/fluxcd/flux-cli"` |  |
 | cli.nodeSelector | object | `{}` |  |
-| cli.tag | string | `"v0.36.0"` |  |
+| cli.tag | string | `"v0.37.0"` |  |
 | cli.tolerations | list | `[]` |  |
 | clusterDomain | string | `"cluster.local"` |  |
 | extraObjects | list | `[]` | Array of extra K8s manifests to deploy |
@@ -36,8 +36,9 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | helmController.resources.requests.memory | string | `"64Mi"` |  |
 | helmController.serviceAccount.annotations | object | `{}` |  |
 | helmController.serviceAccount.create | bool | `true` |  |
-| helmController.tag | string | `"v0.26.0"` |  |
+| helmController.tag | string | `"v0.27.0"` |  |
 | helmController.tolerations | list | `[]` |  |
+| helmcontroller.tag | string | `"v0.27.0"` |  |
 | imageAutomationController.affinity | object | `{}` |  |
 | imageAutomationController.annotations."prometheus.io/port" | string | `"8080"` |  |
 | imageAutomationController.annotations."prometheus.io/scrape" | string | `"true"` |  |
@@ -53,6 +54,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imageAutomationController.resources.requests.memory | string | `"64Mi"` |  |
 | imageAutomationController.serviceAccount.annotations | object | `{}` |  |
 | imageAutomationController.serviceAccount.create | bool | `true` |  |
+| imageAutomationController.tag | string | `"v0.27.0"` |  |
 | imageAutomationController.tag | string | `"v0.26.1"` |  |
 | imageAutomationController.tolerations | list | `[]` |  |
 | imagePullSecrets | list | `[]` | contents of pod imagePullSecret in form 'name=[secretName]'; applied to all controllers |
@@ -71,8 +73,10 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imageReflectionController.resources.requests.memory | string | `"64Mi"` |  |
 | imageReflectionController.serviceAccount.annotations | object | `{}` |  |
 | imageReflectionController.serviceAccount.create | bool | `true` |  |
-| imageReflectionController.tag | string | `"v0.22.1"` |  |
+| imageReflectionController.tag | string | `"v0.23.0"` |  |
 | imageReflectionController.tolerations | list | `[]` |  |
+| imageautomationcontroller.tag | string | `"v0.27.0"` |  |
+| imagereflectorcontroller.tag | string | `"v0.23.0"` |  |
 | installCRDs | bool | `true` |  |
 | kustomizeController.affinity | object | `{}` |  |
 | kustomizeController.annotations."prometheus.io/port" | string | `"8080"` |  |
@@ -94,8 +98,9 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | kustomizeController.secret.name | string | `""` |  |
 | kustomizeController.serviceAccount.annotations | object | `{}` |  |
 | kustomizeController.serviceAccount.create | bool | `true` |  |
-| kustomizeController.tag | string | `"v0.30.0"` |  |
+| kustomizeController.tag | string | `"v0.31.0"` |  |
 | kustomizeController.tolerations | list | `[]` |  |
+| kustomizecontroller.tag | string | `"v0.31.0"` |  |
 | logLevel | string | `"info"` |  |
 | multitenancy.defaultServiceAccount | string | `"default"` | All Kustomizations and HelmReleases which don’t have spec.serviceAccountName specified, will use the default account from the tenant’s namespace. Tenants have to specify a service account in their Flux resources to be able to deploy workloads in their namespaces as the default account has no permissions. |
 | multitenancy.enabled | bool | `false` | Implement the patches for Multi-tenancy lockdown. See https://fluxcd.io/docs/installation/#multi-tenancy-lockdown |
@@ -117,10 +122,11 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | notificationController.service.labels | object | `{}` |  |
 | notificationController.serviceAccount.annotations | object | `{}` |  |
 | notificationController.serviceAccount.create | bool | `true` |  |
-| notificationController.tag | string | `"v0.28.0"` |  |
+| notificationController.tag | string | `"v0.29.0"` |  |
 | notificationController.tolerations | list | `[]` |  |
 | notificationController.webhookReceiver.service.annotations | object | `{}` |  |
 | notificationController.webhookReceiver.service.labels | object | `{}` |  |
+| notificationcontroller.tag | string | `"v0.29.0"` |  |
 | policies.create | bool | `true` |  |
 | prometheus.podMonitor.create | bool | `false` | Enables podMonitor endpoint |
 | prometheus.podMonitor.podMetricsEndpoints[0].port | string | `"http-prom"` |  |
@@ -146,6 +152,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | sourceController.service.labels | object | `{}` |  |
 | sourceController.serviceAccount.annotations | object | `{}` |  |
 | sourceController.serviceAccount.create | bool | `true` |  |
-| sourceController.tag | string | `"v0.31.0"` |  |
+| sourceController.tag | string | `"v0.32.1"` |  |
 | sourceController.tolerations | list | `[]` |  |
+| sourcecontroller.tag | string | `"v0.32.1"` |  |
 | watchAllNamespaces | bool | `true` |  |

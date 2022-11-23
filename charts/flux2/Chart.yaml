@@ -2,22 +2,10 @@ apiVersion: v2
 name: flux2
 description: A Helm chart for flux2
 type: application
-version: 2.0.0
-appVersion: 0.36.0
+version: 2.1.0
+appVersion: 0.37.0
 sources:
   - https://github.com/fluxcd-community/helm-charts
 annotations:
   artifacthub.io/changes: |
-    - "[added]: `clusterDomain` to correctly apply fqdns for event and storage addresses"
-    - "[removed]: `eventsaddr` has been removed in favour of `clusterDomain`"
-    - "[fixed]: storage address in source controller assumed cluster domain was always `cluster.local`"
-    - "[changed]: change case of `helmcontroller` to `helmController`"
-    - "[changed]: change case of `imageautomationcontroller` to `imageAutomationController`"
-    - "[changed]: change case of `imagereflectioncontroller` to `imageReflectionController`"
-    - "[changed]: change case of `kustomizecontroller` to `kustomizeController`"
-    - "[changed]: change case of `notificationcontroller` to `notificationController`"
-    - "[changed]: change case of `sourcecontroller` to `sourceController`"
-    - "[changed]: change case of `serviceaccount` to `serviceAccount`"
-    - "[changed]: change case of `additionalargs` to `additionalArgs`"
-    - "[changed]: change case of `loglevel` to `logLevel`"
-    - "[changed]: change case of `watchallnamespaces` to `watchAllNamespaces`"
+    - "[Chore]: Update App Version to upstream 0.37.0"

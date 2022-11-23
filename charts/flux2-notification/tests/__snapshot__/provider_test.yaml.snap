@@ -7,8 +7,8 @@ should match snapshot:
         app.kubernetes.io/instance: NAMESPACE
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/part-of: flux
-        app.kubernetes.io/version: 0.36.0
-        helm.sh/chart: flux2-notification-1.5.0
+        app.kubernetes.io/version: 0.37.0
+        helm.sh/chart: flux2-notification-1.6.0
       name: on-call-slack
       namespace: NAMESPACE
     spec:
