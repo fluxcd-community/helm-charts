@@ -3,6 +3,21 @@ entries:
   flux2:
   - annotations:
       artifacthub.io/changes: |
+        - "[Chore]: Update App Version to upstream 0.37.0"
+    apiVersion: v2
+    appVersion: 0.37.0
+    created: "2022-11-24T08:39:14.263368768Z"
+    description: A Helm chart for flux2
+    digest: 6aa51c0942107f00f615d3803770678a50db353b08d35747e75b5655c435f933
+    name: flux2
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-2.1.0/flux2-2.1.0.tgz
+    version: 2.1.0
+  - annotations:
+      artifacthub.io/changes: |
         - "[added]: `clusterDomain` to correctly apply fqdns for event and storage addresses"
         - "[removed]: `eventsaddr` has been removed in favour of `clusterDomain`"
         - "[fixed]: storage address in source controller assumed cluster domain was always `cluster.local`"
@@ -879,6 +894,21 @@ entries:
   flux2-notification:
   - annotations:
       artifacthub.io/changes: |
+        - "[Chore]: Update App Version to upstream 0.37.0"
+    apiVersion: v2
+    appVersion: 0.37.0
+    created: "2022-11-24T08:39:14.408331495Z"
+    description: A Helm chart for flux2 alerts and the needed providers and secrets
+    digest: ae919492dc214958c681026597a17f9b22e557f7f5e1503693f81f7c3c4a3064
+    name: flux2-notification
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-notification-1.6.0/flux2-notification-1.6.0.tgz
+    version: 1.6.0
+  - annotations:
+      artifacthub.io/changes: |
         - "[Chore]: Update App Version to upstream 0.36.0"
     apiVersion: v2
     appVersion: 0.36.0
@@ -1148,6 +1178,21 @@ entries:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-notification-0.1.0/flux2-notification-0.1.0.tgz
     version: 0.1.0
   flux2-sync:
+  - annotations:
+      artifacthub.io/changes: |
+        - "[Chore]: Update App Version to upstream 0.37.0"
+    apiVersion: v2
+    appVersion: 0.37.0
+    created: "2022-11-24T08:39:14.574443207Z"
+    description: A Helm chart for flux2 GitRepository to sync with
+    digest: 17b55d8481933f0e1a1d553506df9f9a94cdf68101d761fc6d3f1d0a433f65af
+    name: flux2-sync
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-1.2.0/flux2-sync-1.2.0.tgz
+    version: 1.2.0
   - annotations:
       artifacthub.io/changes: |
         - "[Chore]: Update App Version to upstream 0.36.0"
@@ -1422,4 +1467,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2022-11-05T17:58:42.479202399Z"
+generated: "2022-11-24T08:39:14.575317898Z"
