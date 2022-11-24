@@ -3,6 +3,21 @@ entries:
   flux2:
   - annotations:
       artifacthub.io/changes: |
+        - "[Chore]: Fix bug with multi-tenancy clusterrolebinding"
+    apiVersion: v2
+    appVersion: 0.37.0
+    created: "2022-11-24T21:06:58.101699249Z"
+    description: A Helm chart for flux2
+    digest: 188eac26c04f1c6a83a822dcece666232752126808e6a8de3e2cc9bede339209
+    name: flux2
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-2.1.1/flux2-2.1.1.tgz
+    version: 2.1.1
+  - annotations:
+      artifacthub.io/changes: |
         - "[Chore]: Update App Version to upstream 0.37.0"
     apiVersion: v2
     appVersion: 0.37.0
@@ -1467,4 +1482,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2022-11-24T08:39:14.575317898Z"
+generated: "2022-11-24T21:06:58.102505485Z"
