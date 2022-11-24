@@ -1,6 +1,6 @@
 # flux2-sync
 
-![Version: 1.1.0](https://img.shields.io/badge/Version-1.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.36.0](https://img.shields.io/badge/AppVersion-0.36.0-informational?style=flat-square)
+![Version: 1.2.0](https://img.shields.io/badge/Version-1.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.37.0](https://img.shields.io/badge/AppVersion-0.37.0-informational?style=flat-square)
 
 A Helm chart for flux2 GitRepository to sync with
 
@@ -17,7 +17,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | cli.affinity | object | `{}` |  |
 | cli.image | string | `"ghcr.io/fluxcd/flux-cli"` |  |
 | cli.nodeSelector | object | `{}` |  |
-| cli.tag | string | `"v0.35.0"` |  |
+| cli.tag | string | `"v0.37.0"` |  |
 | cli.tolerations | list | `[]` |  |
 | gitRepository.spec.gitImplementation | string | `""` | _Optional_ Determines which git client library to use. Defaults to go-git, valid values are (‘go-git’, ‘libgit2’). |
 | gitRepository.spec.ignore | string | `""` | _Optional_ Ignore overrides the set of excluded patterns in the .sourceignore format (which is the same as .gitignore). If not provided, a default will be used, consult the documentation for your version to find out what those are. Make sure to set this as yaml multiline string. |

@@ -1,7 +1,7 @@
 # ====================================================================================
 # Setup Project
 
-FLUX2_VERSION ?= v0.36.0
+FLUX2_VERSION ?= v0.37.0
 
 # set the shell to bash always
 SHELL := /bin/bash
