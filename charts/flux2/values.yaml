@@ -29,6 +29,7 @@ cli:
 
 helmController:
   create: true
+  installCRDs: true
   image: ghcr.io/fluxcd/helm-controller
   tag: v0.27.0
   resources:
@@ -75,6 +76,7 @@ helmController:
 
 imageAutomationController:
   create: true
+  installCRDs: true
   image: ghcr.io/fluxcd/image-automation-controller
   tag: v0.27.0
   resources:
@@ -101,6 +103,7 @@ imageAutomationController:
 
 imageReflectionController:
   create: true
+  installCRDs: true
   image: ghcr.io/fluxcd/image-reflector-controller
   tag: v0.23.0
   resources:
@@ -127,6 +130,7 @@ imageReflectionController:
 
 kustomizeController:
   create: true
+  installCRDs: true
   image: ghcr.io/fluxcd/kustomize-controller
   tag: v0.31.0
   resources:
@@ -173,6 +177,7 @@ kustomizeController:
 
 notificationController:
   create: true
+  installCRDs: true
   image: ghcr.io/fluxcd/notification-controller
   tag: v0.29.0
   resources:
@@ -206,6 +211,7 @@ notificationController:
 
 sourceController:
   create: true
+  installCRDs: true
   image: ghcr.io/fluxcd/source-controller
   tag: v0.32.1
   resources:
