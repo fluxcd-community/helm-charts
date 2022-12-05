@@ -45,7 +45,7 @@ transformers:
 EOF
 
 attribute="$(get_controller_values_attribute ${FILE})"
-echo "{{- if and .Values.installCRDs .Values.${attribute}.installCRDs }}" > ./charts/flux2/templates/${FILE##*/}
+echo "{{- if and .Values.installCRDs .Values.${attribute}.create }}" > ./charts/flux2/templates/${FILE##*/}
 kubectl kustomize "${TEMPDIR}" >> ./charts/flux2/templates/${FILE##*/}
 echo "{{- end }}">> ./charts/flux2/templates/${FILE##*/}
 
