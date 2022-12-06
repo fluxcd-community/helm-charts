@@ -3,6 +3,21 @@ entries:
   flux2:
   - annotations:
       artifacthub.io/changes: |
+        - "[Added]: Allow disabling CRD installation for specific controllers"
+    apiVersion: v2
+    appVersion: 0.37.0
+    created: "2022-12-06T09:10:20.191214735Z"
+    description: A Helm chart for flux2
+    digest: cc91e0ab1a5550d20b19b3c9ac71473ea2dcba8af5370f19a14a25989db762e2
+    name: flux2
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-2.2.0/flux2-2.2.0.tgz
+    version: 2.2.0
+  - annotations:
+      artifacthub.io/changes: |
         - "[Chore]: Fix bug with multi-tenancy clusterrolebinding"
     apiVersion: v2
     appVersion: 0.37.0
@@ -1482,4 +1497,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2022-11-24T21:06:58.102505485Z"
+generated: "2022-12-06T09:10:20.191915329Z"
