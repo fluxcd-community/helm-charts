@@ -10,6 +10,12 @@ delete_temp_dir() {
 }
 trap delete_temp_dir EXIT
 
+
+get_controller_values_attribute() {
+  echo "$(echo $1 | cut -d '/' -f5 | sed 's/reflector/reflection/' | sed 's/-./\U&/g' | tr -d '-')"
+}
+
+
 for FILE in `cat .work/flux2/manifests/crds/kustomization.yaml | grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*"`
 do
 
@@ -38,7 +44,8 @@ transformers:
    - global-labels.yaml
 EOF
 
-echo "{{- if .Values.installCRDs }}" > ./charts/flux2/templates/${FILE##*/}
+attribute="$(get_controller_values_attribute ${FILE})"
+echo "{{- if and .Values.installCRDs .Values.${attribute}.create }}" > ./charts/flux2/templates/${FILE##*/}
 kubectl kustomize "${TEMPDIR}" >> ./charts/flux2/templates/${FILE##*/}
 echo "{{- end }}">> ./charts/flux2/templates/${FILE##*/}
 
@@ -53,7 +60,8 @@ done
 for FILE in `cat .work/flux2/manifests/crds/kustomization.yaml | grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*"`
 do
 
-diff -B ./charts/flux2/values.yaml <(controllerName=`echo $FILE | cut -d '/' -f5 | tr -d '-'`  controllerVersion=`echo $FILE | cut -d '/' -f8`  yq eval '.[env(controllerName)].tag = env(controllerVersion)' ./charts/flux2/values.yaml) | patch ./charts/flux2/values.yaml
+attribute="$(get_controller_values_attribute ${FILE})"
+diff -B ./charts/flux2/values.yaml <(controllerName="${attribute}"  controllerVersion=`echo $FILE | cut -d '/' -f8`  yq eval '.[env(controllerName)].tag = env(controllerVersion)' ./charts/flux2/values.yaml) | patch ./charts/flux2/values.yaml
 
 # update unittest snapshots
 controllerName=`echo $FILE | cut -d '/' -f5`
