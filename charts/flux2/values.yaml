@@ -50,6 +50,7 @@ helmController:
     annotations: {}
   imagePullPolicy: {}
   nodeSelector: {}
+  extraEnv: []
   # expects input structure as per specification https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.11/#affinity-v1-core
   # for example:
   #   affinity:
@@ -170,6 +171,7 @@ kustomizeController:
   nodeSelector: {}
   affinity: {}
   tolerations: []
+  extraEnv: []
 
 notificationController:
   create: true
@@ -203,6 +205,7 @@ notificationController:
   nodeSelector: {}
   affinity: {}
   tolerations: []
+  extraEnv: []
 
 sourceController:
   create: true
