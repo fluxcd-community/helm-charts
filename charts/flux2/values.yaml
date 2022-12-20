@@ -24,6 +24,7 @@ cli:
   nodeSelector: {}
   affinity: {}
   tolerations: []
+  annotations: {}
 
 # controllers
 

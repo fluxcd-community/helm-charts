@@ -1,0 +1,36 @@
+suite: test pre-install-job hook
+templates:
+  - pre-install-job.yaml
+tests:
+  - it: should have no annotations added by default
+    asserts:
+      - isEmpty:
+          path: spec.template.metadata.annotations
+  - it: should have added annotation
+    set:
+      cli:
+        annotations:
+          name1: value1
+    asserts:
+      - isNotEmpty:
+          path: spec.template.metadata.annotations
+      - equal:
+          path: spec.template.metadata.annotations
+          value:
+            name1: value1  
+  - it: should have added annotations
+    set:
+      cli:
+        annotations:
+          name1: value1
+          name2: value2
+          name3: value3
+    asserts:
+      - isNotEmpty:
+          path: spec.template.metadata.annotations
+      - equal:
+          path: spec.template.metadata.annotations
+          value:
+            name1: value1  
+            name2: value2
+            name3: value3
