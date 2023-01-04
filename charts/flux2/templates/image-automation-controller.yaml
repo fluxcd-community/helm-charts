@@ -28,6 +28,7 @@ spec:
         app: image-automation-controller
 {{ with .Values.imageAutomationController.labels }}{{ toYaml . | indent 8 }}{{ end }}
     spec:
+      automountServiceAccountToken: {{ .Values.imageAutomationController.serviceAccount.automount }}
       {{- if .Values.imageAutomationController.initContainers}}
       initContainers:
         {{- toYaml .Values.imageAutomationController.initContainers | nindent 8}}

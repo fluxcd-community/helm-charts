@@ -1,6 +1,6 @@
 # flux2
 
-![Version: 2.1.1](https://img.shields.io/badge/Version-2.1.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.37.0](https://img.shields.io/badge/AppVersion-0.37.0-informational?style=flat-square)
+![Version: 2.3.0](https://img.shields.io/badge/Version-2.3.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.37.0](https://img.shields.io/badge/AppVersion-0.37.0-informational?style=flat-square)
 
 A Helm chart for flux2
 
@@ -35,6 +35,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | helmController.resources.requests.cpu | string | `"100m"` |  |
 | helmController.resources.requests.memory | string | `"64Mi"` |  |
 | helmController.serviceAccount.annotations | object | `{}` |  |
+| helmController.serviceAccount.automount | bool | `true` |  |
 | helmController.serviceAccount.create | bool | `true` |  |
 | helmController.tag | string | `"v0.27.0"` |  |
 | helmController.tolerations | list | `[]` |  |
@@ -52,6 +53,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imageAutomationController.resources.requests.cpu | string | `"100m"` |  |
 | imageAutomationController.resources.requests.memory | string | `"64Mi"` |  |
 | imageAutomationController.serviceAccount.annotations | object | `{}` |  |
+| imageAutomationController.serviceAccount.automount | bool | `true` |  |
 | imageAutomationController.serviceAccount.create | bool | `true` |  |
 | imageAutomationController.tag | string | `"v0.27.0"` |  |
 | imageAutomationController.tolerations | list | `[]` |  |
@@ -70,6 +72,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imageReflectionController.resources.requests.cpu | string | `"100m"` |  |
 | imageReflectionController.resources.requests.memory | string | `"64Mi"` |  |
 | imageReflectionController.serviceAccount.annotations | object | `{}` |  |
+| imageReflectionController.serviceAccount.automount | bool | `true` |  |
 | imageReflectionController.serviceAccount.create | bool | `true` |  |
 | imageReflectionController.tag | string | `"v0.23.0"` |  |
 | imageReflectionController.tolerations | list | `[]` |  |
@@ -93,6 +96,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | kustomizeController.secret.data | object | `{}` |  |
 | kustomizeController.secret.name | string | `""` |  |
 | kustomizeController.serviceAccount.annotations | object | `{}` |  |
+| kustomizeController.serviceAccount.automount | bool | `true` |  |
 | kustomizeController.serviceAccount.create | bool | `true` |  |
 | kustomizeController.tag | string | `"v0.31.0"` |  |
 | kustomizeController.tolerations | list | `[]` |  |
@@ -116,6 +120,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | notificationController.service.annotations | object | `{}` |  |
 | notificationController.service.labels | object | `{}` |  |
 | notificationController.serviceAccount.annotations | object | `{}` |  |
+| notificationController.serviceAccount.automount | bool | `true` |  |
 | notificationController.serviceAccount.create | bool | `true` |  |
 | notificationController.tag | string | `"v0.29.0"` |  |
 | notificationController.tolerations | list | `[]` |  |
@@ -145,6 +150,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | sourceController.service.annotations | object | `{}` |  |
 | sourceController.service.labels | object | `{}` |  |
 | sourceController.serviceAccount.annotations | object | `{}` |  |
+| sourceController.serviceAccount.automount | bool | `true` |  |
 | sourceController.serviceAccount.create | bool | `true` |  |
 | sourceController.tag | string | `"v0.32.1"` |  |
 | sourceController.tolerations | list | `[]` |  |
