@@ -28,6 +28,7 @@ spec:
         app: kustomize-controller
 {{ with .Values.kustomizeController.labels }}{{ toYaml . | indent 8 }}{{ end }}
     spec:
+      automountServiceAccountToken: {{ .Values.kustomizeController.serviceAccount.automount }}
       {{- if .Values.kustomizeController.initContainers}}
       initContainers:
         {{- toYaml .Values.kustomizeController.initContainers | nindent 8}}

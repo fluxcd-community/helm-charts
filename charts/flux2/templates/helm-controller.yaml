@@ -28,6 +28,7 @@ spec:
         app: helm-controller
 {{ with .Values.helmController.labels }}{{ toYaml . | indent 8 }}{{ end }}
     spec:
+      automountServiceAccountToken: {{ .Values.helmController.serviceAccount.automount }}
     {{- if .Values.helmController.initContainers}}
       initContainers:
         {{- toYaml .Values.helmController.initContainers | nindent 8}}

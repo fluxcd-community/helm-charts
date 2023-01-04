@@ -47,6 +47,7 @@ helmController:
     additionalArgs: []
   serviceAccount:
     create: true
+    automount: true
     annotations: {}
   imagePullPolicy: {}
   nodeSelector: {}
@@ -93,6 +94,7 @@ imageAutomationController:
     additionalArgs: []
   serviceAccount:
     create: true
+    automount: true
     annotations: {}
   imagePullPolicy: {}
   nodeSelector: {}
@@ -119,6 +121,7 @@ imageReflectionController:
     additionalArgs: []
   serviceAccount:
     create: true
+    automount: true
     annotations: {}
   imagePullPolicy: {}
   nodeSelector: {}
@@ -145,6 +148,7 @@ kustomizeController:
     additionalArgs: []
   serviceAccount:
     create: true
+    automount: true
     annotations: {}
   imagePullPolicy: {}
   secret:
@@ -191,6 +195,7 @@ notificationController:
     additionalArgs: []
   serviceAccount:
     create: true
+    automount: true
     annotations: {}
   imagePullPolicy: {}
   service:
@@ -224,6 +229,7 @@ sourceController:
     additionalArgs: []
   serviceAccount:
     create: true
+    automount: true
     annotations: {}
   imagePullPolicy: {}
   service:

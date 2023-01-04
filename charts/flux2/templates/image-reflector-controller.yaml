@@ -28,6 +28,7 @@ spec:
         app: image-reflector-controller
 {{ with .Values.imageReflectionController.labels }}{{ toYaml . | indent 8 }}{{ end }}
     spec:
+      automountServiceAccountToken: {{ .Values.imageReflectionController.serviceAccount.automount }}
       {{- if .Values.imageReflectionController.initContainers}}
       initContainers:
         {{- toYaml .Values.imageReflectionController.initContainers | nindent 8}}
