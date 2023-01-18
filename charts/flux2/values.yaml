@@ -25,6 +25,8 @@ cli:
   affinity: {}
   tolerations: []
   annotations: {}
+  serviceAccount:
+    automount: true
 
 # controllers
 
