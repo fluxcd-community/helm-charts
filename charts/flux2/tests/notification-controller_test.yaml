@@ -59,3 +59,18 @@ tests:
       - equal:
           path: spec.template.spec.containers[0].imagePullPolicy
           value: IfNotPresent
+  - it: should override securityContext
+    set:
+      notificationController.podSecurityContext:
+        runAsUser: 2000
+      notificationController.securityContext:
+        runAsUser: 3000
+    asserts:
+      - equal:
+          path: spec.template.spec.securityContext
+          value:
+            runAsUser: 2000
+      - equal:
+          path: spec.template.spec.containers[0].securityContext
+          value:
+            runAsUser: 3000
