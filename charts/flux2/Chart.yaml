@@ -1,6 +1,8 @@
 annotations:
   artifacthub.io/changes: |
+    - "[Added]: Allow disabling CRD installation for specific controllers"
     - "[Added]: Allow setting automountServiceAccountToken on the pod spec"
+    - "[Added]: Support specifying annotationts for the pre-install-job"
 apiVersion: v2
 appVersion: 0.37.0
 description: A Helm chart for flux2
@@ -8,4 +10,4 @@ name: flux2
 sources:
 - https://github.com/fluxcd-community/helm-charts
 type: application
-version: 2.3.0
+version: 2.4.0
