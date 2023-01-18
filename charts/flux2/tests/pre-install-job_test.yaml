@@ -65,11 +65,13 @@ tests:
           value: 1024Mi
   - it: should override securityContext
     set:
-      cli.securityContext: {}
+      cli.securityContext:
+        runAsNonRoot: false
     asserts:
       - equal:
-          path: spec.template.spec.securityContext
-          value: null
+          path: spec.template.spec.containers[0].securityContext
+          value:
+            runAsNonRoot: false
   - it: should set volumes
     set:
       cli.volumeMounts:
