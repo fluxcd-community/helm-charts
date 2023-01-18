@@ -109,8 +109,12 @@ spec:
       {{- if .Values.sourceController.priorityClassName }}
       priorityClassName: {{ .Values.sourceController.priorityClassName | quote }}
       {{- end }}
+      {{- if .Values.sourceController.podSecurityContext }}
+      securityContext: {{ toYaml .Values.sourceController.podSecurityContext | nindent 8 }}
+      {{- else }}
       securityContext:
         fsGroup: 1337
+      {{- end}}
       serviceAccountName: source-controller
       {{- if .Values.imagePullSecrets }}
       imagePullSecrets: {{ toYaml .Values.imagePullSecrets | nindent 6 }}

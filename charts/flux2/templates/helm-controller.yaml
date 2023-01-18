@@ -100,6 +100,9 @@ spec:
       {{- if .Values.helmController.priorityClassName }}
       priorityClassName: {{ .Values.helmController.priorityClassName | quote }}
       {{- end }}
+      {{- if .Values.helmController.podSecurityContext }}
+      securityContext: {{ toYaml .Values.helmController.podSecurityContext | nindent 8 }}
+      {{- end }}
       serviceAccountName: helm-controller
       {{- if .Values.imagePullSecrets }}
       imagePullSecrets: {{ toYaml .Values.imagePullSecrets | nindent 6 }}

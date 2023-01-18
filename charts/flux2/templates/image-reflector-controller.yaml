@@ -101,8 +101,12 @@ spec:
       {{- if .Values.imageReflectionController.priorityClassName }}
       priorityClassName: {{ .Values.imageReflectionController.priorityClassName | quote }}
       {{- end }}
+      {{- if .Values.imageReflectionController.podSecurityContext }}
+      securityContext: {{ toYaml .Values.imageReflectionController.podSecurityContext | nindent 8 }}
+      {{- else }}
       securityContext:
         fsGroup: 1337
+      {{- end}}
       serviceAccountName: image-reflector-controller
       {{- if .Values.imagePullSecrets }}
       imagePullSecrets: {{ toYaml .Values.imagePullSecrets | nindent 6 }}
