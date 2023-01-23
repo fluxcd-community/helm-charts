@@ -99,8 +99,12 @@ spec:
       {{- if .Values.imageAutomationController.priorityClassName }}
       priorityClassName: {{ .Values.imageAutomationController.priorityClassName | quote }}
       {{- end }}
+      {{- if .Values.imageAutomationController.podSecurityContext }}
+      securityContext: {{ toYaml .Values.imageAutomationController.podSecurityContext | nindent 8 }}
+      {{- else }}
       securityContext:
         fsGroup: 1337
+      {{- end}}
       serviceAccountName: image-automation-controller
       {{- if .Values.imagePullSecrets }}
       imagePullSecrets: {{ toYaml .Values.imagePullSecrets | nindent 6 }}

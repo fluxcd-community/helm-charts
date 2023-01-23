@@ -117,8 +117,12 @@ spec:
           subPath: {{ .subPath }}
           readOnly: {{ .readOnly }}
       {{- end }}
+      {{- if .Values.kustomizeController.podSecurityContext }}
+      securityContext: {{ toYaml .Values.kustomizeController.podSecurityContext | nindent 8 }}
+      {{- else }}
       securityContext:
         fsGroup: 1337
+      {{- end}}
       serviceAccountName: kustomize-controller
       {{- if .Values.imagePullSecrets }}
       imagePullSecrets: {{ toYaml .Values.imagePullSecrets | nindent 6 }}

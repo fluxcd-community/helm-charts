@@ -103,6 +103,9 @@ spec:
       {{- if .Values.notificationController.priorityClassName }}
       priorityClassName: {{ .Values.notificationController.priorityClassName | quote }}
       {{- end }}
+      {{- if .Values.notificationController.podSecurityContext }}
+      securityContext: {{ toYaml .Values.notificationController.podSecurityContext | nindent 8 }}
+      {{- end }}
       serviceAccountName: notification-controller
       {{- if .Values.imagePullSecrets }}
       imagePullSecrets: {{ toYaml .Values.imagePullSecrets | nindent 6 }}
