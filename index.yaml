@@ -3,6 +3,21 @@ entries:
   flux2:
   - annotations:
       artifacthub.io/changes: |
+        - "[Added]: Allow setting podSecurityContext for controllers"
+    apiVersion: v2
+    appVersion: 0.37.0
+    created: "2023-01-23T08:24:50.675160561Z"
+    description: A Helm chart for flux2
+    digest: d2f0fd735fb9ac1370eb9f31163cccfc2bacee90c73f123f40af49f696493f31
+    name: flux2
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-2.5.0/flux2-2.5.0.tgz
+    version: 2.5.0
+  - annotations:
+      artifacthub.io/changes: |
         - "[Added]: Allow setting install-job securityContext and volumes"
     apiVersion: v2
     appVersion: 0.37.0
@@ -1544,4 +1559,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2023-01-18T09:22:27.658342776Z"
+generated: "2023-01-23T08:24:50.676142386Z"
