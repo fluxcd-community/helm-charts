@@ -80,8 +80,8 @@ spec:
           protocol: TCP
         readinessProbe:
           httpGet:
-            path: /
-            port: http
+            path: /readyz
+            port: healthz
         {{- with .Values.sourceController.resources }}
         resources: {{ toYaml . | nindent 10 }}
         {{- end }}
