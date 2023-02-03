@@ -1,0 +1,75 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  labels:
+    app.kubernetes.io/instance: {{ .Release.Namespace | quote }}
+    app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
+    app.kubernetes.io/part-of: flux
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+  annotations:
+    helm.sh/hook: post-install
+  name: {{ .Release.Name }}
+  namespace:  {{ .Release.Namespace }}
+spec:
+  validationFailureAction: {{ .Values.policy.validationFailureAction }}
+  rules:
+    - name: serviceAccountName
+      exclude:
+        resources:
+          {{- with .Values.policy.rules.serviceAccountName.exclude.namespaces }}
+          namespaces: {{ toYaml . | nindent 12 }}
+          {{- end }}
+      match:
+        resources:
+          {{- with .Values.policy.rules.serviceAccountName.match.kinds }}
+          kinds: {{ toYaml . | nindent 12 }}
+          {{- end }}
+      validate:
+        message: ".spec.serviceAccountName is required"
+        pattern:
+          spec:
+            serviceAccountName: "?*"
+    - name: kustomizationSourceRefNamespace
+      exclude:
+        resources:
+          {{- with .Values.policy.rules.kustomizationSourceRefNamespace.exclude.namespaces }}
+          namespaces: {{ toYaml . | nindent 12 }}
+          {{- end }}
+      match:
+        resources:
+          kinds:
+            - Kustomization
+      preconditions:
+        any:
+          - key: "{{"{{request.object.spec.sourceRef.namespace}}"}}"
+            operator: NotEquals
+            value: ""
+      validate:
+        message: ".spec.sourceRef.namespace must be the same as metadata.namespace"
+        deny:
+          conditions:
+            - key: "{{"{{request.object.spec.sourceRef.namespace}}"}}"
+              operator: NotEquals
+              value:  "{{"{{request.object.metadata.namespace}}"}}"
+    - name: helmReleaseSourceRefNamespace
+      exclude:
+        resources:
+          {{- with .Values.policy.rules.helmReleaseSourceRefNamespace.exclude.namespaces }}
+          namespaces: {{ toYaml . | nindent 12 }}
+          {{- end }}
+      match:
+        resources:
+          kinds:
+            - HelmRelease
+      preconditions:
+        any:
+          - key: "{{"{{request.object.spec.chart.spec.sourceRef.namespace}}"}}"
+            operator: NotEquals
+            value: ""
+      validate:
+        message: ".spec.chart.spec.sourceRef.namespace must be the same as metadata.namespace"
+        deny:
+          conditions:
+            - key: "{{"{{request.object.spec.chart.spec.sourceRef.namespace}}"}}"
+              operator: NotEquals
+              value:  "{{"{{request.object.metadata.namespace}}"}}"

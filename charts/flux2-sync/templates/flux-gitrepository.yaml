@@ -1,0 +1,45 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  labels:
+    app.kubernetes.io/instance: {{ .Release.Namespace | quote }}
+    app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
+    app.kubernetes.io/part-of: flux
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  url: {{ .Values.gitRepository.spec.url }}
+  {{- if .Values.secret.create }}
+  secretRef:
+    name: {{ .Release.Name }}
+  {{- else if .Values.gitRepository.spec.secretRef }}
+  secretRef: {{ toYaml .Values.gitRepository.spec.secretRef | nindent 4 }}
+  {{- end }}
+  {{- if .Values.gitRepository.spec.interval }}
+  interval: {{ .Values.gitRepository.spec.interval }}
+  {{- end }}
+  {{- if .Values.gitRepository.spec.timeout }}
+  timeout: {{ .Values.gitRepository.spec.timeout }}
+  {{- end }}
+  {{- with .Values.gitRepository.spec.ref }}
+  ref: {{ toYaml . | nindent 4 }}
+  {{- end }}
+  {{- with .Values.gitRepository.spec.verify }}
+  verify: {{ toYaml . | nindent 4 }}
+  {{- end }}
+  {{- with .Values.gitRepository.spec.ignore }}
+  ignore: {{- toYaml . | indent 2 }}
+  {{- end }}
+  {{- if .Values.gitRepository.spec.suspend }}
+  suspend: {{ .Values.gitRepository.spec.suspend }}
+  {{- end }}
+  {{- if .Values.gitRepository.spec.gitImplementation }}
+  gitImplementation: {{ .Values.gitRepository.spec.gitImplementation }}
+  {{- end }}
+  {{- if .Values.gitRepository.spec.recurseSubmodules }}
+  recurseSubmodules: {{ .Values.gitRepository.spec.recurseSubmodules }}
+  {{- end }}
+  {{- with .Values.gitRepository.spec.include }}
+  include: {{ toYaml . | nindent 4 }}
+  {{- end }}

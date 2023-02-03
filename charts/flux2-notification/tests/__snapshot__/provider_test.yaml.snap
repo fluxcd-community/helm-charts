@@ -1,0 +1,23 @@
+should match snapshot:
+  1: |
+    apiVersion: notification.toolkit.fluxcd.io/v1beta1
+    kind: Provider
+    metadata:
+      labels:
+        app.kubernetes.io/instance: NAMESPACE
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/part-of: flux
+        app.kubernetes.io/version: 0.37.0
+        helm.sh/chart: flux2-notification-1.6.0
+      name: on-call-slack
+      namespace: NAMESPACE
+    spec:
+      address: https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK
+      certSecretRef:
+        name: certref
+      channel: general
+      proxy: https://proxy.corp:8080
+      secretRef:
+        name: webhook-url
+      type: slack
+      username: user1

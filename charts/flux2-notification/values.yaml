@@ -1,0 +1,59 @@
+# -- A list of secrets to be used. See values.yaml for example
+# For help see: https://fluxcd.io/docs/components/notification/provider/
+secretlist: []
+  # - name: webhook-url
+  #   value:
+  #     stringData:
+  #       headers: |
+  #         Authorization: token
+  #         X-Forwarded-Proto: https
+  # - name: slack-token
+  #   value:
+  #     data:
+  #       address: <BASE64>
+  #       token: <BASE64>
+
+# -- A list of providers to be used. See values.yaml for example
+providerlist: []
+  # - name: on-call-slack
+  #   spec:
+  #     type: slack
+  #     # (optional)
+  #     channel: general
+  #     # (optional)
+  #     username: user
+  #     # webhook address (ignored if secretRef is specified) (optional)
+  #     address: https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK
+  #     # HTTP(S) proxy (optional)
+  #     proxy: https://proxy.corp:8080
+  #     # (optional)
+  #     secretRef:
+  #       name: webhook-url
+  #     # (optional)
+  #     certSecretRef:
+  #       name: certref
+
+# -- A list of alerts to be used. See values.yaml for example
+alertlist: []
+  # - name: webapp
+  #   spec:
+  #     providerRef:
+  #       name: on-call-slack
+  #     eventSeverity: info
+  #     eventSources:
+  #     - kind: GitRepository
+  #       name: webapp
+  #     - kind: Bucket
+  #       name: secrets
+  #     - kind: Kustomization
+  #       name: webapp-backend
+  # - name: all-kustomizations
+  #   spec:
+  #     providerRef:
+  #       name: dev-msteams
+  #     eventSeverity: error
+  #     eventSources:
+  #       - kind: Kustomization
+  #         namespace: default
+  #         name: '*'
+  #     suspend: false

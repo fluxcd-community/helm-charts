@@ -1,0 +1,47 @@
+{{- if and .Values.notificationController.create .Values.notificationController.webhookReceiver.ingress.create }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: webhook-receiver
+  {{- with .Values.notificationController.webhookReceiver.ingress.annotations }}
+  annotations: {{ toYaml . | nindent 4 }}
+  {{- end }}
+  labels:
+    app.kubernetes.io/instance: {{ .Release.Namespace | quote }}
+    app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion | quote  }}
+    app.kubernetes.io/part-of: flux
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    control-plane: controller
+    {{- with .Values.notificationController.webhookReceiver.ingress.labels }}
+      {{ toYaml . | nindent 4 }}
+    {{ end }}
+spec:
+  {{- with .Values.notificationController.webhookReceiver.ingress.ingressClassName }}
+  ingressClassName: {{ . }}
+  {{- end }}
+  rules:
+  {{- range .Values.notificationController.webhookReceiver.ingress.hosts | required "hosts are required when creating an ingress" }}
+  - host: {{ .name }}
+    http:
+      paths:
+      {{- range .paths }}
+      - path: {{ default "/" .path | quote | required "paths are required when creating an ingress" }}
+        pathType: {{ default "Prefix" .pathType }}
+        backend:
+          service:
+            name: webhook-receiver
+            port:
+              name: http
+      {{- end }}
+  {{- end }}
+  tls:
+  {{- range .Values.notificationController.webhookReceiver.ingress.hosts }}
+    {{- if .tls }}
+  - hosts:
+    - {{ .name }}
+    secretName: {{ .tlsSecretName }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+

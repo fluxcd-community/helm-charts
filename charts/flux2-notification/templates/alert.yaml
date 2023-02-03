@@ -1,0 +1,36 @@
+{{- if .Values.alertlist}}
+{{- range $key, $alert := .Values.alertlist }}
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta1
+kind: Alert
+metadata:
+  labels:
+    app.kubernetes.io/instance: {{ $.Release.Namespace | quote }}
+    app.kubernetes.io/managed-by: {{ $.Release.Service | quote }}
+    app.kubernetes.io/version: {{ $.Chart.AppVersion | quote  }}
+    app.kubernetes.io/part-of: flux
+    helm.sh/chart: {{ $.Chart.Name }}-{{ $.Chart.Version | replace "+" "_" }}
+  name:  {{ $alert.name }}
+  namespace: {{ $.Release.Namespace }}
+spec:
+  providerRef:
+    name: {{ $alert.spec.providerRef.name }}
+  {{- if $alert.spec.eventSeverity }}
+  eventSeverity: "{{ $alert.spec.eventSeverity }}"
+  {{- end }}
+  {{- with $alert.spec.eventSources }}
+  eventSources: {{ toYaml . | nindent 4 }}
+  {{- end }}
+  {{- with $alert.spec.exclusionList }}
+  exclusionList: {{ toYaml . | nindent 4 }}
+  {{- end }}
+  {{- if $alert.spec.suspend }}
+  suspend: true
+  {{- else }}
+  suspend: false
+  {{- end }}
+  {{- if $alert.spec.summary }}
+  summary: "{{ $alert.spec.summary }}"
+  {{- end }}
+{{- end }}
+{{- end }}

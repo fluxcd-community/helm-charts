@@ -1,0 +1,15 @@
+repos:
+- repo: local
+  hooks:
+    - id: generate
+      name: generate
+      entry: make generate
+      language: system
+    - id: helmdocs
+      name: helmdocs
+      entry: make helmdocs
+      language: system
+    - id: reviewable
+      name: reviewable
+      entry: make reviewable
+      language: system

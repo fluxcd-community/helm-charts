@@ -1,0 +1,132 @@
+{{- if .Values.kustomization }}
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  labels:
+    app.kubernetes.io/instance: {{ .Release.Namespace | quote }}
+    app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
+    app.kubernetes.io/part-of: flux
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+  name:  {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  {{- with .Values.kustomization.spec.dependsOn }}
+  dependsOn: {{ toYaml . | nindent 4 }}
+  {{- end }}
+  {{- with .Values.kustomization.spec.decryption }}
+  decryption: {{ toYaml . | nindent 4 }}
+  {{- end }}
+  interval: {{ .Values.kustomization.spec.interval }}
+  {{- if .Values.kustomization.spec.retryInterval }}
+  retryInterval: {{ .Values.kustomization.spec.retryInterval }}
+  {{- end }}
+  {{- if .Values.kustomization.spec.kubeConfig }}
+  kubeConfig: {{ toYaml . | nindent 4 }}
+  {{- end }}
+  {{- if .Values.kustomization.spec.path }}
+  path: {{ .Values.kustomization.spec.path }}
+  {{- end }}
+  {{- with .Values.kustomization.spec.postBuild }}
+  postBuild: {{ toYaml . | nindent 4 }}
+  {{- end }}
+  prune: {{ .Values.kustomization.spec.prune }}
+  {{- with .Values.kustomization.spec.healthChecks }}
+  healthChecks: {{ toYaml . | nindent 4 }}
+  {{- end }}
+  {{- with .Values.kustomization.spec.patches }}
+  patches: {{ toYaml . | nindent 4 }}
+  {{- end }}
+  {{- with .Values.kustomization.spec.images }}
+  images: {{ toYaml . | nindent 4 }}
+  {{- end }}
+  {{- if .Values.kustomization.spec.serviceAccountName }}
+  serviceAccountName: {{ .Values.kustomization.spec.serviceAccountName }}
+  {{- end }}
+  sourceRef:
+    kind: GitRepository
+    name: {{ .Release.Name }}
+  {{- if .Values.kustomization.spec.suspend }}
+  suspend: {{ .Values.kustomization.spec.suspend }}
+  {{- end }}
+  {{- if .Values.kustomization.spec.targetNamespace }}
+  targetNamespace: {{ .Values.kustomization.spec.targetNamespace }}
+  {{- end }}
+  {{- if .Values.kustomization.spec.timeout }}
+  timeout: {{ .Values.kustomization.spec.timeout }}
+  {{- end }}
+  {{- if .Values.kustomization.spec.force }}
+  force: {{ .Values.kustomization.spec.force }}
+  {{- end }}
+  {{- if .Values.kustomization.spec.wait }}
+  wait: {{ .Values.kustomization.spec.wait }}
+  {{- end }}
+{{- end }}
+{{- if .Values.kustomizationlist}}
+{{- range $key, $kust := .Values.kustomizationlist }}
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  labels:
+    app.kubernetes.io/instance: {{ $.Release.Namespace | quote }}
+    app.kubernetes.io/managed-by: {{ $.Release.Service | quote }}
+    app.kubernetes.io/part-of: flux
+    helm.sh/chart: {{ $.Chart.Name }}-{{ $.Chart.Version | replace "+" "_" }}
+  name: {{ include "pathToKustomizationName" (dict "releasename" $.Release.Name "pathtoconvert" $kust.spec.path) }}
+  namespace: {{ $.Release.Namespace }}
+spec:
+  {{- if $kust.spec.dependsOn }}
+  dependsOn:
+  {{- range $count, $dependsOn := $kust.spec.dependsOn }}
+    - name: {{include "pathToKustomizationName" (dict "releasename" $.Release.Name "pathtoconvert" $dependsOn.path)}}
+  {{- end }}
+  {{- end }}
+  {{- with $kust.spec.decryption }}
+  decryption: {{ toYaml . | nindent 4 }}
+  {{- end }}
+  interval: {{ $kust.spec.interval }}
+  {{- if $kust.spec.retryInterval }}
+  retryInterval: {{ $kust.spec.retryInterval }}
+  {{- end }}
+  {{- if $kust.spec.kubeConfig }}
+  kubeConfig: {{ toYaml . | nindent 4 }}
+  {{- end }}
+  {{- if $kust.spec.path }}
+  path: "{{ $kust.spec.path }}"
+  {{- end }}
+  {{- with $kust.spec.postBuild }}
+  postBuild: {{ toYaml . | nindent 4 }}
+  {{- end }}
+  prune: {{ $kust.spec.prune }}
+  {{- with $kust.spec.healthChecks }}
+  healthChecks: {{ toYaml . | nindent 4 }}
+  {{- end }}
+  {{- with $kust.spec.patches }}
+  patches: {{ toYaml . | nindent 4 }}
+  {{- end }}
+  {{- with $kust.spec.images }}
+  images: {{ toYaml . | nindent 4 }}
+  {{- end }}
+  {{- if $kust.spec.serviceAccountName }}
+  serviceAccountName: {{ $kust.spec.serviceAccountName }}
+  {{- end }}
+  sourceRef:
+    kind: GitRepository
+    name: {{ $.Release.Name }}
+  {{- if $kust.spec.suspend }}
+  suspend: {{ $kust.spec.suspend }}
+  {{- end }}
+  {{- if $kust.spec.targetNamespace }}
+  targetNamespace: {{ $kust.spec.targetNamespace }}
+  {{- end }}
+  {{- if $kust.spec.timeout }}
+  timeout: {{ $kust.spec.timeout }}
+  {{- end }}
+  {{- if $kust.spec.force }}
+  force: {{ $kust.spec.force }}
+  {{- end }}
+  {{- if $kust.spec.wait }}
+  wait: {{ $kust.spec.wait }}
+  {{- end }}
+{{- end }}
+{{- end }}

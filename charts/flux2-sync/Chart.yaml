@@ -1,0 +1,11 @@
+apiVersion: v2
+name: flux2-sync
+type: application
+version: 1.2.0
+appVersion: 0.37.0
+description: A Helm chart for flux2 GitRepository to sync with
+sources:
+  - https://github.com/fluxcd-community/helm-charts
+annotations:
+  artifacthub.io/changes: |
+    - "[Chore]: Update App Version to upstream 0.37.0"

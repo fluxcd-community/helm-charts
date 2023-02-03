@@ -1,0 +1,18 @@
+suite: test notification-controller-webhook-ingress
+templates:
+  - notification-controller-webhook-ingress.yaml
+tests:
+  - it: should be empty if notification-controller-webhook-ingress is not enabled
+    asserts:
+      - hasDocuments:
+          count: 0
+    set:
+      notificationController.webhookReceiver.ingress.create: false
+      notificationController.create: true
+  - it: should be empty if notification-controller-webhook-ingress is enabled but notificationController is not
+    set:
+      notificationController.webhookReceiver.ingress.create: true
+      notificationController.create: false
+    asserts:
+      - hasDocuments:
+          count: 0

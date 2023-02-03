@@ -1,0 +1,74 @@
+should match snapshot of default values:
+  1: |
+    apiVersion: kyverno.io/v1
+    kind: ClusterPolicy
+    metadata:
+      annotations:
+        helm.sh/hook: post-install
+      labels:
+        app.kubernetes.io/instance: NAMESPACE
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/part-of: flux
+        helm.sh/chart: flux2-multi-tenancy-0.0.4
+      name: RELEASE-NAME
+      namespace: NAMESPACE
+    spec:
+      rules:
+      - exclude:
+          resources:
+            namespaces:
+            - flux-system
+        match:
+          resources:
+            kinds:
+            - Kustomization
+            - HelmRelease
+        name: serviceAccountName
+        validate:
+          message: .spec.serviceAccountName is required
+          pattern:
+            spec:
+              serviceAccountName: ?*
+      - exclude:
+          resources:
+            namespaces:
+            - flux-system
+        match:
+          resources:
+            kinds:
+            - Kustomization
+        name: kustomizationSourceRefNamespace
+        preconditions:
+          any:
+          - key: '{{request.object.spec.sourceRef.namespace}}'
+            operator: NotEquals
+            value: ""
+        validate:
+          deny:
+            conditions:
+            - key: '{{request.object.spec.sourceRef.namespace}}'
+              operator: NotEquals
+              value: '{{request.object.metadata.namespace}}'
+          message: .spec.sourceRef.namespace must be the same as metadata.namespace
+      - exclude:
+          resources:
+            namespaces:
+            - flux-system
+        match:
+          resources:
+            kinds:
+            - HelmRelease
+        name: helmReleaseSourceRefNamespace
+        preconditions:
+          any:
+          - key: '{{request.object.spec.chart.spec.sourceRef.namespace}}'
+            operator: NotEquals
+            value: ""
+        validate:
+          deny:
+            conditions:
+            - key: '{{request.object.spec.chart.spec.sourceRef.namespace}}'
+              operator: NotEquals
+              value: '{{request.object.metadata.namespace}}'
+          message: .spec.chart.spec.sourceRef.namespace must be the same as metadata.namespace
+      validationFailureAction: enforce
