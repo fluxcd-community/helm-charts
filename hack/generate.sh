@@ -74,3 +74,4 @@ done
 
 # Set cli image tag
 diff -B ./charts/flux2/values.yaml <(fluxVersion=`grep 'FLUX2_VERSION ?= ' Makefile | cut -d ' ' -f3`  yq eval '.cli.tag = env(fluxVersion)' ./charts/flux2/values.yaml) | patch ./charts/flux2/values.yaml
+diff -B ./charts/flux2-sync/values.yaml <(fluxVersion=`grep 'FLUX2_VERSION ?= ' Makefile | cut -d ' ' -f3`  yq eval '.cli.tag = env(fluxVersion)' ./charts/flux2-sync/values.yaml) | patch ./charts/flux2-sync/values.yaml
