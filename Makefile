@@ -1,7 +1,7 @@
 # ====================================================================================
 # Setup Project
 
-FLUX2_VERSION ?= v0.37.0
+FLUX2_VERSION ?= v0.39.0
 
 # set the shell to bash always
 SHELL := /bin/bash
@@ -105,6 +105,7 @@ update.appversion:
 		chartname=$$(cat ./charts/$${file}/Chart.yaml | grep -E '^name: ' | cut -c7-) ; \
 		$(INFO) Update chartname and chartversion string in test snapshots for $${file}.; \
 		sed -s -i "s/^\([[:space:]]\+helm\.sh\/chart:\).*/\1 $${chartname}-$${chartversion}/" ./charts/$${file}/tests/__snapshot__/*.yaml.snap ; \
+		sed -s -i "s/^\([[:space:]]\+app\.kubernetes\.io\/version:\).*/\1 $(subst v,,${FLUX2_VERSION})/" ./charts/$${file}/tests/__snapshot__/*.yaml.snap ; \
 		sed -s -i "s/^\([[:space:]]\+app\.kubernetes\.io\/version:\).*/\1 $(subst v,,${FLUX2_VERSION})/" ./charts/$${file}/tests/__snapshot__/*.yaml.snap ; \
 		$(INFO) Update appVersion in ./charts/$${file}/Chart.yaml ;\
 		sed -s -i "s/^\(appVersion:\).*/\1 $(subst v,,${FLUX2_VERSION})/" ./charts/$${file}/Chart.yaml ; \

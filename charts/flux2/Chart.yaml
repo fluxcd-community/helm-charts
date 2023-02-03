@@ -1,11 +1,11 @@
 annotations:
   artifacthub.io/changes: |
-    - "[Added]: Support .Values.imagePullSecrets in cli container in pre-install-job.yaml"
+    - "[Chore]: Update App Version to upstream 0.39.0"
 apiVersion: v2
-appVersion: 0.37.0
+appVersion: 0.39.0
 description: A Helm chart for flux2
 name: flux2
 sources:
 - https://github.com/fluxcd-community/helm-charts
 type: application
-version: 2.5.1
+version: 2.6.0
