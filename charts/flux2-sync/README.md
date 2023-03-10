@@ -1,6 +1,6 @@
 # flux2-sync
 
-![Version: 1.3.0](https://img.shields.io/badge/Version-1.3.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.39.0](https://img.shields.io/badge/AppVersion-0.39.0-informational?style=flat-square)
+![Version: 1.3.1](https://img.shields.io/badge/Version-1.3.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.39.0](https://img.shields.io/badge/AppVersion-0.39.0-informational?style=flat-square)
 
 A Helm chart for flux2 GitRepository to sync with
 
@@ -19,6 +19,8 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | cli.nodeSelector | object | `{}` |  |
 | cli.tag | string | `"v0.39.0"` |  |
 | cli.tolerations | list | `[]` |  |
+| gitRepository.annotations | object | `{}` |  |
+| gitRepository.labels | object | `{}` |  |
 | gitRepository.spec.gitImplementation | string | `""` | _Optional_ Determines which git client library to use. Defaults to go-git, valid values are (‘go-git’, ‘libgit2’). |
 | gitRepository.spec.ignore | string | `""` | _Optional_ Ignore overrides the set of excluded patterns in the .sourceignore format (which is the same as .gitignore). If not provided, a default will be used, consult the documentation for your version to find out what those are. Make sure to set this as yaml multiline string. |
 | gitRepository.spec.include | list | `[]` | _Optional_ Extra git repositories to map into the repository |
@@ -30,6 +32,8 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | gitRepository.spec.timeout | string | `""` | _Optional_ The timeout for remote Git operations like cloning, defaults to 20s. |
 | gitRepository.spec.url | string | `""` | The repository URL, can be an HTTP/S or SSH address. |
 | gitRepository.spec.verify | object | `{}` | _Optional_ Verify OpenPGP signature for the Git commit HEAD points to. |
+| kustomization.annotations | object | `{}` |  |
+| kustomization.labels | object | `{}` |  |
 | kustomization.spec.decryption | object | `{}` | _Optional_ Decrypt Kubernetes secrets before applying them on the cluster. |
 | kustomization.spec.dependsOn | list | `[]` | _Optional_ DependsOn may contain a dependency.CrossNamespaceDependencyReference slice with references to Kustomization resources that must be ready before this Kustomization can be reconciled. |
 | kustomization.spec.force | bool | `false` | _Optional_ Force instructs the controller to recreate resources when patching fails due to an immutable field change. Defaults to false. |
