@@ -7,6 +7,10 @@ metadata:
     app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
     app.kubernetes.io/part-of: flux
     helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+{{ with .Values.kustomization.labels }}{{ toYaml . | indent 8 }}{{ end }}
+{{- with .Values.kustomization.annotations }}
+  annotations: {{ toYaml . | nindent 8 }}
+{{- end }}
   name:  {{ .Release.Name }}
   namespace: {{ .Release.Namespace }}
 spec:
