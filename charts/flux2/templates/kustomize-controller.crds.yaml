@@ -3,7 +3,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.8.0
+    controller-gen.kubebuilder.io/version: v0.11.1
   creationTimestamp: null
   labels:
     app.kubernetes.io/instance: '{{ .Release.Namespace }}'
@@ -1104,8 +1104,8 @@ spec:
                 - entries
                 type: object
               lastAppliedRevision:
-                description: The last successfully applied revision. The revision
-                  format for Git sources is <branch|tag>/<commit-sha>.
+                description: The last successfully applied revision. Equals the Revision
+                  of the applied Artifact from the referenced Source.
                 type: string
               lastAttemptedRevision:
                 description: LastAttemptedRevision is the revision of the last reconciliation
@@ -1126,10 +1126,4 @@ spec:
     storage: true
     subresources:
       status: {}
-status:
-  acceptedNames:
-    kind: ""
-    plural: ""
-  conditions: []
-  storedVersions: []
 {{- end }}

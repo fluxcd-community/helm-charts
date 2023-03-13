@@ -20,7 +20,7 @@ clusterDomain: cluster.local
 
 cli:
   image: ghcr.io/fluxcd/flux-cli
-  tag: v0.39.0
+  tag: v0.41.1
   nodeSelector: {}
   affinity: {}
   tolerations: []
@@ -33,7 +33,7 @@ cli:
 helmController:
   create: true
   image: ghcr.io/fluxcd/helm-controller
-  tag: v0.29.0
+  tag: v0.31.1
   resources:
     limits: {}
     # cpu: 1000m
@@ -80,7 +80,7 @@ helmController:
 imageAutomationController:
   create: true
   image: ghcr.io/fluxcd/image-automation-controller
-  tag: v0.29.0
+  tag: v0.31.0
   resources:
     limits: {}
     # cpu: 1000m
@@ -107,7 +107,7 @@ imageAutomationController:
 imageReflectionController:
   create: true
   image: ghcr.io/fluxcd/image-reflector-controller
-  tag: v0.24.0
+  tag: v0.26.0
   resources:
     limits: {}
     # cpu: 1000m
@@ -134,7 +134,7 @@ imageReflectionController:
 kustomizeController:
   create: true
   image: ghcr.io/fluxcd/kustomize-controller
-  tag: v0.33.0
+  tag: v0.35.0
   resources:
     limits: {}
     # cpu: 1000m
@@ -181,7 +181,7 @@ kustomizeController:
 notificationController:
   create: true
   image: ghcr.io/fluxcd/notification-controller
-  tag: v0.31.0
+  tag: v0.33.0
   resources:
     limits: {}
     # cpu: 1000m
@@ -215,7 +215,7 @@ notificationController:
 sourceController:
   create: true
   image: ghcr.io/fluxcd/source-controller
-  tag: v0.34.0
+  tag: v0.36.0
   resources:
     limits: {}
     # cpu: 1000m
@@ -248,6 +248,8 @@ policies:
 
 rbac:
   create: true
+  # -- Grant the Kubernetes view, edit and admin roles access to Flux custom resources
+  createAggregation: true
 
 logLevel: info
 watchAllNamespaces: true
