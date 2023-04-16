@@ -1,4 +1,4 @@
-apiVersion: source.toolkit.fluxcd.io/v1beta2
+apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
   labels:
@@ -37,9 +37,6 @@ spec:
   {{- end }}
   {{- if .Values.gitRepository.spec.suspend }}
   suspend: {{ .Values.gitRepository.spec.suspend }}
-  {{- end }}
-  {{- if .Values.gitRepository.spec.gitImplementation }}
-  gitImplementation: {{ .Values.gitRepository.spec.gitImplementation }}
   {{- end }}
   {{- if .Values.gitRepository.spec.recurseSubmodules }}
   recurseSubmodules: {{ .Values.gitRepository.spec.recurseSubmodules }}
