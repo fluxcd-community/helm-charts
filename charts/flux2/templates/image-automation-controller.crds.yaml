@@ -1,4 +1,4 @@
-{{- if and .Values.installCRDs .Values.imageAutomationController.create }}
+{{- if and .Values.installCRDs .Values.imageUautomationUcontroller.create }}
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
