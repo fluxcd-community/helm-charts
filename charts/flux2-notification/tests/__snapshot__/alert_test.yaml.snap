@@ -7,16 +7,16 @@ should match snapshot:
         app.kubernetes.io/instance: NAMESPACE
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/part-of: flux
-        app.kubernetes.io/version: 0.41.1
+        app.kubernetes.io/version: 2.0.0-rc.3
         helm.sh/chart: flux2-notification-1.8.0
       name: all-kustomizations
       namespace: NAMESPACE
     spec:
       eventSeverity: error
       eventSources:
-      - kind: Kustomization
-        name: '*'
-        namespace: default
+        - kind: Kustomization
+          name: '*'
+          namespace: default
       providerRef:
         name: dev-msteams
       suspend: true
