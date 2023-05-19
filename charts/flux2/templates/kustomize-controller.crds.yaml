@@ -10,6 +10,7 @@ metadata:
     app.kubernetes.io/managed-by: '{{ .Release.Service }}'
     app.kubernetes.io/part-of: flux
     app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
+    helm.sh/chart: '{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}'
   name: kustomizations.kustomize.toolkit.fluxcd.io
 spec:
   group: kustomize.toolkit.fluxcd.io

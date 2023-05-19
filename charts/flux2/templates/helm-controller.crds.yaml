@@ -5,6 +5,12 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.11.1
   creationTimestamp: null
+  labels:
+    app.kubernetes.io/instance: '{{ .Release.Namespace }}'
+    app.kubernetes.io/managed-by: '{{ .Release.Service }}'
+    app.kubernetes.io/part-of: flux
+    app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
+    helm.sh/chart: '{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}'
   name: helmreleases.helm.toolkit.fluxcd.io
 spec:
   group: helm.toolkit.fluxcd.io
