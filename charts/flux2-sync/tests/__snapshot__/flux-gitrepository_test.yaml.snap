@@ -1,6 +1,6 @@
 should match snapshot of default values:
   1: |
-    apiVersion: source.toolkit.fluxcd.io/v1beta2
+    apiVersion: source.toolkit.fluxcd.io/v1
     kind: GitRepository
     metadata:
       labels:
@@ -17,7 +17,7 @@ should match snapshot of default values:
       url: repository_url
 should match snapshot with special values:
   1: |
-    apiVersion: source.toolkit.fluxcd.io/v1beta2
+    apiVersion: source.toolkit.fluxcd.io/v1
     kind: GitRepository
     metadata:
       labels:

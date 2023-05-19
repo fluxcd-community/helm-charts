@@ -14,9 +14,9 @@ should match snapshot:
     spec:
       eventSeverity: error
       eventSources:
-        - kind: Kustomization
-          name: '*'
-          namespace: default
+      - kind: Kustomization
+        name: '*'
+        namespace: default
       providerRef:
         name: dev-msteams
       suspend: true

@@ -28,22 +28,22 @@ should match snapshot of default values:
         spec:
           automountServiceAccountToken: true
           containers:
-            - command:
-                - /usr/local/bin/flux
-                - check
-                - --pre
-                - --namespace
-                - NAMESPACE
-              image: ghcr.io/fluxcd/flux-cli:v2.0.0-rc.3
-              name: flux-cli
-              securityContext:
-                allowPrivilegeEscalation: false
-                capabilities:
-                  drop:
-                    - ALL
-                readOnlyRootFilesystem: true
-                runAsNonRoot: true
-                seccompProfile:
-                  type: RuntimeDefault
+          - command:
+            - /usr/local/bin/flux
+            - check
+            - --pre
+            - --namespace
+            - NAMESPACE
+            image: ghcr.io/fluxcd/flux-cli:v2.0.0-rc.3
+            name: flux-cli
+            securityContext:
+              allowPrivilegeEscalation: false
+              capabilities:
+                drop:
+                - ALL
+              readOnlyRootFilesystem: true
+              runAsNonRoot: true
+              seccompProfile:
+                type: RuntimeDefault
           restartPolicy: Never
           serviceAccountName: RELEASE-NAME-flux-check
