@@ -260,7 +260,7 @@ imagePullSecrets: []
 # -- Array of extra K8s manifests to deploy
 extraObjects: []
 # Example usage from https://fluxcd.io/docs/components/source/buckets/#static-authentication
-# - apiVersion: source.toolkit.fluxcd.io/v1beta1
+# - apiVersion: source.toolkit.fluxcd.io/v1beta2
 #   kind: Bucket
 #   metadata:
 #     name: podinfo
