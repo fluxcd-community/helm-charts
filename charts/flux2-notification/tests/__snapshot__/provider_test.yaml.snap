@@ -1,6 +1,6 @@
 should match snapshot:
   1: |
-    apiVersion: notification.toolkit.fluxcd.io/v1beta1
+    apiVersion: notification.toolkit.fluxcd.io/v1beta2
     kind: Provider
     metadata:
       labels:
@@ -8,7 +8,7 @@ should match snapshot:
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/part-of: flux
         app.kubernetes.io/version: 2.0.0-rc.3
-        helm.sh/chart: flux2-notification-1.8.0
+        helm.sh/chart: flux2-notification-1.9.0
       name: on-call-slack
       namespace: NAMESPACE
     spec:
