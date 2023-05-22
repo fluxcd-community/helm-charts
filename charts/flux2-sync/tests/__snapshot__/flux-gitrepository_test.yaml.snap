@@ -1,13 +1,13 @@
 should match snapshot of default values:
   1: |
-    apiVersion: source.toolkit.fluxcd.io/v1beta2
+    apiVersion: source.toolkit.fluxcd.io/v1
     kind: GitRepository
     metadata:
       labels:
         app.kubernetes.io/instance: NAMESPACE
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/part-of: flux
-        helm.sh/chart: flux2-sync-1.4.0
+        helm.sh/chart: flux2-sync-1.5.0
       name: RELEASE-NAME
       namespace: NAMESPACE
     spec:
@@ -17,14 +17,14 @@ should match snapshot of default values:
       url: repository_url
 should match snapshot with special values:
   1: |
-    apiVersion: source.toolkit.fluxcd.io/v1beta2
+    apiVersion: source.toolkit.fluxcd.io/v1
     kind: GitRepository
     metadata:
       labels:
         app.kubernetes.io/instance: NAMESPACE
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/part-of: flux
-        helm.sh/chart: flux2-sync-1.4.0
+        helm.sh/chart: flux2-sync-1.5.0
       name: RELEASE-NAME
       namespace: NAMESPACE
     spec:

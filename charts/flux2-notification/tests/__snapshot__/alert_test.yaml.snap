@@ -1,14 +1,14 @@
 should match snapshot:
   1: |
-    apiVersion: notification.toolkit.fluxcd.io/v1beta1
+    apiVersion: notification.toolkit.fluxcd.io/v1beta2
     kind: Alert
     metadata:
       labels:
         app.kubernetes.io/instance: NAMESPACE
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/part-of: flux
-        app.kubernetes.io/version: 0.41.1
-        helm.sh/chart: flux2-notification-1.8.0
+        app.kubernetes.io/version: 2.0.0-rc.3
+        helm.sh/chart: flux2-notification-1.9.0
       name: all-kustomizations
       namespace: NAMESPACE
     spec:

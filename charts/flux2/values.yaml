@@ -20,7 +20,7 @@ clusterDomain: cluster.local
 
 cli:
   image: ghcr.io/fluxcd/flux-cli
-  tag: v0.41.1
+  tag: v2.0.0-rc.3
   nodeSelector: {}
   affinity: {}
   tolerations: []
@@ -33,7 +33,7 @@ cli:
 helmController:
   create: true
   image: ghcr.io/fluxcd/helm-controller
-  tag: v0.31.1
+  tag: v0.33.0
   resources:
     limits: {}
     # cpu: 1000m
@@ -80,7 +80,7 @@ helmController:
 imageAutomationController:
   create: true
   image: ghcr.io/fluxcd/image-automation-controller
-  tag: v0.31.0
+  tag: v0.33.1
   resources:
     limits: {}
     # cpu: 1000m
@@ -107,7 +107,7 @@ imageAutomationController:
 imageReflectionController:
   create: true
   image: ghcr.io/fluxcd/image-reflector-controller
-  tag: v0.26.0
+  tag: v0.27.2
   resources:
     limits: {}
     # cpu: 1000m
@@ -134,7 +134,7 @@ imageReflectionController:
 kustomizeController:
   create: true
   image: ghcr.io/fluxcd/kustomize-controller
-  tag: v0.35.0
+  tag: v1.0.0-rc.3
   resources:
     limits: {}
     # cpu: 1000m
@@ -181,7 +181,7 @@ kustomizeController:
 notificationController:
   create: true
   image: ghcr.io/fluxcd/notification-controller
-  tag: v0.33.0
+  tag: v1.0.0-rc.3
   resources:
     limits: {}
     # cpu: 1000m
@@ -215,7 +215,7 @@ notificationController:
 sourceController:
   create: true
   image: ghcr.io/fluxcd/source-controller
-  tag: v0.36.0
+  tag: v1.0.0-rc.3
   resources:
     limits: {}
     # cpu: 1000m
@@ -260,7 +260,7 @@ imagePullSecrets: []
 # -- Array of extra K8s manifests to deploy
 extraObjects: []
 # Example usage from https://fluxcd.io/docs/components/source/buckets/#static-authentication
-# - apiVersion: source.toolkit.fluxcd.io/v1beta1
+# - apiVersion: source.toolkit.fluxcd.io/v1beta2
 #   kind: Bucket
 #   metadata:
 #     name: podinfo
