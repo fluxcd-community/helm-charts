@@ -39,7 +39,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | helmController.serviceAccount.annotations | object | `{}` |  |
 | helmController.serviceAccount.automount | bool | `true` |  |
 | helmController.serviceAccount.create | bool | `true` |  |
-| helmController.tag | string | `"v0.33.0"` |  |
+| helmController.tag | string | `"v0.35.0"` |  |
 | helmController.tolerations | list | `[]` |  |
 | imageAutomationController.affinity | object | `{}` |  |
 | imageAutomationController.annotations."prometheus.io/port" | string | `"8080"` |  |
@@ -57,7 +57,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imageAutomationController.serviceAccount.annotations | object | `{}` |  |
 | imageAutomationController.serviceAccount.automount | bool | `true` |  |
 | imageAutomationController.serviceAccount.create | bool | `true` |  |
-| imageAutomationController.tag | string | `"v0.33.1"` |  |
+| imageAutomationController.tag | string | `"v0.35.0"` |  |
 | imageAutomationController.tolerations | list | `[]` |  |
 | imagePullSecrets | list | `[]` | contents of pod imagePullSecret in form 'name=[secretName]'; applied to all controllers |
 | imageReflectionController.affinity | object | `{}` |  |
