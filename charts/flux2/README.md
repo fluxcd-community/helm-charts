@@ -76,7 +76,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imageReflectionController.serviceAccount.annotations | object | `{}` |  |
 | imageReflectionController.serviceAccount.automount | bool | `true` |  |
 | imageReflectionController.serviceAccount.create | bool | `true` |  |
-| imageReflectionController.tag | string | `"v0.27.2"` |  |
+| imageReflectionController.tag | string | `"v0.29.0"` |  |
 | imageReflectionController.tolerations | list | `[]` |  |
 | installCRDs | bool | `true` |  |
 | kustomizeController.affinity | object | `{}` |  |
