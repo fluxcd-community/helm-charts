@@ -54,6 +54,9 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
+        {{- with .Values.kustomizeController.extraEnv }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
         {{- if or (.Values.kustomizeController.envFrom.map.name) (.Values.kustomizeController.envFrom.secret.name) }}
         envFrom:
           {{- if .Values.kustomizeController.envFrom.map.name }}

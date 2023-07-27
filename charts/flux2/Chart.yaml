@@ -1,6 +1,6 @@
 annotations:
   artifacthub.io/changes: |
-    - "[Chore]: Update App Version to upstream 2.0.0"
+    - "[Added]: Support extraEnv value setting for all flux controllers"
 apiVersion: v2
 appVersion: 2.0.0
 description: A Helm chart for flux2
@@ -8,4 +8,4 @@ name: flux2
 sources:
 - https://github.com/fluxcd-community/helm-charts
 type: application
-version: 2.9.0
+version: 2.9.1

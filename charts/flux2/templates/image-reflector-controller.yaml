@@ -53,6 +53,9 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
+        {{- with .Values.imageReflectionController.extraEnv }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
         image: {{ template "template.image" .Values.imageReflectionController }}
         {{- if .Values.imageReflectionController.imagePullPolicy }}
         imagePullPolicy: {{ .Values.imageReflectionController.imagePullPolicy }}
