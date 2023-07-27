@@ -3,6 +3,21 @@ entries:
   flux2:
   - annotations:
       artifacthub.io/changes: |
+        - "[Added]: Support extraEnv value setting for all flux controllers"
+    apiVersion: v2
+    appVersion: 2.0.0
+    created: "2023-07-27T08:26:37.91389265Z"
+    description: A Helm chart for flux2
+    digest: 9d346992f2b7110ff779946103a38e6797c5a03054fc4bde56e5efcf7d82904d
+    name: flux2
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-2.9.1/flux2-2.9.1.tgz
+    version: 2.9.1
+  - annotations:
+      artifacthub.io/changes: |
         - "[Chore]: Update App Version to upstream 2.0.0"
     apiVersion: v2
     appVersion: 2.0.0
@@ -1769,4 +1784,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2023-07-05T17:28:22.394802954Z"
+generated: "2023-07-27T08:26:37.914824658Z"
