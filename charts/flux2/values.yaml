@@ -48,6 +48,7 @@ helmController:
   labels: {}
   container:
     additionalArgs: []
+  extraEnv: []
   serviceAccount:
     create: true
     automount: true
@@ -95,6 +96,7 @@ imageAutomationController:
   labels: {}
   container:
     additionalArgs: []
+  extraEnv: []
   serviceAccount:
     create: true
     automount: true
@@ -122,6 +124,7 @@ imageReflectionController:
   labels: {}
   container:
     additionalArgs: []
+  extraEnv: []
   serviceAccount:
     create: true
     automount: true
@@ -149,6 +152,7 @@ kustomizeController:
   labels: {}
   container:
     additionalArgs: []
+  extraEnv: []
   serviceAccount:
     create: true
     automount: true
@@ -196,6 +200,7 @@ notificationController:
   labels: {}
   container:
     additionalArgs: []
+  extraEnv: []
   serviceAccount:
     create: true
     automount: true

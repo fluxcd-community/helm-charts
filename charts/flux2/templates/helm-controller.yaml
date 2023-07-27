@@ -54,6 +54,9 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
+        {{- with .Values.helmController.extraEnv }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
         image: {{ template "template.image" .Values.helmController }}
         {{- if .Values.helmController.imagePullPolicy }}
         imagePullPolicy: {{ .Values.helmController.imagePullPolicy }}

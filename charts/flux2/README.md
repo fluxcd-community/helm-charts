@@ -1,6 +1,6 @@
 # flux2
 
-![Version: 2.9.0](https://img.shields.io/badge/Version-2.9.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.0.0](https://img.shields.io/badge/AppVersion-2.0.0-informational?style=flat-square)
+![Version: 2.9.1](https://img.shields.io/badge/Version-2.9.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.0.0](https://img.shields.io/badge/AppVersion-2.0.0-informational?style=flat-square)
 
 A Helm chart for flux2
 
@@ -28,6 +28,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | helmController.annotations."prometheus.io/scrape" | string | `"true"` |  |
 | helmController.container.additionalArgs | list | `[]` |  |
 | helmController.create | bool | `true` |  |
+| helmController.extraEnv | list | `[]` |  |
 | helmController.image | string | `"ghcr.io/fluxcd/helm-controller"` |  |
 | helmController.imagePullPolicy | object | `{}` |  |
 | helmController.labels | object | `{}` |  |
@@ -46,6 +47,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imageAutomationController.annotations."prometheus.io/scrape" | string | `"true"` |  |
 | imageAutomationController.container.additionalArgs | list | `[]` |  |
 | imageAutomationController.create | bool | `true` |  |
+| imageAutomationController.extraEnv | list | `[]` |  |
 | imageAutomationController.image | string | `"ghcr.io/fluxcd/image-automation-controller"` |  |
 | imageAutomationController.imagePullPolicy | object | `{}` |  |
 | imageAutomationController.labels | object | `{}` |  |
@@ -65,6 +67,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imageReflectionController.annotations."prometheus.io/scrape" | string | `"true"` |  |
 | imageReflectionController.container.additionalArgs | list | `[]` |  |
 | imageReflectionController.create | bool | `true` |  |
+| imageReflectionController.extraEnv | list | `[]` |  |
 | imageReflectionController.image | string | `"ghcr.io/fluxcd/image-reflector-controller"` |  |
 | imageReflectionController.imagePullPolicy | object | `{}` |  |
 | imageReflectionController.labels | object | `{}` |  |
@@ -85,6 +88,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | kustomizeController.container.additionalArgs | list | `[]` |  |
 | kustomizeController.create | bool | `true` |  |
 | kustomizeController.envFrom | object | `{"map":{"name":""},"secret":{"name":""}}` | Defines envFrom using a configmap and/or secret. |
+| kustomizeController.extraEnv | list | `[]` |  |
 | kustomizeController.extraSecretMounts | list | `[]` | Defines additional mounts with secrets. Secrets must be manually created in the namespace or with kustomizeController.secret |
 | kustomizeController.image | string | `"ghcr.io/fluxcd/kustomize-controller"` |  |
 | kustomizeController.imagePullPolicy | object | `{}` |  |
@@ -111,6 +115,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | notificationController.annotations."prometheus.io/scrape" | string | `"true"` |  |
 | notificationController.container.additionalArgs | list | `[]` |  |
 | notificationController.create | bool | `true` |  |
+| notificationController.extraEnv | list | `[]` |  |
 | notificationController.image | string | `"ghcr.io/fluxcd/notification-controller"` |  |
 | notificationController.imagePullPolicy | object | `{}` |  |
 | notificationController.labels | object | `{}` |  |
