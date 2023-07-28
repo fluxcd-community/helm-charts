@@ -12,7 +12,7 @@ trap delete_temp_dir EXIT
 
 
 get_controller_values_attribute() {
-  echo "$(echo $1 | cut -d '/' -f5 | sed 's/reflector/reflection/' | sed 's/-./\U&/g' | tr -d '-')"
+  echo "$(echo $1 | cut -d '/' -f5 | $SED 's/reflector/reflection/' | $SED 's/-./\U&/g' | tr -d '-')"
 }
 
 
