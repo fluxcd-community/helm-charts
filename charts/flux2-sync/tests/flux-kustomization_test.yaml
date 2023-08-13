@@ -1,0 +1,22 @@
+suite: test flux-kustomization
+templates:
+  - flux-kustomization.yaml
+tests:
+  - it: should match kubeconfig
+    capabilities:
+      majorVersion: 1
+      minorVersion: 19
+    set:
+      kustomization:
+        spec:
+          interval: 10m
+          path: ./claims
+          sourceRef:
+            name: test
+            kind: GitRepository
+          kubeConfig:
+            secretRef:
+              name: test
+              ref: kubeconfig
+    asserts:
+      - matchSnapshot: {}

@@ -1,0 +1,23 @@
+should match kubeconfig:
+  1: |
+    apiVersion: kustomize.toolkit.fluxcd.io/v1
+    kind: Kustomization
+    metadata:
+      labels:
+        app.kubernetes.io/instance: NAMESPACE
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/part-of: flux
+        helm.sh/chart: flux2-sync-1.6.2
+      name: RELEASE-NAME
+      namespace: NAMESPACE
+    spec:
+      interval: 10m
+      kubeConfig:
+        secretRef:
+          name: test
+          ref: kubeconfig
+      path: ./claims
+      prune: true
+      sourceRef:
+        kind: GitRepository
+        name: RELEASE-NAME
