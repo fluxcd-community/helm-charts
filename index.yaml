@@ -1452,6 +1452,21 @@ entries:
   flux2-sync:
   - annotations:
       artifacthub.io/changes: |
+        - "[Fix]: kubeconfig configuration for kustomization"
+    apiVersion: v2
+    appVersion: 2.0.1
+    created: "2023-08-14T07:22:20.374365353Z"
+    description: A Helm chart for flux2 GitRepository to sync with
+    digest: 1de9328d70c76d3f2025a1f56873ebe783826c3ca24d35aeb8499ecea10121a7
+    name: flux2-sync
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-1.6.2/flux2-sync-1.6.2.tgz
+    version: 1.6.2
+  - annotations:
+      artifacthub.io/changes: |
         - "[Chore]: Update App Version to upstream 2.0.1"
     apiVersion: v2
     appVersion: 2.0.1
@@ -1829,4 +1844,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2023-07-28T08:45:11.858081811Z"
+generated: "2023-08-14T07:22:20.375168541Z"
