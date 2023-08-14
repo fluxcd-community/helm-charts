@@ -24,7 +24,7 @@ spec:
   {{- if .Values.kustomization.spec.retryInterval }}
   retryInterval: {{ .Values.kustomization.spec.retryInterval }}
   {{- end }}
-  {{- if .Values.kustomization.spec.kubeConfig }}
+  {{- with .Values.kustomization.spec.kubeConfig }}
   kubeConfig: {{ toYaml . | nindent 4 }}
   {{- end }}
   {{- if .Values.kustomization.spec.path }}
