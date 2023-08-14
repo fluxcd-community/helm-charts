@@ -17,6 +17,6 @@ tests:
           kubeConfig:
             secretRef:
               name: test
-              ref: kubeconfig
+              key: kubeconfig
     asserts:
       - matchSnapshot: {}

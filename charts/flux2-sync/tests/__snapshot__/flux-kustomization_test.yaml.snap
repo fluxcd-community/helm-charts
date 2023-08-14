@@ -14,8 +14,8 @@ should match kubeconfig:
       interval: 10m
       kubeConfig:
         secretRef:
+          key: kubeconfig
           name: test
-          ref: kubeconfig
       path: ./claims
       prune: true
       sourceRef:
