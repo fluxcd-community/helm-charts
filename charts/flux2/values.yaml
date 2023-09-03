@@ -20,7 +20,7 @@ clusterDomain: cluster.local
 
 cli:
   image: ghcr.io/fluxcd/flux-cli
-  tag: v2.0.1
+  tag: v2.1.0
   nodeSelector: {}
   affinity: {}
   tolerations: []
@@ -33,7 +33,7 @@ cli:
 helmController:
   create: true
   image: ghcr.io/fluxcd/helm-controller
-  tag: v0.35.0
+  tag: v0.36.0
   resources:
     limits: {}
     # cpu: 1000m
@@ -81,7 +81,7 @@ helmController:
 imageAutomationController:
   create: true
   image: ghcr.io/fluxcd/image-automation-controller
-  tag: v0.35.0
+  tag: v0.36.0
   resources:
     limits: {}
     # cpu: 1000m
@@ -109,7 +109,7 @@ imageAutomationController:
 imageReflectionController:
   create: true
   image: ghcr.io/fluxcd/image-reflector-controller
-  tag: v0.29.1
+  tag: v0.30.0
   resources:
     limits: {}
     # cpu: 1000m
@@ -137,7 +137,7 @@ imageReflectionController:
 kustomizeController:
   create: true
   image: ghcr.io/fluxcd/kustomize-controller
-  tag: v1.0.1
+  tag: v1.1.0
   resources:
     limits: {}
     # cpu: 1000m
@@ -185,7 +185,7 @@ kustomizeController:
 notificationController:
   create: true
   image: ghcr.io/fluxcd/notification-controller
-  tag: v1.0.0
+  tag: v1.1.0
   resources:
     limits: {}
     # cpu: 1000m
@@ -220,7 +220,7 @@ notificationController:
 sourceController:
   create: true
   image: ghcr.io/fluxcd/source-controller
-  tag: v1.0.1
+  tag: v1.1.0
   resources:
     limits: {}
     # cpu: 1000m
