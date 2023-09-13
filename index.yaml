@@ -1106,6 +1106,21 @@ entries:
   flux2-notification:
   - annotations:
       artifacthub.io/changes: |
+        - "[Chore]: fix provider template"
+    apiVersion: v2
+    appVersion: 2.1.0
+    created: "2023-09-13T13:39:43.004041457Z"
+    description: A Helm chart for flux2 alerts and the needed providers and secrets
+    digest: 5bd44de3aae6fa0eae65909589b08671073de5985be9f8c493c3c2f40e6fa387
+    name: flux2-notification
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-notification-1.12.0/flux2-notification-1.12.0.tgz
+    version: 1.12.0
+  - annotations:
+      artifacthub.io/changes: |
         - "[Chore]: Update App Version to upstream 2.1.0"
     apiVersion: v2
     appVersion: 2.1.0
@@ -1889,4 +1904,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2023-09-03T15:30:55.374709989Z"
+generated: "2023-09-13T13:39:43.005163781Z"
