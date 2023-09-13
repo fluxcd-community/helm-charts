@@ -26,11 +26,11 @@ spec:
   {{- if $provider.spec.proxy }}
   proxy: "{{ $provider.spec.proxy }}"
   {{- end }}
-  {{- if $provider.spec.secretRef.name }}
+  {{- if $provider.spec.secretRef }}
   secretRef:
     name: {{ $provider.spec.secretRef.name }}
   {{- end }}
-  {{- if $provider.spec.certSecretRef.name }}
+  {{- if $provider.spec.certSecretRef }}
   certSecretRef:
     name: {{ $provider.spec.certSecretRef.name }}
   {{- end }}

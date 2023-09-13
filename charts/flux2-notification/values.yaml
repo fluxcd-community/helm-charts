@@ -1,5 +1,5 @@
 # -- A list of secrets to be used. See values.yaml for example
-# For help see: https://fluxcd.io/docs/components/notification/provider/
+# For help see: https://fluxcd.io/flux/components/notification/providers/
 secretlist: []
   # - name: webhook-url
   #   value:
