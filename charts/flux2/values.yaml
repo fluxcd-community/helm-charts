@@ -54,6 +54,9 @@ helmController:
     automount: true
     annotations: {}
   imagePullPolicy: {}
+  podDisruptionBudget: {}
+  #  minAvailable: 1
+  #  maxUnavailable: 1
   nodeSelector: {}
   # expects input structure as per specification https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.11/#affinity-v1-core
   # for example:
@@ -102,6 +105,9 @@ imageAutomationController:
     automount: true
     annotations: {}
   imagePullPolicy: {}
+  podDisruptionBudget: {}
+  #  minAvailable: 1
+  #  maxUnavailable: 1
   nodeSelector: {}
   affinity: {}
   tolerations: []
@@ -130,6 +136,9 @@ imageReflectionController:
     automount: true
     annotations: {}
   imagePullPolicy: {}
+  podDisruptionBudget: {}
+  #  minAvailable: 1
+  #  maxUnavailable: 1
   nodeSelector: {}
   affinity: {}
   tolerations: []
@@ -177,7 +186,9 @@ kustomizeController:
   #   subPath: ""
   #   secretName: secret-files
   #   readOnly: true
-
+  podDisruptionBudget: {}
+  #  minAvailable: 1
+  #  maxUnavailable: 1
   nodeSelector: {}
   affinity: {}
   tolerations: []
@@ -213,6 +224,9 @@ notificationController:
     service:
       labels: {}
       annotations: {}
+  podDisruptionBudget: {}
+  #  minAvailable: 1
+  #  maxUnavailable: 1  
   nodeSelector: {}
   affinity: {}
   tolerations: []
@@ -243,6 +257,9 @@ sourceController:
   service:
     labels: {}
     annotations: {}
+  podDisruptionBudget: {}
+  #  minAvailable: 1
+  #  maxUnavailable: 1 
   nodeSelector: {}
   affinity: {}
   tolerations: []

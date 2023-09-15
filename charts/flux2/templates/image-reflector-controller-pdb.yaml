@@ -1,0 +1,16 @@
+{{- if .Values.imageReflectionController.podDisruptionBudget }}
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: image-reflector-controller
+spec:
+  {{- with .Values.imageReflectionController.podDisruptionBudget.minAvailable }}
+  minAvailable: {{ . }}
+  {{- end }}
+  {{- with .Values.imageReflectionController.podDisruptionBudget.maxUnavailable }}
+  maxUnavailable: {{ . }}
+  {{- end }}
+  selector:
+    matchLabels:
+      app: image-reflector-controller
+{{- end }}

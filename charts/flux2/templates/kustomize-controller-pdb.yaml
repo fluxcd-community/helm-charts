@@ -1,0 +1,16 @@
+{{- if .Values.kustomizeController.podDisruptionBudget }}
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: kustomize-controller
+spec:
+  {{- with .Values.kustomizeController.podDisruptionBudget.minAvailable }}
+  minAvailable: {{ . }}
+  {{- end }}
+  {{- with .Values.kustomizeController.podDisruptionBudget.maxUnavailable }}
+  maxUnavailable: {{ . }}
+  {{- end }}
+  selector:
+    matchLabels:
+      app: kustomize-controller
+{{- end }}
