@@ -55,8 +55,8 @@ helmController:
     annotations: {}
   imagePullPolicy: {}
   podDisruptionBudget: {}
-  #  minAvailable: 1
-  #  maxUnavailable: 1
+    # minAvailable: 1
+    # maxUnavailable: 1
   nodeSelector: {}
   # expects input structure as per specification https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.11/#affinity-v1-core
   # for example:
@@ -106,8 +106,8 @@ imageAutomationController:
     annotations: {}
   imagePullPolicy: {}
   podDisruptionBudget: {}
-  #  minAvailable: 1
-  #  maxUnavailable: 1
+    #  minAvailable: 1
+    #  maxUnavailable: 1
   nodeSelector: {}
   affinity: {}
   tolerations: []
@@ -137,8 +137,8 @@ imageReflectionController:
     annotations: {}
   imagePullPolicy: {}
   podDisruptionBudget: {}
-  #  minAvailable: 1
-  #  maxUnavailable: 1
+    #  minAvailable: 1
+    #  maxUnavailable: 1
   nodeSelector: {}
   affinity: {}
   tolerations: []
@@ -187,8 +187,8 @@ kustomizeController:
   #   secretName: secret-files
   #   readOnly: true
   podDisruptionBudget: {}
-  #  minAvailable: 1
-  #  maxUnavailable: 1
+    #  minAvailable: 1
+    #  maxUnavailable: 1
   nodeSelector: {}
   affinity: {}
   tolerations: []
@@ -225,8 +225,8 @@ notificationController:
       labels: {}
       annotations: {}
   podDisruptionBudget: {}
-  #  minAvailable: 1
-  #  maxUnavailable: 1  
+    #  minAvailable: 1
+    #  maxUnavailable: 1  
   nodeSelector: {}
   affinity: {}
   tolerations: []
@@ -258,8 +258,8 @@ sourceController:
     labels: {}
     annotations: {}
   podDisruptionBudget: {}
-  #  minAvailable: 1
-  #  maxUnavailable: 1 
+    #  minAvailable: 1
+    #  maxUnavailable: 1 
   nodeSelector: {}
   affinity: {}
   tolerations: []
