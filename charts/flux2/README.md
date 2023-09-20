@@ -1,6 +1,6 @@
 # flux2
 
-![Version: 2.10.0](https://img.shields.io/badge/Version-2.10.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.1.0](https://img.shields.io/badge/AppVersion-2.1.0-informational?style=flat-square)
+![Version: 2.10.1](https://img.shields.io/badge/Version-2.10.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.1.1](https://img.shields.io/badge/AppVersion-2.1.1-informational?style=flat-square)
 
 A Helm chart for flux2
 
@@ -19,7 +19,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | cli.image | string | `"ghcr.io/fluxcd/flux-cli"` |  |
 | cli.nodeSelector | object | `{}` |  |
 | cli.serviceAccount.automount | bool | `true` |  |
-| cli.tag | string | `"v2.1.0"` |  |
+| cli.tag | string | `"v2.1.1"` |  |
 | cli.tolerations | list | `[]` |  |
 | clusterDomain | string | `"cluster.local"` |  |
 | extraObjects | list | `[]` | Array of extra K8s manifests to deploy |
@@ -40,7 +40,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | helmController.serviceAccount.annotations | object | `{}` |  |
 | helmController.serviceAccount.automount | bool | `true` |  |
 | helmController.serviceAccount.create | bool | `true` |  |
-| helmController.tag | string | `"v0.36.0"` |  |
+| helmController.tag | string | `"v0.36.1"` |  |
 | helmController.tolerations | list | `[]` |  |
 | imageAutomationController.affinity | object | `{}` |  |
 | imageAutomationController.annotations."prometheus.io/port" | string | `"8080"` |  |
@@ -59,7 +59,7 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | imageAutomationController.serviceAccount.annotations | object | `{}` |  |
 | imageAutomationController.serviceAccount.automount | bool | `true` |  |
 | imageAutomationController.serviceAccount.create | bool | `true` |  |
-| imageAutomationController.tag | string | `"v0.36.0"` |  |
+| imageAutomationController.tag | string | `"v0.36.1"` |  |
 | imageAutomationController.tolerations | list | `[]` |  |
 | imagePullSecrets | list | `[]` | contents of pod imagePullSecret in form 'name=[secretName]'; applied to all controllers |
 | imageReflectionController.affinity | object | `{}` |  |
@@ -160,6 +160,6 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | sourceController.serviceAccount.annotations | object | `{}` |  |
 | sourceController.serviceAccount.automount | bool | `true` |  |
 | sourceController.serviceAccount.create | bool | `true` |  |
-| sourceController.tag | string | `"v1.1.0"` |  |
+| sourceController.tag | string | `"v1.1.1"` |  |
 | sourceController.tolerations | list | `[]` |  |
 | watchAllNamespaces | bool | `true` |  |
