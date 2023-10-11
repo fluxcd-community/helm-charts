@@ -3,6 +3,21 @@ entries:
   flux2:
   - annotations:
       artifacthub.io/changes: |
+        - "feat: enable labeling of deployments"
+    apiVersion: v2
+    appVersion: 2.1.1
+    created: "2023-10-11T08:54:39.498420325Z"
+    description: A Helm chart for flux2
+    digest: 3906f07aa87406628277b97d69d2ab29359ff946df9fbfc43eca9533b9210266
+    name: flux2
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-2.10.2/flux2-2.10.2.tgz
+    version: 2.10.2
+  - annotations:
+      artifacthub.io/changes: |
         - "[Chore]: Update App Version to upstream 2.1.1"
     apiVersion: v2
     appVersion: 2.1.1
@@ -1949,4 +1964,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2023-09-20T06:43:50.30623957Z"
+generated: "2023-10-11T08:54:39.499609545Z"
