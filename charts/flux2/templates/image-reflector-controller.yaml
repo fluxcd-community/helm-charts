@@ -9,6 +9,9 @@ metadata:
     app.kubernetes.io/part-of: flux
     helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
     control-plane: controller
+    {{- with .Values.imageReflectionController.labels }}
+    {{- . | toYaml | nindent 4 }}
+    {{- end }}
   name: image-reflector-controller
 spec:
   {{- if kindIs "invalid" .Values.imageReflectionController.replicas }}

@@ -1,6 +1,6 @@
 annotations:
   artifacthub.io/changes: |
-    - "[Chore]: Update App Version to upstream 2.1.1"
+    - "feat: enable labeling of deployments"
 apiVersion: v2
 appVersion: 2.1.1
 description: A Helm chart for flux2
@@ -8,4 +8,4 @@ name: flux2
 sources:
 - https://github.com/fluxcd-community/helm-charts
 type: application
-version: 2.10.1
+version: 2.10.2
