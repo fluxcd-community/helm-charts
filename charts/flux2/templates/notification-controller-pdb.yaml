@@ -1,0 +1,16 @@
+{{- if .Values.notificationController.podDisruptionBudget }}
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: notification-controller
+spec:
+  {{- with .Values.notificationController.podDisruptionBudget.minAvailable }}
+  minAvailable: {{ . }}
+  {{- end }}
+  {{- with .Values.notificationController.podDisruptionBudget.maxUnavailable }}
+  maxUnavailable: {{ . }}
+  {{- end }}
+  selector:
+    matchLabels:
+      app: notification-controller
+{{- end }}

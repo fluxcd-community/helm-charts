@@ -1,0 +1,16 @@
+{{- if .Values.imageAutomationController.podDisruptionBudget }}
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: image-automation-controller
+spec:
+  {{- with .Values.imageAutomationController.podDisruptionBudget.minAvailable }}
+  minAvailable: {{ . }}
+  {{- end }}
+  {{- with .Values.imageAutomationController.podDisruptionBudget.maxUnavailable }}
+  maxUnavailable: {{ . }}
+  {{- end }}
+  selector:
+    matchLabels:
+      app: image-automation-controller
+{{- end }}
