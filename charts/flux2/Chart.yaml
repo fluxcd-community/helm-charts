@@ -2,10 +2,10 @@ annotations:
   artifacthub.io/changes: |
     - "feat: enable labeling of deployments"
 apiVersion: v2
-appVersion: 2.1.1
+appVersion: 2.1.2
 description: A Helm chart for flux2
 name: flux2
 sources:
 - https://github.com/fluxcd-community/helm-charts
 type: application
-version: 2.10.2
+version: 2.10.3
