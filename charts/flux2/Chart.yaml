@@ -8,4 +8,4 @@ name: flux2
 sources:
 - https://github.com/fluxcd-community/helm-charts
 type: application
-version: 2.10.2
+version: 2.10.3
