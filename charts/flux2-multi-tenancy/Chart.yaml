@@ -1,6 +1,6 @@
 apiVersion: v2
 name: flux2-multi-tenancy
-version: 0.0.4
+version: 0.0.5
 deprecated: true
 description: A Helm chart for flux2-multi-tenancy
 sources:
