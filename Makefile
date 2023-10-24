@@ -118,10 +118,10 @@ generate: fetch
 	@$(OK) Generating CRDs
 
 unittests:
-	@helm unittest --helm3 --file tests/*.yaml --file 'tests/**/*.yaml' charts/flux2-multi-tenancy/
-	@helm unittest --helm3 --file tests/*.yaml --file 'tests/**/*.yaml' charts/flux2/
-	@helm unittest --helm3 --file tests/*.yaml --file 'tests/**/*.yaml' charts/flux2-sync/
-	@helm unittest --helm3 --file tests/*.yaml --file 'tests/**/*.yaml' charts/flux2-notification/
+	@helm unittest --file tests/*.yaml --file 'tests/**/*.yaml' charts/flux2-multi-tenancy/
+	@helm unittest --file tests/*.yaml --file 'tests/**/*.yaml' charts/flux2/
+	@helm unittest --file tests/*.yaml --file 'tests/**/*.yaml' charts/flux2-sync/
+	@helm unittest --file tests/*.yaml --file 'tests/**/*.yaml' charts/flux2-notification/
 
 check-diff:
 	@$(INFO) checking that branch is clean
