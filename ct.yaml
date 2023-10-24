@@ -3,4 +3,4 @@ remote: origin
 target-branch: main
 validate-maintainers: false
 additional-commands:
-  - helm unittest --helm3 --strict --file tests/*.yaml --file 'tests/**/*.yaml' {{ .Path }}
+  - helm unittest --strict --file tests/*.yaml --file 'tests/**/*.yaml' {{ .Path }}

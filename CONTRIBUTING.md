@@ -48,7 +48,7 @@ Once changes have been merged, the release job will automatically run to package
 
 * Make your changes
 * run: ```helm install --dry-run charts/flux2/ --generate-name```
-* run: ```helm unittest --helm3 --file 'tests/*.yaml' charts/flux2/```
+* run: ```helm unittest --file 'tests/*.yaml' charts/flux2/```
     * add ```-u``` if you need to update the compare snapshot in \_\_snapshots\_\_
 * bump chart version if necessary
 * run: ```make helmdocs```
