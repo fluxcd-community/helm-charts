@@ -30,6 +30,9 @@ spec:
   {{- if .Values.kustomization.spec.path }}
   path: {{ .Values.kustomization.spec.path }}
   {{- end }}
+  {{- with .Values.kustomization.spec.components }}
+  components: {{ toYaml . | nindent 4 }}
+  {{- end }}
   {{- with .Values.kustomization.spec.postBuild }}
   postBuild: {{ toYaml . | nindent 4 }}
   {{- end }}
@@ -97,6 +100,9 @@ spec:
   {{- end }}
   {{- if $kust.spec.path }}
   path: "{{ $kust.spec.path }}"
+  {{- end }}
+  {{- with $kust.spec.components }}
+  components: {{ toYaml . | nindent 4 }}
   {{- end }}
   {{- with $kust.spec.postBuild }}
   postBuild: {{ toYaml . | nindent 4 }}
