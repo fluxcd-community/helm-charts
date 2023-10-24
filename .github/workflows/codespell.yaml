@@ -16,6 +16,6 @@ jobs:
         uses: codespell-project/actions-codespell@master
         with:
           skip: .git,./charts/flux2/Changelog.md,./charts/flux2-sync/Changelog.md
-          ignore_words_list: iam,aks,keypair
+          ignore_words_list: iam,aks,keypair,re-use
           check_filenames: true
           check_hidden: true
