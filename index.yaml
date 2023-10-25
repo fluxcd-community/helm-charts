@@ -6,6 +6,21 @@ entries:
         - "feat: enable labeling of deployments"
     apiVersion: v2
     appVersion: 2.1.1
+    created: "2023-10-25T06:14:21.483800209Z"
+    description: A Helm chart for flux2
+    digest: da023bb566a2735da44695b4f2897b70593ddfa16adb0c61539d289efc0f23a3
+    name: flux2
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-2.10.4/flux2-2.10.4.tgz
+    version: 2.10.4
+  - annotations:
+      artifacthub.io/changes: |
+        - "feat: enable labeling of deployments"
+    apiVersion: v2
+    appVersion: 2.1.1
     created: "2023-10-24T12:39:33.981109741Z"
     description: A Helm chart for flux2
     digest: 6b59519871026f3b95bf44bb2f622a05bdb19800eae390241b1e7ab1d31814b2
@@ -1084,6 +1099,26 @@ entries:
       artifacthub.io/changes: |
         - "Mark this chart as DEPRECATED. Since upstream appversion 0.26.0 this can be done wilth Multi-Tenancy Lockdown Use `multitenancy.enabled` in flux2 chart >=0.11.0"
     apiVersion: v2
+    created: "2023-10-25T06:14:21.670099568Z"
+    dependencies:
+    - condition: kyverno.enabled
+      name: kyverno
+      repository: https://kyverno.github.io/kyverno
+      version: 2.1.4
+    deprecated: true
+    description: A Helm chart for flux2-multi-tenancy
+    digest: 1c78192c9118d763be454c5203a89115091e168c717a90df697c3829016899f6
+    name: flux2-multi-tenancy
+    sources:
+    - https://github.com/fluxcd/flux2-multi-tenancy
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-multi-tenancy-0.0.5/flux2-multi-tenancy-0.0.5.tgz
+    version: 0.0.5
+  - annotations:
+      artifacthub.io/changes: |
+        - "Mark this chart as DEPRECATED. Since upstream appversion 0.26.0 this can be done wilth Multi-Tenancy Lockdown Use `multitenancy.enabled` in flux2 chart >=0.11.0"
+    apiVersion: v2
     created: "2022-02-07T10:03:55.455096101Z"
     dependencies:
     - condition: kyverno.enabled
@@ -1149,6 +1184,21 @@ entries:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-multi-tenancy-0.0.1/flux2-multi-tenancy-0.0.1.tgz
     version: 0.0.1
   flux2-notification:
+  - annotations:
+      artifacthub.io/changes: |
+        - "[Chore]: Update App Version to upstream 2.1.1"
+    apiVersion: v2
+    appVersion: 2.1.1
+    created: "2023-10-25T06:14:21.850231377Z"
+    description: A Helm chart for flux2 alerts and the needed providers and secrets
+    digest: 394b2aa0b4faec753691635a8b2e8c28965d66b91d88756980e6c73abd7a4091
+    name: flux2-notification
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-notification-1.12.2/flux2-notification-1.12.2.tgz
+    version: 1.12.2
   - annotations:
       artifacthub.io/changes: |
         - "[Chore]: Update App Version to upstream 2.1.1"
@@ -1979,4 +2029,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2023-10-24T12:39:33.982600445Z"
+generated: "2023-10-25T06:14:21.851438526Z"
