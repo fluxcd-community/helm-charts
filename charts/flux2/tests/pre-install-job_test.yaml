@@ -4,7 +4,7 @@ templates:
 tests:
   - it: should have no annotations added by default
     asserts:
-      - isEmpty:
+      - isNull:
           path: spec.template.metadata.annotations
   - it: should have added annotation
     set:
