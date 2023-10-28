@@ -6,6 +6,21 @@ entries:
         - "feat: upgrade to FluxCD 2.1.2"
     apiVersion: v2
     appVersion: 2.1.2
+    created: "2023-10-28T19:41:26.351674231Z"
+    description: A Helm chart for flux2
+    digest: 24048dc941c7928dcda89743438a71ef141d726de2572f6692f3002336c6ded8
+    name: flux2
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-2.10.6/flux2-2.10.6.tgz
+    version: 2.10.6
+  - annotations:
+      artifacthub.io/changes: |
+        - "feat: upgrade to FluxCD 2.1.2"
+    apiVersion: v2
+    appVersion: 2.1.2
     created: "2023-10-25T07:31:14.76535536Z"
     description: A Helm chart for flux2
     digest: 7c27d5e310d9d6b4247fe6dab0fe1274333fa4bd0849f973e24077f5418b8182
@@ -2074,4 +2089,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2023-10-25T07:31:15.135831635Z"
+generated: "2023-10-28T19:41:26.352831552Z"
