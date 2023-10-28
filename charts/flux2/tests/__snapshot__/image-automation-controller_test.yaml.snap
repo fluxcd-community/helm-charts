@@ -4,12 +4,13 @@ should match snapshot of default values:
     kind: Deployment
     metadata:
       labels:
+        app.kubernetes.io/component: image-automation-controller
         app.kubernetes.io/instance: NAMESPACE
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/part-of: flux
         app.kubernetes.io/version: 2.1.2
         control-plane: controller
-        helm.sh/chart: flux2-2.10.5
+        helm.sh/chart: flux2-2.10.6
       name: image-automation-controller
     spec:
       replicas: 1
