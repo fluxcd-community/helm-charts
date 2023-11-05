@@ -2,11 +2,11 @@
 
 > **:exclamation: This Helm Chart is deprecated!**
 
-![Version: 0.0.5](https://img.shields.io/badge/Version-0.0.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 0.0.6](https://img.shields.io/badge/Version-0.0.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 A Helm chart for flux2-multi-tenancy
 
-This helm chart is maintain and released by the fluxcd-community on a best effort basis.
+This helm chart is maintained and released by the fluxcd-community on a best effort basis.
 
 ## Source Code
 

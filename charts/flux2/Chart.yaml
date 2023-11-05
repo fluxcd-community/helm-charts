@@ -1,6 +1,6 @@
 annotations:
   artifacthub.io/changes: |
-    - "feat: upgrade to FluxCD 2.1.2"
+    - "feat: add ingress resource for notificationController's receiver webhook service"
 apiVersion: v2
 appVersion: 2.1.2
 description: A Helm chart for flux2
@@ -8,4 +8,4 @@ name: flux2
 sources:
 - https://github.com/fluxcd-community/helm-charts
 type: application
-version: 2.10.6
+version: 2.11.0

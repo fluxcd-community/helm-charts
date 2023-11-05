@@ -1,10 +1,10 @@
 # flux2-notification
 
-![Version: 1.12.3](https://img.shields.io/badge/Version-1.12.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.1.2](https://img.shields.io/badge/AppVersion-2.1.2-informational?style=flat-square)
+![Version: 1.12.4](https://img.shields.io/badge/Version-1.12.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.1.2](https://img.shields.io/badge/AppVersion-2.1.2-informational?style=flat-square)
 
 A Helm chart for flux2 alerts and the needed providers and secrets
 
-This helm chart is maintain and released by the fluxcd-community on a best effort basis.
+This helm chart is maintained and released by the fluxcd-community on a best effort basis.
 
 ## Source Code
 

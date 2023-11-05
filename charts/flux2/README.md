@@ -1,10 +1,10 @@
 # flux2
 
-![Version: 2.10.6](https://img.shields.io/badge/Version-2.10.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.1.2](https://img.shields.io/badge/AppVersion-2.1.2-informational?style=flat-square)
+![Version: 2.11.0](https://img.shields.io/badge/Version-2.11.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.1.2](https://img.shields.io/badge/AppVersion-2.1.2-informational?style=flat-square)
 
 A Helm chart for flux2
 
-This helm chart is maintain and released by the fluxcd-community on a best effort basis.
+This helm chart is maintained and released by the fluxcd-community on a best effort basis.
 
 ## Source Code
 
@@ -131,6 +131,13 @@ This helm chart is maintain and released by the fluxcd-community on a best effor
 | notificationController.serviceAccount.create | bool | `true` |  |
 | notificationController.tag | string | `"v1.1.0"` |  |
 | notificationController.tolerations | list | `[]` |  |
+| notificationController.webhookReceiver.ingress.annotations | object | `{}` |  |
+| notificationController.webhookReceiver.ingress.create | bool | `false` |  |
+| notificationController.webhookReceiver.ingress.hosts[0].host | string | `"flux-webhook.example.com"` |  |
+| notificationController.webhookReceiver.ingress.hosts[0].paths[0].path | string | `"/"` |  |
+| notificationController.webhookReceiver.ingress.hosts[0].paths[0].pathType | string | `"ImplementationSpecific"` |  |
+| notificationController.webhookReceiver.ingress.labels | object | `{}` |  |
+| notificationController.webhookReceiver.ingress.tls | list | `[]` |  |
 | notificationController.webhookReceiver.service.annotations | object | `{}` |  |
 | notificationController.webhookReceiver.service.labels | object | `{}` |  |
 | policies.create | bool | `true` |  |
