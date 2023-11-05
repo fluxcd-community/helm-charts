@@ -213,6 +213,24 @@ notificationController:
     service:
       labels: {}
       annotations: {}
+    ingress:
+      create: false
+      # ingressClassName: nginx
+      annotations: {}
+        # kubernetes.io/ingress.class: nginx
+        # kubernetes.io/tls-acme: "true"
+      labels: {}
+      hosts:
+        - host: flux-webhook.example.com
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls: []
+      #  - secretName: flux-webhook-tls
+      #    hosts:
+      #      - flux-webhook.example.com
+
+
   nodeSelector: {}
   affinity: {}
   tolerations: []
