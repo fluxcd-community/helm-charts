@@ -3,6 +3,21 @@ entries:
   flux2:
   - annotations:
       artifacthub.io/changes: |
+        - "feat: add ingress resource for notificationController's receiver webhook service"
+    apiVersion: v2
+    appVersion: 2.1.2
+    created: "2023-11-05T14:39:43.971292975Z"
+    description: A Helm chart for flux2
+    digest: 84edf904208531063a66bf17c34daf5a7c0a17719c2f5fa3b73658966789c0e2
+    name: flux2
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-2.11.0/flux2-2.11.0.tgz
+    version: 2.11.0
+  - annotations:
+      artifacthub.io/changes: |
         - "feat: upgrade to FluxCD 2.1.2"
     apiVersion: v2
     appVersion: 2.1.2
@@ -1127,6 +1142,26 @@ entries:
   flux2-multi-tenancy:
   - annotations:
       artifacthub.io/changes: |
+        - "docs: fix grammar"
+    apiVersion: v2
+    created: "2023-11-05T14:39:44.114053421Z"
+    dependencies:
+    - condition: kyverno.enabled
+      name: kyverno
+      repository: https://kyverno.github.io/kyverno
+      version: 2.1.4
+    deprecated: true
+    description: A Helm chart for flux2-multi-tenancy
+    digest: a34a84a96d074b3ba09f939e11587d48fd7afd67a1586d512f4c48aed6f26fda
+    name: flux2-multi-tenancy
+    sources:
+    - https://github.com/fluxcd/flux2-multi-tenancy
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-multi-tenancy-0.0.6/flux2-multi-tenancy-0.0.6.tgz
+    version: 0.0.6
+  - annotations:
+      artifacthub.io/changes: |
         - "Mark this chart as DEPRECATED. Since upstream appversion 0.26.0 this can be done wilth Multi-Tenancy Lockdown Use `multitenancy.enabled` in flux2 chart >=0.11.0"
     apiVersion: v2
     created: "2023-10-25T06:14:21.670099568Z"
@@ -1214,6 +1249,21 @@ entries:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-multi-tenancy-0.0.1/flux2-multi-tenancy-0.0.1.tgz
     version: 0.0.1
   flux2-notification:
+  - annotations:
+      artifacthub.io/changes: |
+        - "docs: fix grammar""
+    apiVersion: v2
+    appVersion: 2.1.2
+    created: "2023-11-05T14:39:44.262731568Z"
+    description: A Helm chart for flux2 alerts and the needed providers and secrets
+    digest: 23e85f01402f365df3b016887f86958fb8eb23ad8a13ace60cb8abe7550e8199
+    name: flux2-notification
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-notification-1.12.4/flux2-notification-1.12.4.tgz
+    version: 1.12.4
   - annotations:
       artifacthub.io/changes: |
         - "[Chore]: Update App Version to upstream 2.1.2"
@@ -1650,6 +1700,21 @@ entries:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-notification-0.1.0/flux2-notification-0.1.0.tgz
     version: 0.1.0
   flux2-sync:
+  - annotations:
+      artifacthub.io/changes: |
+        - "docs: fix grammar"
+    apiVersion: v2
+    appVersion: 2.1.2
+    created: "2023-11-05T14:39:44.425421055Z"
+    description: A Helm chart for flux2 GitRepository to sync with
+    digest: 4f659ad436a746024161f43bde5c010f5f4c8a908f2c7b50f5b189baad772cd9
+    name: flux2-sync
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-1.7.3/flux2-sync-1.7.3.tgz
+    version: 1.7.3
   - annotations:
       artifacthub.io/changes: |
         - "[Chore]: Update App Version to upstream 2.1.2"
@@ -2089,4 +2154,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2023-10-28T19:41:26.352831552Z"
+generated: "2023-11-05T14:39:44.42687948Z"
