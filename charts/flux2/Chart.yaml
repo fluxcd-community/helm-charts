@@ -1,6 +1,6 @@
 annotations:
   artifacthub.io/changes: |
-    - "feat: add ingress resource for notificationController's receiver webhook service"
+    - "feat: adding CRD and RBAC annotation option"
 apiVersion: v2
 appVersion: 2.1.2
 description: A Helm chart for flux2
