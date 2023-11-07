@@ -1,6 +1,9 @@
 # global
 
 installCRDs: true
+crds:
+  # -- Add annotations to all CRD resources, e.g. "helm.sh/resource-policy": keep
+  annotations: {}
 
 multitenancy:
   # -- Implement the patches for Multi-tenancy lockdown.
@@ -273,6 +276,8 @@ rbac:
   create: true
   # -- Grant the Kubernetes view, edit and admin roles access to Flux custom resources
   createAggregation: true
+  # -- Add annotations to all RBAC resources, e.g. "helm.sh/resource-policy": keep
+  annotations: {}
 
 logLevel: info
 watchAllNamespaces: true

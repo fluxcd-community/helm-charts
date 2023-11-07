@@ -22,6 +22,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | cli.tag | string | `"v2.1.2"` |  |
 | cli.tolerations | list | `[]` |  |
 | clusterDomain | string | `"cluster.local"` |  |
+| crds.annotations | object | `{}` | Add annotations to all CRD resources, e.g. "helm.sh/resource-policy": keep |
 | extraObjects | list | `[]` | Array of extra K8s manifests to deploy |
 | helmController.affinity | object | `{}` |  |
 | helmController.annotations."prometheus.io/port" | string | `"8080"` |  |
@@ -146,6 +147,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | prometheus.podMonitor.podMetricsEndpoints[0].relabelings[0].action | string | `"keep"` |  |
 | prometheus.podMonitor.podMetricsEndpoints[0].relabelings[0].regex | string | `"Running"` |  |
 | prometheus.podMonitor.podMetricsEndpoints[0].relabelings[0].sourceLabels[0] | string | `"__meta_kubernetes_pod_phase"` |  |
+| rbac.annotations | object | `{}` | Add annotations to all RBAC resources, e.g. "helm.sh/resource-policy": keep |
 | rbac.create | bool | `true` |  |
 | rbac.createAggregation | bool | `true` | Grant the Kubernetes view, edit and admin roles access to Flux custom resources |
 | sourceController.affinity | object | `{}` |  |

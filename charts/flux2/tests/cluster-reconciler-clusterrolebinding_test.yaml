@@ -29,3 +29,12 @@ tests:
     asserts:
       - hasDocuments:
           count: 1
+  - it: should add annotations to the resource
+    set:
+      rbac.annotations:
+        "helm.sh/resource-policy": keep
+    asserts:
+      - equal:
+          path: metadata.annotations
+          value:
+            helm.sh/resource-policy: keep

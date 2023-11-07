@@ -4,6 +4,9 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.12.0
+    {{- with .Values.crds.annotations }}
+    {{- . | toYaml | nindent 4 }}
+    {{- end }}
   labels:
     app.kubernetes.io/instance: '{{ .Release.Namespace }}'
     app.kubernetes.io/managed-by: '{{ .Release.Service }}'
@@ -442,6 +445,9 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.12.0
+    {{- with .Values.crds.annotations }}
+    {{- . | toYaml | nindent 4 }}
+    {{- end }}
   labels:
     app.kubernetes.io/instance: '{{ .Release.Namespace }}'
     app.kubernetes.io/managed-by: '{{ .Release.Service }}'
@@ -854,6 +860,9 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.12.0
+    {{- with .Values.crds.annotations }}
+    {{- . | toYaml | nindent 4 }}
+    {{- end }}
   labels:
     app.kubernetes.io/instance: '{{ .Release.Namespace }}'
     app.kubernetes.io/managed-by: '{{ .Release.Service }}'
