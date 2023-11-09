@@ -3,6 +3,21 @@ entries:
   flux2:
   - annotations:
       artifacthub.io/changes: |
+        - "feat: adding CRD and RBAC annotation option"
+    apiVersion: v2
+    appVersion: 2.1.2
+    created: "2023-11-09T05:47:33.038746477Z"
+    description: A Helm chart for flux2
+    digest: 699f006382fc0da6cb81b613ff9f67f64b37b4c86660b1fc63939147876065f5
+    name: flux2
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-2.11.1/flux2-2.11.1.tgz
+    version: 2.11.1
+  - annotations:
+      artifacthub.io/changes: |
         - "feat: add ingress resource for notificationController's receiver webhook service"
     apiVersion: v2
     appVersion: 2.1.2
@@ -2154,4 +2169,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2023-11-05T14:39:44.42687948Z"
+generated: "2023-11-09T05:47:33.040595023Z"
