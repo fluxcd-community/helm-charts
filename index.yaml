@@ -3,6 +3,21 @@ entries:
   flux2:
   - annotations:
       artifacthub.io/changes: |
+        - "feat: update CRDs and component versions to flux v2.2.0"
+    apiVersion: v2
+    appVersion: 2.2.0
+    created: "2023-12-12T19:45:27.308265825Z"
+    description: A Helm chart for flux2
+    digest: 463e28de9d58aec25166340660f7e81a8fbe219af8f59dbc7a190785eee53119
+    name: flux2
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-2.12.0/flux2-2.12.0.tgz
+    version: 2.12.0
+  - annotations:
+      artifacthub.io/changes: |
         - "feat: adding CRD and RBAC annotation option"
     apiVersion: v2
     appVersion: 2.1.2
@@ -1268,6 +1283,21 @@ entries:
       artifacthub.io/changes: |
         - "docs: fix grammar""
     apiVersion: v2
+    appVersion: 2.2.0
+    created: "2023-12-12T19:45:27.436097261Z"
+    description: A Helm chart for flux2 alerts and the needed providers and secrets
+    digest: 3608bb93252a4f00cf6dbcc21fd9ae408450a9d3caddbc504d87cfe54316aaeb
+    name: flux2-notification
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-notification-1.13.0/flux2-notification-1.13.0.tgz
+    version: 1.13.0
+  - annotations:
+      artifacthub.io/changes: |
+        - "docs: fix grammar""
+    apiVersion: v2
     appVersion: 2.1.2
     created: "2023-11-05T14:39:44.262731568Z"
     description: A Helm chart for flux2 alerts and the needed providers and secrets
@@ -1715,6 +1745,21 @@ entries:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-notification-0.1.0/flux2-notification-0.1.0.tgz
     version: 0.1.0
   flux2-sync:
+  - annotations:
+      artifacthub.io/changes: |
+        - "docs: fix grammar"
+    apiVersion: v2
+    appVersion: 2.2.0
+    created: "2023-12-12T19:45:27.586247571Z"
+    description: A Helm chart for flux2 GitRepository to sync with
+    digest: 13ace8ba1732ac758f37e2ca3ee5739af04a690fdcbbcddbecb6f09a53a2483d
+    name: flux2-sync
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-1.8.0/flux2-sync-1.8.0.tgz
+    version: 1.8.0
   - annotations:
       artifacthub.io/changes: |
         - "docs: fix grammar"
@@ -2169,4 +2214,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2023-11-09T05:47:33.040595023Z"
+generated: "2023-12-12T19:45:27.587280305Z"
