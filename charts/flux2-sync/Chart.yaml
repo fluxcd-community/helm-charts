@@ -1,7 +1,7 @@
 apiVersion: v2
 name: flux2-sync
 type: application
-version: 1.7.3
+version: 1.8.0
 appVersion: 2.2.0
 description: A Helm chart for flux2 GitRepository to sync with
 sources:
