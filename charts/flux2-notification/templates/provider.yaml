@@ -1,7 +1,7 @@
 {{- if .Values.providerlist}}
 {{- range $key, $provider := .Values.providerlist }}
 ---
-apiVersion: notification.toolkit.fluxcd.io/v1beta2
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
 kind: Provider
 metadata:
   labels:
