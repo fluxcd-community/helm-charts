@@ -3,6 +3,21 @@ entries:
   flux2:
   - annotations:
       artifacthub.io/changes: |
+        - "chore: disallow source-controller replica count other than 1"
+    apiVersion: v2
+    appVersion: 2.2.0
+    created: "2023-12-14T14:05:47.516188546Z"
+    description: A Helm chart for flux2
+    digest: ec761d2ccc9e60aec57da01ae5601a155f5c91f8a284e338fa221c873f24c8fd
+    name: flux2
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-2.12.1/flux2-2.12.1.tgz
+    version: 2.12.1
+  - annotations:
+      artifacthub.io/changes: |
         - "feat: update CRDs and component versions to flux v2.2.0"
     apiVersion: v2
     appVersion: 2.2.0
@@ -2214,4 +2229,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2023-12-12T19:45:27.587280305Z"
+generated: "2023-12-14T14:05:47.517039345Z"
