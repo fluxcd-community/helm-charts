@@ -23,7 +23,7 @@ clusterDomain: cluster.local
 
 cli:
   image: ghcr.io/fluxcd/flux-cli
-  tag: v2.2.0
+  tag: v2.2.2
   nodeSelector: {}
   affinity: {}
   tolerations: []
@@ -36,7 +36,7 @@ cli:
 helmController:
   create: true
   image: ghcr.io/fluxcd/helm-controller
-  tag: v0.37.0
+  tag: v0.37.2
   resources:
     limits: {}
     # cpu: 1000m
@@ -140,7 +140,7 @@ imageReflectionController:
 kustomizeController:
   create: true
   image: ghcr.io/fluxcd/kustomize-controller
-  tag: v1.2.0
+  tag: v1.2.1
   resources:
     limits: {}
     # cpu: 1000m
@@ -188,7 +188,7 @@ kustomizeController:
 notificationController:
   create: true
   image: ghcr.io/fluxcd/notification-controller
-  tag: v1.2.2
+  tag: v1.2.3
   resources:
     limits: {}
     # cpu: 1000m
@@ -220,8 +220,8 @@ notificationController:
       create: false
       # ingressClassName: nginx
       annotations: {}
-        # kubernetes.io/ingress.class: nginx
-        # kubernetes.io/tls-acme: "true"
+      # kubernetes.io/ingress.class: nginx
+      # kubernetes.io/tls-acme: "true"
       labels: {}
       hosts:
         - host: flux-webhook.example.com
@@ -241,7 +241,7 @@ notificationController:
 sourceController:
   create: true
   image: ghcr.io/fluxcd/source-controller
-  tag: v1.2.2
+  tag: v1.2.3
   resources:
     limits: {}
     # cpu: 1000m
