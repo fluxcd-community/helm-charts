@@ -1,6 +1,6 @@
 # flux2-sync
 
-![Version: 1.7.3](https://img.shields.io/badge/Version-1.7.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.1.2](https://img.shields.io/badge/AppVersion-2.1.2-informational?style=flat-square)
+![Version: 1.8.1](https://img.shields.io/badge/Version-1.8.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.2.2](https://img.shields.io/badge/AppVersion-2.2.2-informational?style=flat-square)
 
 A Helm chart for flux2 GitRepository to sync with
 
@@ -17,7 +17,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | cli.affinity | object | `{}` |  |
 | cli.image | string | `"ghcr.io/fluxcd/flux-cli"` |  |
 | cli.nodeSelector | object | `{}` |  |
-| cli.tag | string | `"v2.1.1"` |  |
+| cli.tag | string | `"v2.2.2"` |  |
 | cli.tolerations | list | `[]` |  |
 | gitRepository.annotations | object | `{}` |  |
 | gitRepository.labels | object | `{}` |  |

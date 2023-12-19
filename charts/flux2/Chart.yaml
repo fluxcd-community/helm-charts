@@ -1,11 +1,11 @@
 annotations:
   artifacthub.io/changes: |
-    - "chore: disallow source-controller replica count other than 1"
+    - "[Chore]: Update App Version to upstream 2.2.2"
 apiVersion: v2
-appVersion: 2.2.0
+appVersion: 2.2.2
 description: A Helm chart for flux2
 name: flux2
 sources:
 - https://github.com/fluxcd-community/helm-charts
 type: application
-version: 2.12.1
+version: 2.12.2
