@@ -21,6 +21,12 @@ spec:
   {{- with $alert.spec.eventSources }}
   eventSources: {{ toYaml . | nindent 4 }}
   {{- end }}
+  {{- with $alert.spec.eventMetadata }}
+  eventMetadata: {{ toYaml . | nindent 4 }}
+  {{- end }}
+  {{- with $alert.spec.inclusionList }}
+  inclusionList: {{ toYaml . | nindent 4 }}
+  {{- end }}
   {{- with $alert.spec.exclusionList }}
   exclusionList: {{ toYaml . | nindent 4 }}
   {{- end }}
