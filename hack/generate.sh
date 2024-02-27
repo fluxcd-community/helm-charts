@@ -19,12 +19,14 @@ get_controller_values_attribute() {
 for FILE in `cat .work/flux2/manifests/crds/kustomization.yaml | grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*"`
 do
 
+component="$(echo ${FILE} | cut -d '/' -f5)"
 cat <<EOF > "${TEMPDIR}/global-labels.yaml"
 apiVersion: builtin
 kind: LabelTransformer
 metadata:
   name: global-labels
 labels:
+  app.kubernetes.io/component: ${component}
   app.kubernetes.io/instance: "{{ .Release.Namespace }}"
   app.kubernetes.io/managed-by: "{{ .Release.Service }}"
   app.kubernetes.io/version: "{{ .Chart.AppVersion }}"
