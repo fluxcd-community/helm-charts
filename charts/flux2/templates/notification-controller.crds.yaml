@@ -8,6 +8,7 @@ metadata:
     {{- . | toYaml | nindent 4 }}
     {{- end }}
   labels:
+    app.kubernetes.io/component: notification-controller
     app.kubernetes.io/instance: '{{ .Release.Namespace }}'
     app.kubernetes.io/managed-by: '{{ .Release.Service }}'
     app.kubernetes.io/part-of: flux
@@ -584,6 +585,7 @@ metadata:
     {{- . | toYaml | nindent 4 }}
     {{- end }}
   labels:
+    app.kubernetes.io/component: notification-controller
     app.kubernetes.io/instance: '{{ .Release.Namespace }}'
     app.kubernetes.io/managed-by: '{{ .Release.Service }}'
     app.kubernetes.io/part-of: flux
@@ -1122,6 +1124,7 @@ metadata:
     {{- . | toYaml | nindent 4 }}
     {{- end }}
   labels:
+    app.kubernetes.io/component: notification-controller
     app.kubernetes.io/instance: '{{ .Release.Namespace }}'
     app.kubernetes.io/managed-by: '{{ .Release.Service }}'
     app.kubernetes.io/part-of: flux
