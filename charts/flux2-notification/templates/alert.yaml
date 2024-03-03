@@ -36,7 +36,7 @@ spec:
   suspend: false
   {{- end }}
   {{- if $alert.spec.summary }}
-  summary: "{{ $alert.spec.summary }}"
+  summary: "{{ tpl $alert.spec.summary $ }}"
   {{- end }}
 {{- end }}
 {{- end }}
