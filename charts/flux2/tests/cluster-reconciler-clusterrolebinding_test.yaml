@@ -38,3 +38,10 @@ tests:
           path: metadata.annotations
           value:
             helm.sh/resource-policy: keep
+  - it: should set clusterrole name
+    set:
+      rbac.roleRef.name: test-clusterrole
+    asserts:
+      - equal:
+          path: roleRef.name
+          value: test-clusterrole

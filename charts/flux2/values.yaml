@@ -278,6 +278,8 @@ rbac:
   createAggregation: true
   # -- Add annotations to all RBAC resources, e.g. "helm.sh/resource-policy": keep
   annotations: {}
+  roleRef:
+    name: cluster-admin
 
 logLevel: info
 watchAllNamespaces: true
