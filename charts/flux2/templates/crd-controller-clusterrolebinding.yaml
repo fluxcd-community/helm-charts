@@ -17,22 +17,34 @@ roleRef:
   kind: ClusterRole
   name: crd-controller
 subjects:
-  - kind: ServiceAccount
-    name: kustomize-controller
-    namespace: {{ .Release.Namespace }}
-  - kind: ServiceAccount
-    name: helm-controller
-    namespace: {{ .Release.Namespace }}
+{{- if .Values.sourceController.create }}
   - kind: ServiceAccount
     name: source-controller
     namespace: {{ .Release.Namespace }}
+{{- end }}
+{{- if and .Values.kustomizeController.create }}
+  - kind: ServiceAccount
+    name: kustomize-controller
+    namespace: {{ .Release.Namespace }}
+{{- end }}
+{{- if and .Values.helmController.create}}
+  - kind: ServiceAccount
+    name: helm-controller
+    namespace: {{ .Release.Namespace }}
+{{- end }}
+{{- if and .Values.notificationController.create }}
   - kind: ServiceAccount
     name: notification-controller
     namespace: {{ .Release.Namespace }}
+{{- end }}
+{{- if and .Values.imageReflectionController.create }}
   - kind: ServiceAccount
     name: image-reflector-controller
     namespace: {{ .Release.Namespace }}
+{{- end }}
+{{- if and .Values.imageAutomationController.create }}
   - kind: ServiceAccount
     name: image-automation-controller
     namespace: {{ .Release.Namespace }}
+{{- end }}
 {{- end }}

@@ -1,0 +1,25 @@
+suite: test crd controller clusterrole
+templates:
+  - crd-controller-clusterrole.yaml
+tests:
+  - it: should add rules only for enabled components
+    set:
+      sourceController.create: true
+      kustomizeController.create: false
+      helmController.create: true
+      notificationController.create: true
+      imageReflectionController.create: false
+      imageAutomationController.create: true
+    asserts:
+      - equal:
+          path: rules[0].apiGroups
+          value: ['source.toolkit.fluxcd.io']
+      - equal:
+          path: rules[1].apiGroups
+          value: ['helm.toolkit.fluxcd.io']
+      - equal:
+          path: rules[2].apiGroups
+          value: ['notification.toolkit.fluxcd.io']
+      - equal:
+          path: rules[3].apiGroups
+          value: ['image.toolkit.fluxcd.io']         
