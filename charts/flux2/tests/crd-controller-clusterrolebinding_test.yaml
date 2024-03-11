@@ -1,0 +1,25 @@
+suite: test crd controller clusterrolebinding
+templates:
+  - crd-controller-clusterrolebinding.yaml
+tests:
+  - it: should add subjects only for enabled components
+    set:
+      sourceController.create: true
+      kustomizeController.create: false
+      helmController.create: true
+      notificationController.create: true
+      imageReflectionController.create: false
+      imageAutomationController.create: true
+    asserts:
+      - equal:
+          path: subjects[0].name
+          value: source-controller
+      - equal:
+          path: subjects[1].name
+          value: helm-controller
+      - equal:
+          path: subjects[2].name
+          value: notification-controller
+      - equal:
+          path: subjects[3].name
+          value: image-automation-controller        

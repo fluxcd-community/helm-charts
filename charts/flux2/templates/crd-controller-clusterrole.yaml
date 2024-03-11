@@ -13,21 +13,31 @@ metadata:
     app.kubernetes.io/part-of: flux
     helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
 rules:
+{{- if .Values.sourceController.create }}
 - apiGroups: ['source.toolkit.fluxcd.io']
   resources: ['*']
   verbs: ['*']
+{{- end }}
+{{- if and .Values.kustomizeController.create }}
 - apiGroups: ['kustomize.toolkit.fluxcd.io']
   resources: ['*']
   verbs: ['*']
+{{- end }}
+{{- if and .Values.helmController.create}}
 - apiGroups: ['helm.toolkit.fluxcd.io']
   resources: ['*']
   verbs: ['*']
+{{- end }}
+{{- if and .Values.notificationController.create }}
 - apiGroups: ['notification.toolkit.fluxcd.io']
   resources: ['*']
   verbs: ['*']
+{{- end }}
+{{- if or .Values.imageAutomationController.create .Values.imageReflectionController.create }}
 - apiGroups: ['image.toolkit.fluxcd.io']
   resources: ['*']
   verbs: ['*']
+{{- end }}
 - apiGroups:
   - ""
   resources:

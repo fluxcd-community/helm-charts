@@ -1,6 +1,6 @@
 # flux2
 
-![Version: 2.12.4](https://img.shields.io/badge/Version-2.12.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.2.3](https://img.shields.io/badge/AppVersion-2.2.3-informational?style=flat-square)
+![Version: 2.12.5](https://img.shields.io/badge/Version-2.12.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.2.3](https://img.shields.io/badge/AppVersion-2.2.3-informational?style=flat-square)
 
 A Helm chart for flux2
 
@@ -150,6 +150,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | rbac.annotations | object | `{}` | Add annotations to all RBAC resources, e.g. "helm.sh/resource-policy": keep |
 | rbac.create | bool | `true` |  |
 | rbac.createAggregation | bool | `true` | Grant the Kubernetes view, edit and admin roles access to Flux custom resources |
+| rbac.roleRef.name | string | `"cluster-admin"` |  |
 | sourceController.affinity | object | `{}` |  |
 | sourceController.annotations."prometheus.io/port" | string | `"8080"` |  |
 | sourceController.annotations."prometheus.io/scrape" | string | `"true"` |  |
