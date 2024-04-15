@@ -150,6 +150,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | rbac.annotations | object | `{}` | Add annotations to all RBAC resources, e.g. "helm.sh/resource-policy": keep |
 | rbac.create | bool | `true` |  |
 | rbac.createAggregation | bool | `true` | Grant the Kubernetes view, edit and admin roles access to Flux custom resources |
+| rbac.roleRef.name | string | `"cluster-admin"` |  |
 | sourceController.affinity | object | `{}` |  |
 | sourceController.annotations."prometheus.io/port" | string | `"8080"` |  |
 | sourceController.annotations."prometheus.io/scrape" | string | `"true"` |  |
