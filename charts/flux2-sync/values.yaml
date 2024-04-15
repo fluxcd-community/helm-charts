@@ -25,6 +25,7 @@ cli:
 gitRepository:
   labels: {}
   annotations: {}
+  name: ""
   spec:
     # -- The repository URL, can be an HTTP/S or SSH address.
     url: ""
@@ -67,6 +68,7 @@ gitRepository:
 kustomization:
   labels: {}
   annotations: {}
+  name: ""
   spec:
     # -- _Optional_ DependsOn may contain a dependency.CrossNamespaceDependencyReference slice with references to Kustomization resources that must be ready before this Kustomization can be reconciled.
     dependsOn: []
