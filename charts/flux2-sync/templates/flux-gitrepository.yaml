@@ -10,7 +10,7 @@ metadata:
 {{- with .Values.gitRepository.annotations }}
   annotations: {{ toYaml . | nindent 4 }}
 {{- end }}
-  name: {{ .Release.Name }}
+  name: {{ .Values.gitRepository.name | default .Release.Name }}
   namespace: {{ .Release.Namespace }}
 spec:
   url: {{ .Values.gitRepository.spec.url }}

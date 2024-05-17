@@ -7,7 +7,7 @@ should match kubeconfig:
         app.kubernetes.io/instance: NAMESPACE
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/part-of: flux
-        helm.sh/chart: flux2-sync-1.9.0
+        helm.sh/chart: flux2-sync-1.10.0
       name: RELEASE-NAME
       namespace: NAMESPACE
     spec:
