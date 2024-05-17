@@ -11,7 +11,7 @@ metadata:
 {{- with .Values.kustomization.annotations }}
   annotations: {{ toYaml . | nindent 4 }}
 {{- end }}
-  name:  {{ .Release.Name }}
+  name:  {{ .Values.kustomization.name | default .Release.Name }}
   namespace: {{ .Release.Namespace }}
 spec:
   {{- with .Values.kustomization.spec.dependsOn }}
@@ -48,7 +48,7 @@ spec:
   {{- end }}
   sourceRef:
     kind: GitRepository
-    name: {{ .Release.Name }}
+    name: {{ .Values.gitRepository.name | default .Release.Name }}
   {{- if .Values.kustomization.spec.suspend }}
   suspend: {{ .Values.kustomization.spec.suspend }}
   {{- end }}
