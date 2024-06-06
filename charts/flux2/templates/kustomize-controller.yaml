@@ -13,6 +13,10 @@ metadata:
     {{- with .Values.kustomizeController.labels }}
     {{- . | toYaml | nindent 4 }}
     {{- end }}
+  annotations:
+    {{- with .Values.kustomizeController.annotations }}
+    {{- . | toYaml | nindent 4 }}
+    {{- end }}
   name: kustomize-controller
 spec:
   {{- if kindIs "invalid" .Values.kustomizeController.replicas }}
