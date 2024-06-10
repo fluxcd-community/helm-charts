@@ -152,6 +152,7 @@ kustomizeController:
   annotations:
     prometheus.io/port: "8080"
     prometheus.io/scrape: "true"
+  deploymentAnnotations: {}
   labels: {}
   container:
     additionalArgs: []
@@ -253,6 +254,7 @@ sourceController:
   annotations:
     prometheus.io/port: "8080"
     prometheus.io/scrape: "true"
+  deploymentAnnotations: {}
   labels: {}
   container:
     additionalArgs: []

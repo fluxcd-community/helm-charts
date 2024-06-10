@@ -1,6 +1,6 @@
 # flux2
 
-![Version: 2.13.0](https://img.shields.io/badge/Version-2.13.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.3.0](https://img.shields.io/badge/AppVersion-2.3.0-informational?style=flat-square)
+![Version: 2.13.1](https://img.shields.io/badge/Version-2.13.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.3.0](https://img.shields.io/badge/AppVersion-2.3.0-informational?style=flat-square)
 
 A Helm chart for flux2
 
@@ -88,6 +88,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | kustomizeController.annotations."prometheus.io/scrape" | string | `"true"` |  |
 | kustomizeController.container.additionalArgs | list | `[]` |  |
 | kustomizeController.create | bool | `true` |  |
+| kustomizeController.deploymentAnnotations | object | `{}` |  |
 | kustomizeController.envFrom | object | `{"map":{"name":""},"secret":{"name":""}}` | Defines envFrom using a configmap and/or secret. |
 | kustomizeController.extraEnv | list | `[]` |  |
 | kustomizeController.extraSecretMounts | list | `[]` | Defines additional mounts with secrets. Secrets must be manually created in the namespace or with kustomizeController.secret |
@@ -156,6 +157,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | sourceController.annotations."prometheus.io/scrape" | string | `"true"` |  |
 | sourceController.container.additionalArgs | list | `[]` |  |
 | sourceController.create | bool | `true` |  |
+| sourceController.deploymentAnnotations | object | `{}` |  |
 | sourceController.extraEnv | list | `[]` |  |
 | sourceController.image | string | `"ghcr.io/fluxcd/source-controller"` |  |
 | sourceController.imagePullPolicy | string | `""` |  |
