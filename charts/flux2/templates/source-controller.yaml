@@ -13,10 +13,10 @@ metadata:
     {{- with .Values.sourceController.labels }}
     {{- . | toYaml | nindent 4 }}
     {{- end }}
+  {{- with .Values.sourceController.deploymentAnnotations }}
   annotations:
-    {{- with .Values.sourceController.deploymentAnnotations }}
     {{- . | toYaml | nindent 4 }}
-    {{- end }}
+  {{- end }}
   name: source-controller
 spec:
   replicas: 1
