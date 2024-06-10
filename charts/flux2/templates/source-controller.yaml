@@ -14,7 +14,7 @@ metadata:
     {{- . | toYaml | nindent 4 }}
     {{- end }}
   annotations:
-    {{- with .Values.sourceController.annotations }}
+    {{- with .Values.sourceController.deploymentAnnotations }}
     {{- . | toYaml | nindent 4 }}
     {{- end }}
   name: source-controller

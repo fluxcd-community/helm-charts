@@ -88,6 +88,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | kustomizeController.annotations."prometheus.io/scrape" | string | `"true"` |  |
 | kustomizeController.container.additionalArgs | list | `[]` |  |
 | kustomizeController.create | bool | `true` |  |
+| kustomizeController.deploymentAnnotations | object | `{}` |  |
 | kustomizeController.envFrom | object | `{"map":{"name":""},"secret":{"name":""}}` | Defines envFrom using a configmap and/or secret. |
 | kustomizeController.extraEnv | list | `[]` |  |
 | kustomizeController.extraSecretMounts | list | `[]` | Defines additional mounts with secrets. Secrets must be manually created in the namespace or with kustomizeController.secret |
@@ -156,6 +157,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | sourceController.annotations."prometheus.io/scrape" | string | `"true"` |  |
 | sourceController.container.additionalArgs | list | `[]` |  |
 | sourceController.create | bool | `true` |  |
+| sourceController.deploymentAnnotations | object | `{}` |  |
 | sourceController.extraEnv | list | `[]` |  |
 | sourceController.image | string | `"ghcr.io/fluxcd/source-controller"` |  |
 | sourceController.imagePullPolicy | string | `""` |  |
