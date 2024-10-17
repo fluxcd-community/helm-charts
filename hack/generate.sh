@@ -49,6 +49,7 @@ EOF
 attribute="$(get_controller_values_attribute ${FILE})"
 echo "{{- if and .Values.installCRDs .Values.${attribute}.create }}" > ./charts/flux2/templates/${FILE##*/}
 kubectl kustomize "${TEMPDIR}" >> ./charts/flux2/templates/${FILE##*/}
+$SED -Ei '/^  annotations:/a\ \ \ \ {{- with .Values.crds.annotations }}\n\ \ \ \ {{- . | toYaml | nindent 4 }}\n\ \ \ \ {{- end }}' ./charts/flux2/templates/${FILE##*/}
 echo "{{- end }}">> ./charts/flux2/templates/${FILE##*/}
 
 # git diff --quiet will exit 1 when there are changes.
