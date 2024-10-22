@@ -67,7 +67,7 @@ spec:
           httpGet:
             path: /healthz
             port: healthz
-        name: manager
+        name: {{ .Values.sourceController.container.name | default "manager" }}
         ports:
         - containerPort: 9090
           name: http

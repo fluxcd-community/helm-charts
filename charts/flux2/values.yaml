@@ -50,6 +50,9 @@ helmController:
     prometheus.io/scrape: "true"
   labels: {}
   container:
+    name: manager
+    # for example:
+    # name: helm-controller
     additionalArgs: []
   extraEnv: []
   serviceAccount:
@@ -98,6 +101,9 @@ imageAutomationController:
     prometheus.io/scrape: "true"
   labels: {}
   container:
+    name: manager
+    # for example:
+    # name: image-automation-controller
     additionalArgs: []
   extraEnv: []
   serviceAccount:
@@ -126,6 +132,9 @@ imageReflectionController:
     prometheus.io/scrape: "true"
   labels: {}
   container:
+    name: manager
+    # for example:
+    # name: image-reflector-controller
     additionalArgs: []
   extraEnv: []
   serviceAccount:
@@ -155,6 +164,9 @@ kustomizeController:
   labels: {}
   container:
     additionalArgs: []
+    name: manager
+    # for example:
+    # name: kustomize-controller
   extraEnv: []
   serviceAccount:
     create: true
@@ -202,6 +214,9 @@ notificationController:
     prometheus.io/scrape: "true"
   labels: {}
   container:
+    name: manager
+    # for example:
+    # name: notification-controller
     additionalArgs: []
   extraEnv: []
   serviceAccount:
@@ -255,6 +270,9 @@ sourceController:
     prometheus.io/scrape: "true"
   labels: {}
   container:
+    name: manager
+    # for example:
+    # name: source-controller
     additionalArgs: []
   serviceAccount:
     create: true
