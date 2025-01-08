@@ -3,6 +3,21 @@ entries:
   flux2:
   - annotations:
       artifacthub.io/changes: |
+        - "fix(charts/flux2,crds): crds.annotations got respected now"
+    apiVersion: v2
+    appVersion: 2.4.0
+    created: "2025-01-08T15:48:38.33897116Z"
+    description: A Helm chart for flux2
+    digest: 1c4a797cfe11370e9f2ea29b1d4834805ce4160d65008198389c91ecd8a3cdb9
+    name: flux2
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-2.14.1/flux2-2.14.1.tgz
+    version: 2.14.1
+  - annotations:
+      artifacthub.io/changes: |
         - "[Chore]: Update App Version to upstream 2.4.0"
     apiVersion: v2
     appVersion: 2.4.0
@@ -2439,4 +2454,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2024-10-03T06:53:26.977520055Z"
+generated: "2025-01-08T15:48:38.341092873Z"
