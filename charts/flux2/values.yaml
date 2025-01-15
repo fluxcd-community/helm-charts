@@ -268,6 +268,7 @@ sourceController:
   affinity: {}
   tolerations: []
   extraEnv: []
+  intervalJitterPercentage: 10
 
 policies:
   create: true

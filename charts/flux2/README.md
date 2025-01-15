@@ -1,6 +1,6 @@
 # flux2
 
-![Version: 2.14.1](https://img.shields.io/badge/Version-2.14.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.4.0](https://img.shields.io/badge/AppVersion-2.4.0-informational?style=flat-square)
+![Version: 2.14.2](https://img.shields.io/badge/Version-2.14.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.4.0](https://img.shields.io/badge/AppVersion-2.4.0-informational?style=flat-square)
 
 A Helm chart for flux2
 
@@ -159,6 +159,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | sourceController.extraEnv | list | `[]` |  |
 | sourceController.image | string | `"ghcr.io/fluxcd/source-controller"` |  |
 | sourceController.imagePullPolicy | string | `""` |  |
+| sourceController.intervalJitterPercentage | int | `10` |  |
 | sourceController.labels | object | `{}` |  |
 | sourceController.nodeSelector | object | `{}` |  |
 | sourceController.priorityClassName | string | `""` |  |
