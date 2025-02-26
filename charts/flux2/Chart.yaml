@@ -1,11 +1,11 @@
 annotations:
   artifacthub.io/changes: |
-    - "fix(charts/flux2,crds): crds.annotations got respected now"
+    - "[Chore]: Update App Version to upstream 2.5.1"
 apiVersion: v2
-appVersion: 2.4.0
+appVersion: 2.5.1
 description: A Helm chart for flux2
 name: flux2
 sources:
 - https://github.com/fluxcd-community/helm-charts
 type: application
-version: 2.14.1
+version: 2.15.0
