@@ -1957,6 +1957,21 @@ entries:
   flux2-sync:
   - annotations:
       artifacthub.io/changes: |
+        - "[feat]: Add gitRepository provider option"
+    apiVersion: v2
+    appVersion: 2.5.1
+    created: "2025-03-22T19:41:36.067051646Z"
+    description: A Helm chart for flux2 GitRepository to sync with
+    digest: 7b9af5e27e2d50ece483cf872e022756951e6cf9c8729741d5877f64b4e5e8cf
+    name: flux2-sync
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-1.12.0/flux2-sync-1.12.0.tgz
+    version: 1.12.0
+  - annotations:
+      artifacthub.io/changes: |
         - "[Chore]: Update App Version to upstream 2.5.1"
     apiVersion: v2
     appVersion: 2.5.1
@@ -2499,4 +2514,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2025-02-26T07:09:26.500447297Z"
+generated: "2025-03-22T19:41:36.068475857Z"
