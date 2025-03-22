@@ -20,6 +20,9 @@ spec:
   {{- else if .Values.gitRepository.spec.secretRef }}
   secretRef: {{ toYaml .Values.gitRepository.spec.secretRef | nindent 4 }}
   {{- end }}
+  {{- if .Values.gitRepository.spec.provider }}
+  provider: {{ .Values.gitRepository.spec.provider }}
+  {{- end }}
   {{- if .Values.gitRepository.spec.interval }}
   interval: {{ .Values.gitRepository.spec.interval }}
   {{- end }}

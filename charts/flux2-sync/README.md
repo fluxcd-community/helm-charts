@@ -1,6 +1,6 @@
 # flux2-sync
 
-![Version: 1.11.0](https://img.shields.io/badge/Version-1.11.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.5.1](https://img.shields.io/badge/AppVersion-2.5.1-informational?style=flat-square)
+![Version: 1.12.0](https://img.shields.io/badge/Version-1.12.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.5.1](https://img.shields.io/badge/AppVersion-2.5.1-informational?style=flat-square)
 
 A Helm chart for flux2 GitRepository to sync with
 
@@ -25,9 +25,10 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | gitRepository.spec.ignore | string | `""` | _Optional_ Ignore overrides the set of excluded patterns in the .sourceignore format (which is the same as .gitignore). If not provided, a default will be used, consult the documentation for your version to find out what those are. Make sure to set this as yaml multiline string. |
 | gitRepository.spec.include | list | `[]` | _Optional_ Extra git repositories to map into the repository |
 | gitRepository.spec.interval | string | `"5m"` | The interval at which to check for repository updates. |
+| gitRepository.spec.provider | string | `""` | The OIDC provider used for authentication. Valid values are generic, azure or github (defaults to generic when empty). |
 | gitRepository.spec.recurseSubmodules | bool | `false` | _Optional_ When enabled, after the clone is created, initializes all submodules within, using their default settings. This option is available only when using the ‘go-git’ GitImplementation. |
 | gitRepository.spec.ref | object | `{"branch":"master"}` | _Optional_ The Git reference to checkout and monitor for changes, defaults to master branch. |
-| gitRepository.spec.secretRef | object | `{}` | _Optional_ The secret name containing the Git credentials. For HTTPS repositories the secret must contain username and password fields. For SSH repositories the secret must contain identity, identity.pub and known_hosts fields. If a secret.create is set, it will point to that one. |
+| gitRepository.spec.secretRef | object | `{}` | _Optional_ The secret name containing the Git credentials. For HTTPS repositories the secret must contain username and password fields. For SSH repositories the secret must contain identity, identity.pub and known_hosts fields. For GitHub App authentication the secret must contain githubAppID, githubAppInstallationID and githubAppPrivateKey fields. If a secret.create is set, it will point to that one. |
 | gitRepository.spec.suspend | string | `""` | _Optional_ This flag tells the controller to suspend the reconciliation of this source. |
 | gitRepository.spec.timeout | string | `""` | _Optional_ The timeout for remote Git operations like cloning, defaults to 20s. |
 | gitRepository.spec.url | string | `""` | The repository URL, can be an HTTP/S or SSH address. |
@@ -53,5 +54,5 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | kustomization.spec.wait | bool | `false` | _Optional_ Wait instructs the controller to check the health of all the reconciled resources. When enabled, the HealthChecks are ignored. Defaults to false. |
 | kustomizationlist | object | `{}` | _Optional_ If you want multiple subdirectories which depend on each other in the same repo. Their name is derived from their path. |
 | secret.create | bool | `false` | Create a secret for the git repository. Defaults to false. |
-| secret.data | object | `{}` | Data of the secret. For HTTPS repositories the secret must contain username and password fields. For SSH repositories the secret must contain identity, identity.pub and known_hosts fields. Values will be encoded to base64 by the helm chart. |
+| secret.data | object | `{}` | Data of the secret. For HTTPS repositories the secret must contain username and password fields. For SSH repositories the secret must contain identity, identity.pub and known_hosts fields. For GitHub App authentication the secret must contain githubAppID, githubAppInstallationID and githubAppPrivateKey fields. Values will be encoded to base64 by the helm chart. |
 | secret.generate | object | `{"sshEcdsaCurve":"p521","sshKeyAlgorithm":"ecdsa"}` | Algorithm of keys to generate. If `data` object above is empty, and `create` is set to true. The Chart will generate the Git SSH key secret automatically based on the key algorithms that are set below. |
