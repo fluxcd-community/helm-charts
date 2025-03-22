@@ -5,6 +5,7 @@ secret:
   # -- Data of the secret.
   # For HTTPS repositories the secret must contain username and password fields.
   # For SSH repositories the secret must contain identity, identity.pub and known_hosts fields.
+  # For GitHub App authentication the secret must contain githubAppID, githubAppInstallationID and githubAppPrivateKey fields.
   # Values will be encoded to base64 by the helm chart.
   data: {}
 
@@ -32,8 +33,12 @@ gitRepository:
     # -- _Optional_ The secret name containing the Git credentials.
     # For HTTPS repositories the secret must contain username and password fields.
     # For SSH repositories the secret must contain identity, identity.pub and known_hosts fields.
+    # For GitHub App authentication the secret must contain githubAppID, githubAppInstallationID and githubAppPrivateKey fields.
     # If a secret.create is set, it will point to that one.
     secretRef: {}
+
+    # -- The OIDC provider used for authentication. Valid values are generic, azure or github (defaults to generic when empty).
+    provider: ""
 
     # -- The interval at which to check for repository updates.
     interval: 5m
