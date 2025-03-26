@@ -1,3 +1,4 @@
+{{- if .Values.preInstallChecks -}}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -70,3 +71,4 @@ spec:
       {{- with .Values.cli.tolerations }}
       tolerations: {{ toYaml . | nindent 8 }}
       {{- end }}
+{{- end }}
