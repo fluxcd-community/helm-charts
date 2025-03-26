@@ -1,6 +1,6 @@
 # flux2
 
-![Version: 2.15.0](https://img.shields.io/badge/Version-2.15.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.5.1](https://img.shields.io/badge/AppVersion-2.5.1-informational?style=flat-square)
+![Version: 2.15.1](https://img.shields.io/badge/Version-2.15.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.5.1](https://img.shields.io/badge/AppVersion-2.5.1-informational?style=flat-square)
 
 A Helm chart for flux2
 
@@ -142,6 +142,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | notificationController.webhookReceiver.service.annotations | object | `{}` |  |
 | notificationController.webhookReceiver.service.labels | object | `{}` |  |
 | policies.create | bool | `true` |  |
+| preInstallChecks | bool | `true` | allows to skip the pre-install checks when disabled |
 | prometheus.podMonitor.create | bool | `false` | Enables podMonitor endpoint |
 | prometheus.podMonitor.podMetricsEndpoints[0].port | string | `"http-prom"` |  |
 | prometheus.podMonitor.podMetricsEndpoints[0].relabelings[0].action | string | `"keep"` |  |
