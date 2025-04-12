@@ -2,6 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: {{ include "flux.namespace" . }}
   labels:
     app.kubernetes.io/component: image-reflector-controller
     app.kubernetes.io/instance: {{ .Release.Namespace | quote }}

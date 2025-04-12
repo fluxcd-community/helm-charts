@@ -10,8 +10,9 @@ should match snapshot of default values:
         app.kubernetes.io/part-of: flux
         app.kubernetes.io/version: 2.5.1
         control-plane: controller
-        helm.sh/chart: flux2-2.15.0
+        helm.sh/chart: flux2-2.16.0
       name: image-automation-controller
+      namespace: NAMESPACE
     spec:
       replicas: 1
       selector:
