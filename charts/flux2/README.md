@@ -14,6 +14,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| namespace | string | "" | Namespace to deploy in |
 | cli.affinity | object | `{}` |  |
 | cli.annotations | object | `{}` |  |
 | cli.image | string | `"ghcr.io/fluxcd/flux-cli"` |  |
