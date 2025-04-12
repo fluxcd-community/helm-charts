@@ -2,6 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: "{{ .Release.Name }}-flux-check"
+  namespace: {{ include "flux.namespace" . }}
   labels:
     app.kubernetes.io/instance: {{ .Release.Namespace | quote }}
     app.kubernetes.io/managed-by: {{ .Release.Service | quote }}

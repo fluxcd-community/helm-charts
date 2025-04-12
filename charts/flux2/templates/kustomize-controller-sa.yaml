@@ -3,6 +3,7 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
+  namespace: {{ include "flux.namespace" . }}
   labels:
     app.kubernetes.io/component: kustomize-controller
     app.kubernetes.io/instance: {{ .Release.Namespace | quote }}
