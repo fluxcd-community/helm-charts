@@ -4,7 +4,7 @@ installCRDs: true
 crds:
   # -- Add annotations to all CRD resources, e.g. "helm.sh/resource-policy": keep
   annotations: {}
-
+namespace: ""
 multitenancy:
   # -- Implement the patches for Multi-tenancy lockdown.
   # See https://fluxcd.io/docs/installation/#multi-tenancy-lockdown
