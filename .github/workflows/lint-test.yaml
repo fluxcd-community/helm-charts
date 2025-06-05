@@ -46,7 +46,7 @@ jobs:
         uses: helm/kind-action@v1.7.0
         if: steps.list-changed.outputs.changed == 'true'
         with:
-          node_image: kindest/node:v1.30.10
+          node_image: kindest/node:v1.31.9
 
       - name: Run chart-testing (install) for flux2
         run: ct install --config ct.yaml --charts charts/flux2
