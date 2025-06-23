@@ -1,11 +1,11 @@
 apiVersion: v2
 name: flux2-notification
 type: application
-version: 1.18.0
-appVersion: 2.6.1
+version: 1.18.1
+appVersion: 2.6.2
 description: A Helm chart for flux2 alerts and the needed providers and secrets
 sources:
   - https://github.com/fluxcd-community/helm-charts
 annotations:
   artifacthub.io/changes: |
-    - "[Chore]: Update App Version to upstream 2.6.1"
+    - "[Chore]: Update App Version to upstream 2.6.2"
