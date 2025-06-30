@@ -8,9 +8,9 @@ should match snapshot of default values:
         app.kubernetes.io/instance: NAMESPACE
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/part-of: flux
-        app.kubernetes.io/version: 2.6.2
+        app.kubernetes.io/version: 2.6.3
         control-plane: controller
-        helm.sh/chart: flux2-2.16.1
+        helm.sh/chart: flux2-2.16.2
       name: kustomize-controller
     spec:
       replicas: 1
