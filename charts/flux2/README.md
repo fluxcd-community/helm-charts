@@ -1,6 +1,6 @@
 # flux2
 
-![Version: 2.16.2](https://img.shields.io/badge/Version-2.16.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.6.3](https://img.shields.io/badge/AppVersion-2.6.3-informational?style=flat-square)
+![Version: 2.16.3](https://img.shields.io/badge/Version-2.16.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.6.4](https://img.shields.io/badge/AppVersion-2.6.4-informational?style=flat-square)
 
 A Helm chart for flux2
 
@@ -19,7 +19,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | cli.image | string | `"ghcr.io/fluxcd/flux-cli"` |  |
 | cli.nodeSelector | object | `{}` |  |
 | cli.serviceAccount.automount | bool | `true` |  |
-| cli.tag | string | `"v2.6.3"` |  |
+| cli.tag | string | `"v2.6.4"` |  |
 | cli.tolerations | list | `[]` |  |
 | clusterDomain | string | `"cluster.local"` |  |
 | crds.annotations | object | `{}` | Add annotations to all CRD resources, e.g. "helm.sh/resource-policy": keep |
@@ -60,7 +60,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | imageAutomationController.serviceAccount.annotations | object | `{}` |  |
 | imageAutomationController.serviceAccount.automount | bool | `true` |  |
 | imageAutomationController.serviceAccount.create | bool | `true` |  |
-| imageAutomationController.tag | string | `"v0.41.2"` |  |
+| imageAutomationController.tag | string | `"v0.41.3"` |  |
 | imageAutomationController.tolerations | list | `[]` |  |
 | imagePullSecrets | list | `[]` | contents of pod imagePullSecret in form 'name=[secretName]'; applied to all controllers |
 | imageReflectionController.affinity | object | `{}` |  |
