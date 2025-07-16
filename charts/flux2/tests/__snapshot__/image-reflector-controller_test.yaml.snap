@@ -8,9 +8,9 @@ should match snapshot of default values:
         app.kubernetes.io/instance: NAMESPACE
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/part-of: flux
-        app.kubernetes.io/version: 2.6.3
+        app.kubernetes.io/version: 2.6.4
         control-plane: controller
-        helm.sh/chart: flux2-2.16.2
+        helm.sh/chart: flux2-2.16.3
       name: image-reflector-controller
     spec:
       replicas: 1
