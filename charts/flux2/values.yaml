@@ -21,6 +21,9 @@ multitenancy:
 
 clusterDomain: cluster.local
 
+# -- allows to skip the pre-install checks when disabled
+preInstallChecks: true
+
 cli:
   image: ghcr.io/fluxcd/flux-cli
   tag: v2.6.4
