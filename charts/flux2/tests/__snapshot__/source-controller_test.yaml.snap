@@ -10,7 +10,7 @@ should match snapshot of default values:
         app.kubernetes.io/part-of: flux
         app.kubernetes.io/version: 2.6.4
         control-plane: controller
-        helm.sh/chart: flux2-2.16.3
+        helm.sh/chart: flux2-2.16.4
       name: source-controller
     spec:
       replicas: 1
