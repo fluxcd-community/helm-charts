@@ -1,6 +1,6 @@
 # flux2-sync
 
-![Version: 1.13.3](https://img.shields.io/badge/Version-1.13.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.6.4](https://img.shields.io/badge/AppVersion-2.6.4-informational?style=flat-square)
+![Version: 1.13.4](https://img.shields.io/badge/Version-1.13.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.6.4](https://img.shields.io/badge/AppVersion-2.6.4-informational?style=flat-square)
 
 A Helm chart for flux2 GitRepository to sync with
 
@@ -36,6 +36,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | kustomization.annotations | object | `{}` |  |
 | kustomization.labels | object | `{}` |  |
 | kustomization.spec.decryption | object | `{}` | _Optional_ Decrypt Kubernetes secrets before applying them on the cluster. |
+| kustomization.spec.deletionPolicy | string | `""` | _Optional_ DeletionPolicy allows control over garbage collection when a Kustomization object is deleted. |
 | kustomization.spec.dependsOn | list | `[]` | _Optional_ DependsOn may contain a dependency.CrossNamespaceDependencyReference slice with references to Kustomization resources that must be ready before this Kustomization can be reconciled. |
 | kustomization.spec.force | bool | `false` | _Optional_ Force instructs the controller to recreate resources when patching fails due to an immutable field change. Defaults to false. |
 | kustomization.spec.healthChecks | list | `[]` | _Optional_ A list of resources to be included in the health assessment. |
