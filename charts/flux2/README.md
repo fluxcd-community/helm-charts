@@ -60,7 +60,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | imageAutomationController.serviceAccount.annotations | object | `{}` |  |
 | imageAutomationController.serviceAccount.automount | bool | `true` |  |
 | imageAutomationController.serviceAccount.create | bool | `true` |  |
-| imageAutomationController.tag | string | `"v0.41.3"` |  |
+| imageAutomationController.tag | string | `"v0.41.2"` |  |
 | imageAutomationController.tolerations | list | `[]` |  |
 | imagePullSecrets | list | `[]` | contents of pod imagePullSecret in form 'name=[secretName]'; applied to all controllers |
 | imageReflectionController.affinity | object | `{}` |  |
@@ -105,7 +105,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | kustomizeController.serviceAccount.annotations | object | `{}` |  |
 | kustomizeController.serviceAccount.automount | bool | `true` |  |
 | kustomizeController.serviceAccount.create | bool | `true` |  |
-| kustomizeController.tag | string | `"v1.6.0"` |  |
+| kustomizeController.tag | string | `"v1.6.1"` |  |
 | kustomizeController.tolerations | list | `[]` |  |
 | logLevel | string | `"info"` |  |
 | multitenancy.defaultServiceAccount | string | `"default"` | All Kustomizations and HelmReleases which don’t have spec.serviceAccountName specified, will use the default account from the tenant’s namespace. Tenants have to specify a service account in their Flux resources to be able to deploy workloads in their namespaces as the default account has no permissions. |
