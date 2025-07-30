@@ -8,4 +8,4 @@ sources:
   - https://github.com/fluxcd-community/helm-charts
 annotations:
   artifacthub.io/changes: |
-    - "[Chore]: Update App Version to upstream 2.6.4"
+    - "[feat]: add deletionPolicy support to Kustomization in flux2-sync"
