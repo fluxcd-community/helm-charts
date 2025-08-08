@@ -325,3 +325,6 @@ prometheus:
           - sourceLabels: [__meta_kubernetes_pod_phase]
             action: keep
             regex: Running
+
+distro:
+  openshift: false

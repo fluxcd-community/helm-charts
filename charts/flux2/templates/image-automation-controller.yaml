@@ -108,7 +108,7 @@ spec:
       {{- end }}
       {{- if .Values.imageAutomationController.podSecurityContext }}
       securityContext: {{ toYaml .Values.imageAutomationController.podSecurityContext | nindent 8 }}
-      {{- else }}
+      {{- else if not .Values.distro.openshift }}
       securityContext:
         fsGroup: 1337
       {{- end}}

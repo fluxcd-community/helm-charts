@@ -1,0 +1,46 @@
+{{- if .Values.distro.openshift }}
+# Allow Flux controllers to run as non-root on OpenShift
+# Docs: https://fluxcd.io/flux/installation/configuration/openshift/
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: flux-scc
+rules:
+  - apiGroups:
+      - security.openshift.io
+    resources:
+      - securitycontextconstraints
+    resourceNames:
+      - nonroot
+    verbs:
+      - use
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: flux-scc
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: flux-scc
+subjects:
+  - kind: ServiceAccount
+    name: source-controller
+    namespace: {{ .Release.Namespace }}
+  - kind: ServiceAccount
+    name: kustomize-controller
+    namespace: {{ .Release.Namespace }}
+  - kind: ServiceAccount
+    name: helm-controller
+    namespace: {{ .Release.Namespace }}
+  - kind: ServiceAccount
+    name: notification-controller
+    namespace: {{ .Release.Namespace }}
+  - kind: ServiceAccount
+    name: image-reflector-controller
+    namespace: {{ .Release.Namespace }}
+  - kind: ServiceAccount
+    name: image-automation-controller
+    namespace: {{ .Release.Namespace }}
+
+{{- end }}

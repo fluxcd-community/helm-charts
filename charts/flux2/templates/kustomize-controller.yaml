@@ -126,7 +126,7 @@ spec:
       {{- end }}
       {{- if .Values.kustomizeController.podSecurityContext }}
       securityContext: {{ toYaml .Values.kustomizeController.podSecurityContext | nindent 8 }}
-      {{- else }}
+      {{- else if not .Values.distro.openshift }}
       securityContext:
         fsGroup: 1337
       {{- end}}
