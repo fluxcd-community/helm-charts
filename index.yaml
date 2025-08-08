@@ -2077,6 +2077,21 @@ entries:
   flux2-sync:
   - annotations:
       artifacthub.io/changes: |
+        - "[feat]: add deletionPolicy support to Kustomization in flux2-sync"
+    apiVersion: v2
+    appVersion: 2.6.4
+    created: "2025-08-08T06:00:31.361406123Z"
+    description: A Helm chart for flux2 GitRepository to sync with
+    digest: 62a4ad595ef1fff0109bf9bcc61cf785605a5fc73a8660ddefb9419caf878c17
+    name: flux2-sync
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-1.13.4/flux2-sync-1.13.4.tgz
+    version: 1.13.4
+  - annotations:
+      artifacthub.io/changes: |
         - "[Chore]: Update App Version to upstream 2.6.4"
     apiVersion: v2
     appVersion: 2.6.4
@@ -2694,4 +2709,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2025-07-16T11:49:03.226284455Z"
+generated: "2025-08-08T06:00:31.362728851Z"
