@@ -127,6 +127,9 @@ kustomization:
     # -- _Optional_ Wait instructs the controller to check the health of all the reconciled resources. When enabled, the HealthChecks are ignored. Defaults to false.
     wait: false
 
+    # -- _Optional_ DeletionPolicy allows control over garbage collection when a Kustomization object is deleted.
+    deletionPolicy: ""
+
 # -- _Optional_ If you want multiple subdirectories which depend on each other in the same repo. Their name is derived from their path.
 kustomizationlist: {}
 # - spec:

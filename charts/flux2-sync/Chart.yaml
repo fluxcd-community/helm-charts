@@ -1,11 +1,11 @@
 apiVersion: v2
 name: flux2-sync
 type: application
-version: 1.13.3
+version: 1.13.4
 appVersion: 2.6.4
 description: A Helm chart for flux2 GitRepository to sync with
 sources:
   - https://github.com/fluxcd-community/helm-charts
 annotations:
   artifacthub.io/changes: |
-    - "[Chore]: Update App Version to upstream 2.6.4"
+    - "[feat]: add deletionPolicy support to Kustomization in flux2-sync"

@@ -64,6 +64,9 @@ spec:
   {{- if .Values.kustomization.spec.wait }}
   wait: {{ .Values.kustomization.spec.wait }}
   {{- end }}
+  {{- if .Values.kustomization.spec.deletionPolicy }}
+  deletionPolicy: {{ .Values.kustomization.spec.deletionPolicy }}
+  {{- end }}
 {{- end }}
 {{- if .Values.kustomizationlist}}
 {{- range $key, $kust := .Values.kustomizationlist }}
@@ -131,6 +134,9 @@ spec:
   {{- end }}
   {{- if $kust.spec.wait }}
   wait: {{ $kust.spec.wait }}
+  {{- end }}
+  {{- if $kust.spec.deletionPolicy }}
+  deletionPolicy: {{ $kust.spec.deletionPolicy }}
   {{- end }}
 {{- end }}
 {{- end }}
