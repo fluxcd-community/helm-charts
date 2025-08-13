@@ -50,3 +50,7 @@ spec:
   {{- with .Values.gitRepository.spec.include }}
   include: {{ toYaml . | nindent 4 }}
   {{- end }}
+  {{- with .Values.gitRepository.spec.sparseCheckout }}
+  sparseCheckout:
+    {{ toYaml . | nindent 4 }}
+  {{- end }}
