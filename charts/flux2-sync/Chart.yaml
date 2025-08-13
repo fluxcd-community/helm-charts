@@ -1,7 +1,7 @@
 apiVersion: v2
 name: flux2-sync
 type: application
-version: 1.13.4
+version: 1.14.0
 appVersion: 2.6.4
 description: A Helm chart for flux2 GitRepository to sync with
 sources:
@@ -9,3 +9,4 @@ sources:
 annotations:
   artifacthub.io/changes: |
     - "[feat]: add deletionPolicy support to Kustomization in flux2-sync"
+    - "[feat]: flux2-sync: Add support for sparseCheckout in GitRepository"
