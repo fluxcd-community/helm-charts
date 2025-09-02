@@ -264,6 +264,12 @@ sourceController:
   service:
     labels: {}
     annotations: {}
+  persistentvolumeclaim:
+    labels: {}
+    annotations: {}
+    create: false
+    size: 10Gi
+    # storageClassName: default
   nodeSelector: {}
   affinity: {}
   tolerations: []
