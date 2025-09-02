@@ -1,6 +1,6 @@
 annotations:
   artifacthub.io/changes: |
-    - "[Chore]: Update App Version to upstream 2.6.4"
+    - "feat(flux,source-controller): add possibility to use a pvc for 'Persistent storage for Flux internal artifacts'"
 apiVersion: v2
 appVersion: 2.6.4
 description: A Helm chart for flux2
@@ -8,4 +8,4 @@ name: flux2
 sources:
 - https://github.com/fluxcd-community/helm-charts
 type: application
-version: 2.16.4
+version: 2.17.0

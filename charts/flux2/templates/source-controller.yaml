@@ -97,12 +97,12 @@ spec:
           runAsNonRoot: true
           seccompProfile:
             type: RuntimeDefault
-        {{- end}}
+        {{- end }}
         volumeMounts:
-        - mountPath: /data
-          name: data
-        - mountPath: /tmp
-          name: tmp
+        - name: data
+          mountPath: /data
+        - name: tmp
+          mountPath: /tmp
         {{- if .Values.sourceController.volumeMounts }}
         {{- toYaml .Values.sourceController.volumeMounts | nindent 8 }}
         {{- end}}
@@ -121,10 +121,15 @@ spec:
       {{- end }}
       terminationGracePeriodSeconds: 10
       volumes:
-      - emptyDir: {}
-        name: data
-      - emptyDir: {}
-        name: tmp
+      - name: data
+        {{- if .Values.sourceController.persistentvolumeclaim.create }}
+        persistentVolumeClaim:
+          claimName: source-controller
+        {{- else }}
+        emptyDir: {}
+        {{- end }}
+      - name: tmp
+        emptyDir: {}
       {{- if .Values.sourceController.volumes }}
       {{- toYaml .Values.sourceController.volumes | nindent 6 }}
       {{- end}}

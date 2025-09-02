@@ -1,0 +1,26 @@
+{{- if and .Values.sourceController.create .Values.sourceController.persistentvolumeclaim.create }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    app.kubernetes.io/instance: {{ .Release.Namespace | quote }}
+    app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion | quote  }}
+    app.kubernetes.io/part-of: flux
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    control-plane: controller
+    {{- with .Values.sourceController.persistentvolumeclaim.labels }}{{ toYaml . | nindent 4 }}{{ end }}
+  name: source-controller
+  {{- with .Values.sourceController.persistentvolumeclaim.annotations }}
+  annotations: {{ toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  {{- with .Values.sourceController.persistentvolumeclaim.storageClassName }}
+  storageClassName: {{ . }}
+  {{- end }}
+  resources:
+    requests:
+      storage: {{ .Values.sourceController.persistentvolumeclaim.size | quote }}
+{{- end }}
