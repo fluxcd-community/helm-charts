@@ -11,6 +11,7 @@ metadata:
     control-plane: controller
     {{- with .Values.notificationController.service.labels }}{{ toYaml . | nindent 4 }}{{ end }}
   name: notification-controller
+  namespace: {{ include "flux.namespace" . }}
   {{- with .Values.notificationController.service.annotations }}
   annotations: {{ toYaml . | nindent 4 }}
   {{- end }}

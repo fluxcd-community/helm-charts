@@ -14,6 +14,7 @@ metadata:
     {{- . | toYaml | nindent 4 }}
     {{- end }}
   name: source-controller
+  namespace: {{ include "flux.namespace" . }}
 spec:
   replicas: 1
   selector:

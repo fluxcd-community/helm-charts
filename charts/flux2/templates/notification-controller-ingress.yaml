@@ -17,6 +17,7 @@ metadata:
     {{- end }}
   {{- end }}
   name: webhook-receiver
+  namespace: {{ include "flux.namespace" . }}
 spec:
   {{- if .Values.notificationController.webhookReceiver.ingress.ingressClassName }}
   ingressClassName: {{ .Values.notificationController.webhookReceiver.ingress.ingressClassName }}

@@ -11,6 +11,7 @@ metadata:
     control-plane: controller
     {{- with .Values.notificationController.webhookReceiver.service.labels }}{{ toYaml . | nindent 4 }}{{ end }}
   name: webhook-receiver
+  namespace: {{ include "flux.namespace" . }}
   {{- with .Values.notificationController.webhookReceiver.service.annotations }}
   annotations: {{ toYaml . | nindent 4 }}
   {{- end }}
