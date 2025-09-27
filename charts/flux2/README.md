@@ -23,7 +23,6 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | cli.tolerations | list | `[]` |  |
 | clusterDomain | string | `"cluster.local"` |  |
 | crds.annotations | object | `{}` | Add annotations to all CRD resources, e.g. "helm.sh/resource-policy": keep |
-| namespaceOverride | string | `""` | Override the namespace used for all manifests. Defaults to .Release.Namespace |
 | distro.openshift | bool | `false` |  |
 | extraObjects | list | `[]` | Array of extra K8s manifests to deploy |
 | helmController.affinity | object | `{}` |  |
@@ -113,6 +112,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | multitenancy.defaultServiceAccount | string | `"default"` | All Kustomizations and HelmReleases which don’t have spec.serviceAccountName specified, will use the default account from the tenant’s namespace. Tenants have to specify a service account in their Flux resources to be able to deploy workloads in their namespaces as the default account has no permissions. |
 | multitenancy.enabled | bool | `false` | Implement the patches for Multi-tenancy lockdown. See https://fluxcd.io/docs/installation/#multi-tenancy-lockdown |
 | multitenancy.privileged | bool | `true` | Both kustomize-controller and helm-controller service accounts run privileged with cluster-admin ClusterRoleBinding. Disable if you want to run them with a minimum set of permissions. |
+| namespaceOverride | string | `""` | Override the namespace used for all manifests. Defaults to .Release.Namespace |
 | notificationController.affinity | object | `{}` |  |
 | notificationController.annotations."prometheus.io/port" | string | `"8080"` |  |
 | notificationController.annotations."prometheus.io/scrape" | string | `"true"` |  |
