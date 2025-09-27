@@ -1,6 +1,6 @@
 # flux2
 
-![Version: 2.16.4](https://img.shields.io/badge/Version-2.16.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.6.4](https://img.shields.io/badge/AppVersion-2.6.4-informational?style=flat-square)
+![Version: 2.17.0](https://img.shields.io/badge/Version-2.17.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.6.4](https://img.shields.io/badge/AppVersion-2.6.4-informational?style=flat-square)
 
 A Helm chart for flux2
 
@@ -23,6 +23,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | cli.tolerations | list | `[]` |  |
 | clusterDomain | string | `"cluster.local"` |  |
 | crds.annotations | object | `{}` | Add annotations to all CRD resources, e.g. "helm.sh/resource-policy": keep |
+| namespaceOverride | string | `""` | Override the namespace used for all manifests. Defaults to .Release.Namespace |
 | distro.openshift | bool | `false` |  |
 | extraObjects | list | `[]` | Array of extra K8s manifests to deploy |
 | helmController.affinity | object | `{}` |  |
