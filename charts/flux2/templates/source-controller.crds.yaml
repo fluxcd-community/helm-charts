@@ -6,7 +6,7 @@ metadata:
     {{- with .Values.crds.annotations }}
     {{- . | toYaml | nindent 4 }}
     {{- end }}
-    controller-gen.kubebuilder.io/version: v0.16.1
+    controller-gen.kubebuilder.io/version: v0.19.0
   labels:
     app.kubernetes.io/component: source-controller
     app.kubernetes.io/instance: '{{ .Release.Namespace }}'
@@ -152,6 +152,13 @@ spec:
                 required:
                 - name
                 type: object
+              serviceAccountName:
+                description: |-
+                  ServiceAccountName is the name of the Kubernetes ServiceAccount used to authenticate
+                  the bucket. This field is only supported for the 'gcp' and 'aws' providers.
+                  For more information about workload identity:
+                  https://fluxcd.io/flux/components/source/buckets/#workload-identity
+                type: string
               sts:
                 description: |-
                   STS specifies the required configuration to use a Security Token
@@ -242,6 +249,11 @@ spec:
               rule: '!has(self.sts) || self.sts.provider != ''aws'' || !has(self.sts.secretRef)'
             - message: spec.sts.certSecretRef is not required for the 'aws' STS provider
               rule: '!has(self.sts) || self.sts.provider != ''aws'' || !has(self.sts.certSecretRef)'
+            - message: ServiceAccountName is not supported for the 'generic' Bucket
+                provider
+              rule: self.provider != 'generic' || !has(self.serviceAccountName)
+            - message: cannot set both .spec.secretRef and .spec.serviceAccountName
+              rule: '!has(self.secretRef) || !has(self.serviceAccountName)'
           status:
             default:
               observedGeneration: -1
@@ -287,6 +299,7 @@ spec:
                       consumption, e.g. by another controller applying the Artifact contents.
                     type: string
                 required:
+                - digest
                 - lastUpdateTime
                 - path
                 - revision
@@ -375,238 +388,6 @@ spec:
         type: object
     served: true
     storage: true
-    subresources:
-      status: {}
-  - additionalPrinterColumns:
-    - jsonPath: .spec.endpoint
-      name: Endpoint
-      type: string
-    - jsonPath: .status.conditions[?(@.type=="Ready")].status
-      name: Ready
-      type: string
-    - jsonPath: .status.conditions[?(@.type=="Ready")].message
-      name: Status
-      type: string
-    - jsonPath: .metadata.creationTimestamp
-      name: Age
-      type: date
-    deprecated: true
-    deprecationWarning: v1beta1 Bucket is deprecated, upgrade to v1
-    name: v1beta1
-    schema:
-      openAPIV3Schema:
-        description: Bucket is the Schema for the buckets API
-        properties:
-          apiVersion:
-            description: |-
-              APIVersion defines the versioned schema of this representation of an object.
-              Servers should convert recognized schemas to the latest internal value, and
-              may reject unrecognized values.
-              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-            type: string
-          kind:
-            description: |-
-              Kind is a string value representing the REST resource this object represents.
-              Servers may infer this from the endpoint the client submits requests to.
-              Cannot be updated.
-              In CamelCase.
-              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-            type: string
-          metadata:
-            type: object
-          spec:
-            description: BucketSpec defines the desired state of an S3 compatible
-              bucket
-            properties:
-              accessFrom:
-                description: AccessFrom defines an Access Control List for allowing
-                  cross-namespace references to this object.
-                properties:
-                  namespaceSelectors:
-                    description: |-
-                      NamespaceSelectors is the list of namespace selectors to which this ACL applies.
-                      Items in this list are evaluated using a logical OR operation.
-                    items:
-                      description: |-
-                        NamespaceSelector selects the namespaces to which this ACL applies.
-                        An empty map of MatchLabels matches all namespaces in a cluster.
-                      properties:
-                        matchLabels:
-                          additionalProperties:
-                            type: string
-                          description: |-
-                            MatchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
-                            map is equivalent to an element of matchExpressions, whose key field is "key", the
-                            operator is "In", and the values array contains only "value". The requirements are ANDed.
-                          type: object
-                      type: object
-                    type: array
-                required:
-                - namespaceSelectors
-                type: object
-              bucketName:
-                description: The bucket name.
-                type: string
-              endpoint:
-                description: The bucket endpoint address.
-                type: string
-              ignore:
-                description: |-
-                  Ignore overrides the set of excluded patterns in the .sourceignore format
-                  (which is the same as .gitignore). If not provided, a default will be used,
-                  consult the documentation for your version to find out what those are.
-                type: string
-              insecure:
-                description: Insecure allows connecting to a non-TLS S3 HTTP endpoint.
-                type: boolean
-              interval:
-                description: The interval at which to check for bucket updates.
-                type: string
-              provider:
-                default: generic
-                description: The S3 compatible storage provider name, default ('generic').
-                enum:
-                - generic
-                - aws
-                - gcp
-                type: string
-              region:
-                description: The bucket region.
-                type: string
-              secretRef:
-                description: |-
-                  The name of the secret containing authentication credentials
-                  for the Bucket.
-                properties:
-                  name:
-                    description: Name of the referent.
-                    type: string
-                required:
-                - name
-                type: object
-              suspend:
-                description: This flag tells the controller to suspend the reconciliation
-                  of this source.
-                type: boolean
-              timeout:
-                default: 60s
-                description: The timeout for download operations, defaults to 60s.
-                type: string
-            required:
-            - bucketName
-            - endpoint
-            - interval
-            type: object
-          status:
-            default:
-              observedGeneration: -1
-            description: BucketStatus defines the observed state of a bucket
-            properties:
-              artifact:
-                description: Artifact represents the output of the last successful
-                  Bucket sync.
-                properties:
-                  checksum:
-                    description: Checksum is the SHA256 checksum of the artifact.
-                    type: string
-                  lastUpdateTime:
-                    description: |-
-                      LastUpdateTime is the timestamp corresponding to the last update of this
-                      artifact.
-                    format: date-time
-                    type: string
-                  path:
-                    description: Path is the relative file path of this artifact.
-                    type: string
-                  revision:
-                    description: |-
-                      Revision is a human readable identifier traceable in the origin source
-                      system. It can be a Git commit SHA, Git tag, a Helm index timestamp, a Helm
-                      chart version, etc.
-                    type: string
-                  url:
-                    description: URL is the HTTP address of this artifact.
-                    type: string
-                required:
-                - lastUpdateTime
-                - path
-                - url
-                type: object
-              conditions:
-                description: Conditions holds the conditions for the Bucket.
-                items:
-                  description: Condition contains details for one aspect of the current
-                    state of this API Resource.
-                  properties:
-                    lastTransitionTime:
-                      description: |-
-                        lastTransitionTime is the last time the condition transitioned from one status to another.
-                        This should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.
-                      format: date-time
-                      type: string
-                    message:
-                      description: |-
-                        message is a human readable message indicating details about the transition.
-                        This may be an empty string.
-                      maxLength: 32768
-                      type: string
-                    observedGeneration:
-                      description: |-
-                        observedGeneration represents the .metadata.generation that the condition was set based upon.
-                        For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
-                        with respect to the current state of the instance.
-                      format: int64
-                      minimum: 0
-                      type: integer
-                    reason:
-                      description: |-
-                        reason contains a programmatic identifier indicating the reason for the condition's last transition.
-                        Producers of specific condition types may define expected values and meanings for this field,
-                        and whether the values are considered a guaranteed API.
-                        The value should be a CamelCase string.
-                        This field may not be empty.
-                      maxLength: 1024
-                      minLength: 1
-                      pattern: ^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$
-                      type: string
-                    status:
-                      description: status of the condition, one of True, False, Unknown.
-                      enum:
-                      - "True"
-                      - "False"
-                      - Unknown
-                      type: string
-                    type:
-                      description: type of condition in CamelCase or in foo.example.com/CamelCase.
-                      maxLength: 316
-                      pattern: ^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$
-                      type: string
-                  required:
-                  - lastTransitionTime
-                  - message
-                  - reason
-                  - status
-                  - type
-                  type: object
-                type: array
-              lastHandledReconcileAt:
-                description: |-
-                  LastHandledReconcileAt holds the value of the most recent
-                  reconcile request value, so a change of the annotation value
-                  can be detected.
-                type: string
-              observedGeneration:
-                description: ObservedGeneration is the last observed generation.
-                format: int64
-                type: integer
-              url:
-                description: URL is the download link for the artifact output of the
-                  last Bucket sync.
-                type: string
-            type: object
-        type: object
-    served: true
-    storage: false
     subresources:
       status: {}
   - additionalPrinterColumns:
@@ -902,6 +683,7 @@ spec:
                       consumption, e.g. by another controller applying the Artifact contents.
                     type: string
                 required:
+                - digest
                 - lastUpdateTime
                 - path
                 - revision
@@ -1000,7 +782,208 @@ metadata:
     {{- with .Values.crds.annotations }}
     {{- . | toYaml | nindent 4 }}
     {{- end }}
-    controller-gen.kubebuilder.io/version: v0.16.1
+    controller-gen.kubebuilder.io/version: v0.19.0
+  labels:
+    app.kubernetes.io/component: source-controller
+    app.kubernetes.io/instance: '{{ .Release.Namespace }}'
+    app.kubernetes.io/managed-by: '{{ .Release.Service }}'
+    app.kubernetes.io/part-of: flux
+    app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
+    helm.sh/chart: '{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}'
+  name: externalartifacts.source.toolkit.fluxcd.io
+spec:
+  group: source.toolkit.fluxcd.io
+  names:
+    kind: ExternalArtifact
+    listKind: ExternalArtifactList
+    plural: externalartifacts
+    singular: externalartifact
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - jsonPath: .metadata.creationTimestamp
+      name: Age
+      type: date
+    - jsonPath: .status.conditions[?(@.type=="Ready")].status
+      name: Ready
+      type: string
+    - jsonPath: .status.conditions[?(@.type=="Ready")].message
+      name: Status
+      type: string
+    - jsonPath: .spec.sourceRef.name
+      name: Source
+      type: string
+    name: v1
+    schema:
+      openAPIV3Schema:
+        description: ExternalArtifact is the Schema for the external artifacts API
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: ExternalArtifactSpec defines the desired state of ExternalArtifact
+            properties:
+              sourceRef:
+                description: |-
+                  SourceRef points to the Kubernetes custom resource for
+                  which the artifact is generated.
+                properties:
+                  apiVersion:
+                    description: API version of the referent, if not specified the
+                      Kubernetes preferred version will be used.
+                    type: string
+                  kind:
+                    description: Kind of the referent.
+                    type: string
+                  name:
+                    description: Name of the referent.
+                    type: string
+                  namespace:
+                    description: Namespace of the referent, when not specified it
+                      acts as LocalObjectReference.
+                    type: string
+                required:
+                - kind
+                - name
+                type: object
+            type: object
+          status:
+            description: ExternalArtifactStatus defines the observed state of ExternalArtifact
+            properties:
+              artifact:
+                description: Artifact represents the output of an ExternalArtifact
+                  reconciliation.
+                properties:
+                  digest:
+                    description: Digest is the digest of the file in the form of '<algorithm>:<checksum>'.
+                    pattern: ^[a-z0-9]+(?:[.+_-][a-z0-9]+)*:[a-zA-Z0-9=_-]+$
+                    type: string
+                  lastUpdateTime:
+                    description: |-
+                      LastUpdateTime is the timestamp corresponding to the last update of the
+                      Artifact.
+                    format: date-time
+                    type: string
+                  metadata:
+                    additionalProperties:
+                      type: string
+                    description: Metadata holds upstream information such as OCI annotations.
+                    type: object
+                  path:
+                    description: |-
+                      Path is the relative file path of the Artifact. It can be used to locate
+                      the file in the root of the Artifact storage on the local file system of
+                      the controller managing the Source.
+                    type: string
+                  revision:
+                    description: |-
+                      Revision is a human-readable identifier traceable in the origin source
+                      system. It can be a Git commit SHA, Git tag, a Helm chart version, etc.
+                    type: string
+                  size:
+                    description: Size is the number of bytes in the file.
+                    format: int64
+                    type: integer
+                  url:
+                    description: |-
+                      URL is the HTTP address of the Artifact as exposed by the controller
+                      managing the Source. It can be used to retrieve the Artifact for
+                      consumption, e.g. by another controller applying the Artifact contents.
+                    type: string
+                required:
+                - digest
+                - lastUpdateTime
+                - path
+                - revision
+                - url
+                type: object
+              conditions:
+                description: Conditions holds the conditions for the ExternalArtifact.
+                items:
+                  description: Condition contains details for one aspect of the current
+                    state of this API Resource.
+                  properties:
+                    lastTransitionTime:
+                      description: |-
+                        lastTransitionTime is the last time the condition transitioned from one status to another.
+                        This should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.
+                      format: date-time
+                      type: string
+                    message:
+                      description: |-
+                        message is a human readable message indicating details about the transition.
+                        This may be an empty string.
+                      maxLength: 32768
+                      type: string
+                    observedGeneration:
+                      description: |-
+                        observedGeneration represents the .metadata.generation that the condition was set based upon.
+                        For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
+                        with respect to the current state of the instance.
+                      format: int64
+                      minimum: 0
+                      type: integer
+                    reason:
+                      description: |-
+                        reason contains a programmatic identifier indicating the reason for the condition's last transition.
+                        Producers of specific condition types may define expected values and meanings for this field,
+                        and whether the values are considered a guaranteed API.
+                        The value should be a CamelCase string.
+                        This field may not be empty.
+                      maxLength: 1024
+                      minLength: 1
+                      pattern: ^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$
+                      type: string
+                    status:
+                      description: status of the condition, one of True, False, Unknown.
+                      enum:
+                      - "True"
+                      - "False"
+                      - Unknown
+                      type: string
+                    type:
+                      description: type of condition in CamelCase or in foo.example.com/CamelCase.
+                      maxLength: 316
+                      pattern: ^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$
+                      type: string
+                  required:
+                  - lastTransitionTime
+                  - message
+                  - reason
+                  - status
+                  - type
+                  type: object
+                type: array
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    {{- with .Values.crds.annotations }}
+    {{- . | toYaml | nindent 4 }}
+    {{- end }}
+    controller-gen.kubebuilder.io/version: v0.19.0
   labels:
     app.kubernetes.io/component: source-controller
     app.kubernetes.io/instance: '{{ .Release.Namespace }}'
@@ -1178,6 +1161,11 @@ spec:
                 required:
                 - name
                 type: object
+              serviceAccountName:
+                description: |-
+                  ServiceAccountName is the name of the Kubernetes ServiceAccount used to
+                  authenticate to the GitRepository. This field is only supported for 'azure' provider.
+                type: string
               sparseCheckout:
                 description: |-
                   SparseCheckout specifies a list of directories to checkout when cloning
@@ -1239,6 +1227,10 @@ spec:
             - interval
             - url
             type: object
+            x-kubernetes-validations:
+            - message: serviceAccountName can only be set when provider is 'azure'
+              rule: '!has(self.serviceAccountName) || (has(self.provider) && self.provider
+                == ''azure'')'
           status:
             default:
               observedGeneration: -1
@@ -1285,6 +1277,7 @@ spec:
                       consumption, e.g. by another controller applying the Artifact contents.
                     type: string
                 required:
+                - digest
                 - lastUpdateTime
                 - path
                 - revision
@@ -1393,6 +1386,7 @@ spec:
                         consumption, e.g. by another controller applying the Artifact contents.
                       type: string
                   required:
+                  - digest
                   - lastUpdateTime
                   - path
                   - revision
@@ -1471,343 +1465,6 @@ spec:
         type: object
     served: true
     storage: true
-    subresources:
-      status: {}
-  - additionalPrinterColumns:
-    - jsonPath: .spec.url
-      name: URL
-      type: string
-    - jsonPath: .status.conditions[?(@.type=="Ready")].status
-      name: Ready
-      type: string
-    - jsonPath: .status.conditions[?(@.type=="Ready")].message
-      name: Status
-      type: string
-    - jsonPath: .metadata.creationTimestamp
-      name: Age
-      type: date
-    deprecated: true
-    deprecationWarning: v1beta1 GitRepository is deprecated, upgrade to v1
-    name: v1beta1
-    schema:
-      openAPIV3Schema:
-        description: GitRepository is the Schema for the gitrepositories API
-        properties:
-          apiVersion:
-            description: |-
-              APIVersion defines the versioned schema of this representation of an object.
-              Servers should convert recognized schemas to the latest internal value, and
-              may reject unrecognized values.
-              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-            type: string
-          kind:
-            description: |-
-              Kind is a string value representing the REST resource this object represents.
-              Servers may infer this from the endpoint the client submits requests to.
-              Cannot be updated.
-              In CamelCase.
-              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-            type: string
-          metadata:
-            type: object
-          spec:
-            description: GitRepositorySpec defines the desired state of a Git repository.
-            properties:
-              accessFrom:
-                description: AccessFrom defines an Access Control List for allowing
-                  cross-namespace references to this object.
-                properties:
-                  namespaceSelectors:
-                    description: |-
-                      NamespaceSelectors is the list of namespace selectors to which this ACL applies.
-                      Items in this list are evaluated using a logical OR operation.
-                    items:
-                      description: |-
-                        NamespaceSelector selects the namespaces to which this ACL applies.
-                        An empty map of MatchLabels matches all namespaces in a cluster.
-                      properties:
-                        matchLabels:
-                          additionalProperties:
-                            type: string
-                          description: |-
-                            MatchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
-                            map is equivalent to an element of matchExpressions, whose key field is "key", the
-                            operator is "In", and the values array contains only "value". The requirements are ANDed.
-                          type: object
-                      type: object
-                    type: array
-                required:
-                - namespaceSelectors
-                type: object
-              gitImplementation:
-                default: go-git
-                description: |-
-                  Determines which git client library to use.
-                  Defaults to go-git, valid values are ('go-git', 'libgit2').
-                enum:
-                - go-git
-                - libgit2
-                type: string
-              ignore:
-                description: |-
-                  Ignore overrides the set of excluded patterns in the .sourceignore format
-                  (which is the same as .gitignore). If not provided, a default will be used,
-                  consult the documentation for your version to find out what those are.
-                type: string
-              include:
-                description: Extra git repositories to map into the repository
-                items:
-                  description: GitRepositoryInclude defines a source with a from and
-                    to path.
-                  properties:
-                    fromPath:
-                      description: The path to copy contents from, defaults to the
-                        root directory.
-                      type: string
-                    repository:
-                      description: Reference to a GitRepository to include.
-                      properties:
-                        name:
-                          description: Name of the referent.
-                          type: string
-                      required:
-                      - name
-                      type: object
-                    toPath:
-                      description: The path to copy contents to, defaults to the name
-                        of the source ref.
-                      type: string
-                  required:
-                  - repository
-                  type: object
-                type: array
-              interval:
-                description: The interval at which to check for repository updates.
-                type: string
-              recurseSubmodules:
-                description: |-
-                  When enabled, after the clone is created, initializes all submodules within,
-                  using their default settings.
-                  This option is available only when using the 'go-git' GitImplementation.
-                type: boolean
-              ref:
-                description: |-
-                  The Git reference to checkout and monitor for changes, defaults to
-                  master branch.
-                properties:
-                  branch:
-                    description: The Git branch to checkout, defaults to master.
-                    type: string
-                  commit:
-                    description: The Git commit SHA to checkout, if specified Tag
-                      filters will be ignored.
-                    type: string
-                  semver:
-                    description: The Git tag semver expression, takes precedence over
-                      Tag.
-                    type: string
-                  tag:
-                    description: The Git tag to checkout, takes precedence over Branch.
-                    type: string
-                type: object
-              secretRef:
-                description: |-
-                  The secret name containing the Git credentials.
-                  For HTTPS repositories the secret must contain username and password
-                  fields.
-                  For SSH repositories the secret must contain identity and known_hosts
-                  fields.
-                properties:
-                  name:
-                    description: Name of the referent.
-                    type: string
-                required:
-                - name
-                type: object
-              suspend:
-                description: This flag tells the controller to suspend the reconciliation
-                  of this source.
-                type: boolean
-              timeout:
-                default: 60s
-                description: The timeout for remote Git operations like cloning, defaults
-                  to 60s.
-                type: string
-              url:
-                description: The repository URL, can be a HTTP/S or SSH address.
-                pattern: ^(http|https|ssh)://.*$
-                type: string
-              verify:
-                description: Verify OpenPGP signature for the Git commit HEAD points
-                  to.
-                properties:
-                  mode:
-                    description: Mode describes what git object should be verified,
-                      currently ('head').
-                    enum:
-                    - head
-                    type: string
-                  secretRef:
-                    description: The secret name containing the public keys of all
-                      trusted Git authors.
-                    properties:
-                      name:
-                        description: Name of the referent.
-                        type: string
-                    required:
-                    - name
-                    type: object
-                required:
-                - mode
-                type: object
-            required:
-            - interval
-            - url
-            type: object
-          status:
-            default:
-              observedGeneration: -1
-            description: GitRepositoryStatus defines the observed state of a Git repository.
-            properties:
-              artifact:
-                description: Artifact represents the output of the last successful
-                  repository sync.
-                properties:
-                  checksum:
-                    description: Checksum is the SHA256 checksum of the artifact.
-                    type: string
-                  lastUpdateTime:
-                    description: |-
-                      LastUpdateTime is the timestamp corresponding to the last update of this
-                      artifact.
-                    format: date-time
-                    type: string
-                  path:
-                    description: Path is the relative file path of this artifact.
-                    type: string
-                  revision:
-                    description: |-
-                      Revision is a human readable identifier traceable in the origin source
-                      system. It can be a Git commit SHA, Git tag, a Helm index timestamp, a Helm
-                      chart version, etc.
-                    type: string
-                  url:
-                    description: URL is the HTTP address of this artifact.
-                    type: string
-                required:
-                - lastUpdateTime
-                - path
-                - url
-                type: object
-              conditions:
-                description: Conditions holds the conditions for the GitRepository.
-                items:
-                  description: Condition contains details for one aspect of the current
-                    state of this API Resource.
-                  properties:
-                    lastTransitionTime:
-                      description: |-
-                        lastTransitionTime is the last time the condition transitioned from one status to another.
-                        This should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.
-                      format: date-time
-                      type: string
-                    message:
-                      description: |-
-                        message is a human readable message indicating details about the transition.
-                        This may be an empty string.
-                      maxLength: 32768
-                      type: string
-                    observedGeneration:
-                      description: |-
-                        observedGeneration represents the .metadata.generation that the condition was set based upon.
-                        For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
-                        with respect to the current state of the instance.
-                      format: int64
-                      minimum: 0
-                      type: integer
-                    reason:
-                      description: |-
-                        reason contains a programmatic identifier indicating the reason for the condition's last transition.
-                        Producers of specific condition types may define expected values and meanings for this field,
-                        and whether the values are considered a guaranteed API.
-                        The value should be a CamelCase string.
-                        This field may not be empty.
-                      maxLength: 1024
-                      minLength: 1
-                      pattern: ^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$
-                      type: string
-                    status:
-                      description: status of the condition, one of True, False, Unknown.
-                      enum:
-                      - "True"
-                      - "False"
-                      - Unknown
-                      type: string
-                    type:
-                      description: type of condition in CamelCase or in foo.example.com/CamelCase.
-                      maxLength: 316
-                      pattern: ^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$
-                      type: string
-                  required:
-                  - lastTransitionTime
-                  - message
-                  - reason
-                  - status
-                  - type
-                  type: object
-                type: array
-              includedArtifacts:
-                description: IncludedArtifacts represents the included artifacts from
-                  the last successful repository sync.
-                items:
-                  description: Artifact represents the output of a source synchronisation.
-                  properties:
-                    checksum:
-                      description: Checksum is the SHA256 checksum of the artifact.
-                      type: string
-                    lastUpdateTime:
-                      description: |-
-                        LastUpdateTime is the timestamp corresponding to the last update of this
-                        artifact.
-                      format: date-time
-                      type: string
-                    path:
-                      description: Path is the relative file path of this artifact.
-                      type: string
-                    revision:
-                      description: |-
-                        Revision is a human readable identifier traceable in the origin source
-                        system. It can be a Git commit SHA, Git tag, a Helm index timestamp, a Helm
-                        chart version, etc.
-                      type: string
-                    url:
-                      description: URL is the HTTP address of this artifact.
-                      type: string
-                  required:
-                  - lastUpdateTime
-                  - path
-                  - url
-                  type: object
-                type: array
-              lastHandledReconcileAt:
-                description: |-
-                  LastHandledReconcileAt holds the value of the most recent
-                  reconcile request value, so a change of the annotation value
-                  can be detected.
-                type: string
-              observedGeneration:
-                description: ObservedGeneration is the last observed generation.
-                format: int64
-                type: integer
-              url:
-                description: |-
-                  URL is the download link for the artifact output of the last repository
-                  sync.
-                type: string
-            type: object
-        type: object
-    served: true
-    storage: false
     subresources:
       status: {}
   - additionalPrinterColumns:
@@ -2078,6 +1735,7 @@ spec:
                       consumption, e.g. by another controller applying the Artifact contents.
                     type: string
                 required:
+                - digest
                 - lastUpdateTime
                 - path
                 - revision
@@ -2201,6 +1859,7 @@ spec:
                         consumption, e.g. by another controller applying the Artifact contents.
                       type: string
                   required:
+                  - digest
                   - lastUpdateTime
                   - path
                   - revision
@@ -2283,7 +1942,7 @@ metadata:
     {{- with .Values.crds.annotations }}
     {{- . | toYaml | nindent 4 }}
     {{- end }}
-    controller-gen.kubebuilder.io/version: v0.16.1
+    controller-gen.kubebuilder.io/version: v0.19.0
   labels:
     app.kubernetes.io/component: source-controller
     app.kubernetes.io/instance: '{{ .Release.Namespace }}'
@@ -2531,6 +2190,7 @@ spec:
                       consumption, e.g. by another controller applying the Artifact contents.
                     type: string
                 required:
+                - digest
                 - lastUpdateTime
                 - path
                 - revision
@@ -2633,263 +2293,6 @@ spec:
         type: object
     served: true
     storage: true
-    subresources:
-      status: {}
-  - additionalPrinterColumns:
-    - jsonPath: .spec.chart
-      name: Chart
-      type: string
-    - jsonPath: .spec.version
-      name: Version
-      type: string
-    - jsonPath: .spec.sourceRef.kind
-      name: Source Kind
-      type: string
-    - jsonPath: .spec.sourceRef.name
-      name: Source Name
-      type: string
-    - jsonPath: .status.conditions[?(@.type=="Ready")].status
-      name: Ready
-      type: string
-    - jsonPath: .status.conditions[?(@.type=="Ready")].message
-      name: Status
-      type: string
-    - jsonPath: .metadata.creationTimestamp
-      name: Age
-      type: date
-    deprecated: true
-    deprecationWarning: v1beta1 HelmChart is deprecated, upgrade to v1
-    name: v1beta1
-    schema:
-      openAPIV3Schema:
-        description: HelmChart is the Schema for the helmcharts API
-        properties:
-          apiVersion:
-            description: |-
-              APIVersion defines the versioned schema of this representation of an object.
-              Servers should convert recognized schemas to the latest internal value, and
-              may reject unrecognized values.
-              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-            type: string
-          kind:
-            description: |-
-              Kind is a string value representing the REST resource this object represents.
-              Servers may infer this from the endpoint the client submits requests to.
-              Cannot be updated.
-              In CamelCase.
-              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-            type: string
-          metadata:
-            type: object
-          spec:
-            description: HelmChartSpec defines the desired state of a Helm chart.
-            properties:
-              accessFrom:
-                description: AccessFrom defines an Access Control List for allowing
-                  cross-namespace references to this object.
-                properties:
-                  namespaceSelectors:
-                    description: |-
-                      NamespaceSelectors is the list of namespace selectors to which this ACL applies.
-                      Items in this list are evaluated using a logical OR operation.
-                    items:
-                      description: |-
-                        NamespaceSelector selects the namespaces to which this ACL applies.
-                        An empty map of MatchLabels matches all namespaces in a cluster.
-                      properties:
-                        matchLabels:
-                          additionalProperties:
-                            type: string
-                          description: |-
-                            MatchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
-                            map is equivalent to an element of matchExpressions, whose key field is "key", the
-                            operator is "In", and the values array contains only "value". The requirements are ANDed.
-                          type: object
-                      type: object
-                    type: array
-                required:
-                - namespaceSelectors
-                type: object
-              chart:
-                description: The name or path the Helm chart is available at in the
-                  SourceRef.
-                type: string
-              interval:
-                description: The interval at which to check the Source for updates.
-                type: string
-              reconcileStrategy:
-                default: ChartVersion
-                description: |-
-                  Determines what enables the creation of a new artifact. Valid values are
-                  ('ChartVersion', 'Revision').
-                  See the documentation of the values for an explanation on their behavior.
-                  Defaults to ChartVersion when omitted.
-                enum:
-                - ChartVersion
-                - Revision
-                type: string
-              sourceRef:
-                description: The reference to the Source the chart is available at.
-                properties:
-                  apiVersion:
-                    description: APIVersion of the referent.
-                    type: string
-                  kind:
-                    description: |-
-                      Kind of the referent, valid values are ('HelmRepository', 'GitRepository',
-                      'Bucket').
-                    enum:
-                    - HelmRepository
-                    - GitRepository
-                    - Bucket
-                    type: string
-                  name:
-                    description: Name of the referent.
-                    type: string
-                required:
-                - kind
-                - name
-                type: object
-              suspend:
-                description: This flag tells the controller to suspend the reconciliation
-                  of this source.
-                type: boolean
-              valuesFile:
-                description: |-
-                  Alternative values file to use as the default chart values, expected to
-                  be a relative path in the SourceRef. Deprecated in favor of ValuesFiles,
-                  for backwards compatibility the file defined here is merged before the
-                  ValuesFiles items. Ignored when omitted.
-                type: string
-              valuesFiles:
-                description: |-
-                  Alternative list of values files to use as the chart values (values.yaml
-                  is not included by default), expected to be a relative path in the SourceRef.
-                  Values files are merged in the order of this list with the last file overriding
-                  the first. Ignored when omitted.
-                items:
-                  type: string
-                type: array
-              version:
-                default: '*'
-                description: |-
-                  The chart version semver expression, ignored for charts from GitRepository
-                  and Bucket sources. Defaults to latest when omitted.
-                type: string
-            required:
-            - chart
-            - interval
-            - sourceRef
-            type: object
-          status:
-            default:
-              observedGeneration: -1
-            description: HelmChartStatus defines the observed state of the HelmChart.
-            properties:
-              artifact:
-                description: Artifact represents the output of the last successful
-                  chart sync.
-                properties:
-                  checksum:
-                    description: Checksum is the SHA256 checksum of the artifact.
-                    type: string
-                  lastUpdateTime:
-                    description: |-
-                      LastUpdateTime is the timestamp corresponding to the last update of this
-                      artifact.
-                    format: date-time
-                    type: string
-                  path:
-                    description: Path is the relative file path of this artifact.
-                    type: string
-                  revision:
-                    description: |-
-                      Revision is a human readable identifier traceable in the origin source
-                      system. It can be a Git commit SHA, Git tag, a Helm index timestamp, a Helm
-                      chart version, etc.
-                    type: string
-                  url:
-                    description: URL is the HTTP address of this artifact.
-                    type: string
-                required:
-                - lastUpdateTime
-                - path
-                - url
-                type: object
-              conditions:
-                description: Conditions holds the conditions for the HelmChart.
-                items:
-                  description: Condition contains details for one aspect of the current
-                    state of this API Resource.
-                  properties:
-                    lastTransitionTime:
-                      description: |-
-                        lastTransitionTime is the last time the condition transitioned from one status to another.
-                        This should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.
-                      format: date-time
-                      type: string
-                    message:
-                      description: |-
-                        message is a human readable message indicating details about the transition.
-                        This may be an empty string.
-                      maxLength: 32768
-                      type: string
-                    observedGeneration:
-                      description: |-
-                        observedGeneration represents the .metadata.generation that the condition was set based upon.
-                        For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
-                        with respect to the current state of the instance.
-                      format: int64
-                      minimum: 0
-                      type: integer
-                    reason:
-                      description: |-
-                        reason contains a programmatic identifier indicating the reason for the condition's last transition.
-                        Producers of specific condition types may define expected values and meanings for this field,
-                        and whether the values are considered a guaranteed API.
-                        The value should be a CamelCase string.
-                        This field may not be empty.
-                      maxLength: 1024
-                      minLength: 1
-                      pattern: ^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$
-                      type: string
-                    status:
-                      description: status of the condition, one of True, False, Unknown.
-                      enum:
-                      - "True"
-                      - "False"
-                      - Unknown
-                      type: string
-                    type:
-                      description: type of condition in CamelCase or in foo.example.com/CamelCase.
-                      maxLength: 316
-                      pattern: ^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$
-                      type: string
-                  required:
-                  - lastTransitionTime
-                  - message
-                  - reason
-                  - status
-                  - type
-                  type: object
-                type: array
-              lastHandledReconcileAt:
-                description: |-
-                  LastHandledReconcileAt holds the value of the most recent
-                  reconcile request value, so a change of the annotation value
-                  can be detected.
-                type: string
-              observedGeneration:
-                description: ObservedGeneration is the last observed generation.
-                format: int64
-                type: integer
-              url:
-                description: URL is the download link for the last chart pulled.
-                type: string
-            type: object
-        type: object
-    served: true
-    storage: false
     subresources:
       status: {}
   - additionalPrinterColumns:
@@ -3157,6 +2560,7 @@ spec:
                       consumption, e.g. by another controller applying the Artifact contents.
                     type: string
                 required:
+                - digest
                 - lastUpdateTime
                 - path
                 - revision
@@ -3269,7 +2673,7 @@ metadata:
     {{- with .Values.crds.annotations }}
     {{- . | toYaml | nindent 4 }}
     {{- end }}
-    controller-gen.kubebuilder.io/version: v0.16.1
+    controller-gen.kubebuilder.io/version: v0.19.0
   labels:
     app.kubernetes.io/component: source-controller
     app.kubernetes.io/instance: '{{ .Release.Namespace }}'
@@ -3505,6 +2909,7 @@ spec:
                       consumption, e.g. by another controller applying the Artifact contents.
                     type: string
                 required:
+                - digest
                 - lastUpdateTime
                 - path
                 - revision
@@ -3589,226 +2994,6 @@ spec:
         type: object
     served: true
     storage: true
-    subresources:
-      status: {}
-  - additionalPrinterColumns:
-    - jsonPath: .spec.url
-      name: URL
-      type: string
-    - jsonPath: .status.conditions[?(@.type=="Ready")].status
-      name: Ready
-      type: string
-    - jsonPath: .status.conditions[?(@.type=="Ready")].message
-      name: Status
-      type: string
-    - jsonPath: .metadata.creationTimestamp
-      name: Age
-      type: date
-    deprecated: true
-    deprecationWarning: v1beta1 HelmRepository is deprecated, upgrade to v1
-    name: v1beta1
-    schema:
-      openAPIV3Schema:
-        description: HelmRepository is the Schema for the helmrepositories API
-        properties:
-          apiVersion:
-            description: |-
-              APIVersion defines the versioned schema of this representation of an object.
-              Servers should convert recognized schemas to the latest internal value, and
-              may reject unrecognized values.
-              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-            type: string
-          kind:
-            description: |-
-              Kind is a string value representing the REST resource this object represents.
-              Servers may infer this from the endpoint the client submits requests to.
-              Cannot be updated.
-              In CamelCase.
-              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-            type: string
-          metadata:
-            type: object
-          spec:
-            description: HelmRepositorySpec defines the reference to a Helm repository.
-            properties:
-              accessFrom:
-                description: AccessFrom defines an Access Control List for allowing
-                  cross-namespace references to this object.
-                properties:
-                  namespaceSelectors:
-                    description: |-
-                      NamespaceSelectors is the list of namespace selectors to which this ACL applies.
-                      Items in this list are evaluated using a logical OR operation.
-                    items:
-                      description: |-
-                        NamespaceSelector selects the namespaces to which this ACL applies.
-                        An empty map of MatchLabels matches all namespaces in a cluster.
-                      properties:
-                        matchLabels:
-                          additionalProperties:
-                            type: string
-                          description: |-
-                            MatchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
-                            map is equivalent to an element of matchExpressions, whose key field is "key", the
-                            operator is "In", and the values array contains only "value". The requirements are ANDed.
-                          type: object
-                      type: object
-                    type: array
-                required:
-                - namespaceSelectors
-                type: object
-              interval:
-                description: The interval at which to check the upstream for updates.
-                type: string
-              passCredentials:
-                description: |-
-                  PassCredentials allows the credentials from the SecretRef to be passed on to
-                  a host that does not match the host as defined in URL.
-                  This may be required if the host of the advertised chart URLs in the index
-                  differ from the defined URL.
-                  Enabling this should be done with caution, as it can potentially result in
-                  credentials getting stolen in a MITM-attack.
-                type: boolean
-              secretRef:
-                description: |-
-                  The name of the secret containing authentication credentials for the Helm
-                  repository.
-                  For HTTP/S basic auth the secret must contain username and
-                  password fields.
-                  For TLS the secret must contain a certFile and keyFile, and/or
-                  caFile fields.
-                properties:
-                  name:
-                    description: Name of the referent.
-                    type: string
-                required:
-                - name
-                type: object
-              suspend:
-                description: This flag tells the controller to suspend the reconciliation
-                  of this source.
-                type: boolean
-              timeout:
-                default: 60s
-                description: The timeout of index downloading, defaults to 60s.
-                type: string
-              url:
-                description: The Helm repository URL, a valid URL contains at least
-                  a protocol and host.
-                type: string
-            required:
-            - interval
-            - url
-            type: object
-          status:
-            default:
-              observedGeneration: -1
-            description: HelmRepositoryStatus defines the observed state of the HelmRepository.
-            properties:
-              artifact:
-                description: Artifact represents the output of the last successful
-                  repository sync.
-                properties:
-                  checksum:
-                    description: Checksum is the SHA256 checksum of the artifact.
-                    type: string
-                  lastUpdateTime:
-                    description: |-
-                      LastUpdateTime is the timestamp corresponding to the last update of this
-                      artifact.
-                    format: date-time
-                    type: string
-                  path:
-                    description: Path is the relative file path of this artifact.
-                    type: string
-                  revision:
-                    description: |-
-                      Revision is a human readable identifier traceable in the origin source
-                      system. It can be a Git commit SHA, Git tag, a Helm index timestamp, a Helm
-                      chart version, etc.
-                    type: string
-                  url:
-                    description: URL is the HTTP address of this artifact.
-                    type: string
-                required:
-                - lastUpdateTime
-                - path
-                - url
-                type: object
-              conditions:
-                description: Conditions holds the conditions for the HelmRepository.
-                items:
-                  description: Condition contains details for one aspect of the current
-                    state of this API Resource.
-                  properties:
-                    lastTransitionTime:
-                      description: |-
-                        lastTransitionTime is the last time the condition transitioned from one status to another.
-                        This should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.
-                      format: date-time
-                      type: string
-                    message:
-                      description: |-
-                        message is a human readable message indicating details about the transition.
-                        This may be an empty string.
-                      maxLength: 32768
-                      type: string
-                    observedGeneration:
-                      description: |-
-                        observedGeneration represents the .metadata.generation that the condition was set based upon.
-                        For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
-                        with respect to the current state of the instance.
-                      format: int64
-                      minimum: 0
-                      type: integer
-                    reason:
-                      description: |-
-                        reason contains a programmatic identifier indicating the reason for the condition's last transition.
-                        Producers of specific condition types may define expected values and meanings for this field,
-                        and whether the values are considered a guaranteed API.
-                        The value should be a CamelCase string.
-                        This field may not be empty.
-                      maxLength: 1024
-                      minLength: 1
-                      pattern: ^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$
-                      type: string
-                    status:
-                      description: status of the condition, one of True, False, Unknown.
-                      enum:
-                      - "True"
-                      - "False"
-                      - Unknown
-                      type: string
-                    type:
-                      description: type of condition in CamelCase or in foo.example.com/CamelCase.
-                      maxLength: 316
-                      pattern: ^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$
-                      type: string
-                  required:
-                  - lastTransitionTime
-                  - message
-                  - reason
-                  - status
-                  - type
-                  type: object
-                type: array
-              lastHandledReconcileAt:
-                description: |-
-                  LastHandledReconcileAt holds the value of the most recent
-                  reconcile request value, so a change of the annotation value
-                  can be detected.
-                type: string
-              observedGeneration:
-                description: ObservedGeneration is the last observed generation.
-                format: int64
-                type: integer
-              url:
-                description: URL is the download link for the last index fetched.
-                type: string
-            type: object
-        type: object
-    served: true
-    storage: false
     subresources:
       status: {}
   - additionalPrinterColumns:
@@ -4029,6 +3214,7 @@ spec:
                       consumption, e.g. by another controller applying the Artifact contents.
                     type: string
                 required:
+                - digest
                 - lastUpdateTime
                 - path
                 - revision
@@ -4123,7 +3309,7 @@ metadata:
     {{- with .Values.crds.annotations }}
     {{- . | toYaml | nindent 4 }}
     {{- end }}
-    controller-gen.kubebuilder.io/version: v0.16.1
+    controller-gen.kubebuilder.io/version: v0.19.0
   labels:
     app.kubernetes.io/component: source-controller
     app.kubernetes.io/instance: '{{ .Release.Namespace }}'
@@ -4426,6 +3612,7 @@ spec:
                       consumption, e.g. by another controller applying the Artifact contents.
                     type: string
                 required:
+                - digest
                 - lastUpdateTime
                 - path
                 - revision
@@ -4823,6 +4010,7 @@ spec:
                       consumption, e.g. by another controller applying the Artifact contents.
                     type: string
                 required:
+                - digest
                 - lastUpdateTime
                 - path
                 - revision
