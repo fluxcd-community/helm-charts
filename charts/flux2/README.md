@@ -173,5 +173,6 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | sourceController.serviceAccount.create | bool | `true` |  |
 | sourceController.tag | string | `"v1.7.1"` |  |
 | sourceController.tolerations | list | `[]` |  |
+| sourceWatcher.create | bool | `false` |  |
 | sourceWatcher.tag | string | `"v2.0.1"` |  |
 | watchAllNamespaces | bool | `true` |  |
