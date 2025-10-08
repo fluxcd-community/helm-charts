@@ -50,6 +50,9 @@ spec:
         - --log-level={{ .Values.logLevel | default "info" }}
         - --log-encoding=json
         - --enable-leader-election
+        {{- if .Values.sourceWatcher.create }}
+        - --feature-gates=ExternalArtifact=true
+        {{- end}}
         {{- range .Values.kustomizeController.container.additionalArgs }}
         - {{ . }}
         {{- end}}
