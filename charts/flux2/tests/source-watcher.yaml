@@ -62,7 +62,7 @@ tests:
     asserts:
       - contains:
           path: spec.template.spec.containers[0].args
-          content: --storage-adv-addr=source-controller.$(RUNTIME_NAMESPACE).svc.cluster.local.
+          content: --storage-adv-addr=source-watcher.$(RUNTIME_NAMESPACE).svc.cluster.local.
   - it: should use custom cluster domain
     set:
       sourceWatcher.create: true
@@ -70,7 +70,7 @@ tests:
     asserts:
       - contains:
           path: spec.template.spec.containers[0].args
-          content: --storage-adv-addr=source-controller.$(RUNTIME_NAMESPACE).svc.custom.domain.
+          content: --storage-adv-addr=source-watcher.$(RUNTIME_NAMESPACE).svc.custom.domain.
   - it: should override securityContext
     set:
       sourceWatcher.create: true
