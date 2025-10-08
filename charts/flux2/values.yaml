@@ -269,6 +269,38 @@ sourceController:
   tolerations: []
   extraEnv: []
 
+
+sourceWatcher:
+  tag: v2.0.1
+  create: false
+  image: ghcr.io/fluxcd/source-watcher
+  resources:
+    limits: {}
+    # cpu: 1000m
+    # memory: 1Gi
+    requests:
+      cpu: 50m
+      memory: 64Mi
+  priorityClassName: ""
+  annotations:
+    prometheus.io/port: "8080"
+    prometheus.io/scrape: "true"
+  labels: {}
+  container:
+    additionalArgs: []
+  serviceAccount:
+    create: true
+    automount: true
+    annotations: {}
+  imagePullPolicy: ""
+  service:
+    labels: {}
+    annotations: {}
+  nodeSelector: {}
+  affinity: {}
+  tolerations: []
+  extraEnv: []
+
 policies:
   create: true
 
@@ -328,6 +360,3 @@ prometheus:
 
 distro:
   openshift: false
-sourceWatcher:
-  tag: v2.0.1
-  create: false
