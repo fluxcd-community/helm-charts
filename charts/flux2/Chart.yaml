@@ -1,8 +1,8 @@
 annotations:
   artifacthub.io/changes: |
-    - "[Chore]: Update App Version to upstream 2.7.1"
+    - "[Chore]: Update App Version to upstream 2.7.2"
 apiVersion: v2
-appVersion: 2.7.1
+appVersion: 2.7.2
 description: A Helm chart for flux2
 name: flux2
 sources:
