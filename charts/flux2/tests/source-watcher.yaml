@@ -1,17 +1,24 @@
-suite: test kustomize-controller deployment
+suite: test source-watcher deployment
 templates:
-  - kustomize-controller.yaml
+  - source-watcher.yaml
 tests:
-  - it: should be empty if source-controller is not enabled
+  - it: should be empty if source-watcher is not enabled
     asserts:
       - hasDocuments:
           count: 0
     set:
-      kustomizeController.create: false
+      sourceWatcher.create: false
+  - it: should be empty by default
+    asserts:
+      - hasDocuments:
+          count: 0
+    set: {}
   - it: should have kind Deployment for k8s >= 1.19
     capabilities:
       majorVersion: 1
       minorVersion: 19
+    set:
+      sourceWatcher.create: true
     asserts:
       - hasDocuments:
           count: 1
@@ -21,58 +28,29 @@ tests:
           of: apps/v1
   - it: should set additional container args
     set:
-      kustomizeController.container.additionalArgs:
+      sourceWatcher.create: true
+      sourceWatcher.container.additionalArgs:
         - --testlabel1=testvalue1
     asserts:
       - contains:
           path: spec.template.spec.containers[0].args
           content: --testlabel1=testvalue1
-  - it: should set feature-flag when sourceWatcher is enabled
+  - it: should match snapshot with default values when enabled
     set:
       sourceWatcher.create: true
     asserts:
-      - contains:
-          path: spec.template.spec.containers[0].args
-          content: --feature-gates=ExternalArtifact=true
-  - it: should not set feature-flag when sourceWatcher is disabled
-    set:
-      sourceWatcher.create: false
-    asserts:
-      - notContains:
-          path: spec.template.spec.containers[0].args
-          content: --feature-gates=ExternalArtifact=true
-  - it: should match snapshot of default values
-    asserts:
       - matchSnapshot: {}
-  - it: should have args for Multi-tenancy lockdown
-    capabilities:
-      majorVersion: 1
-      minorVersion: 21
-    set:
-      multitenancy:
-        enabled: true
-        defaultServiceAccount: test1
-    asserts:
-      - hasDocuments:
-          count: 1
-      - isKind:
-          of: Deployment
-      - isAPIVersion:
-          of: apps/v1
-      - contains:
-          path: spec.template.spec.containers[0].args
-          content: --no-cross-namespace-refs=true
-      - contains:
-          path: spec.template.spec.containers[0].args
-          content: --default-service-account=test1
   - it: should set imagePullPolicy to Always
     set:
-      kustomizeController.imagePullPolicy: Always
+      sourceWatcher.create: true
+      sourceWatcher.imagePullPolicy: Always
     asserts:
       - equal:
           path: spec.template.spec.containers[0].imagePullPolicy
           value: Always
   - it: should imagePullPolicy to be default value IfNotPresent
+    set:
+      sourceWatcher.create: true
     asserts:
       - equal:
           path: spec.template.spec.containers[0].imagePullPolicy
@@ -80,22 +58,25 @@ tests:
   - it: should use default cluster domain when null
     set:
       clusterDomain: null
+      sourceWatcher.create: true
     asserts:
       - contains:
           path: spec.template.spec.containers[0].args
-          content: --events-addr=http://notification-controller.$(RUNTIME_NAMESPACE).svc.cluster.local.
+          content: --storage-adv-addr=source-watcher.$(RUNTIME_NAMESPACE).svc.cluster.local.
   - it: should use custom cluster domain
     set:
+      sourceWatcher.create: true
       clusterDomain: custom.domain
     asserts:
       - contains:
           path: spec.template.spec.containers[0].args
-          content: --events-addr=http://notification-controller.$(RUNTIME_NAMESPACE).svc.custom.domain.
+          content: --storage-adv-addr=source-watcher.$(RUNTIME_NAMESPACE).svc.custom.domain.
   - it: should override securityContext
     set:
-      kustomizeController.podSecurityContext:
+      sourceWatcher.create: true
+      sourceWatcher.podSecurityContext:
         runAsUser: 2000
-      kustomizeController.securityContext:
+      sourceWatcher.securityContext:
         runAsUser: 3000
     asserts:
       - equal:
