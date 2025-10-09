@@ -271,9 +271,9 @@ sourceController:
 
 
 sourceWatcher:
-  tag: v2.0.2
   create: false
   image: ghcr.io/fluxcd/source-watcher
+  tag: v2.0.2
   resources:
     limits: {}
     # cpu: 1000m
