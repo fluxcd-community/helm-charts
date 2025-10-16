@@ -1,6 +1,7 @@
 annotations:
   artifacthub.io/changes: |
     - "[Chore]: Update App Version to upstream 2.7.2"
+    - "[Fix]: Added runAsUser to enhance compatibility"
 apiVersion: v2
 appVersion: 2.7.2
 description: A Helm chart for flux2
