@@ -8,12 +8,12 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 
 ## Source Code
 
-- <https://github.com/fluxcd-community/helm-charts>
+* <https://github.com/fluxcd-community/helm-charts>
 
 ## Values
 
 | Key | Type | Default | Description |
-| --- | --- | --- | --- |
+|-----|------|---------|-------------|
 | cli.affinity | object | `{}` |  |
 | cli.annotations | object | `{}` |  |
 | cli.image | string | `"ghcr.io/fluxcd/flux-cli"` |  |
