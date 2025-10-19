@@ -27,7 +27,7 @@ clusterDomain: cluster.local
 
 cli:
   image: ghcr.io/fluxcd/flux-cli
-  tag: v2.6.4
+  tag: v2.7.2
   nodeSelector: {}
   affinity: {}
   tolerations: []
@@ -40,7 +40,7 @@ cli:
 helmController:
   create: true
   image: ghcr.io/fluxcd/helm-controller
-  tag: v1.3.0
+  tag: v1.4.2
   resources:
     limits: {}
     # cpu: 1000m
@@ -88,7 +88,7 @@ helmController:
 imageAutomationController:
   create: true
   image: ghcr.io/fluxcd/image-automation-controller
-  tag: v0.41.2
+  tag: v1.0.2
   resources:
     limits: {}
     # cpu: 1000m
@@ -116,7 +116,7 @@ imageAutomationController:
 imageReflectionController:
   create: true
   image: ghcr.io/fluxcd/image-reflector-controller
-  tag: v0.35.2
+  tag: v1.0.2
   resources:
     limits: {}
     # cpu: 1000m
@@ -144,7 +144,7 @@ imageReflectionController:
 kustomizeController:
   create: true
   image: ghcr.io/fluxcd/kustomize-controller
-  tag: v1.6.1
+  tag: v1.7.1
   resources:
     limits: {}
     # cpu: 1000m
@@ -192,7 +192,7 @@ kustomizeController:
 notificationController:
   create: true
   image: ghcr.io/fluxcd/notification-controller
-  tag: v1.6.0
+  tag: v1.7.3
   resources:
     limits: {}
     # cpu: 1000m
@@ -244,13 +244,45 @@ notificationController:
 sourceController:
   create: true
   image: ghcr.io/fluxcd/source-controller
-  tag: v1.6.2
+  tag: v1.7.2
   resources:
     limits: {}
     # cpu: 1000m
     # memory: 1Gi
     requests:
       cpu: 100m
+      memory: 64Mi
+  priorityClassName: ""
+  annotations:
+    prometheus.io/port: "8080"
+    prometheus.io/scrape: "true"
+  labels: {}
+  container:
+    additionalArgs: []
+  serviceAccount:
+    create: true
+    automount: true
+    annotations: {}
+  imagePullPolicy: ""
+  service:
+    labels: {}
+    annotations: {}
+  nodeSelector: {}
+  affinity: {}
+  tolerations: []
+  extraEnv: []
+
+
+sourceWatcher:
+  create: false
+  image: ghcr.io/fluxcd/source-watcher
+  tag: v2.0.2
+  resources:
+    limits: {}
+    # cpu: 1000m
+    # memory: 1Gi
+    requests:
+      cpu: 50m
       memory: 64Mi
   priorityClassName: ""
   annotations:
