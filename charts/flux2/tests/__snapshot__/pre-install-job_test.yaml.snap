@@ -12,8 +12,9 @@ should match snapshot of default values:
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/part-of: flux
         app.kubernetes.io/version: 2.7.2
-        helm.sh/chart: flux2-2.17.0
+        helm.sh/chart: flux2-2.18.0
       name: RELEASE-NAME-flux-check
+      namespace: NAMESPACE
     spec:
       backoffLimit: 1
       template:
@@ -23,7 +24,7 @@ should match snapshot of default values:
             app.kubernetes.io/managed-by: Helm
             app.kubernetes.io/part-of: flux
             app.kubernetes.io/version: 2.7.2
-            helm.sh/chart: flux2-2.17.0
+            helm.sh/chart: flux2-2.18.0
           name: RELEASE-NAME
         spec:
           automountServiceAccountToken: true

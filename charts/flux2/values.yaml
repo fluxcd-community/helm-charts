@@ -5,6 +5,10 @@ crds:
   # -- Add annotations to all CRD resources, e.g. "helm.sh/resource-policy": keep
   annotations: {}
 
+# -- Override the namespace used for all manifests.
+# Defaults to .Release.Namespace
+namespaceOverride: ""
+
 multitenancy:
   # -- Implement the patches for Multi-tenancy lockdown.
   # See https://fluxcd.io/docs/installation/#multi-tenancy-lockdown
@@ -232,7 +236,6 @@ notificationController:
       #  - secretName: flux-webhook-tls
       #    hosts:
       #      - flux-webhook.example.com
-
 
   nodeSelector: {}
   affinity: {}

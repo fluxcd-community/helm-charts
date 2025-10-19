@@ -11,6 +11,7 @@ metadata:
     app.kubernetes.io/part-of: flux
     helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
   name: notification-controller
+  namespace: {{ include "flux.namespace" . }}
   {{- with .Values.notificationController.serviceAccount.annotations }}
   annotations: {{ toYaml . | nindent 4 }}
   {{- end }}

@@ -14,6 +14,7 @@ metadata:
     {{- . | toYaml | nindent 4 }}
     {{- end }}
   name: image-automation-controller
+  namespace: {{ include "flux.namespace" . }}
 spec:
   {{- if kindIs "invalid" .Values.imageAutomationController.replicas }}
   replicas: 1

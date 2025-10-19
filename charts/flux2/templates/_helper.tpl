@@ -5,3 +5,10 @@
 {{- printf "%s:%s" .image .tag -}}
 {{- end -}}
 {{- end -}}
+
+{{/*
+Return the namespace for this release.
+*/}}
+{{- define "flux.namespace" -}}
+{{- .Values.namespaceOverride | default .Release.Namespace -}}
+{{- end -}}

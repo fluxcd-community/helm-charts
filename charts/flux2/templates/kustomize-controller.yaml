@@ -14,6 +14,7 @@ metadata:
     {{- . | toYaml | nindent 4 }}
     {{- end }}
   name: kustomize-controller
+  namespace: {{ include "flux.namespace" . }}
 spec:
   {{- if kindIs "invalid" .Values.kustomizeController.replicas }}
   replicas: 1
