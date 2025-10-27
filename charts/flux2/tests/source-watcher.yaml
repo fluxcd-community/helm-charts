@@ -89,8 +89,8 @@ tests:
             runAsUser: 3000
   - it: should not add runAsUser if distro.openshift=true
     set:
-      distro:
-        openshift: true
+      sourceWatcher.create: true
+      distro.openshift: true
     asserts:
       - equal:
           path: spec.template.spec.containers[0].securityContext
