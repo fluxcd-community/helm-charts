@@ -11,8 +11,8 @@ should match snapshot of default values:
         app.kubernetes.io/instance: NAMESPACE
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/part-of: flux
-        app.kubernetes.io/version: 2.7.2
-        helm.sh/chart: flux2-2.17.0
+        app.kubernetes.io/version: 2.7.3
+        helm.sh/chart: flux2-2.17.1
       name: RELEASE-NAME-flux-check
     spec:
       backoffLimit: 1
@@ -22,8 +22,8 @@ should match snapshot of default values:
             app.kubernetes.io/instance: NAMESPACE
             app.kubernetes.io/managed-by: Helm
             app.kubernetes.io/part-of: flux
-            app.kubernetes.io/version: 2.7.2
-            helm.sh/chart: flux2-2.17.0
+            app.kubernetes.io/version: 2.7.3
+            helm.sh/chart: flux2-2.17.1
           name: RELEASE-NAME
         spec:
           automountServiceAccountToken: true
@@ -34,7 +34,7 @@ should match snapshot of default values:
                 - --pre
                 - --namespace
                 - NAMESPACE
-              image: ghcr.io/fluxcd/flux-cli:v2.7.2
+              image: ghcr.io/fluxcd/flux-cli:v2.7.3
               name: flux-cli
               securityContext:
                 allowPrivilegeEscalation: false
