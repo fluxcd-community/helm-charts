@@ -104,3 +104,9 @@ tests:
   - it: should match snapshot of default values
     asserts:
       - matchSnapshot: {}
+  - it: should not render job when cli.create is false
+    set:
+      cli.create: false
+    asserts:
+      - hasDocuments:
+          count: 0
