@@ -1,6 +1,6 @@
 annotations:
   artifacthub.io/changes: |
-    - "[Chore]: Update App Version to upstream 2.7.2"
+    - "[Chore]: Allow Disabling Pre-Install Job"
 apiVersion: v2
 appVersion: 2.7.2
 description: A Helm chart for flux2
@@ -8,4 +8,4 @@ name: flux2
 sources:
 - https://github.com/fluxcd-community/helm-charts
 type: application
-version: 2.17.0
+version: 2.17.1
