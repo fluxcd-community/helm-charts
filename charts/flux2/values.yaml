@@ -4,6 +4,20 @@ installCRDs: true
 crds:
   # -- Add annotations to all CRD resources, e.g. "helm.sh/resource-policy": keep
   annotations: {}
+  # -- Enable Flux CRs migration using helm pre upgrade hook job
+  migration:
+    enabled: false
+    resources:
+      limits: {}
+      # cpu: 1000m
+      # memory: 1Gi
+      requests:
+        cpu: 100m
+        memory: 64Mi
+    nodeSelector: {}
+    affinity: {}
+    tolerations: []
+    annotations: {}
 
 multitenancy:
   # -- Implement the patches for Multi-tenancy lockdown.
@@ -23,7 +37,7 @@ clusterDomain: cluster.local
 
 cli:
   image: ghcr.io/fluxcd/flux-cli
-  tag: v2.7.2
+  tag: v2.7.3
   nodeSelector: {}
   affinity: {}
   tolerations: []
@@ -36,7 +50,7 @@ cli:
 helmController:
   create: true
   image: ghcr.io/fluxcd/helm-controller
-  tag: v1.4.2
+  tag: v1.4.3
   resources:
     limits: {}
     # cpu: 1000m
@@ -84,7 +98,7 @@ helmController:
 imageAutomationController:
   create: true
   image: ghcr.io/fluxcd/image-automation-controller
-  tag: v1.0.2
+  tag: v1.0.3
   resources:
     limits: {}
     # cpu: 1000m
@@ -112,7 +126,7 @@ imageAutomationController:
 imageReflectionController:
   create: true
   image: ghcr.io/fluxcd/image-reflector-controller
-  tag: v1.0.2
+  tag: v1.0.3
   resources:
     limits: {}
     # cpu: 1000m
@@ -140,7 +154,7 @@ imageReflectionController:
 kustomizeController:
   create: true
   image: ghcr.io/fluxcd/kustomize-controller
-  tag: v1.7.1
+  tag: v1.7.2
   resources:
     limits: {}
     # cpu: 1000m
@@ -188,7 +202,7 @@ kustomizeController:
 notificationController:
   create: true
   image: ghcr.io/fluxcd/notification-controller
-  tag: v1.7.3
+  tag: v1.7.4
   resources:
     limits: {}
     # cpu: 1000m
@@ -241,7 +255,7 @@ notificationController:
 sourceController:
   create: true
   image: ghcr.io/fluxcd/source-controller
-  tag: v1.7.2
+  tag: v1.7.3
   resources:
     limits: {}
     # cpu: 1000m
