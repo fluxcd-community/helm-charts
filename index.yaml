@@ -4,6 +4,22 @@ entries:
   - annotations:
       artifacthub.io/changes: |
         - "[Chore]: Update App Version to upstream 2.7.2"
+        - "[Fix]: Added runAsUser to enhance compatibility"
+    apiVersion: v2
+    appVersion: 2.7.2
+    created: "2025-11-03T16:25:51.97256247Z"
+    description: A Helm chart for flux2
+    digest: 20cce9564153624b5d59ffe7add35ba5bbfb9d4c30fd58f1b347f1b25d801738
+    name: flux2
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-2.17.1/flux2-2.17.1.tgz
+    version: 2.17.1
+  - annotations:
+      artifacthub.io/changes: |
+        - "[Chore]: Update App Version to upstream 2.7.2"
     apiVersion: v2
     appVersion: 2.7.2
     created: "2025-10-09T08:51:14.333130496Z"
@@ -2769,4 +2785,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2025-10-09T08:51:14.750940534Z"
+generated: "2025-11-03T16:25:51.974636612Z"
