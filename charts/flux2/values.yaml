@@ -4,6 +4,20 @@ installCRDs: true
 crds:
   # -- Add annotations to all CRD resources, e.g. "helm.sh/resource-policy": keep
   annotations: {}
+  # -- Enable Flux CRs migration using helm pre upgrade hook job
+  migration:
+    enabled: false
+    resources:
+      limits: {}
+      # cpu: 1000m
+      # memory: 1Gi
+      requests:
+        cpu: 100m
+        memory: 64Mi
+    nodeSelector: {}
+    affinity: {}
+    tolerations: []
+    annotations: {}
 
 multitenancy:
   # -- Implement the patches for Multi-tenancy lockdown.
