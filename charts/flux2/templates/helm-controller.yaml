@@ -97,6 +97,9 @@ spec:
             drop:
             - ALL
           readOnlyRootFilesystem: true
+          {{- if not .Values.distro.openshift }}
+          runAsUser: 65534
+          {{- end}}
           runAsNonRoot: true
           seccompProfile:
             type: RuntimeDefault
