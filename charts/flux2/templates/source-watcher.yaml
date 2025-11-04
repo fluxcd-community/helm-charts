@@ -95,6 +95,9 @@ spec:
             - ALL
           readOnlyRootFilesystem: true
           runAsNonRoot: true
+          {{- if not .Values.distro.openshift }}
+          runAsUser: 65534
+          {{- end}}
           seccompProfile:
             type: RuntimeDefault
         {{- end}}
