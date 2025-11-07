@@ -1,0 +1,36 @@
+suite: test pre-upgrade-migrate-resources job hook
+templates:
+  - pre-upgrade-migrate-resources.yaml
+tests:
+  - it: should match snapshot of default values
+    set:
+      crds:
+        migration:
+          enabled: true
+    asserts:
+      - matchSnapshot: {}
+  - it: should set resource requests and limits
+    set:
+      crds:
+        migration:
+          enabled: true      
+          resources:
+            limits:
+              cpu: 300m
+              memory: 1024Mi
+            requests:
+              cpu: 300m
+              memory: 1024Mi
+    asserts:
+      - equal:
+          path: spec.template.spec.containers[0].resources.limits.cpu
+          value: 300m
+      - equal:
+          path: spec.template.spec.containers[0].resources.limits.memory
+          value: 1024Mi
+      - equal:
+          path: spec.template.spec.containers[0].resources.requests.cpu
+          value: 300m
+      - equal:
+          path: spec.template.spec.containers[0].resources.requests.memory
+          value: 1024Mi
