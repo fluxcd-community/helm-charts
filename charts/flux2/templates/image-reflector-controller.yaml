@@ -48,7 +48,9 @@ spec:
         - --watch-all-namespaces={{ .Values.watchAllNamespaces }}
         - --log-level={{ .Values.logLevel | default "info" }}
         - --log-encoding=json
+        {{- if .Values.imageReflectionController.leaderElect }}
         - --enable-leader-election
+        {{- end }}
         {{- range .Values.imageReflectionController.container.additionalArgs }}
         - {{ . }}
         {{- end}}
