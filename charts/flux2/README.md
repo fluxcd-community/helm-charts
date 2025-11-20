@@ -1,6 +1,6 @@
 # flux2
 
-![Version: 2.17.1](https://img.shields.io/badge/Version-2.17.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.7.2](https://img.shields.io/badge/AppVersion-2.7.2-informational?style=flat-square)
+![Version: 2.17.2](https://img.shields.io/badge/Version-2.17.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.7.2](https://img.shields.io/badge/AppVersion-2.7.2-informational?style=flat-square)
 
 A Helm chart for flux2
 
@@ -34,6 +34,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | helmController.image | string | `"ghcr.io/fluxcd/helm-controller"` |  |
 | helmController.imagePullPolicy | string | `""` |  |
 | helmController.labels | object | `{}` |  |
+| helmController.leaderElect | bool | `true` |  |
 | helmController.nodeSelector | object | `{}` |  |
 | helmController.priorityClassName | string | `""` |  |
 | helmController.resources.limits | object | `{}` |  |
@@ -53,6 +54,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | imageAutomationController.image | string | `"ghcr.io/fluxcd/image-automation-controller"` |  |
 | imageAutomationController.imagePullPolicy | string | `""` |  |
 | imageAutomationController.labels | object | `{}` |  |
+| imageAutomationController.leaderElect | bool | `true` |  |
 | imageAutomationController.nodeSelector | object | `{}` |  |
 | imageAutomationController.priorityClassName | string | `""` |  |
 | imageAutomationController.resources.limits | object | `{}` |  |
@@ -73,6 +75,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | imageReflectionController.image | string | `"ghcr.io/fluxcd/image-reflector-controller"` |  |
 | imageReflectionController.imagePullPolicy | string | `""` |  |
 | imageReflectionController.labels | object | `{}` |  |
+| imageReflectionController.leaderElect | bool | `true` |  |
 | imageReflectionController.nodeSelector | object | `{}` |  |
 | imageReflectionController.priorityClassName | string | `""` |  |
 | imageReflectionController.resources.limits | object | `{}` |  |
@@ -95,6 +98,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | kustomizeController.image | string | `"ghcr.io/fluxcd/kustomize-controller"` |  |
 | kustomizeController.imagePullPolicy | string | `""` |  |
 | kustomizeController.labels | object | `{}` |  |
+| kustomizeController.leaderElect | bool | `true` |  |
 | kustomizeController.nodeSelector | object | `{}` |  |
 | kustomizeController.priorityClassName | string | `""` |  |
 | kustomizeController.resources.limits | object | `{}` |  |
@@ -121,6 +125,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | notificationController.image | string | `"ghcr.io/fluxcd/notification-controller"` |  |
 | notificationController.imagePullPolicy | string | `""` |  |
 | notificationController.labels | object | `{}` |  |
+| notificationController.leaderElect | bool | `true` |  |
 | notificationController.nodeSelector | object | `{}` |  |
 | notificationController.priorityClassName | string | `""` |  |
 | notificationController.resources.limits | object | `{}` |  |
@@ -161,6 +166,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | sourceController.image | string | `"ghcr.io/fluxcd/source-controller"` |  |
 | sourceController.imagePullPolicy | string | `""` |  |
 | sourceController.labels | object | `{}` |  |
+| sourceController.leaderElect | bool | `true` |  |
 | sourceController.nodeSelector | object | `{}` |  |
 | sourceController.priorityClassName | string | `""` |  |
 | sourceController.resources.limits | object | `{}` |  |
@@ -182,6 +188,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | sourceWatcher.image | string | `"ghcr.io/fluxcd/source-watcher"` |  |
 | sourceWatcher.imagePullPolicy | string | `""` |  |
 | sourceWatcher.labels | object | `{}` |  |
+| sourceWatcher.leaderElect | bool | `true` |  |
 | sourceWatcher.nodeSelector | object | `{}` |  |
 | sourceWatcher.priorityClassName | string | `""` |  |
 | sourceWatcher.resources.limits | object | `{}` |  |

@@ -45,7 +45,9 @@ spec:
         - --watch-all-namespaces={{ .Values.watchAllNamespaces }}
         - --log-level={{ .Values.logLevel | default "info" }}
         - --log-encoding=json
+        {{- if .Values.notificationController.leaderElect }}
         - --enable-leader-election
+        {{- end }}
         {{- range .Values.notificationController.container.additionalArgs }}
         - {{ . }}
         {{- end}}

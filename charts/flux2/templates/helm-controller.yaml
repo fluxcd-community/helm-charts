@@ -49,7 +49,9 @@ spec:
         - --watch-all-namespaces={{ .Values.watchAllNamespaces }}
         - --log-level={{ .Values.logLevel | default "info" }}
         - --log-encoding=json
+        {{- if .Values.helmController.leaderElect }}
         - --enable-leader-election
+        {{- end }}
         {{- if .Values.sourceWatcher.create }}
         - --feature-gates=ExternalArtifact=true
         {{- end}}
