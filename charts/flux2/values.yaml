@@ -7,6 +7,7 @@ crds:
   # -- Enable Flux CRs migration using helm pre upgrade hook job
   migration:
     enabled: false
+    timeout: 5m
     resources:
       limits: {}
       # cpu: 1000m

@@ -30,6 +30,7 @@ should match snapshot of default values:
             - command:
                 - /usr/local/bin/flux
                 - migrate
+                - --timeout=5m
               image: ghcr.io/fluxcd/flux-cli:v2.7.2
               name: flux-cli-migrate
               resources:
