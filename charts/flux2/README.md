@@ -23,7 +23,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | cli.tolerations | list | `[]` |  |
 | clusterDomain | string | `"cluster.local"` |  |
 | crds.annotations | object | `{}` | Add annotations to all CRD resources, e.g. "helm.sh/resource-policy": keep |
-| crds.migration | object | `{"affinity":{},"annotations":{},"enabled":false,"nodeSelector":{},"resources":{"limits":{},"requests":{"cpu":"100m","memory":"64Mi"}},"tolerations":[]}` | Enable Flux CRs migration using helm pre upgrade hook job |
+| crds.migration | object | `{"affinity":{},"annotations":{},"enabled":false,"nodeSelector":{},"resources":{"limits":{},"requests":{"cpu":"100m","memory":"64Mi"}},"timeout":"5m","tolerations":[]}` | Enable Flux CRs migration using helm pre upgrade hook job |
 | distro.openshift | bool | `false` |  |
 | extraObjects | list | `[]` | Array of extra K8s manifests to deploy |
 | helmController.affinity | object | `{}` |  |

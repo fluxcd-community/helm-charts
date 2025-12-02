@@ -87,7 +87,7 @@ spec:
       containers:
       - name: flux-cli-migrate
         image: {{ template "template.image" .Values.cli }}
-        command: ["/usr/local/bin/flux", "migrate"]
+        command: ["/usr/local/bin/flux", "migrate", "--timeout={{ .Values.crds.migration.timeout }}"]
         {{- with .Values.crds.migration.resources }}
         resources: {{ toYaml . | nindent 10 }}
         {{- end }}
