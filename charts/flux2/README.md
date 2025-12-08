@@ -1,6 +1,6 @@
 # flux2
 
-![Version: 2.17.3](https://img.shields.io/badge/Version-2.17.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.7.5](https://img.shields.io/badge/AppVersion-2.7.5-informational?style=flat-square)
+![Version: 2.17.3](https://img.shields.io/badge/Version-2.17.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.7.5](https://img.shields.io/badge/AppVersion-2.7.5-informational?style=flat-square)
 
 A Helm chart for flux2
 

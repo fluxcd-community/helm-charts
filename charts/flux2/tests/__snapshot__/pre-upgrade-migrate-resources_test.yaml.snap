@@ -11,8 +11,8 @@ should match snapshot of default values:
         app.kubernetes.io/instance: NAMESPACE
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/part-of: flux
-        app.kubernetes.io/version: 2.7.2
-        helm.sh/chart: flux2-2.17.2
+        app.kubernetes.io/version: 2.7.5
+        helm.sh/chart: flux2-2.17.3
       name: RELEASE-NAME-flux-migrate
     spec:
       backoffLimit: 1
@@ -22,8 +22,8 @@ should match snapshot of default values:
             app.kubernetes.io/instance: NAMESPACE
             app.kubernetes.io/managed-by: Helm
             app.kubernetes.io/part-of: flux
-            app.kubernetes.io/version: 2.7.2
-            helm.sh/chart: flux2-2.17.2
+            app.kubernetes.io/version: 2.7.5
+            helm.sh/chart: flux2-2.17.3
           name: RELEASE-NAME
         spec:
           containers:
@@ -31,7 +31,7 @@ should match snapshot of default values:
                 - /usr/local/bin/flux
                 - migrate
                 - --timeout=5m
-              image: ghcr.io/fluxcd/flux-cli:v2.7.2
+              image: ghcr.io/fluxcd/flux-cli:v2.7.5
               name: flux-cli-migrate
               resources:
                 limits: {}
