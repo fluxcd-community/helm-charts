@@ -1,6 +1,6 @@
 # flux2
 
-![Version: 2.17.2](https://img.shields.io/badge/Version-2.17.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.7.5](https://img.shields.io/badge/AppVersion-2.7.5-informational?style=flat-square)
+![Version: 2.17.3](https://img.shields.io/badge/Version-2.17.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.7.5](https://img.shields.io/badge/AppVersion-2.7.5-informational?style=flat-square)
 
 A Helm chart for flux2
 
@@ -23,6 +23,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | cli.tolerations | list | `[]` |  |
 | clusterDomain | string | `"cluster.local"` |  |
 | crds.annotations | object | `{}` | Add annotations to all CRD resources, e.g. "helm.sh/resource-policy": keep |
+| crds.migration | object | `{"affinity":{},"annotations":{},"enabled":false,"nodeSelector":{},"resources":{"limits":{},"requests":{"cpu":"100m","memory":"64Mi"}},"timeout":"5m","tolerations":[]}` | Enable Flux CRs migration using helm pre upgrade hook job |
 | distro.openshift | bool | `false` |  |
 | extraObjects | list | `[]` | Array of extra K8s manifests to deploy |
 | helmController.affinity | object | `{}` |  |

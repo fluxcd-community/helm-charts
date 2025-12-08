@@ -4,7 +4,7 @@ should match snapshot of default values:
     kind: Job
     metadata:
       annotations:
-        helm.sh/hook: pre-install
+        helm.sh/hook: pre-upgrade
         helm.sh/hook-delete-policy: before-hook-creation,hook-succeeded
         helm.sh/hook-weight: "-5"
       labels:
@@ -13,7 +13,7 @@ should match snapshot of default values:
         app.kubernetes.io/part-of: flux
         app.kubernetes.io/version: 2.7.5
         helm.sh/chart: flux2-2.17.3
-      name: RELEASE-NAME-flux-check
+      name: RELEASE-NAME-flux-migrate
     spec:
       backoffLimit: 1
       template:
@@ -26,16 +26,18 @@ should match snapshot of default values:
             helm.sh/chart: flux2-2.17.3
           name: RELEASE-NAME
         spec:
-          automountServiceAccountToken: true
           containers:
             - command:
                 - /usr/local/bin/flux
-                - check
-                - --pre
-                - --namespace
-                - NAMESPACE
+                - migrate
+                - --timeout=5m
               image: ghcr.io/fluxcd/flux-cli:v2.7.5
-              name: flux-cli
+              name: flux-cli-migrate
+              resources:
+                limits: {}
+                requests:
+                  cpu: 100m
+                  memory: 64Mi
               securityContext:
                 allowPrivilegeEscalation: false
                 capabilities:
@@ -47,4 +49,4 @@ should match snapshot of default values:
                 seccompProfile:
                   type: RuntimeDefault
           restartPolicy: Never
-          serviceAccountName: RELEASE-NAME-flux-check
+          serviceAccountName: kustomize-controller
