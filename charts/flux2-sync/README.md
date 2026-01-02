@@ -29,6 +29,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | gitRepository.spec.recurseSubmodules | bool | `false` | _Optional_ When enabled, after the clone is created, initializes all submodules within, using their default settings. This option is available only when using the ‘go-git’ GitImplementation. |
 | gitRepository.spec.ref | object | `{"branch":"master"}` | _Optional_ The Git reference to checkout and monitor for changes, defaults to master branch. |
 | gitRepository.spec.secretRef | object | `{}` | _Optional_ The secret name containing the Git credentials. For HTTPS repositories the secret must contain username and password fields. For SSH repositories the secret must contain identity, identity.pub and known_hosts fields. For GitHub App authentication the secret must contain githubAppID, githubAppInstallationID and githubAppPrivateKey fields. If a secret.create is set, it will point to that one. |
+| gitRepository.spec.sparseCheckout | list | `[]` | _Optional_ A list of directories to checkout when cloning the repository |
 | gitRepository.spec.suspend | string | `""` | _Optional_ This flag tells the controller to suspend the reconciliation of this source. |
 | gitRepository.spec.timeout | string | `""` | _Optional_ The timeout for remote Git operations like cloning, defaults to 20s. |
 | gitRepository.spec.url | string | `""` | The repository URL, can be an HTTP/S or SSH address. |
