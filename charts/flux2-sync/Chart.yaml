@@ -1,7 +1,7 @@
 apiVersion: v2
 name: flux2-sync
 type: application
-version: 1.14.1
+version: 1.14.2
 appVersion: 2.7.5
 description: A Helm chart for flux2 GitRepository to sync with
 sources:
@@ -9,3 +9,4 @@ sources:
 annotations:
   artifacthub.io/changes: |
     - "[Chore]: Update App Version to upstream 2.7.5"
+    - "[feat]: flux2-sync: Add support for sparseCheckout in GitRepository"
