@@ -1,17 +1,24 @@
-suite: test notification-controller deployment
+suite: test source-watcher deployment
 templates:
-  - notification-controller.yaml
+  - source-watcher.yaml
 tests:
-  - it: should be empty if source-controller is not enabled
+  - it: should be empty if source-watcher is not enabled
     asserts:
       - hasDocuments:
           count: 0
     set:
-      notificationController.create: false
+      sourceWatcher.create: false
+  - it: should be empty by default
+    asserts:
+      - hasDocuments:
+          count: 0
+    set: {}
   - it: should have kind Deployment for k8s >= 1.19
     capabilities:
       majorVersion: 1
       minorVersion: 19
+    set:
+      sourceWatcher.create: true
     asserts:
       - hasDocuments:
           count: 1
@@ -21,49 +28,55 @@ tests:
           of: apps/v1
   - it: should set additional container args
     set:
-      notificationController.container.additionalArgs:
+      sourceWatcher.create: true
+      sourceWatcher.container.additionalArgs:
         - --testlabel1=testvalue1
     asserts:
       - contains:
           path: spec.template.spec.containers[0].args
           content: --testlabel1=testvalue1
-  - it: should match snapshot of default values
+  - it: should match snapshot with default values when enabled
+    set:
+      sourceWatcher.create: true
     asserts:
       - matchSnapshot: {}
-  - it: should have args for Multi-tenancy lockdown
-    capabilities:
-      majorVersion: 1
-      minorVersion: 21
-    set:
-      multitenancy:
-        enabled: true
-    asserts:
-      - hasDocuments:
-          count: 1
-      - isKind:
-          of: Deployment
-      - isAPIVersion:
-          of: apps/v1
-      - contains:
-          path: spec.template.spec.containers[0].args
-          content: --no-cross-namespace-refs=true
   - it: should set imagePullPolicy to Always
     set:
-      notificationController.imagePullPolicy: Always
+      sourceWatcher.create: true
+      sourceWatcher.imagePullPolicy: Always
     asserts:
       - equal:
           path: spec.template.spec.containers[0].imagePullPolicy
           value: Always
   - it: should imagePullPolicy to be default value IfNotPresent
+    set:
+      sourceWatcher.create: true
     asserts:
       - equal:
           path: spec.template.spec.containers[0].imagePullPolicy
           value: IfNotPresent
+  - it: should use default cluster domain when null
+    set:
+      clusterDomain: null
+      sourceWatcher.create: true
+    asserts:
+      - contains:
+          path: spec.template.spec.containers[0].args
+          content: --storage-adv-addr=source-watcher.$(RUNTIME_NAMESPACE).svc.cluster.local.
+  - it: should use custom cluster domain
+    set:
+      sourceWatcher.create: true
+      clusterDomain: custom.domain
+    asserts:
+      - contains:
+          path: spec.template.spec.containers[0].args
+          content: --storage-adv-addr=source-watcher.$(RUNTIME_NAMESPACE).svc.custom.domain.
   - it: should override securityContext
     set:
-      notificationController.podSecurityContext:
+      sourceWatcher.create: true
+      sourceWatcher.podSecurityContext:
         runAsUser: 2000
-      notificationController.securityContext:
+      sourceWatcher.securityContext:
         runAsUser: 3000
     asserts:
       - equal:
@@ -76,8 +89,8 @@ tests:
             runAsUser: 3000
   - it: should not add runAsUser if distro.openshift=true
     set:
-      distro:
-        openshift: true
+      sourceWatcher.create: true
+      distro.openshift: true
     asserts:
       - equal:
           path: spec.template.spec.containers[0].securityContext

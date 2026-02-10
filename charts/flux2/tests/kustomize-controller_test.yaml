@@ -27,6 +27,20 @@ tests:
       - contains:
           path: spec.template.spec.containers[0].args
           content: --testlabel1=testvalue1
+  - it: should set feature-flag when sourceWatcher is enabled
+    set:
+      sourceWatcher.create: true
+    asserts:
+      - contains:
+          path: spec.template.spec.containers[0].args
+          content: --feature-gates=ExternalArtifact=true
+  - it: should not set feature-flag when sourceWatcher is disabled
+    set:
+      sourceWatcher.create: false
+    asserts:
+      - notContains:
+          path: spec.template.spec.containers[0].args
+          content: --feature-gates=ExternalArtifact=true
   - it: should match snapshot of default values
     asserts:
       - matchSnapshot: {}
@@ -92,3 +106,19 @@ tests:
           path: spec.template.spec.containers[0].securityContext
           value:
             runAsUser: 3000
+  - it: should not add runAsUser if distro.openshift=true
+    set:
+      distro:
+        openshift: true
+    asserts:
+      - equal:
+          path: spec.template.spec.containers[0].securityContext
+          value:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            seccompProfile:
+              type: RuntimeDefault

@@ -35,4 +35,7 @@ subjects:
   - kind: ServiceAccount
     name: image-automation-controller
     namespace: {{ .Release.Namespace }}
+  - kind: ServiceAccount
+    name: source-watcher-controller
+    namespace: {{ .Release.Namespace }}
 {{- end }}
