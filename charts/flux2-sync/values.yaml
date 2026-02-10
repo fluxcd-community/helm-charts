@@ -68,6 +68,9 @@ gitRepository:
     # -- _Optional_ Extra git repositories to map into the repository
     include: []
 
+    # -- _Optional_ A list of directories to checkout when cloning the repository
+    sparseCheckout: []
+
 
 kustomization:
   labels: {}
