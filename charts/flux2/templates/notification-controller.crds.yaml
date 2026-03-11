@@ -106,6 +106,8 @@ spec:
                       - ImagePolicy
                       - ImageUpdateAutomation
                       - OCIRepository
+                      - ArtifactGenerator
+                      - ExternalArtifact
                       type: string
                     matchLabels:
                       additionalProperties:
@@ -323,6 +325,8 @@ spec:
                       - ImagePolicy
                       - ImageUpdateAutomation
                       - OCIRepository
+                      - ArtifactGenerator
+                      - ExternalArtifact
                       type: string
                     matchLabels:
                       additionalProperties:
@@ -772,6 +776,7 @@ spec:
                 - github
                 - gitlab
                 - gitea
+                - giteapullrequestcomment
                 - bitbucketserver
                 - bitbucket
                 - azuredevops
@@ -787,6 +792,8 @@ spec:
                 - alertmanager
                 - grafana
                 - githubdispatch
+                - githubpullrequestcomment
+                - gitlabmergerequestcomment
                 - pagerduty
                 - datadog
                 - nats
@@ -917,6 +924,8 @@ spec:
                       - ImagePolicy
                       - ImageUpdateAutomation
                       - OCIRepository
+                      - ArtifactGenerator
+                      - ExternalArtifact
                       type: string
                     matchLabels:
                       additionalProperties:
@@ -1139,6 +1148,8 @@ spec:
                       - ImagePolicy
                       - ImageUpdateAutomation
                       - OCIRepository
+                      - ArtifactGenerator
+                      - ExternalArtifact
                       type: string
                     matchLabels:
                       additionalProperties:
