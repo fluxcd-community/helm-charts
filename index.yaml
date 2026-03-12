@@ -3,6 +3,21 @@ entries:
   flux2:
   - annotations:
       artifacthub.io/changes: |
+        - "[Chore]: Update App Version to upstream 2.8.2"
+    apiVersion: v2
+    appVersion: 2.8.2
+    created: "2026-03-12T16:33:05.786470287Z"
+    description: A Helm chart for flux2
+    digest: 08f6fb3e4ea5c8e18ba111f7313dd1890dde075f727adc9d8aeea4b1acb7e124
+    name: flux2
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-2.18.1/flux2-2.18.1.tgz
+    version: 2.18.1
+  - annotations:
+      artifacthub.io/changes: |
         - "[Chore]: Update App Version to upstream 2.8.1"
     apiVersion: v2
     appVersion: 2.8.1
@@ -1537,6 +1552,21 @@ entries:
   flux2-notification:
   - annotations:
       artifacthub.io/changes: |
+        - "[Chore]: Update App Version to upstream 2.8.2"
+    apiVersion: v2
+    appVersion: 2.8.2
+    created: "2026-03-12T16:33:05.93356969Z"
+    description: A Helm chart for flux2 alerts and the needed providers and secrets
+    digest: b83adefb79ac491e1dbd857a4baa44ca51797c5ee4dc734a461d78471c57183f
+    name: flux2-notification
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-notification-1.19.3/flux2-notification-1.19.3.tgz
+    version: 1.19.3
+  - annotations:
+      artifacthub.io/changes: |
         - "[Chore]: Update App Version to upstream 2.8.1"
     apiVersion: v2
     appVersion: 2.8.1
@@ -2196,6 +2226,21 @@ entries:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-notification-0.1.0/flux2-notification-0.1.0.tgz
     version: 0.1.0
   flux2-sync:
+  - annotations:
+      artifacthub.io/changes: |
+        - "[Chore]: Update App Version to upstream 2.8.2"
+    apiVersion: v2
+    appVersion: 2.8.2
+    created: "2026-03-12T16:33:06.129974539Z"
+    description: A Helm chart for flux2 GitRepository to sync with
+    digest: 246de104eb9628830a439c5d76452faeac2d85153cc3ad8fb4f2caa960a9dbe5
+    name: flux2-sync
+    sources:
+    - https://github.com/fluxcd-community/helm-charts
+    type: application
+    urls:
+    - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-1.14.3/flux2-sync-1.14.3.tgz
+    version: 1.14.3
   - annotations:
       artifacthub.io/changes: |
         - "[Chore]: Update App Version to upstream 2.8.1"
@@ -2875,4 +2920,4 @@ entries:
     urls:
     - https://github.com/fluxcd-community/helm-charts/releases/download/flux2-sync-0.1.0/flux2-sync-0.1.0.tgz
     version: 0.1.0
-generated: "2026-03-11T13:25:42.861978651Z"
+generated: "2026-03-12T16:33:06.131346766Z"
