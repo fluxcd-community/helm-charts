@@ -1,6 +1,6 @@
 # flux2
 
-![Version: 2.18.2](https://img.shields.io/badge/Version-2.18.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.8.3](https://img.shields.io/badge/AppVersion-2.8.3-informational?style=flat-square)
+![Version: 2.18.3](https://img.shields.io/badge/Version-2.18.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.8.5](https://img.shields.io/badge/AppVersion-2.8.5-informational?style=flat-square)
 
 A Helm chart for flux2
 
@@ -19,10 +19,11 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | cli.image | string | `"ghcr.io/fluxcd/flux-cli"` |  |
 | cli.nodeSelector | object | `{}` |  |
 | cli.serviceAccount.automount | bool | `true` |  |
-| cli.tag | string | `"v2.8.3"` |  |
+| cli.tag | string | `"v2.8.5"` |  |
 | cli.tolerations | list | `[]` |  |
 | clusterDomain | string | `"cluster.local"` |  |
 | crds.annotations | object | `{}` | Add annotations to all CRD resources, e.g. "helm.sh/resource-policy": keep |
+| crds.migration | object | `{"affinity":{},"annotations":{},"enabled":false,"nodeSelector":{},"resources":{"limits":{},"requests":{"cpu":"100m","memory":"64Mi"}},"timeout":"5m","tolerations":[]}` | Enable Flux CRs migration using helm pre upgrade hook job |
 | distro.openshift | bool | `false` |  |
 | extraObjects | list | `[]` | Array of extra K8s manifests to deploy |
 | helmController.affinity | object | `{}` |  |
@@ -106,7 +107,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | kustomizeController.serviceAccount.annotations | object | `{}` |  |
 | kustomizeController.serviceAccount.automount | bool | `true` |  |
 | kustomizeController.serviceAccount.create | bool | `true` |  |
-| kustomizeController.tag | string | `"v1.8.2"` |  |
+| kustomizeController.tag | string | `"v1.8.3"` |  |
 | kustomizeController.tolerations | list | `[]` |  |
 | logLevel | string | `"info"` |  |
 | multitenancy.defaultServiceAccount | string | `"default"` | All Kustomizations and HelmReleases which don’t have spec.serviceAccountName specified, will use the default account from the tenant’s namespace. Tenants have to specify a service account in their Flux resources to be able to deploy workloads in their namespaces as the default account has no permissions. |
@@ -131,7 +132,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | notificationController.serviceAccount.annotations | object | `{}` |  |
 | notificationController.serviceAccount.automount | bool | `true` |  |
 | notificationController.serviceAccount.create | bool | `true` |  |
-| notificationController.tag | string | `"v1.8.2"` |  |
+| notificationController.tag | string | `"v1.8.3"` |  |
 | notificationController.tolerations | list | `[]` |  |
 | notificationController.webhookReceiver.ingress.annotations | object | `{}` |  |
 | notificationController.webhookReceiver.ingress.create | bool | `false` |  |
@@ -171,7 +172,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | sourceController.serviceAccount.annotations | object | `{}` |  |
 | sourceController.serviceAccount.automount | bool | `true` |  |
 | sourceController.serviceAccount.create | bool | `true` |  |
-| sourceController.tag | string | `"v1.8.1"` |  |
+| sourceController.tag | string | `"v1.8.2"` |  |
 | sourceController.tolerations | list | `[]` |  |
 | sourceWatcher.affinity | object | `{}` |  |
 | sourceWatcher.annotations."prometheus.io/port" | string | `"8080"` |  |

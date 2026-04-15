@@ -1,11 +1,12 @@
 annotations:
   artifacthub.io/changes: |
-    - "[Chore]: Update App Version to upstream 2.8.3"
+    - "[Chore]: Update App Version to upstream 2.8.5"
+    - "[Feature]: Added an optional pre-upgrade helm hook job, which runs flux migrate to migrate the Flux Custom Resources to their latest API versions."
 apiVersion: v2
-appVersion: 2.8.3
+appVersion: 2.8.5
 description: A Helm chart for flux2
 name: flux2
 sources:
 - https://github.com/fluxcd-community/helm-charts
 type: application
-version: 2.18.2
+version: 2.18.3
