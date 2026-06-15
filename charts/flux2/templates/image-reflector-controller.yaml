@@ -33,6 +33,9 @@ spec:
 {{ with .Values.imageReflectionController.labels }}{{ toYaml . | indent 8 }}{{ end }}
     spec:
       automountServiceAccountToken: {{ .Values.imageReflectionController.serviceAccount.automount }}
+      {{- if (ne .Values.hostUsers nil) }}
+      hostUsers: {{ .Values.hostUsers }}
+      {{- end }}
       {{- if .Values.imageReflectionController.initContainers}}
       initContainers:
         {{- toYaml .Values.imageReflectionController.initContainers | nindent 8}}

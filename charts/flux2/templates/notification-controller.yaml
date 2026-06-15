@@ -33,6 +33,9 @@ spec:
 {{ with .Values.notificationController.labels }}{{ toYaml . | indent 8 }}{{ end }}
     spec:
       automountServiceAccountToken: {{ .Values.notificationController.serviceAccount.automount }}
+      {{- if (ne .Values.hostUsers nil) }}
+      hostUsers: {{ .Values.hostUsers }}
+      {{- end }}
       {{- if .Values.notificationController.initContainers}}
       initContainers:
         {{- toYaml .Values.notificationController.initContainers | nindent 8}}

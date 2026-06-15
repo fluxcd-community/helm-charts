@@ -33,6 +33,9 @@ spec:
 {{ with .Values.kustomizeController.labels }}{{ toYaml . | indent 8 }}{{ end }}
     spec:
       automountServiceAccountToken: {{ .Values.kustomizeController.serviceAccount.automount }}
+      {{- if (ne .Values.hostUsers nil) }}
+      hostUsers: {{ .Values.hostUsers }}
+      {{- end }}
       {{- if .Values.kustomizeController.initContainers}}
       initContainers:
         {{- toYaml .Values.kustomizeController.initContainers | nindent 8}}
