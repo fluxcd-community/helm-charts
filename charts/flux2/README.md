@@ -1,6 +1,6 @@
 # flux2
 
-![Version: 2.18.4](https://img.shields.io/badge/Version-2.18.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.8.8](https://img.shields.io/badge/AppVersion-2.8.8-informational?style=flat-square)
+![Version: 2.19.0](https://img.shields.io/badge/Version-2.19.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.8.8](https://img.shields.io/badge/AppVersion-2.8.8-informational?style=flat-square)
 
 A Helm chart for flux2
 
@@ -45,6 +45,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | helmController.serviceAccount.create | bool | `true` |  |
 | helmController.tag | string | `"v1.5.5"` |  |
 | helmController.tolerations | list | `[]` |  |
+| hostUsers | string | `nil` | Controls user namespace isolation for all Flux controller pods. When null (default), the field is omitted and the cluster's default behavior applies. When true, pods share the host user namespace (user namespaces are DISABLED). When false, pods use separate user namespaces (user namespaces are ENABLED) for stronger isolation, if supported by the cluster. Set this to false if your cluster supports user namespaces and you want additional isolation; leave as null or true if user namespaces are not available. See: https://kubernetes.io/docs/concepts/workloads/pods/user-namespaces/ |
 | imageAutomationController.affinity | object | `{}` |  |
 | imageAutomationController.annotations."prometheus.io/port" | string | `"8080"` |  |
 | imageAutomationController.annotations."prometheus.io/scrape" | string | `"true"` |  |

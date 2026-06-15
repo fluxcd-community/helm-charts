@@ -1,0 +1,29 @@
+suite: test hostUsers global configuration
+templates:
+  - helm-controller.yaml
+  - image-automation-controller.yaml
+  - image-reflector-controller.yaml
+  - kustomize-controller.yaml
+  - notification-controller.yaml
+  - source-controller.yaml
+tests:
+  - it: should omit hostUsers field when unset (default null)
+    asserts:
+      - isNotNull:
+          path: spec.template.spec
+      - isNull:
+          path: spec.template.spec.hostUsers
+  - it: should set hostUsers to true when explicitly enabled
+    set:
+      hostUsers: true
+    asserts:
+      - equal:
+          path: spec.template.spec.hostUsers
+          value: true
+  - it: should set hostUsers to false when explicitly disabled
+    set:
+      hostUsers: false
+    asserts:
+      - equal:
+          path: spec.template.spec.hostUsers
+          value: false

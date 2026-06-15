@@ -10,7 +10,7 @@ should match snapshot with default values when enabled:
         app.kubernetes.io/part-of: flux
         app.kubernetes.io/version: 2.8.8
         control-plane: controller
-        helm.sh/chart: flux2-2.18.4
+        helm.sh/chart: flux2-2.19.0
       name: source-watcher
     spec:
       replicas: 1

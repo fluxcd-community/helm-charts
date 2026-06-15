@@ -31,6 +31,9 @@ spec:
 {{ with .Values.sourceController.labels }}{{ toYaml . | indent 8 }}{{ end }}
     spec:
       automountServiceAccountToken: {{ .Values.sourceController.serviceAccount.automount }}
+      {{- if (ne .Values.hostUsers nil) }}
+      hostUsers: {{ .Values.hostUsers }}
+      {{- end }}
       {{- if .Values.sourceController.initContainers}}
       initContainers:
         {{- toYaml .Values.sourceController.initContainers | nindent 8}}
