@@ -67,6 +67,9 @@ spec:
   {{- if .Values.kustomization.spec.deletionPolicy }}
   deletionPolicy: {{ .Values.kustomization.spec.deletionPolicy }}
   {{- end }}
+  {{- if .Values.kustomization.spec.ignore }}
+  ignore: {{ toYaml . | nindent 4 }}
+  {{- end }}
 {{- end }}
 {{- if .Values.kustomizationlist}}
 {{- range $key, $kust := .Values.kustomizationlist }}
@@ -137,6 +140,9 @@ spec:
   {{- end }}
   {{- if $kust.spec.deletionPolicy }}
   deletionPolicy: {{ $kust.spec.deletionPolicy }}
+  {{- end }}
+  {{- if $kust.spec.ignore }}
+  ignore: {{ toYaml . | nindent 4 }}
   {{- end }}
 {{- end }}
 {{- end }}

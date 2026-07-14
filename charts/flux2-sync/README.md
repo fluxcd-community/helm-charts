@@ -53,6 +53,7 @@ This helm chart is maintained and released by the fluxcd-community on a best eff
 | kustomization.spec.targetNamespace | string | `""` | _Optional_ TargetNamespace sets or overrides the namespace in the kustomization.yaml file. |
 | kustomization.spec.timeout | string | `""` | _Optional_ Timeout for validation, apply and health checking operations. Defaults to ‘Interval’ duration |
 | kustomization.spec.wait | bool | `false` | _Optional_ Wait instructs the controller to check the health of all the reconciled resources. When enabled, the HealthChecks are ignored. Defaults to false. |
+| kustomization.spec.ignore | list | `[]` | _Optional_ Ignore is a list of (paths, target) to selectively ignore changes to specific fields during drift detection and correction.
 | kustomizationlist | object | `{}` | _Optional_ If you want multiple subdirectories which depend on each other in the same repo. Their name is derived from their path. |
 | secret.create | bool | `false` | Create a secret for the git repository. Defaults to false. |
 | secret.data | object | `{}` | Data of the secret. For HTTPS repositories the secret must contain username and password fields. For SSH repositories the secret must contain identity, identity.pub and known_hosts fields. For GitHub App authentication the secret must contain githubAppID, githubAppInstallationID and githubAppPrivateKey fields. Values will be encoded to base64 by the helm chart. |
