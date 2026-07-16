@@ -8,9 +8,9 @@ should match snapshot with default values when enabled:
         app.kubernetes.io/instance: NAMESPACE
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/part-of: flux
-        app.kubernetes.io/version: 2.9.1
+        app.kubernetes.io/version: 2.9.2
         control-plane: controller
-        helm.sh/chart: flux2-2.19.0
+        helm.sh/chart: flux2-2.19.1
       name: source-watcher
     spec:
       replicas: 1
