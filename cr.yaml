@@ -1,0 +1,3 @@
+# chart-releaser config, used by .github/workflows/release.yml
+# Appends GitHub's auto-generated release notes to the release body.
+generate-release-notes: true
