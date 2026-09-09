@@ -1,4 +1,4 @@
-{{ if .Values.prometheus.podMonitor.create }}
+{{- if and .Values.prometheus.podMonitor.create (.Capabilities.APIVersions.Has "monitoring.coreos.com/v1") }}
 apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
