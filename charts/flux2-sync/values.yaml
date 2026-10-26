@@ -130,6 +130,9 @@ kustomization:
     # -- _Optional_ DeletionPolicy allows control over garbage collection when a Kustomization object is deleted.
     deletionPolicy: ""
 
+    # -- _Optional_ Ignore is a list used to selectively ignore changes to specific fields during drift detection and correction.
+    ignore: []
+
 # -- _Optional_ If you want multiple subdirectories which depend on each other in the same repo. Their name is derived from their path.
 kustomizationlist: {}
 # - spec:
