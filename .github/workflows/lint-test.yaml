@@ -43,7 +43,7 @@ jobs:
         if: steps.list-changed.outputs.changed == 'true'
 
       - name: Create kind cluster
-        uses: helm/kind-action@v1.7.0
+        uses: helm/kind-action@v1.15.1
         if: steps.list-changed.outputs.changed == 'true'
         with:
           node_image: kindest/node:v1.37.0
